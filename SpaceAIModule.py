@@ -1,7 +1,7 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 
-import APIKEY
+import SpaceAPIKey
 
 ##########################
 ### INITIALIZAION PART ###
@@ -80,9 +80,9 @@ print("object:", object)
 ###############################
 # Importing spacemodule part. #
 ###############################
-import spacemodule
+import Map
 
-map = spacemodule.Map()
+map = Map.Map()
 map.put('A')
 map.put('B')
 map.put('C')
