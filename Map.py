@@ -35,6 +35,12 @@ class Map:
 
         return
     
+    # move id to (x, y)
+    def move_id(self, id, x, y):
+        point = self.tracer[id]
+        self.move(point[0], point[1], x, y)
+        return
+    
     # create id on x,y.
     # Error if id is not unique (already exist in tracer.keys)
     def create(self, id, x, y):
@@ -79,22 +85,22 @@ class Map:
         
         return
     
-    # Return distance btw two points.
-    # This distance is not diagonal. It is x_dis + y_pos.
-    # 대각선 거리(피타고라스)가 아니고 직각거리(x거리 y거리의 합)이다.
-    def distance(self, a, b):
+    # Return distance btw two points that is id1, id2.
+    # This distance is not diagonal. It is the Taxy distance(x_dis + y_pos).
+    # 대각선 거리(피타고라스)가 아니고 택시거리(=맨해튼거리)(x거리 y거리의 합)이다.
+    def distance(self, id1, id2):
         temp_keys = self.tracer.keys()
-        if (a not in temp_keys) or (b not in temp_keys):
+        if (id1 not in temp_keys) or (id2 not in temp_keys):
             raise "There are no such id"
         
-        a_pos = self.tracer[a]
-        b_pos = self.tracer[b]
+        id1_pos = self.tracer[id1]
+        id2_pos = self.tracer[id2]
 
-        x_dis = a_pos[0] - b_pos[0]
+        x_dis = id1_pos[0] - id2_pos[0]
         if x_dis < 0:
             x_dis = -x_dis
         
-        y_dis = a_pos[1] - b_pos[1]
+        y_dis = id1_pos[1] - id2_pos[1]
         if y_dis < 0:
             y_dis = -y_dis
 
@@ -137,6 +143,7 @@ class Map:
     
     # print map
     def print_map(self):
+        print()
         for i in range(self.n):
 
             for j in range(self.n):
@@ -149,22 +156,127 @@ class Map:
             print()
         
         return
+    
+    # A attackablility check that consider a range not only a movepoint.
+    # check whether is id1 able to attack id2.
+    def is_movable_with_range(self, id1, id2, movement_point, range):
+        
+        return self.distance(id1, id2) < (movement_point + range)
+
+    # 어택땅
+    def move_attack(self, id1, id2, movement_point, shooting_range):
+
+        # 이미 최대 사거리에 있는 경우
+        if shooting_range == self.distance(id1, id2):
+            return # Do not move.
+        
+        # 사거리+이동이 닿는 경우
+        if self.is_movable_with_range(id1, id2, movement_point, shooting_range):
+            # move at least.
+            d = shooting_range
+
+        # 사거리+이동이 안 닿는 경우
+        else:
+            # move at most
+            d = self.distance(id1, id2) - movement_point
+
+        far_from_d = []
+        x = self.tracer[id2][0]
+        y = self.tracer[id2][1]
+
+        # id2에서 거리 d떨어진 모든 점 찾기.
+        for i in range(d):
+            far_from_d.append((x+i, y-i+d))
+            far_from_d.append((x-i+d, y-i))
+            far_from_d.append((x-i, y+i-d))
+            far_from_d.append((x+i-d, y+i))
+        
+        # 유효한지 검사
+        n = self.n
+        disabled_indices = []
+        for index in range(len(far_from_d)):
+            x = far_from_d[index][0]
+            y = far_from_d[index][1]
+
+            # 유효하지 않은 점 제거
+            if (x>=n) or (x<0) or (y>=n) or (y<0) or (self.matrix[x][y] != 0):
+                disabled_indices.append(index)
+        
+        for dis_index in reversed(disabled_indices):
+            far_from_d.pop(dis_index)
+
+        # d 떨어진 아무 점 중 id1과 가장 가까운 점 선택
+        nearest_distane = 19
+
+        for current_point in far_from_d:
+            # calculate current_distance
+            id1_x = self.tracer[id1][0]
+            id1_y = self.tracer[id1][1]
+            current_distance = abs(current_point[0] - id1_x) + abs(current_point[1] - id1_y)
+
+            if current_distance < nearest_distane:
+                nearest_point = current_point
+                nearest_distane = current_distance
+
+        # move id1
+        self.move_id(id1, nearest_point[0], nearest_point[1])
+
+        return
+    
+    # (x, y) 튜플 입력이 유효한지 검사
+    def check_available_point(self, point):
+        x = point[0]
+        y = point[1]
+
+        if (x > -1) and (x < self.n):
+            if (y > -1) and (y < self.n):
+                return True
+            
+        return False
+    
+    # 유효한 인접 점을 출력, 없으면 False.
+    # 그래프 부터 새로 만들기.
+    def visit_neighbor(self, point, visited):
+        x = point[0]
+        y = point[1]
+
+        if self.check_available_point((x+1, y)) and ((x+1,y) not in visited):
+            return (x+1, y)
+        
+        elif self.check_available_point((x-1, y)) and ((x-1,y) not in visited):
+            return (x-1, y)
+        
+        elif self.check_available_point((x, y+1)) and ((x,y+1) not in visited):
+            return (x, y+1)
+        
+        elif self.check_available_point((x, y-1)) and ((x,y-1) not in visited):
+            return (x, y-1)
+        
+        else:     
+            return False
 
 
 if __name__ == '__main__':
-    a = Map()
+    map = Map()
 
-    a.put('A')
-    a.put('B')
-    a.put(3)
+    map.put('A')
+    map.put('B')
+    map.put(3)
 
-    print(a.matrix)
-    print(a.n)
-    print(a.tracer)
+    print(map.matrix)
+    print(map.n)
+    print(map.tracer)
 
-    print(a.tracer['A'])
-    a.random_place()
-    print(a.tracer['A'])
-    print(a.tracer)
+    print(map.tracer['A'])
+    map.random_place()
+    print(map.tracer['A'])
+    print(map.tracer)
 
-    a.print_map()
+    map.print_map()
+
+    map.move_attack('A', 'B', 1, 2)
+    map.print_map()
+    map.move_attack('A', 'B', 1, 2)
+    map.print_map()
+    map.move_attack('A', 'B', 1, 2)
+    map.print_map()
