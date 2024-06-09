@@ -2,10 +2,10 @@
 SpaceAPIKey.py
 
 # Stable Diffusion
-generative-models/
+generative_models/
 
 #sgm
-sgm
+sgm/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -9,8 +9,20 @@ from torchvision import transforms
 from einops import rearrange, repeat
 from omegaconf import ListConfig, OmegaConf
 from sgm.util import append_dims, default, instantiate_from_config
+from sgm.modules.diffusionmodules.sampling import (
+    DPMPP2MSampler,
+    DPMPP2SAncestralSampler,
+    EulerAncestralSampler,
+    EulerEDMSampler,
+    HeunEDMSampler,
+    LinearMultistepSampler,
+)
 from safetensors.torch import load_file as load_safetensors
 from generative_models.scripts.util.detection.nsfw_and_watermark_dectection import DeepFloydDataFiltering
+from generative_models.scripts.demo.discretization import (
+    Img2ImgDiscretizationWrapper,
+    Txt2NoisyDiscretizationWrapper,
+)
 
 VERSION2SPECS = {
     "SDXL-base-1.0": {
@@ -41,7 +53,7 @@ def load_img(img_path):
         img_path (str): Path to image file.
 
     Returns:
-        torch.Tensor: A processed image tensor ready for model inference.
+        torch.Tensor: A processed image tensor.
     """
     img = Image.open(img_path)
     
@@ -59,9 +71,20 @@ def load_img(img_path):
 
 def load_img_for_pool(img_path = None, size = None, center_crop = False,
 ):
+    """
+    Load image for pooling from path.
+
+    Args:
+        img_path (str, optional): Path to image file. Defaults to None.
+        size (Union[None, int, Tuple[int, int]], optional): Size for image resizing. Defaults to None.
+        center_crop (bool, optional): Whether center crop or not. Defaults to False.
+
+    Returns:
+        torch.Tensor: A resized and cropped image tensor.
+    """
     if (img_path is None):
         return None
-    image = Image.open(img_path).convert("RGB")
+    img = Image.open(img_path).convert("RGB")
 
     transform = []
     if size is not None:
@@ -72,7 +95,7 @@ def load_img_for_pool(img_path = None, size = None, center_crop = False,
     transform.append(transforms.Lambda(lambda x: 2.0 * x - 1.0))
 
     transform = transforms.Compose(transform)
-    img = transform(image)[None, ...]
+    img = transform(img)[None, ...] # type: ignore 
     return img
 
 
@@ -142,7 +165,7 @@ def init_state(version_dict):
         version_dict(dict): An element of VERSION2SPECS.
         
     Returns:
-        dict: Dictionary containing state informations.
+        dict: A dictionary containing state informations.
     """
     ckpt = version_dict["ckpt"]
     config = OmegaConf.load(version_dict["config"]) # create DictConfig instance
@@ -158,6 +181,18 @@ def init_state(version_dict):
 
 
 def init_embedder_options(keys, init_dict, prompt="", negative_prompt=""):
+    """
+    Initialize and return a dictionary of embedder option based on keys
+
+    Args:
+        keys (list of str): A list of keys specifying which embedding options to include.
+        init_dict (dict): A dictionary containing initial values for certain keys like original and target dimensions.
+        prompt (str, optional): A text prompt. Defaults to an empty string.
+        negative_prompt (str, optional): A negative text prompt. Defaults to an empty string.
+
+    Returns:
+        dict: A dictionary containing initialized values for the specified embedding options.
+    """
     value_dict = {}
     for key in keys:
         if key == "txt":
@@ -313,43 +348,33 @@ def init_sampling(
 
     num_rows, num_cols = 1, 1
     if specify_num_samples:
-        num_cols = st.number_input(
-            f"num cols #{key}", value=num_cols, min_value=1, max_value=10
-        )
+        num_cols = 1
 
-    steps = st.number_input(
-        f"steps #{key}", value=options.get("num_steps", 50), min_value=1, max_value=1000
-    )
-    sampler = st.sidebar.selectbox(
-        f"Sampler #{key}",
-        [
-            "EulerEDMSampler",
-            "HeunEDMSampler",
-            "EulerAncestralSampler",
-            "DPMPP2SAncestralSampler",
-            "DPMPP2MSampler",
-            "LinearMultistepSampler",
-        ],
-        options.get("sampler", 0),
-    )
-    discretization = st.sidebar.selectbox(
-        f"Discretization #{key}",
-        [
-            "LegacyDDPMDiscretization",
-            "EDMDiscretization",
-        ],
-        options.get("discretization", 0),
-    )
+    steps = options.get("num_steps", 50)
+    
+    sampler_options = [
+        "EulerEDMSampler",
+        "HeunEDMSampler",
+        "EulerAncestralSampler",
+        "DPMPP2SAncestralSampler",
+        "DPMPP2MSampler",
+        "LinearMultistepSampler",
+    ]
+    sampler = sampler_options[options.get("sampler", 0)]
+    
+    discretization_options = [
+        "LegacyDDPMDiscretization",
+        "EDMDiscretization",
+    ]
+    discretization = discretization_options[options.get("discretization", 0)]
 
     discretization_config = get_discretization(discretization, options=options, key=key)
 
     guider_config = get_guider(options=options, key=key)
 
     sampler = get_sampler(sampler, steps, discretization_config, guider_config, key=key)
+    
     if img2img_strength is not None:
-        st.warning(
-            f"Wrapping {sampler.__class__.__name__} with Img2ImgDiscretizationWrapper"
-        )
         sampler.discretization = Img2ImgDiscretizationWrapper(
             sampler.discretization, strength=img2img_strength
         )
@@ -358,6 +383,160 @@ def init_sampling(
             sampler.discretization, strength=stage2strength, original_steps=steps
         )
     return sampler, num_rows, num_cols
+
+
+def get_discretization(discretization, options, key=1):
+    if discretization == "LegacyDDPMDiscretization":
+        discretization_config = {
+            "target": "sgm.modules.diffusionmodules.discretizer.LegacyDDPMDiscretization",
+        }
+    elif discretization == "EDMDiscretization":
+        sigma_min = options.get("sigma_min", 0.03)  # 0.0292
+        sigma_max = options.get("sigma_max", 14.61)  # 14.6146
+        rho = options.get("rho", 3.0)
+        
+        discretization_config = {
+            "target": "sgm.modules.diffusionmodules.discretizer.EDMDiscretization",
+            "params": {
+                "sigma_min": sigma_min,
+                "sigma_max": sigma_max,
+                "rho": rho,
+            },
+        }
+
+    return discretization_config
+
+
+def get_guider(options, key):
+    guider_option = [
+        "VanillaCFG",
+        "IdentityGuider",
+        "LinearPredictionGuider",
+        "TrianglePredictionGuider",
+    ]
+    guider = guider_option[options.get("guider", 0)]
+
+    additional_guider_kwargs = options.pop("additional_guider_kwargs", {})
+
+    if guider == "IdentityGuider":
+        guider_config = {
+            "target": "sgm.modules.diffusionmodules.guiders.IdentityGuider"
+        }
+    elif guider == "VanillaCFG":
+        scale = options.get("cfg", 5.0)
+
+        guider_config = {
+            "target": "sgm.modules.diffusionmodules.guiders.VanillaCFG",
+            "params": {
+                "scale": scale,
+                **additional_guider_kwargs,
+            },
+        }
+    elif guider == "LinearPredictionGuider":
+        max_scale = options.get("cfg", 1.5)
+        min_scale = options.get("min_cfg", 1.0)
+
+        guider_config = {
+            "target": "sgm.modules.diffusionmodules.guiders.LinearPredictionGuider",
+            "params": {
+                "max_scale": max_scale,
+                "min_scale": min_scale,
+                "num_frames": options["num_frames"],
+                **additional_guider_kwargs,
+            },
+        }
+    elif guider == "TrianglePredictionGuider":
+        max_scale = options.get("cfg", 2.5)
+        min_scale = options.get("min_cfg", 1.0)
+
+        guider_config = {
+            "target": "sgm.modules.diffusionmodules.guiders.TrianglePredictionGuider",
+            "params": {
+                "max_scale": max_scale,
+                "min_scale": min_scale,
+                "num_frames": options["num_frames"],
+                **additional_guider_kwargs,
+            },
+        }
+    else:
+        raise NotImplementedError
+    return guider_config
+
+
+def get_sampler(sampler_name, steps, discretization_config, guider_config, key=1):
+    if sampler_name == "EulerEDMSampler" or sampler_name == "HeunEDMSampler":
+        s_churn = 0.0
+        s_tmin = 0.0
+        s_tmax = 999.0
+        s_noise = 1.0
+
+        if sampler_name == "EulerEDMSampler":
+            sampler = EulerEDMSampler(
+                num_steps=steps,
+                discretization_config=discretization_config,
+                guider_config=guider_config,
+                s_churn=s_churn,
+                s_tmin=s_tmin,
+                s_tmax=s_tmax,
+                s_noise=s_noise,
+                verbose=True,
+            )
+        elif sampler_name == "HeunEDMSampler":
+            sampler = HeunEDMSampler(
+                num_steps=steps,
+                discretization_config=discretization_config,
+                guider_config=guider_config,
+                s_churn=s_churn,
+                s_tmin=s_tmin,
+                s_tmax=s_tmax,
+                s_noise=s_noise,
+                verbose=True,
+            )
+    elif (
+        sampler_name == "EulerAncestralSampler"
+        or sampler_name == "DPMPP2SAncestralSampler"
+    ):
+        s_noise = 1.0
+        eta = 1.0
+
+        if sampler_name == "EulerAncestralSampler":
+            sampler = EulerAncestralSampler(
+                num_steps=steps,
+                discretization_config=discretization_config,
+                guider_config=guider_config,
+                eta=eta,
+                s_noise=s_noise,
+                verbose=True,
+            )
+        elif sampler_name == "DPMPP2SAncestralSampler":
+            sampler = DPMPP2SAncestralSampler(
+                num_steps=steps,
+                discretization_config=discretization_config,
+                guider_config=guider_config,
+                eta=eta,
+                s_noise=s_noise,
+                verbose=True,
+            )
+    elif sampler_name == "DPMPP2MSampler":
+        sampler = DPMPP2MSampler(
+            num_steps=steps,
+            discretization_config=discretization_config,
+            guider_config=guider_config,
+            verbose=True,
+        )
+    elif sampler_name == "LinearMultistepSampler":
+        order = 4
+        sampler = LinearMultistepSampler(
+            num_steps=steps,
+            discretization_config=discretization_config,
+            guider_config=guider_config,
+            order=order,
+            verbose=True,
+        )
+    else:
+        raise ValueError(f"unknown sampler {sampler_name}!")
+
+    return sampler
 
 
 @torch.no_grad()
