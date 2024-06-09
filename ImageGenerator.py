@@ -51,6 +51,6 @@ class ImageGenerator:
 if __name__ == "__main__":
     ig = ImageGenerator()
     img = ig.get_image()
-    
+    img.save('sample_image.png')
     img.show()
     input()

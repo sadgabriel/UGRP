@@ -1,6 +1,12 @@
 # API KEY File
 SpaceAPIKey.py
 
+# Stable Diffusion
+generative-models/
+
+#sgm
+sgm
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
