@@ -100,7 +100,7 @@ class SpaceAIModule:
         if self.is_movable():
             result = who_move_where_chain.invoke({"input": self.given_text}).content
         else:
-            raise "This is not movable."
+            raise Exception("This is not movable.")
 
         self.test_list[1] = result
 
