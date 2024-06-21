@@ -1,3 +1,7 @@
+#######################
+### 미완성          ###
+### Not Complated   ###
+#######################
 from langchain_core.prompts import ChatPromptTemplate
 class MapPlacement:
     def __init__(self):
