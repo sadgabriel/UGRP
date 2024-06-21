@@ -45,7 +45,7 @@ class Map:
     # Error if id is not unique (already exist in tracer.keys)
     def create(self, id, x, y):
         if id in self.tracer.keys():
-            raise "id is not unique"
+            raise Exception("id is not unique")
         self.matrix[x][y] = id
         self.tracer[id] = (x, y)
 
@@ -91,7 +91,7 @@ class Map:
     def distance(self, id1, id2):
         temp_keys = self.tracer.keys()
         if (id1 not in temp_keys) or (id2 not in temp_keys):
-            raise "There are no such id"
+            raise Exception("There are no such id")
         
         id1_pos = self.tracer[id1]
         id2_pos = self.tracer[id2]
@@ -133,7 +133,7 @@ class Map:
             destination = (id2_x, id2_y+1)
         
         else:
-            raise "There is no surrounding point of id2."
+            raise Exception("There is no surrounding point of id2.")
         
         # Move id1 to 'destination'.
         id1_pos = self.tracer[id1]
