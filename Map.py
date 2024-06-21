@@ -148,10 +148,10 @@ class Map:
 
             for j in range(self.n):
                 if self.matrix[i][j] != 0:
-                    print('\033[31m' + str(self.matrix[i][j]) + '\033[0m', end='')
+                    print('\033[31m' + f'{str(self.matrix[i][j]):<3}' + '\033[0m', end='')
                 else:
                     print(self.matrix[i][j], end='')
-                print(end="  ")
+                    print(end="  ")
 
             print()
         

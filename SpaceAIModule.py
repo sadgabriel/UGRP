@@ -164,13 +164,13 @@ class SpaceAIModule:
             """
             Print out an expression for input.
 
-            input: The Red Wolf, (blue wolf : 1, red wolf : 2, hero : 3, tree : 4)
+            input: The Red Wolf, {{blue wolf : 1, red wolf : 2, hero : 3, tree : 4}}
             output: 2
 
-            input: the hunter john, (john : 1, maria : 2, daria : 3)
+            input: the hunter john, {{john : 1, maria : 2, daria : 3}}
             output: 1
 
-            input: (MARIA), (john : 1, maria : 2, daria : 3)
+            input: (MARIA), {{john : 1, maria : 2, daria : 3}}
             output: 2
 
             input: {input}
@@ -209,6 +209,14 @@ if __name__ == '__main__':
     spacemodule.put('A', 4)
     spacemodule.put('B', 5)
     spacemodule.put('C', 6)
+    spacemodule.put('wall', 7)
+    spacemodule.put('wall', 8)
+    spacemodule.put('wall', 9)
+    spacemodule.put('wall', 10)
+    spacemodule.put('wall', 11)
+    spacemodule.put('wall', 12)
+    spacemodule.put('wall', 13)
+    spacemodule.put('wall', 14)
 
     spacemodule.initialize()
     spacemodule.move_by_text()
