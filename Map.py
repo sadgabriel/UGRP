@@ -70,7 +70,9 @@ class Map:
     def random_place(self):
         n = self.n
         occupy = len(self.tracer) / (n*n)
-        print("Occupy is ", occupy)
+
+        # debugging
+        print("Map occupy: ", occupy)
 
         for id in self.tracer.keys():
             x = rd.randrange(n)
@@ -173,10 +175,19 @@ class Map:
         Returns:
             bool
         """
-        return self.distance(id1, id2) < (movement_point + shooting_range)
+
+        # Same id input error.
+        if id1 == id2:
+            raise Exception("Same id input error.")
+        
+        return self.distance(id1, id2) <= (movement_point + shooting_range)
 
     # 어택땅
     def attack_move(self, id1, id2, movement_point, shooting_range):
+
+        # Same id input error.
+        if id1 == id2:
+            raise Exception("Same id input error.")
 
         # 이미 최대 사거리에 있는 경우
         if shooting_range == self.distance(id1, id2):

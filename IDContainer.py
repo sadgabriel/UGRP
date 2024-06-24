@@ -7,21 +7,26 @@ class IDContainer:
 
         return
     
-    def __setitem__(self, key, value):
+    def __setitem__(self, name: str, id: int) -> None:
 
-        self.container[key] = value
+        self.container[name] = id
         
         return
     
-    def __getitem__(self, key):
+    def __getitem__(self, name: str) -> int:
 
-        return self.container[key]
+        return self.container[name]
     
-    def pop(self, key):
+    def pop(self, name: str) -> int:
 
-        return self.container.pop(key)
+        return self.container.pop(name)
     
-    def strize(self):
+    def strize(self) -> str:
+        """
+        Convert {hp, movement point, shooting range}
+        into (hp, movement point, shooting range)
+        for AI prompting.
+        """
 
         result = str(self.container)
         result.replace('{', '(')
@@ -29,22 +34,19 @@ class IDContainer:
 
         return result
     
-    def set_data(self, key, data):
+    def set_data(self, id: int, data: tuple) -> None:
         """
         arg
-            key: str
+            id: int
             data: tuple
-
-        return
-            None
         """
-        self.data[key] = SpaceData.SpaceData(data)
+        self.data[id] = SpaceData.SpaceData(data)
 
         return
     
-    def get_data(self, key):
+    def get_data(self, id: int):
         
-        return self.data[key]
+        return self.data[id]
     
 if __name__ == '__main__':
     idcontainer = IDContainer()

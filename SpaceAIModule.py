@@ -3,9 +3,6 @@ from langchain_core.prompts import ChatPromptTemplate
 
 import SpaceAPIKey
 import Map
-import IDContainer
-
-
 class SpaceAIModule:
     def __init__(self, given_text) -> None:    
         ##########################
@@ -23,14 +20,10 @@ class SpaceAIModule:
         # Map attribute.
         self.map = Map.Map()
 
-        # IDContainer attribute
-        self.IDcontainer = IDContainer.IDContainer()
-
         return
     
     def put(self, name, ID):
         self.map.put(ID)
-        self.IDcontainer[name] = ID
 
         return
     
@@ -155,7 +148,7 @@ class SpaceAIModule:
 
         return
     
-    def IDize(self, noun):
+    def IDize(self, noun, idcontainer):
         ###################################
         # dragon => (ID)1 IDization part. #
         ###################################
@@ -181,7 +174,7 @@ class SpaceAIModule:
 
         IDization_chain = IDization_prompt | self.llm 
 
-        ID = int(IDization_chain.invoke(noun + ', ' + self.IDcontainer.strize()).content)
+        ID = int(IDization_chain.invoke(noun + ', ' + idcontainer.strize()).content)
 
         return ID
 
