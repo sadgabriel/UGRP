@@ -159,7 +159,7 @@ class Map:
     
     # A attackablility check that consider a range not only a movepoint.
     # check whether is id1 able to attack id2.
-    def is_movable_with_range(self, id1, id2, movement_point, range):
+    def is_movable_with_range(self, id1, id2, movement_point, shooting_range):
         """
         A attackablility check that consider a range not only a movepoint.
         check whether is id1 able to attack id2.
@@ -173,10 +173,10 @@ class Map:
         Returns:
             bool
         """
-        return self.distance(id1, id2) < (movement_point + range)
+        return self.distance(id1, id2) < (movement_point + shooting_range)
 
     # 어택땅
-    def move_attack(self, id1, id2, movement_point, shooting_range):
+    def attack_move(self, id1, id2, movement_point, shooting_range):
 
         # 이미 최대 사거리에 있는 경우
         if shooting_range == self.distance(id1, id2):
@@ -286,9 +286,9 @@ if __name__ == '__main__':
 
     map.print_map()
 
-    map.move_attack('A', 'B', 1, 2)
+    map.attack_move('A', 'B', 1, 2)
     map.print_map()
-    map.move_attack('A', 'B', 1, 2)
+    map.attack_move('A', 'B', 1, 2)
     map.print_map()
-    map.move_attack('A', 'B', 1, 2)
+    map.attack_move('A', 'B', 1, 2)
     map.print_map()

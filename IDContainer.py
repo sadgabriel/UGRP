@@ -1,6 +1,9 @@
+import SpaceData
+
 class IDContainer:
     def __init__(self) -> None:
         self.container = {}
+        self.data = {}
 
         return
     
@@ -25,6 +28,23 @@ class IDContainer:
         result.replace('}', ')')
 
         return result
+    
+    def set_data(self, key, data):
+        """
+        arg
+            key: str
+            data: tuple
+
+        return
+            None
+        """
+        self.data[key] = SpaceData.SpaceData(data)
+
+        return
+    
+    def get_data(self, key):
+        
+        return self.data[key]
     
 if __name__ == '__main__':
     idcontainer = IDContainer()

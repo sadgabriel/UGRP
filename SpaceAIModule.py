@@ -223,9 +223,9 @@ if __name__ == '__main__':
     print("is movable, who move where, expression:", spacemodule.test_list)
     spacemodule.map.print_map()
 
-    spacemodule.map.move_attack(4, 5, 2, 2)
+    spacemodule.map.attack_move(4, 5, 2, 2)
     spacemodule.map.print_map()
-    spacemodule.map.move_attack(4, 5, 2, 2)
+    spacemodule.map.attack_move(4, 5, 2, 2)
     spacemodule.map.print_map()
-    spacemodule.map.move_attack(4, 5, 2, 2)
+    spacemodule.map.attack_move(4, 5, 2, 2)
     spacemodule.map.print_map()
