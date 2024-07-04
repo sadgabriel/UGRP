@@ -1,14 +1,8 @@
 # API KEY File
 SpaceAPIKey.py
 
-# Stable Diffusion
-generative_models/
-
-#sgm
-sgm/
-
-#checkpoints
-checkpoints/
+# code
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
