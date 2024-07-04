@@ -1,7 +1,9 @@
 import random as rd
 
 class SpacePCG:
-    def s(self, )
+    def s(self):
+        pass
+    
     def f_s(self):
         pass
     
