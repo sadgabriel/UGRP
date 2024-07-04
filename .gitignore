@@ -7,6 +7,9 @@ generative_models/
 #sgm
 sgm/
 
+#checkpoints
+checkpoints/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

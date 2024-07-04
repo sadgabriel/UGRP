@@ -18,7 +18,7 @@ from sgm.modules.diffusionmodules.sampling import (
     LinearMultistepSampler,
 )
 from safetensors.torch import load_file as load_safetensors
-from generative_models.scripts.util.detection.nsfw_and_watermark_dectection import DeepFloydDataFiltering
+from detection.nsfw_and_watermark_dectection import DeepFloydDataFiltering
 from generative_models.scripts.demo.discretization import (
     Img2ImgDiscretizationWrapper,
     Txt2NoisyDiscretizationWrapper,
@@ -31,7 +31,7 @@ VERSION2SPECS = {
         "C": 4,
         "f": 8,
         "is_legacy": False,
-        "config": "configs/inference/sd_xl_base.yaml",
+        "config": "configs/sd_xl_base.yaml",
         "ckpt": "checkpoints/sd_xl_base_1.0.safetensors",
     },
     "SDXL-refiner-1.0": {
@@ -40,12 +40,12 @@ VERSION2SPECS = {
         "C": 4,
         "f": 8,
         "is_legacy": True,
-        "config": "configs/inference/sd_xl_refiner.yaml",
+        "config": "configs/sd_xl_refiner.yaml",
         "ckpt": "checkpoints/sd_xl_refiner_1.0.safetensors",
     },
 }
 
-def load_img(img_path):
+def load_img(img_path) -> torch.Tensor:
     """
     Load image from path.
 
@@ -69,8 +69,7 @@ def load_img(img_path):
     return img.to("cuda")
 
 
-def load_img_for_pool(img_path = None, size = None, center_crop = False,
-):
+def load_img_for_pool(img_path = None, size = None, center_crop = False) -> Optional[torch.Tensor]:
     """
     Load image for pooling from path.
 
@@ -99,7 +98,7 @@ def load_img_for_pool(img_path = None, size = None, center_crop = False,
     return img
 
 
-def load_model_from_config(config, ckpt):
+def load_model_from_config(config, ckpt) -> torch.nn.Module:
     """
     Load model from config and checkpoint.
 
@@ -136,7 +135,7 @@ def load_model_from_config(config, ckpt):
     return model
 
 
-def load_model(model):
+def load_model(model) -> None:
     """
     Load model to GPU.
 
@@ -146,7 +145,7 @@ def load_model(model):
     model.cuda()
     
     
-def unload_model(model):
+def unload_model(model) -> None:
     """
     Unload model from GPU.
 
@@ -157,7 +156,7 @@ def unload_model(model):
     torch.cuda.empty_cache()
     
 
-def init_state(version_dict):
+def init_state(version_dict) -> dict:
     """
     Create state dictionary with version dictionary.
 
@@ -668,4 +667,5 @@ def run_img2img(
     
 
 if __name__ == "__main__":
-    pass
+    state = init_state(VERSION2SPECS["SDXL-base-1.0"])
+    print(state)
