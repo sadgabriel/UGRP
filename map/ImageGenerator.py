@@ -6,32 +6,32 @@ RED = (255, 0, 0)
 
 
 class ImageGenerator:
-    def __init__(self, height = 512, width = 512, row = 10, column = 10, padding = -1):
+    def __init__(self, height=512, width=512, row=10, column=10, padding=-1):
         self.height = height
         self.width = width
         self.row = row
         self.column = column
         self.padding = padding
-    
+
     def get_image(self):
         image = self._create_sketch()
 
         return image
-    
+
     def _create_sketch(self):
         image = Image.new("RGB", (self.width, self.height), WHITE)
         draw = ImageDraw.Draw(image)
-        
+
         self.draw_grid(draw)
         self.draw_circle(draw, 0, 1, 16, RED, BLACK)
-        
+
         return image
-    
-    def draw_grid(self, draw, color = BLACK):
+
+    def draw_grid(self, draw, color=BLACK):
         padding = self.padding
         if padding == -1:
             padding = self.height / (self.row + 2)
-        
+
         for i in range(self.row + 1):
             y = i * (self.height - 2 * padding) / self.row + padding
             draw.line([(padding, y), (self.width - padding, y)], fill=color, width=1)
@@ -44,13 +44,26 @@ class ImageGenerator:
         padding = self.padding
         if padding == -1:
             padding = self.height / (self.row + 2)
-            
-        center = ((x + 0.5) * (self.width - 2 * padding) / self.column + padding, (y + 0.5) * (self.height - 2 * padding) / self.row + padding)
-        draw.ellipse((center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius), fill=circle_color, outline=outline_color)
-    
+
+        center = (
+            (x + 0.5) * (self.width - 2 * padding) / self.column + padding,
+            (y + 0.5) * (self.height - 2 * padding) / self.row + padding,
+        )
+        draw.ellipse(
+            (
+                center[0] - radius,
+                center[1] - radius,
+                center[0] + radius,
+                center[1] + radius,
+            ),
+            fill=circle_color,
+            outline=outline_color,
+        )
+
+
 if __name__ == "__main__":
     ig = ImageGenerator()
     img = ig.get_image()
-    img.save('sample_image.png')
+    img.save("sample_image.png")
     img.show()
     input()

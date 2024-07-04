@@ -45,6 +45,7 @@ VERSION2SPECS = {
     },
 }
 
+
 def load_img(img_path) -> torch.Tensor:
     """
     Load image from path.
@@ -56,20 +57,22 @@ def load_img(img_path) -> torch.Tensor:
         torch.Tensor: A processed image tensor.
     """
     img = Image.open(img_path)
-    
+
     w, h = img.size
     width, height = map(
         lambda x: x - x % 64, (w, h)
     )  # resize to integer multiple of 64
     img = img.resize((width, height))
-    
+
     img = np.array(img.convert("RGB"))
     img = img[None].transpose(0, 3, 1, 2)
     img = torch.from_numpy(img).to(dtype=torch.float32) / 127.5 - 1.0
     return img.to("cuda")
 
 
-def load_img_for_pool(img_path = None, size = None, center_crop = False) -> Optional[torch.Tensor]:
+def load_img_for_pool(
+    img_path=None, size=None, center_crop=False
+) -> Optional[torch.Tensor]:
     """
     Load image for pooling from path.
 
@@ -81,7 +84,7 @@ def load_img_for_pool(img_path = None, size = None, center_crop = False) -> Opti
     Returns:
         torch.Tensor: A resized and cropped image tensor.
     """
-    if (img_path is None):
+    if img_path is None:
         return None
     img = Image.open(img_path).convert("RGB")
 
@@ -94,7 +97,7 @@ def load_img_for_pool(img_path = None, size = None, center_crop = False) -> Opti
     transform.append(transforms.Lambda(lambda x: 2.0 * x - 1.0))
 
     transform = transforms.Compose(transform)
-    img = transform(img)[None, ...] # type: ignore 
+    img = transform(img)[None, ...]  # type: ignore
     return img
 
 
@@ -105,18 +108,20 @@ def load_model_from_config(config, ckpt) -> torch.nn.Module:
     Args:
         config (DictConfig): Configuration object for the model.
         ckpt (str): Path to the checkpoint file, expected to end with 'safetensors'.
-        
+
     Returns:
         torch.nn.Module: The loaded and prepared model
     """
     torch.cuda.empty_cache()
-    
+
     model = instantiate_from_config(config.model)
-    if (ckpt.endswith("safetensors")):
+    if ckpt.endswith("safetensors"):
         sd = load_safetensors(ckpt)
     else:
-        raise ValueError("Checkpoint path is not vaild. Expected a '.safetensors' file.")
-    
+        raise ValueError(
+            "Checkpoint path is not vaild. Expected a '.safetensors' file."
+        )
+
     if model:
         m, u = model.load_state_dict(sd, strict=False)
 
@@ -126,12 +131,12 @@ def load_model_from_config(config, ckpt) -> torch.nn.Module:
         if len(u) > 0:
             print("unexpected keys:")
             print(u)
-        
+
         model.half()
         model.eval()
     else:
         raise RuntimeError("Model can't be loaded.")
-    
+
     return model
 
 
@@ -143,8 +148,8 @@ def load_model(model) -> None:
         model (torch.nn.Module): Model to activate.
     """
     model.cuda()
-    
-    
+
+
 def unload_model(model) -> None:
     """
     Unload model from GPU.
@@ -154,7 +159,7 @@ def unload_model(model) -> None:
     """
     model.cpu()
     torch.cuda.empty_cache()
-    
+
 
 def init_state(version_dict) -> dict:
     """
@@ -162,20 +167,20 @@ def init_state(version_dict) -> dict:
 
     Args:
         version_dict(dict): An element of VERSION2SPECS.
-        
+
     Returns:
         dict: A dictionary containing state informations.
     """
     ckpt = version_dict["ckpt"]
-    config = OmegaConf.load(version_dict["config"]) # create DictConfig instance
+    config = OmegaConf.load(version_dict["config"])  # create DictConfig instance
     model = load_model_from_config(config, ckpt)
-    
+
     state = dict()
     state["model"] = model
     state["ckpt"] = ckpt
     state["config"] = config
     state["filter"] = DeepFloydDataFiltering(verbose=False)
-    
+
     return state
 
 
@@ -224,7 +229,7 @@ def init_embedder_options(keys, init_dict, prompt="", negative_prompt=""):
             value_dict["motion_bucket_id"] = 127
 
         if key == "pool_image":
-            image = load_img_for_pool(size=224,center_crop=True) # to be modified
+            image = load_img_for_pool(size=224, center_crop=True)  # to be modified
             if image is None:
                 image = torch.zeros(1, 3, 224, 224)
             value_dict["pool_image"] = image
@@ -350,7 +355,7 @@ def init_sampling(
         num_cols = 1
 
     steps = options.get("num_steps", 50)
-    
+
     sampler_options = [
         "EulerEDMSampler",
         "HeunEDMSampler",
@@ -360,7 +365,7 @@ def init_sampling(
         "LinearMultistepSampler",
     ]
     sampler = sampler_options[options.get("sampler", 0)]
-    
+
     discretization_options = [
         "LegacyDDPMDiscretization",
         "EDMDiscretization",
@@ -372,7 +377,7 @@ def init_sampling(
     guider_config = get_guider(options=options, key=key)
 
     sampler = get_sampler(sampler, steps, discretization_config, guider_config, key=key)
-    
+
     if img2img_strength is not None:
         sampler.discretization = Img2ImgDiscretizationWrapper(
             sampler.discretization, strength=img2img_strength
@@ -393,7 +398,7 @@ def get_discretization(discretization, options, key=1):
         sigma_min = options.get("sigma_min", 0.03)  # 0.0292
         sigma_max = options.get("sigma_max", 14.61)  # 14.6146
         rho = options.get("rho", 3.0)
-        
+
         discretization_config = {
             "target": "sgm.modules.diffusionmodules.discretizer.EDMDiscretization",
             "params": {
@@ -575,7 +580,7 @@ def do_img2img(
 
                 for k in additional_kwargs:
                     c[k] = uc[k] = additional_kwargs[k]
-                    
+
                 if skip_encode:
                     z = img
                 else:
@@ -630,8 +635,8 @@ def run_img2img(
     filter=None,
     stage2strength=None,
 ):
-    img = load_img('sample_image.png')
-    
+    img = load_img("sample_image.png")
+
     H, W = img.shape[2], img.shape[3]
 
     init_dict = {
@@ -643,7 +648,7 @@ def run_img2img(
     value_dict = init_embedder_options(
         get_unique_embedder_keys_from_conditioner(state["model"].conditioner),
         init_dict,
-        prompt="", # to be modified
+        prompt="",  # to be modified
         negative_prompt="",
     )
     strength = 0.75
@@ -664,7 +669,7 @@ def run_img2img(
         filter=filter,
     )
     return out
-    
+
 
 if __name__ == "__main__":
     state = init_state(VERSION2SPECS["SDXL-base-1.0"])

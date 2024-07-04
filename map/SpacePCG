@@ -1,0 +1,34 @@
+import random as rd
+
+class SpacePCG:
+    def s(self):
+        pass
+    
+    def f_s(self):
+        pass
+    
+    def f_a(self):
+        pass
+    
+    def f_e(self):
+        pass
+    
+    def F_s(self):
+        pass
+
+    def F_a(self):
+        pass
+
+    def F_e(self):
+        pass
+
+    def fitness(self):
+        pass
+
+class RandomMap:
+    def __init__(self, length=10, P=10, ) -> None:
+        
+        pass
+
+if __name__ == '__main__':
+    pass
