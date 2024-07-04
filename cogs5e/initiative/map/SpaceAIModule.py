@@ -1,7 +1,6 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 
-import SpaceAPIKey
 import Map
 class SpaceAIModule:
     def __init__(self, given_text) -> None:    
