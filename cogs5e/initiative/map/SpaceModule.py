@@ -3,8 +3,8 @@ SpaceModule.py
 This is class for the Connection to the Text Part.
 """
 
-import Map
-import IDContainer
+from cogs5e.initiative.map import Map
+from cogs5e.initiative.map import IDContainer
 
 # Not needed for now.
 # import SpaceAIModule
