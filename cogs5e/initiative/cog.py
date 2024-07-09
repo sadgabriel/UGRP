@@ -108,6 +108,16 @@ class InitTracker(commands.Cog):
         """Commands to help track initiative."""
         await ctx.send(f"Incorrect usage. Use {ctx.prefix}help init for help.")
 
+    # ====custom from here=====
+    @init.command()
+    async def ugrp(self, ctx):
+        return await ctx.send("successfuly written new command!")
+
+
+
+
+
+    # ====custom end====
     @init.command()
     async def begin(self, ctx, *, args=""):
         """
@@ -767,6 +777,17 @@ class InitTracker(commands.Cog):
                 return f"\u2705 {old_name}'s name set to {new_name}."
             else:
                 return "\u274c You must pass in a name with the -name tag."
+
+        @option("speed")
+        async def speed(combatant):
+            new_speed, old_speed = mod_or_set("speed", combatant.speed)
+            if new_speed < 1:
+                return "\u274c speed must be at least 1."
+            else:
+                combatant.speed = new_speed
+                return f"\u2705 {combatant.name}'s speed set to {new_speed} (was {old_speed})."
+
+
 
         @option("max")
         async def max_hp(combatant):
@@ -1573,7 +1594,6 @@ class InitTracker(commands.Cog):
             f"`{ctx.clean_prefix}servsettings` command."
         )
 
-
 monster_name_exceptions = (294945, 2059697)
 
 
@@ -1587,3 +1607,4 @@ def get_name(monster):
         return monster.name[:2].upper()
 
     return get_initials(monster.name)
+

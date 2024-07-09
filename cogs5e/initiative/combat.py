@@ -14,6 +14,8 @@ from .errors import *
 from .group import CombatantGroup
 from .types import CombatantType
 
+from cogs5e.initiative.map.SpaceModule import SpaceModule
+
 COMBAT_TTL = 60 * 60 * 24 * 7  # 1 week TTL
 
 # ==== typing ====
@@ -52,7 +54,10 @@ class Combat:
         current_index: Optional[int] = None,
         metadata: dict = None,
         nlp_record_session_id: str = None,
+        space_module = None,
     ):
+        if space_module is None:
+            space_module = SpaceModule()
         if combatants is None:
             combatants = []
         if metadata is None:

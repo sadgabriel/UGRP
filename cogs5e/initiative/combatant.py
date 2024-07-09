@@ -55,6 +55,7 @@ class Combatant(BaseCombatant, StatBlock):
         hp: int = None,
         temp_hp: int = 0,
         creature_type: str = None,
+        speed: int = 30,
         **_,
     ):
         super().__init__(
@@ -113,6 +114,15 @@ class Combatant(BaseCombatant, StatBlock):
             "id": self.id,
         })
         return d
+
+    @property
+    def speed(self) -> int:
+        return self.speed
+
+    @speed.setter
+    def hp(self, new_speed):
+        self.speed = new_speed
+
 
     @property
     def name(self):
