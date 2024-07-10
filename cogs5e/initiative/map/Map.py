@@ -80,14 +80,18 @@ class Map:
         print("Map occupy: ", occupy)
 
         for id in self.tracer.keys():
-            x = rd.randrange(n)
-            y = rd.randrange(n)
-            while self.matrix[x][y] != 0:
-                x = rd.randrange(n)
-                y = rd.randrange(n)
+            x1, y1 = self.tracer[id]
 
-            self.matrix[x][y] = id
-            self.tracer[id] = (x, y)
+            x2 = rd.randrange(n)
+            y2 = rd.randrange(n)
+            while self.matrix[x2][y2] != 0:
+                x2 = rd.randrange(n)
+                y2 = rd.randrange(n)
+
+            self.matrix[x2][y2] = id
+            self.matrix[x1][y1] = 0
+            
+            self.tracer[id] = (x2, y2)
             
         
         return
@@ -162,7 +166,7 @@ class Map:
 
             print()
         
-        return
+        return 
     
     # A attackablility check that consider a range not only a movepoint.
     # check whether is id1 able to attack id2.
