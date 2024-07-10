@@ -288,8 +288,14 @@ if __name__ == '__main__':
     map = Map()
 
     map.put('A')
+    map.random_place()
+    map.print_map()
     map.put('B')
+    map.random_place()
+    map.print_map()
     map.put(3)
+    map.random_place()
+    map.print_map()
 
     print(map.matrix)
     print(map.n)
