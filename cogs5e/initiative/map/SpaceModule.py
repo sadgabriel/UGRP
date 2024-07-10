@@ -20,13 +20,8 @@ class SpaceModule:
         self.idcontainer = IDContainer.IDContainer()
 
         return
-<<<<<<< Updated upstream:cogs5e/initiative/map/SpaceModule.py
-
-    def is_attackable(self, id1: int, id2: int) -> bool:
-=======
     
     def is_attackable(self, id1: int, id2: int,movement_point: int, shooting_range: int) -> bool:
->>>>>>> Stashed changes:SpaceModule.py
         """
         Check whether is id1 able to attack id2.
         considering a range not only a movepoint.
@@ -41,21 +36,9 @@ class SpaceModule:
             True/False
         """
 
-<<<<<<< Updated upstream:cogs5e/initiative/map/SpaceModule.py
-        # movement_point: movement point of id1
-        # shooting_range: range of attack
-        temp_data = self.get_data(id1)
-        movement_point = temp_data["movement point"]
-        shooting_range = temp_data["shooting range"]
-
-        return self.map.is_movable_with_range(id1, id2, movement_point, shooting_range)
-
-    def attack_move(self, id1, id2) -> None:
-=======
         return self.map.is_movable_with_range(id1, id2, movement_point, shooting_range)
     
     def attack_move(self, id1: int, id2: int, movement_point: int, shooting_range: int) -> None:
->>>>>>> Stashed changes:SpaceModule.py
         """
         This is just Attack move function.
         id1 will move toward id2 to attack id2.
@@ -69,14 +52,7 @@ class SpaceModule:
         """
 
         # movement_point: movement point of id1
-<<<<<<< Updated upstream:cogs5e/initiative/map/SpaceModule.py
-        # shooting_range: range of attack
-        temp_data = self.get_data(id1)
-        movement_point = temp_data["movement point"]
-        shooting_range = temp_data["shooting range"]
-=======
         # shooting_range: range of attack 
->>>>>>> Stashed changes:SpaceModule.py
 
         self.map.attack_move(id1, id2, movement_point, shooting_range)
 
@@ -92,29 +68,11 @@ class SpaceModule:
     def get_obj(self, name: str) -> int:
 
         return self.idcontainer[name]
-<<<<<<< Updated upstream:cogs5e/initiative/map/SpaceModule.py
-
-    def set_data(self, id: int, data: tuple) -> None:
-        """
-        args
-            data: tuple(hp: int, movement_point: int, shooting_range: int)
-        """
-
-        self.idcontainer.set_data(id, data)
-
-        return
-
-    def get_data(self, id: int) -> dict:
-
-        return self.idcontainer.get_data(id).data
-
-=======
     
     def get_position(self, id: int) -> tuple:
 
         return self.map.tracer[id]
     
->>>>>>> Stashed changes:SpaceModule.py
     def print_map(self) -> None:
 
         self.map.print_map()
@@ -132,15 +90,8 @@ if __name__ == "__main__":
 
     spacemodule = SpaceModule()
 
-<<<<<<< Updated upstream:cogs5e/initiative/map/SpaceModule.py
-    spacemodule.set_obj("dog", 1)
-    spacemodule.set_data(1, (10, 2, 1))
-    spacemodule.set_obj("cat", 2)
-    spacemodule.set_data(2, (6, 3, 3))
-=======
     spacemodule.set_obj('dog', 1)
     spacemodule.set_obj('cat', 2)
->>>>>>> Stashed changes:SpaceModule.py
 
     spacemodule.random_place()
 
