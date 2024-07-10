@@ -1,4 +1,4 @@
-from cogs5e.initiative.map import SpaceData
+import SpaceData
 
 
 class IDContainer:
