@@ -17,6 +17,15 @@ class SpaceModule:
 
         return
     
+    def move(self, id1: int, x: int, y: int) -> None:
+        """
+        Move an object(ID1) into the position (x, y).
+        """
+
+        self.map.move_id(id1, x, y)
+
+        return
+    
     def is_attackable(self, id1: int, id2: int,movement_point: int, shooting_range: int) -> bool:
         """
         Check whether is id1 able to attack id2.
@@ -96,4 +105,7 @@ if __name__ == "__main__":
     print("is dog(id:1) able to attack cat(id:2)?:", spacemodule.is_attackable(1, 2, 3, 4))
 
     spacemodule.attack_move(1, 2, 3, 4)
+    spacemodule.print_map()
+
+    spacemodule.move(1, 0, 0)
     spacemodule.print_map()

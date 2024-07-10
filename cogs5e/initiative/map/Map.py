@@ -27,6 +27,11 @@ class Map:
     
     # move id on x1,y1 to x2,y2.
     def move(self, x1, y1, x2, y2):
+
+        # Not empty exception. 
+        if self.matrix[x2][y2] != 0:
+            raise Exception("map.move() failure. destination point is not 0.")
+        
         id = self.matrix[x1][y1]
         self.matrix[x2][y2] = id
         self.matrix[x1][y1] = 0
