@@ -109,3 +109,5 @@ if __name__ == "__main__":
 
     spacemodule.move(1, 0, 0)
     spacemodule.print_map()
+    spacemodule.print_map()
+    spacemodule.print_map()
