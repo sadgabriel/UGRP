@@ -1,0 +1,3 @@
+[submodule "src/node-roguelike"]
+	path = src/node-roguelike
+	url = https://github.com/tlhunter/node-roguelike
