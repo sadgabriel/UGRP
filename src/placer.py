@@ -1,5 +1,6 @@
 import os
 import random
+import json
 from collections import deque
 
 
@@ -11,13 +12,12 @@ class Map:
         params (dict[str, str]): Parameters which describe map's features.
     """
 
-    def __init__(self, path: str = None) -> None:
-        self.filename = None
+    def __init__(self, dict_map: dict) -> None:
         self.list_map = list()
         self.params = dict()
 
-        if path:
-            self.load(path)
+        if dict_map:
+            self.from_dict(dict_map)
 
     def get_ascii_map(self) -> str:
         ascii_map = ""
@@ -26,66 +26,77 @@ class Map:
 
         return ascii_map
 
-    def load(self, path: str):
-        self.filename = os.path.basename(path)
+    def from_dict(self, map_dict: dict[str, any]):
+        self.params = map_dict["params"]
+        ascii_map = map_dict["map"]
 
-        with open(path, "r") as file:
-            params_str = file.readline().strip().replace(" ", "")
+        self.list_map = [[tile for tile in line] for line in ascii_map.split("\n")]
 
-            map = list()
-            while True:
-                line = file.readline()
-                if not line:
-                    break
-                map.append(line[:-1])
-
-        self.params = {
-            param.split("=")[0]: param.split("=")[1] for param in params_str.split(",")
-        }
-
-        for i in range(len(map)):
-            self.list_map.append(list())
-            for j in range(len(map[i])):
-                self.list_map[i].append(map[i][j])
-
-    def save(self, path: str):
-        with open(path, "w") as file:
-            params_str = ",".join(
-                [f"{key}={value}" for key, value in self.params.items()]
-            )
-            file.write(params_str + "\n")
-
-            for row in self.list_map:
-                file.write("".join(row) + "\n")
+    def to_dict(self) -> dict[str, any]:
+        return {"params": self.params, "map": self.get_ascii_map()}
 
 
-def load_maps(path: str = "input") -> list[Map]:
+def load_maps(
+    path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "raw")
+) -> list[Map]:
     """Load all maps from directory.
 
     Args:
-        path (str, optional): The path of directory which has map files. Defaults to "input".
+        path (str, optional): The path of directory which has map files. Defaults to "../data/raw".
 
     Returns:
         list[Map]: The list of created Map objects.
+
+    Raises:
+        FileNotFoundError: Raised when the path is not vaild.
     """
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"The specified directory does not exist: {path}")
+
     filename_list = [
         filename
         for filename in os.listdir(path)
-        if filename.endswith(".txt") and os.path.isfile(os.path.join(path, filename))
+        if filename.endswith(".json") and os.path.isfile(os.path.join(path, filename))
     ]
+    path_list = [os.path.join(path, filename) for filename in filename_list]
 
-    return [Map(os.path.join(path, filename)) for filename in filename_list]
+    map_list = list()
+    for file_path in path_list:
+        with open(file_path, "r") as file:
+            map_batch = json.load(file)
+            for map_dict in map_batch["map_list"]:
+                map_list.append(Map(map_dict))
+
+    return map_list
 
 
-def save_maps(maps: list[Map], path: str = "output") -> None:
+def save_maps(
+    map_list: list[Map],
+    path: str = os.path.join(
+        os.path.dirname(os.path.dirname(__file__)), "data", "placed"
+    ),
+    batch_size: int = 100,
+) -> None:
     """Save maps to directory.
 
     Args:
-        maps (list[Map]): Maps to be saved.
-        path (str, optional): The path of directory in which the maps will be saved. Defaults to "output".
+        map_list (list[Map]): Maps to be saved.
+        path (str, optional): The path of directory in which the maps will be saved. Defaults to "../data/placed".
     """
-    for map in maps:
-        map.save(os.path.join(path, map.filename))
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    dict_list = [map.to_dict() for map in map_list]
+    batch_list = [
+        dict_list[i : i + batch_size] for i in range(0, len(dict_list), batch_size)
+    ]
+
+    count = 0
+    for batch in batch_list:
+        with open(os.path.join(path, f"batch{count}.json"), "w") as file:
+            json.dump({"map_list": batch}, file, indent=4)
+
+        count += 1
 
 
 def modify_map(map: Map, group_min_dist: int, flag_try_count: int, enemy_sparsity: int):
