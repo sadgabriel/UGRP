@@ -2,52 +2,6 @@ from collections import deque
 import json
 import os
 
-"""
-assumption
-input
-    level
-      ####### ###########          
-      #.....# #.........#          
-      #.....# #.........#          
-      #.....# #.........#          
-      #.....# ####/####/#########  
-      #.....#   #...# #.........#  
-      #.....#####...# #.........#  
-      #.....#...#...# #.........#  
-      ##/####.../...# #####/#######
-      #.....#...#...# #.......#...#
-      #...../...##### #.......X...#
-      #.....#...#     #.......#...#
-    ####/####...#     #.......#...#
-    #.....# #...#     #.......#...#
-    #.....###/#/##### #############
-    #.<...#...#.....#              
-    #.....#.>.#.....#              
-    #.....#...#.....#              
-    #################              
-"""
-
-level = """enemy_group=13~15,enemy_group_size=1,enemy_ideal=-1,reward=0,boss=0
-  ####### ###########          
-  #.....# #.........#          
-  #.....# #.........#          
-  #.....# #.........#          
-  #.....# ####/####/#########  
-  #.....#   #...# #.........#  
-  #.....#####...# #.........#  
-  #.....#...#...# #.........#  
-  ##/####.../...# #####/#######
-  #.....#...#...# #.......#...#
-  #...../...##### #.......X...#
-  #.....#...#     #.......#...#
-####/####...#     #.......#...#
-#.....# #...#     #.......#...#
-#..RE.###/#/##### #############
-#.P...#...#.....#              
-#.....#.>.#.....#              
-#.....#...#.....#              
-#################              
-"""
 
 # input parameters name list
 input_parameters_name = [
@@ -86,28 +40,30 @@ icons = {
 }
 
 
-def label(difficulty_curve_interval: int = 5) -> None:
+def label(
+    input_file_num: int = 100,
+    output_file_num: int = 100,
+    difficulty_curve_interval: int = 5,
+) -> None:
     """
     label level data.
-
-    Args:
-        level: str level data.
-
-    Return:
-        dict["param name"] = parameters: int
-
+    Load.
+    Estimate each level.
+    Save.
     """
 
-    # Load data
+    # Load data. input_data is a list of batch = { map_list: [] }
+    # input_data = [batch0, batch1, ...]
     input_data = load_folder()
 
     # estimate each level data
-    output_data = list()
-    for _100_levels in input_data:
-        output_data.append(list())
-        cur = len(output_data) - 1
-        for _level in _100_levels:
-            output_data[cur].append(estimate(_level))
+    output_data = input_data
+    for i in len(input_data):
+        map_list = input_data[i]["map_list"]
+
+        for j in len(map_list):
+            new_params = estimate(map_list[j]["map"])
+            output_data[i]["map_list"][j]["params"].update(new_params)
 
     # Save data
     save_folder(output_data)
@@ -141,26 +97,30 @@ def estimate(list_level: list, difficulty_curve_interval: int = 5) -> dict:
         list_level, entry_position, exit_position
     )
 
-    # estimate
+    # Make a result dict
     output_parameters = dict()
-    output_parameters["density"] = _density(reward_num + enemy_num, total_tile_num)
-    output_parameters["empty_ratio"] = _empty_ratio(empty_tile_num, total_tile_num)
-    output_parameters["exploration_requirement"] = _exploration_requirement(
-        distance_dict_entry, object_positions
+    output_parameters["density"] = str(_density(reward_num + enemy_num, total_tile_num))
+    output_parameters["empty_ratio"] = str(_empty_ratio(empty_tile_num, total_tile_num))
+    output_parameters["exploration_requirement"] = str(
+        _exploration_requirement(distance_dict_entry, object_positions)
     )
-    output_parameters["difficulty_curve"] = _difficulty_curve(
-        distance_dict_entry, enemy_positions, difficulty_curve_interval
+    output_parameters["difficulty_curve"] = str(
+        _difficulty_curve(
+            distance_dict_entry, enemy_positions, difficulty_curve_interval
+        )
     )
-    output_parameters["nonlinearity"] = _nonlinearity(
-        distance_dict_entry,
-        distance_dict_exit,
-        object_positions,
-        total_object_num,
-        total_passible_tile_num,
+    output_parameters["nonlinearity"] = str(
+        _nonlinearity(
+            distance_dict_entry,
+            distance_dict_exit,
+            object_positions,
+            total_object_num,
+            total_passible_tile_num,
+        )
     )
-    output_parameters["reward_num"] = reward_num
-    output_parameters["enemy_num"] = enemy_num
-    output_parameters["map_size"] = map_size
+    output_parameters["reward_num"] = str(reward_num)
+    output_parameters["enemy_num"] = str(enemy_num)
+    output_parameters["map_size"] = str(map_size)
 
     return output_parameters
 
@@ -196,8 +156,8 @@ def load_folder(path: str = "..\\data\\placed", file_num: int = 100) -> list:
     # dicrectory
     cur_dir = os.path.dirname(os.path.abspath(__file__))
 
-    for i in range(1, 1 + file_num):
-        _path = os.path.join(cur_dir, path, "data" + str(i) + ".json")
+    for i in range(file_num):
+        _path = os.path.join(cur_dir, path, "batch" + str(i) + ".json")
         data_list.append(load_file(_path))
 
     return data_list
@@ -234,7 +194,7 @@ def save_folder(
     # directory
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     for i in range(file_num):
-        _path = os.path.join(cur_dir, path, "data" + str(i) + ".json")
+        _path = os.path.join(cur_dir, path, "batch" + str(i) + ".json")
         save_file(data[i], _path)
 
     return
@@ -260,10 +220,14 @@ def _set_num_param(list_level: list) -> tuple:
 
 def _set_object_dict(list_level: list) -> tuple:
     entry_position = _find_objects_position(list_level, icons["entry"])[0]
-    if "B" in level:
-        exit_position = _find_objects_position(list_level, icons["boss"])[0]
-    elif ">" in level:
-        exit_position = _find_objects_position(list_level, icons["exit"])[0]
+    for i in range(len(list_level)):
+        row = list_level[0]
+        if icons["boss"] in row:
+            exit_position = _find_objects_position(list_level, icons["boss"])[0]
+            break
+        elif icons["exit"] in row:
+            exit_position = _find_objects_position(list_level, icons["exit"])[0]
+            break
     reward_positions = _find_objects_position(list_level, icons["reward"])
     enemy_positions = _find_objects_position(list_level, icons["enemy"])
     object_positions = (
@@ -522,5 +486,5 @@ def insert_level_parameter(level: str, output_parameters: dict) -> str:
 
 
 if __name__ == "__main__":
-    # label()
+    label()
     pass
