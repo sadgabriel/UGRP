@@ -41,8 +41,7 @@ icons = {
 
 
 def label(
-    input_file_num: int = 100,
-    output_file_num: int = 100,
+    file_num: int = 100,
     difficulty_curve_interval: int = 5,
 ) -> None:
     """
@@ -54,24 +53,30 @@ def label(
 
     # Load data. input_data is a list of batch = { map_list: [] }
     # input_data = [batch0, batch1, ...]
-    input_data = load_folder()
+    input_data = load_folder(file_num=file_num)
 
     # estimate each level data
     output_data = input_data
-    for i in len(input_data):
+    for i in range(len(input_data)):
         map_list = input_data[i]["map_list"]
 
-        for j in len(map_list):
+        for j in range(len(map_list)):
             new_params = estimate(map_list[j]["map"])
             output_data[i]["map_list"][j]["params"].update(new_params)
 
     # Save data
-    save_folder(output_data)
+    save_folder(data=output_data, file_num=file_num)
 
     return
 
 
-def estimate(list_level: list, difficulty_curve_interval: int = 5) -> dict:
+def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
+    """
+    Make scores(it means parameters) by estimating level.
+    """
+    # str level to list level.
+    list_level, dummy_param = str_level_to_list_level(level)
+
     # num parameters
     (
         reward_num,
@@ -220,14 +225,23 @@ def _set_num_param(list_level: list) -> tuple:
 
 def _set_object_dict(list_level: list) -> tuple:
     entry_position = _find_objects_position(list_level, icons["entry"])[0]
+
+    exit_type = None
     for i in range(len(list_level)):
-        row = list_level[0]
+        row = list_level[i]
         if icons["boss"] in row:
-            exit_position = _find_objects_position(list_level, icons["boss"])[0]
+            exit_type = "boss"
             break
         elif icons["exit"] in row:
-            exit_position = _find_objects_position(list_level, icons["exit"])[0]
+            exit_type = "exit"
             break
+    if exit_type == "boss":
+        exit_position = _find_objects_position(list_level, icons["boss"])[0]
+    elif exit_type == "exit":
+        exit_position = _find_objects_position(list_level, icons["exit"])[0]
+    else:
+        raise
+
     reward_positions = _find_objects_position(list_level, icons["reward"])
     enemy_positions = _find_objects_position(list_level, icons["enemy"])
     object_positions = (
@@ -410,6 +424,9 @@ def _find_objects_position(list_level: list, obj_icon: str) -> list:
 
 
 def str_level_to_list_level(level: str) -> tuple:
+    """
+    Make str level into 2D list level.
+    """
     result = []
     row = []
 
@@ -442,6 +459,7 @@ def str_level_to_list_level(level: str) -> tuple:
         else:
             result.append(row)
             row = []
+    result.pop()  # Because map data ends with two '\n's at the end.
 
     return result, tuple(parameters_result)
 
@@ -486,5 +504,6 @@ def insert_level_parameter(level: str, output_parameters: dict) -> str:
 
 
 if __name__ == "__main__":
-    label()
+    label(file_num=1)
+
     pass
