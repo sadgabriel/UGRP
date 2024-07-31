@@ -76,6 +76,7 @@ def save_maps(
         os.path.dirname(os.path.dirname(__file__)), "data", "placed"
     ),
     batch_size: int = 100,
+    prefix: str = "batch",
 ) -> None:
     """Save maps to directory.
 
@@ -93,7 +94,7 @@ def save_maps(
 
     count = 0
     for batch in batch_list:
-        with open(os.path.join(path, f"batch{count}.json"), "w") as file:
+        with open(os.path.join(path, f"{prefix}{count}.json"), "w") as file:
             json.dump({"map_list": batch}, file, indent=4)
 
         count += 1
