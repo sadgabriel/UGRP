@@ -1,19 +1,33 @@
 #!/usr/bin/env node
 
-const SMALL_MIN = 9;
-const SMALL_MAX = 16;
-const SMALL_ROOM_MIN = 2;
-const SMALL_ROOM_MAX = 7;
-const SMALL_ROOM_IDEAL = 10;
-const SMALL_RETRY = 100;
+const config = {
+  "small": {
+    "map_min": 9,
+    "map_max": 16,
+    "room_min": 2,
+    "room_max": 7,
+    "room_ideal": 100,
+    "retry": 100
+  },
+  "large": {
+    "map_min": 16,
+    "map_max": 30,
+    "room_min": 3,
+    "room_max": 9,
+    "room_ideal": 100,
+    "retry": 100
+  }
+}
 
-const LARGE_MIN = 16;
-const LARGE_MAX = 30;
-const LARGE_ROOM_MIN = 3;
-const LARGE_ROOM_MAX = 9;
-const LARGE_ROOM_IDEAL = 10;
-const LARGE_RETRY = 100;
-
+const tileMapping = {
+  0: ' ',
+  1: '.',
+  2: '#',
+  3: '/',
+  4: 'X',
+  5: '<',
+  6: '>'
+};
 
 const fs = require('fs')
 const path = require('path')
@@ -38,16 +52,6 @@ function convertToString(level){
   let world = level.world;
 
   let stringMap = "";
-
-  const tileMapping = {
-    0: ' ',
-    1: '.',
-    2: '#',
-    3: '/',
-    4: 'X',
-    5: '<',
-    6: '>'
-  };
 
   for (let y = 0; y < world.length; y++) {
     let row = '';
@@ -96,42 +100,27 @@ function createMap(width, height, roomMinWidth, roomMaxWidth, roomMinHeight, roo
   return map;
 }
 
-function createMaps(small, large){
+function createMaps(mapSize, count){
+  let mapConfig = config[mapSize];
   let maps = [];
 
   let error_count = 0;
-  for (let i = 0; i < small; i++){
-    let width = getRandomInt(SMALL_MIN, SMALL_MAX);
-    let height = getRandomInt(SMALL_MIN, SMALL_MAX);
+  for (let i = 0; i < count; i++){
+    let width = getRandomInt(mapConfig["map_min"], mapConfig["map_max"]);
+    let height = getRandomInt(mapConfig["map_min"], mapConfig["map_max"]);
     
     try {
-      var map = createMap(width, height, SMALL_ROOM_MIN, SMALL_ROOM_MAX, SMALL_ROOM_MIN, SMALL_ROOM_MAX, SMALL_ROOM_IDEAL, SMALL_RETRY);
+      var map = createMap(width, height, mapConfig["room_min"], mapConfig["room_max"], mapConfig["room_min"], mapConfig["room_max"], mapConfig["room_ideal"], mapConfig["retry"]);
     } catch {
       error_count++;
       if (error_count > 100){
+        console.log("Too Many Errors occur.")
         return maps;
       }
       i--;
       continue;
     }
 
-    maps.push(map);
-  }
-
-  for (let i = 0; i < large; i++){
-    let width = getRandomInt(LARGE_MIN, LARGE_MAX);
-    let height = getRandomInt(LARGE_MIN, LARGE_MAX);
-
-    try {
-      var map = createMap(width, height, LARGE_ROOM_MIN, LARGE_ROOM_MAX, LARGE_ROOM_MIN, LARGE_ROOM_MAX, LARGE_ROOM_IDEAL, LARGE_RETRY);
-    } catch {
-      error_count++;
-      if (error_count > 100){
-        return maps;
-      }
-      i--;
-      continue;
-    }
     maps.push(map);
   }
 
@@ -140,7 +129,7 @@ function createMaps(small, large){
 
 function saveMaps(maps, prefix = "batch", batchSize = 100){
   batches = divideArray(maps, batchSize);
-  let directoryName = path.join(path.dirname(__dirname), "data", "raw");
+  let directoryName = path.join(path.dirname(__dirname), "data", "1. raw");
 
   if (!fs.existsSync(directoryName)) {
     fs.mkdirSync(directoryName, { recursive: true });
@@ -153,10 +142,10 @@ function saveMaps(maps, prefix = "batch", batchSize = 100){
         console.error('An error occurred:', err);
         return;
       }
-      console.log('JSON file has been saved.');
     });
   }
 }
 
-let maps = createMaps(100, 100);
-saveMaps(maps);
+let smallMaps = createMaps("small", 100);
+let largeMaps = createMaps("large", 100);
+saveMaps(smallMaps.concat(largeMaps));
