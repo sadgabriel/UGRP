@@ -1,0 +1,25 @@
+{
+    "map_list": [
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "      #####    \n      #...#    \n  #####...#####\n  #...#...#..E#\n  #EP./.../.E.#\n  #...#...#...#\n  ######/##R..#\n  #.......#.B.#\n  #.......#...#\n  #....E..#...#\n  #.......#####\n  #....E..#    \n  #########    \n\n"
+        }
+    ]
+}
