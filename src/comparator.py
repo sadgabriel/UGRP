@@ -19,9 +19,9 @@ def compare(file_num: int = 100) -> None:
     """
 
     # load labelled data. They already have estimated parameters.
-    labelled_data = load_folder(path="..\\data\\labelled", file_num=file_num)
+    labelled_data = load_folder(path="../data/3. labelled", file_num=file_num)
     # load preprocessed data. They don't have estimated parameters.
-    preprocessed_data = load_folder(path="..\\data\\preprocessed", file_num=file_num)
+    preprocessed_data = load_folder(path="../data/5. preprocessed", file_num=file_num)
 
     # Update parameters of preprocessed data by estimating preprocessed_data.
     for i in range(len(preprocessed_data)):
@@ -53,7 +53,7 @@ def compare(file_num: int = 100) -> None:
             ]
 
     # Save the result list.
-    save_folder(data=compared_data, path="..\\data\\compared", file_num=file_num)
+    save_folder(data=compared_data, path="../data/6. compared", file_num=file_num)
 
     return
 
