@@ -1,5 +1,4 @@
 from labeler import estimate
-from labeler import output_parameters_name
 from labeler import load_folder
 from labeler import save_folder
 import json
