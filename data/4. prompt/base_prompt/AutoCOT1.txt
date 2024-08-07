@@ -3,14 +3,14 @@ You are a game map design expert. Your task is to generate an ASCII map for a ga
 
 Define the Map Layout:
 1. Use the map size to determine the overall dimensions of the map.
-2. Represent the map using # for walls, . for open space, and + for doors connecting rooms.
+2. Represent the map using # for walls, . for open space, and / for doors connecting rooms.
 
 Place the Rooms:
 3. Divide the map into the specified number of rooms.
-4. Ensure rooms are separated by walls and connected by doors (+).
+4. Ensure rooms are separated by walls and connected by doors (/).
 
 Distribute Monsters, Treasures, Player, and Boss:
-5. Randomly place the specified number of monsters (M) and treasures ($) within the rooms.
+5. Randomly place the specified number of monsters (E) and treasures (R) within the rooms.
 6. Place the player (P) and boss (B) on the map, ensuring they are in different rooms.
 
 Generate the ASCII Map:
@@ -18,7 +18,7 @@ Generate the ASCII Map:
 
 Parameters:
 
-MAP_SIZE: The dimensions of the map (e.g., 20x20).
+MAP_SIZE: The dimensions of the map (e.g., [20, 20]).
 ROOM_COUNT: The total number of rooms.
 MONSTER_COUNT: The number of monsters to place.
 TREASURE_COUNT: The number of treasures to place.

@@ -1,134 +1,161 @@
 import re
 
-def preprocess_text(data):
-    """
-    Preprocess the input text data to normalize it and prepare for ASCII art extraction.
 
-    Args:
-    - data (str): The input text data.
+def find_final_map_keyword(text: str, keywords=["Final"]) -> list:
+    """
+    Finds the indices of lines containing keywords that indicate the final result.
+
+    Parameters:
+    text (str): Input text
+    keywords (list): List of keywords indicating the final result
 
     Returns:
-    - list: A list of preprocessed lines.
+    list: List of indices where keywords are found
     """
-    # Normalize whitespace
-    data = re.sub(r'\s+', ' ', data)
+    lines = text.split("\n")
+    keyword_indices = []
+    for i, line in enumerate(lines):
+        if any(keyword in line for keyword in keywords):
+            keyword_indices.append(i)
+    print(f"find_final_map_keyword - Keyword positions: {keyword_indices}")
+    return keyword_indices
 
-    # Split into lines and strip leading/trailing whitespace
-    lines = [line.strip() for line in data.splitlines() if line.strip()]
 
-    return lines
-
-def extract_ascii_art(data):
+def is_ascii_art_line(line: str) -> bool:
     """
-    Extract the ASCII art section from the preprocessed text data.
+    Checks if the given line consists only of ASCII art characters ('#', ' ', etc.).
 
-    Args:
-    - data (str): The input text data.
+    Parameters:
+    line (str): Line to check
 
     Returns:
-    - str: The extracted ASCII art.
+    bool: True if the line consists only of ASCII art characters, False otherwise
     """
-    # Preprocess the text data
-    lines = preprocess_text(data)
+    result = line.strip() != "" and all(
+        char in ["#", " ", ".", "/", "P", "B", "E", "R"] for char in line
+    )
+    print(f"is_ascii_art_line - Line to check: '{line}' Result: {result}")
+    return result
 
-    # Define patterns to detect the start and end of the ASCII art
-    start_pattern = re.compile(r'^#+.*#+$')  # Lines with # symbols at the start and end
-    end_pattern = re.compile(r'^#+.*#+$')
 
-    # Variables to hold the start and end indices of the ASCII art
-    start_idx = None
-    end_idx = None
-    map_started = False
+def extract_ascii_art_map(text: str) -> str:
+    """
+    Extracts the ASCII art map from the text.
 
-    # Detect the start and end of the ASCII art
-    for idx, line in enumerate(lines):
-        if start_pattern.match(line):
-            if not map_started:
-                start_idx = idx
-                map_started = True
-                print(f"Start detected at line {idx}: {line}")
+    Parameters:
+    text (str): Input text
+
+    Returns:
+    str: Extracted ASCII art map
+    """
+    lines = text.split("\n")
+    keyword_indices = find_final_map_keyword(text)
+
+    if not keyword_indices:
+        print(
+            "Cannot find the 'Final Map' keyword. Scanning the entire text from bottom."
+        )
+
+    start_index = None
+    end_index = None
+
+    # If keywords are found, start scanning from the keyword positions
+    if keyword_indices:
+        indices_to_check = keyword_indices
+    else:
+        # If no keywords are found, check all lines from the end to start
+        indices_to_check = reversed(range(len(lines)))
+
+    # Scan from bottom to top
+    for index in indices_to_check:
+        if start_index is not None:
+            break  # Stop if we've already found a valid map
+
+        current_map = []
+        for i in range(index, -1, -1):
+            if is_ascii_art_line(lines[i]):
+                current_map.insert(0, lines[i])
+                if end_index is None:
+                    end_index = i
+                start_index = i
             else:
-                end_idx = idx
-                print(f"End detected at line {idx}: {line}")
+                if start_index is not None and end_index is not None:
+                    break
 
-    # If start or end index is not found, return an empty string
-    if start_idx is None or end_idx is None:
-        print("Start or end index not found.")
+        # If a valid map is found, set the start and end index
+        if start_index is not None and end_index is not None:
+            break
+
+    print(f"extract_ascii_art_map - Start index: {start_index}, End index: {end_index}")
+
+    if start_index is not None and end_index is not None:
+        ascii_art_map = "\n".join(lines[start_index : end_index + 1])
+        return ascii_art_map
+    else:
+        print("Cannot find ASCII art.")
         return ""
 
-    # Extract the ASCII art lines
-    ascii_art_lines = lines[start_idx:end_idx + 1]
 
-    # Join the lines to form the final ASCII art
-    ascii_art = "\n".join(ascii_art_lines)
+if __name__ == "__main__":
 
-    return ascii_art
+    # Test text
+    text = """
+Placing Monsters, Treasures, Player, and Boss
+We will place the player (P), boss (B), 2 monsters (E), and 1 treasure (R) within the rooms.
 
-# Example input data
-input_data = """
-You are a game map design expert. Your task is to generate an ASCII map for a game based on the following parameters: map size, number of rooms, number of monsters, number of treasures, and linearity. Here is how you will develop the map:
+plaintext
+Code copy
+####################
+#......#......#...#
+#..P...#......#..E#
+#......#......#...#
+######/######/#####
+#......#......#...#
+#......#..E...#...#
+#......#......#...#
+####################
+#......#......#...#
+#......#......#...#
+######/######/#####
+#......#......#...#
+#......#......#...#
+#......#...R..#...#
+####################
+#......#......#...#
+#..B...#......#...#
+####################
+Final ASCII Map
+Combining all the elements, the final map looks like this:
 
-Define the Map Layout:
-Use the map size to determine the overall dimensions of the map.
-Represent the map using # for walls, . for open space, and + for doors connecting rooms.
-Place the Rooms:
-Divide the map into the specified number of rooms.
-Ensure rooms are separated by walls and connected by doors (+).
-Distribute Monsters and Treasures:
-Randomly place the specified number of monsters (M) and treasures (T) within the rooms.
-Determine Linearity:
-Adjust the layout based on the linearity parameter, where a higher linearity value means a more straightforward path between rooms.
-Generate the ASCII Map:
-Combine all the elements to create a coherent and visually clear ASCII map.
-Parameters:
+plaintext
+Code copy
+####################
+#......#......#...#
+#..P...#......#..E#
+#......#......#...#
+######/######/#####
+#......#......#...#
+#......#..E...#...#
+#......#......#...#
+####################
+#......#......#...#
+#......#......#...#
+######/######/#####
+#......#......#...#
+#......#......#...#
+#......#...R..#...#
+####################
+#......#......#...#
+#..B...#......#...#
+####################
+Here is the map with the specified parameters:
 
-MAP_SIZE: (18, 31)
-ROOM_COUNT: Let's assume 4 rooms for simplicity.
-MONSTER_COUNT: 13
-TREASURE_COUNT: 2
-LINEARITY: Let's assume a linearity of 5 (moderate linearity).
-Example 1:
-
-Parameters:
-ENEMY_GROUP: 4
-ENEMY_GROUP_SIZE: 3~4
-ENEMY_IDEAL: 13
-REWARD: 2
-BOSS: 1
-DENSITY: 0.026881720430107527
-EMPTY_RATIO: 0.4874551971326165
-EXPLORATION_REQUIREMENT: 515
-DIFFICULTY_CURVE: 0.0
-NONLINEARITY: 1.0317524933848972
-REWARD_NUM: 2
-ENEMY_NUM: 13
-MAP_SIZE: (18, 31)
-
-Generated Map:
-##################### #######  
-#.........#.........# #.....#  
-#.EE......#.........# #...P.#  
-#E........#.........# #.....#  
-#######/###.........# ####/##  
-    #.....#.........#   #...#  
-#####.....#....E....#   #...#  
-#...#.....#.........#   #...#  
-#...#.....#......E..#   #...#  
-#.B./E.E..#...E.E...#   #...#  
-#...#E....##/############...#  
-#...#...../.........#.../R..#  
-###########.........#.E.#####  
-  #.......#.........#E..#      
-  #......./........./..E#      
-  #.......#.....R...#...#      
-  #.......###############      
-  #.......#                    
-  #########                    
-
-Take a deep breath and let's work this out in a step-by-step way to be sure we have the right answer.
+MAP_SIZE: [20, 20]
+ROOM_COUNT: 7
+ENEMY_COUNT: 2
+TREASURE_COUNT: 1
 """
 
-# Extract and print the ASCII art from the example input
-ascii_art = extract_ascii_art(input_data)
-print("Extracted ASCII Art:")
-print(ascii_art)
+    # Extract ASCII art map
+    ascii_art_map = extract_ascii_art_map(text)
+    print(f"Extracted ASCII art map:\n{ascii_art_map}")
