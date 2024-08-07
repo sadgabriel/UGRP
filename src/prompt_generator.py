@@ -1,16 +1,21 @@
 import json
 import random
 import os
+from config import prompt_path, base_prompt_path, example_folder_path
+
 from config import (
-    prompt_path,
-    base_prompt_path,
-    example_folder_path,
     example_count,
     params,
 )
 
 
-def load_examples_from_file(input_path: str, example_count: int) -> str:
+"""
+used prompt to creat autoCOT:
+Given the ENEMY_GROUP, ENEMY_GROUP_SIZE, ENEMY_IDEAL, REWARD,BOSS, DENSITY, EMPTY_RATIO, EXPLORATION_REQUIREMENT, DIFFICULTY_CURVE, NONLINEARITY, REWARD_NUM, ENEMY_NUM, MAP_SIZE, and several example of Parameters-Generated map pairs, please create a prompt to generate a map in ASCII. prompt structure should be {start_prompt, example_prompt, end_prompt}.
+"""
+
+
+def _load_examples_from_file(input_path: str, example_count: int) -> str:
 
     with open(input_path, "r") as file:
         examples_data = json.load(file)
@@ -52,7 +57,7 @@ Generated Map:
     return example_prompts
 
 
-def split_prompts(content: str) -> tuple[str]:
+def _split_prompts(content: str) -> tuple[str]:
     start_prompt_key = "Start Prompt:"
     end_prompt_key = "End Prompt:"
 
@@ -65,7 +70,7 @@ def split_prompts(content: str) -> tuple[str]:
     return start_prompt, end_prompt
 
 
-def load_examples_from_folder(folder_path: str, example_count: int) -> str:
+def _load_examples_from_folder(folder_path: str, example_count: int) -> str:
     files = [
         f
         for f in os.listdir(folder_path)
@@ -79,10 +84,10 @@ def load_examples_from_folder(folder_path: str, example_count: int) -> str:
     selected_file = random.choice(files)
     selected_file_path = os.path.join(folder_path, selected_file)
 
-    return load_examples_from_file(selected_file_path, example_count)
+    return _load_examples_from_file(selected_file_path, example_count)
 
 
-def format_parameters(params: dict) -> str:
+def _format_parameters(params: dict) -> str:
     params_str = "\n".join([f"{key.upper()}: {value}" for key, value in params.items()])
     return f"""
 Parameters:
@@ -91,15 +96,14 @@ Parameters:
 """
 
 
-if __name__ == "__main__":
-
+def prompt_generator(_example_count: int, _params: dict) -> None:
     with open(base_prompt_path, "r") as file:
         content = file.read()
 
-    start_prompt, end_prompt = split_prompts(content)
-    example = load_examples_from_folder(example_folder_path, example_count)
+    start_prompt, end_prompt = _split_prompts(content)
+    example = _load_examples_from_folder(example_folder_path, _example_count)
 
-    complete_prompt = start_prompt + example + format_parameters(params) + end_prompt
+    complete_prompt = start_prompt + example + _format_parameters(_params) + end_prompt
 
     with open(prompt_path, "w", encoding="utf-8") as file:
         file.write(complete_prompt)
@@ -107,7 +111,6 @@ if __name__ == "__main__":
     print(f"Complete prompt saved to {prompt_path}")
 
 
-"""
-used prompt to creat autoCOT:
-Given the ENEMY_GROUP, ENEMY_GROUP_SIZE, ENEMY_IDEAL, REWARD,BOSS, DENSITY, EMPTY_RATIO, EXPLORATION_REQUIREMENT, DIFFICULTY_CURVE, NONLINEARITY, REWARD_NUM, ENEMY_NUM, MAP_SIZE, and several example of Parameters-Generated map pairs, please create a prompt to generate a map in ASCII. prompt structure should be {start_prompt, example_prompt, end_prompt}.
-"""
+if __name__ == "__main__":
+
+    prompt_generator(example_count, params)

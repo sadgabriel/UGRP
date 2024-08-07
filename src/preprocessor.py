@@ -1,7 +1,7 @@
-import re
+from unstructured_data_generator import unstructured_data_generator
 
 
-def find_final_map_keyword(text: str, keywords=["Final"]) -> list:
+def _find_final_map_keyword(text: str, keywords=["Final"]) -> list:
     """
     Finds the indices of lines containing keywords that indicate the final result.
 
@@ -21,7 +21,7 @@ def find_final_map_keyword(text: str, keywords=["Final"]) -> list:
     return keyword_indices
 
 
-def is_ascii_art_line(line: str) -> bool:
+def _is_ascii_art_line(line: str) -> bool:
     """
     Checks if the given line consists only of ASCII art characters ('#', ' ', etc.).
 
@@ -38,7 +38,7 @@ def is_ascii_art_line(line: str) -> bool:
     return result
 
 
-def extract_ascii_art_map(text: str) -> str:
+def _extract_ascii_art_map(text: str) -> str:
     """
     Extracts the ASCII art map from the text.
 
@@ -49,7 +49,7 @@ def extract_ascii_art_map(text: str) -> str:
     str: Extracted ASCII art map
     """
     lines = text.split("\n")
-    keyword_indices = find_final_map_keyword(text)
+    keyword_indices = _find_final_map_keyword(text)
 
     if not keyword_indices:
         print(
@@ -73,7 +73,7 @@ def extract_ascii_art_map(text: str) -> str:
 
         current_map = []
         for i in range(index, -1, -1):
-            if is_ascii_art_line(lines[i]):
+            if _is_ascii_art_line(lines[i]):
                 current_map.insert(0, lines[i])
                 if end_index is None:
                     end_index = i
@@ -96,66 +96,11 @@ def extract_ascii_art_map(text: str) -> str:
         return ""
 
 
+def preprocessor() -> str:
+    text = unstructured_data_generator()
+    return _extract_ascii_art_map(text)
+
+
 if __name__ == "__main__":
 
-    # Test text
-    text = """
-Placing Monsters, Treasures, Player, and Boss
-We will place the player (P), boss (B), 2 monsters (E), and 1 treasure (R) within the rooms.
-
-plaintext
-Code copy
-####################
-#......#......#...#
-#..P...#......#..E#
-#......#......#...#
-######/######/#####
-#......#......#...#
-#......#..E...#...#
-#......#......#...#
-####################
-#......#......#...#
-#......#......#...#
-######/######/#####
-#......#......#...#
-#......#......#...#
-#......#...R..#...#
-####################
-#......#......#...#
-#..B...#......#...#
-####################
-Final ASCII Map
-Combining all the elements, the final map looks like this:
-
-plaintext
-Code copy
-####################
-#......#......#...#
-#..P...#......#..E#
-#......#......#...#
-######/######/#####
-#......#......#...#
-#......#..E...#...#
-#......#......#...#
-####################
-#......#......#...#
-#......#......#...#
-######/######/#####
-#......#......#...#
-#......#......#...#
-#......#...R..#...#
-####################
-#......#......#...#
-#..B...#......#...#
-####################
-Here is the map with the specified parameters:
-
-MAP_SIZE: [20, 20]
-ROOM_COUNT: 7
-ENEMY_COUNT: 2
-TREASURE_COUNT: 1
-"""
-
-    # Extract ASCII art map
-    ascii_art_map = extract_ascii_art_map(text)
-    print(f"Extracted ASCII art map:\n{ascii_art_map}")
+    preprocessor()
