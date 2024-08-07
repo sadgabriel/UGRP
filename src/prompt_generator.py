@@ -52,7 +52,7 @@ Generated Map:
     return example_prompts
 
 
-def split_prompts(content: str) -> (str, str):
+def split_prompts(content: str):
     start_prompt_key = "Start Prompt:"
     end_prompt_key = "End Prompt:"
 
