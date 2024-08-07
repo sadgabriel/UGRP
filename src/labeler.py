@@ -482,21 +482,21 @@ def _count_room(list_level: list) -> int:
     """
     (A) The number of room is defined as the number of discontinuous tunnels plus one.
 
-    (B) The tunnel means that a passible tile surroundedby two opppsite walls.
+    (B) The tunnel means that a passible tile surrounded by two opppsite walls.
 
     It looks like this:
      .      #
     #.# or ...
      .      #
 
-    They are not tunnels:
+    Also, they are not tunnels:
     ###     ###
     #.. or  #.#
     ###     ###
 
     (C) The process is simple.
-    1. count tunnels.
-    2. count discontinuous tunnels
+    1. find all tunnels.
+    2. count discontinuous tunnels.
     """
 
     # Initialization.
