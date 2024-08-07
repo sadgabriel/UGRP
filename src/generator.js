@@ -146,6 +146,15 @@ function saveMaps(maps, prefix = "batch", batchSize = 100){
   }
 }
 
-let smallMaps = createMaps("small", 100);
-let largeMaps = createMaps("large", 100);
+let smallMapNum = 100;
+let largeMapNum = 100;
+
+if (process.argv.length > 2){
+  const args = process.argv.slice(2);
+  smallMapNum = Number(args[0]);
+  largeMapNum = Number(args[1]);
+}
+
+let smallMaps = createMaps("small", smallMapNum);
+let largeMaps = createMaps("large", largeMapNum);
 saveMaps(smallMaps.concat(largeMaps));
