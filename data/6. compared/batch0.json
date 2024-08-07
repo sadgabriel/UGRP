@@ -18,30 +18,34 @@
                 "enemy_ideal_max": 30,
                 "boss": 1,
                 "reward": 3,
-                "density": 0.038580246913580245,
-                "empty_ratio": 0.4305555555555556,
+                "density": 0.037037037037037035,
+                "empty_ratio": 0.41333333333333333,
                 "exploration_requirement": 420,
                 "difficulty_curve": 0.625,
                 "nonlinearity": 0.9270152505446624,
                 "reward_num": 3,
                 "enemy_num": 22,
                 "map_size": [
-                    24,
+                    25,
                     27
-                ]
+                ],
+                "playablility": true,
+                "room_num": 10
             },
             "after_params": {
-                "density": 0.026881720430107527,
-                "empty_ratio": 0.4874551971326165,
+                "density": 0.025466893039049237,
+                "empty_ratio": 0.4617996604414261,
                 "exploration_requirement": 515,
                 "difficulty_curve": 0.0,
                 "nonlinearity": 1.0317524933848972,
                 "reward_num": 2,
                 "enemy_num": 13,
                 "map_size": [
-                    18,
+                    19,
                     31
-                ]
+                ],
+                "playablility": true,
+                "room_num": 9
             }
         }
     ]

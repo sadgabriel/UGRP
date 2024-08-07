@@ -26,7 +26,10 @@ output_parameters_name = [
     "reward_num",
     "enemy_num",
     "map_size",
+    "playablility",
+    "room_num",
 ]
+
 
 # tile icons
 icons = {
@@ -37,6 +40,7 @@ icons = {
     "boss": "B",
     "empty": ".",
     "wall": "#",
+    "outside": " ",
 }
 
 
@@ -75,7 +79,7 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
     Make scores(it means parameters) by estimating level.
     """
     # str level to list level.
-    list_level, dummy_param = str_level_to_list_level(level)
+    list_level = str_level_to_list_level(level)
 
     # num parameters
     (
@@ -104,24 +108,30 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
 
     # Make a result dict
     output_parameters = dict()
-    output_parameters["density"] = _density(reward_num + enemy_num, total_tile_num)
-    output_parameters["empty_ratio"] = _empty_ratio(empty_tile_num, total_tile_num)
-    output_parameters["exploration_requirement"] = _exploration_requirement(
+    output_parameters[output_parameters_name[0]] = _density(
+        reward_num + enemy_num, total_tile_num
+    )
+    output_parameters[output_parameters_name[1]] = _empty_ratio(
+        empty_tile_num, total_tile_num
+    )
+    output_parameters[output_parameters_name[2]] = _exploration_requirement(
         distance_dict_entry, object_positions
     )
-    output_parameters["difficulty_curve"] = _difficulty_curve(
+    output_parameters[output_parameters_name[3]] = _difficulty_curve(
         distance_dict_entry, enemy_positions, difficulty_curve_interval
     )
-    output_parameters["nonlinearity"] = _nonlinearity(
+    output_parameters[output_parameters_name[4]] = _nonlinearity(
         distance_dict_entry,
         distance_dict_exit,
         object_positions,
         total_object_num,
         total_passible_tile_num,
     )
-    output_parameters["reward_num"] = reward_num
-    output_parameters["enemy_num"] = enemy_num
-    output_parameters["map_size"] = map_size
+    output_parameters[output_parameters_name[5]] = reward_num
+    output_parameters[output_parameters_name[6]] = enemy_num
+    output_parameters[output_parameters_name[7]] = map_size
+    output_parameters[output_parameters_name[8]] = _is_playable(list_level)
+    output_parameters[output_parameters_name[9]] = _count_room(list_level)
 
     return output_parameters
 
@@ -418,35 +428,12 @@ def _find_objects_position(list_level: list, obj_icon: str) -> list:
     return result
 
 
-def str_level_to_list_level(level: str) -> tuple:
+def str_level_to_list_level(level: str) -> list:
     """
     Make str level into 2D list level.
     """
     result = []
     row = []
-
-    parameters_result = []
-
-    # take first line
-    first_line = level[: level.find("\n") + 1]
-
-    for name in input_parameters_name:
-        index = first_line.find(
-            name
-        )  # "enemy_group=13~15,enemy_group_size=1,enemy_ideal=-1,reward=0,boss=0\n"
-        temp = first_line[
-            index:
-        ]  # "enemy_group_size=1,enemy_ideal=-1,reward=0,boss=0\n"
-        if "," in temp:
-            temp = temp[: temp.find(",")]  # "enemy_group_size=1"
-        else:
-            temp = temp[: temp.find("\n")]
-        temp = temp[temp.find("=") :].lstrip("=")  # '1'
-        parameters_result.append(temp)
-
-    # cutting first line (it means level.lstrip(first_line + "\n"))
-    level = level[level.find("\n") :]
-    level = level.lstrip("\n")
 
     for char in level:
         if char != "\n":
@@ -456,7 +443,7 @@ def str_level_to_list_level(level: str) -> tuple:
             row = []
     result.pop()  # Because map data ends with two '\n's at the end.
 
-    return result, tuple(parameters_result)
+    return result
 
 
 def _tile_count(list_level: list) -> tuple:
@@ -522,14 +509,14 @@ def _count_room(list_level: list) -> int:
     icon_wall = icons["wall"]
 
     directions = {"up_down": ((1, 0), (-1, 0)), "right_left": ((0, 1), (0, -1))}
-    is_wall = {"up_down": None, "right_left": None}
 
     # Find tunnels
-    for x in len(list_level):
-        for y in len(list_level[x]):
-            for dir in directions:
+    for x in range(len(list_level)):
+        for y in range(len(list_level[x])):
+            is_surround_wall = {"up_down": False, "right_left": False}
+            for dir_name in directions:
                 wall_count = 0
-                for dx, dy in dir:
+                for dx, dy in directions[dir_name]:
                     new_x = x + dx
                     new_y = y + dy
 
@@ -542,44 +529,29 @@ def _count_room(list_level: list) -> int:
                     ):
                         wall_count += 1
 
-                is_wall[dir] = wall_count == 2
+                is_surround_wall[dir_name] = wall_count == 2
 
             # XOR test.
-            ud = is_wall["up_down"]  # ud means up down.
-            rl = is_wall["right_left"]  # rl means right left.
+            ud = is_surround_wall["up_down"]  # ud means up down.
+            rl = is_surround_wall["right_left"]  # rl means right left.
             if (ud == True and rl == False) or (ud == False and rl == True):
-                tunnels.append((x, y))
+                # check passibility
+                if (
+                    list_level[x][y] != icon_wall
+                    and list_level[x][y] != icons["outside"]
+                ):
+                    tunnels.append((x, y))
 
-    # Cound discontinuous tunnels.
+    # Count discontinuous tunnels.
     for x, y in tunnels:
-        for dir in directions:
-            for dx, dy in dir:
-                if (x + dx, y + dy) not in tunnels:
-                    discontinuous_tunnels_num += 1
+        count = 0
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if (x + dx, y + dy) not in tunnels:
+                count += 1
+        if count == 4:
+            discontinuous_tunnels_num += 1
 
     return discontinuous_tunnels_num
-
-
-def insert_level_parameter(level: str, output_parameters: dict) -> str:
-    first_line = level[: level.find("\n")]
-    result_level = level.lstrip(first_line)
-
-    for param_name in output_parameters:
-        value = output_parameters[param_name]
-
-        type_value = type(value)
-        if type_value == float:
-            addition = param_name + "=" + format(value, ".3f") + ","
-        elif type_value == tuple:
-            addition = param_name + "=" + str(value[0]) + "*" + str(value[1]) + ","
-        else:
-            addition = param_name + "=" + str(value) + ","
-
-        first_line += addition
-
-    result_level = first_line.rstrip(",") + result_level
-
-    return result_level
 
 
 if __name__ == "__main__":
