@@ -3,6 +3,8 @@ import random
 import json
 from collections import deque
 
+tile_character = {"flag": "F", "enemy": "E", "reward": "R", "boss": "B", "player": "P"}
+
 
 class Map:
     """A class to represent ASCII map.
@@ -183,9 +185,9 @@ def _set_player_and_boss(map: Map) -> None:
     for line in map.list_map:
         for i in range(len(line)):
             if line[i] == "<":
-                line[i] = "P"
+                line[i] = tile_character["player"]
             if line[i] == ">" and map.params["boss"]:
-                line[i] = "B"
+                line[i] = tile_character["boss"]
 
 
 def _calc_group_detail(map: Map) -> tuple[int]:
@@ -277,7 +279,7 @@ def _try_set_group_flag(
 
         if ok:
             for flag in flag_list:
-                map.list_map[flag[0]][flag[1]] = "F"
+                map.list_map[flag[0]][flag[1]] = tile_character["flag"]
             return True
 
     return False
@@ -287,7 +289,7 @@ def _set_enemy(map: Map, group_size_list: list[int], sparsity: int) -> None:
     group_num = 0
     for i in range(len(map.list_map)):
         for j in range(len(map.list_map[i])):
-            if map.list_map[i][j] == "F":
+            if map.list_map[i][j] == tile_character["flag"]:
                 map.list_map[i][j] = "."
                 empty_list = list()
                 queue = deque()
@@ -310,7 +312,7 @@ def _set_enemy(map: Map, group_size_list: list[int], sparsity: int) -> None:
 
                 enemy_list = random.sample(empty_list, group_size_list[group_num])
                 for enemy in enemy_list:
-                    map.list_map[enemy[0]][enemy[1]] = "E"
+                    map.list_map[enemy[0]][enemy[1]] = tile_character["enemy"]
 
                 group_num += 1
 
@@ -325,7 +327,7 @@ def _set_reward(map: Map) -> None:
     reward_list = random.sample(empty_list, map.params["reward"])
 
     for reward in reward_list:
-        map.list_map[reward[0]][reward[1]] = "R"
+        map.list_map[reward[0]][reward[1]] = tile_character["reward"]
 
 
 if __name__ == "__main__":

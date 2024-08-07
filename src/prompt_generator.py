@@ -1,7 +1,7 @@
 import json
 import random
 import os
-from src.config import (
+from config import (
     prompt_path,
     base_prompt_path,
     example_folder_path,
@@ -52,7 +52,7 @@ Generated Map:
     return example_prompts
 
 
-def split_prompts(content: str) -> (str, str):
+def split_prompts(content: str) -> tuple[str]:
     start_prompt_key = "Start Prompt:"
     end_prompt_key = "End Prompt:"
 
