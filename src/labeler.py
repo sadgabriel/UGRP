@@ -361,11 +361,10 @@ def _nonlinearity(
 
 def _shortest_distances(list_level: list, pos: tuple) -> dict:
     """
-    Find shortest distance btw pos1, pos2.
+    Find shortest distances from pos to every tiles in the map.
 
     Aruements
-        pos1: (int, int)
-        pos2: (int, int)
+        pos: (int, int)
     """
 
     # flood fill algorithm by BFS
@@ -475,6 +474,90 @@ def _tile_count(list_level: list) -> tuple:
                 empty_tile_num += 1
 
     return reward_num, enemy_num, empty_tile_num, map_size
+
+
+def _is_playable(list_level: list) -> bool:
+    entry_pos = _find_objects_position(list_level, icons["entry"])[0]
+
+    exit_pos = _find_objects_position(list_level, icons["boss"])
+    if exit_pos == []:
+        exit_pos = _find_objects_position(list_level, icons["exit"])[0]
+    else:
+        exit_pos = exit_pos[0]
+
+    entry_distance_dict = _shortest_distances(list_level, entry_pos)
+
+    # entry_distance_dict only has info of accessible tiles.
+    return exit_pos in entry_distance_dict
+
+
+def _count_room(list_level: list) -> int:
+    """
+    (A) The number of room is defined as the number of discontinuous tunnels plus one.
+
+    (B) The tunnel means that a passible tile surroundedby two opppsite walls.
+
+    It looks like this:
+     .      #
+    #.# or ...
+     .      #
+
+    They are not tunnels:
+    ###     ###
+    #.. or  #.#
+    ###     ###
+
+    (C) The process is simple.
+    1. count tunnels.
+    2. count discontinuous tunnels
+    """
+
+    # Initialization.
+    tunnels = []
+    discontinuous_tunnels_num = 1
+
+    x_boundary = len(list_level)
+    y_boundary = len(list_level[0])
+
+    icon_wall = icons["wall"]
+
+    directions = {"up_down": ((1, 0), (-1, 0)), "right_left": ((0, 1), (0, -1))}
+    is_wall = {"up_down": None, "right_left": None}
+
+    # Find tunnels
+    for x in len(list_level):
+        for y in len(list_level[x]):
+            for dir in directions:
+                wall_count = 0
+                for dx, dy in dir:
+                    new_x = x + dx
+                    new_y = y + dy
+
+                    if (
+                        new_x >= 0
+                        and new_x < x_boundary
+                        and new_y >= 0
+                        and new_y < y_boundary
+                        and list_level[new_x][new_y] == icon_wall
+                    ):
+                        wall_count += 1
+
+                is_wall[dir] = wall_count == 2
+
+            # XOR test.
+            ud = is_wall["up_down"]  # ud means up down.
+            rl = is_wall["right_left"]  # rl means right left.
+            if (ud == True and rl == False) or (ud == False and rl == True):
+                tunnels.append((x, y))
+
+    # Cound discontinuous tunnels.
+    for x, y in tunnels:
+        for dir in directions:
+            for dx, dy in dir:
+                if (x + dx, y + dy) not in tunnels:
+                    discontinuous_tunnels_num += 1
+
+    return discontinuous_tunnels_num
 
 
 def insert_level_parameter(level: str, output_parameters: dict) -> str:
