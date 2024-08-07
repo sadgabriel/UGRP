@@ -1,0 +1,395 @@
+You are a game map design expert. Your task is to generate an ASCII map for a game based on the following parameters: map size, number of rooms, number of monsters, and number of treasures. Here is how you will develop the map:
+
+Define the Map Layout:
+1. Use the map size to determine the overall dimensions of the map.
+2. Represent the map using # for walls, . for open space, and + for doors connecting rooms.
+
+Place the Rooms:
+3. Divide the map into the specified number of rooms.
+4. Ensure rooms are separated by walls and connected by doors (+).
+
+Distribute Monsters, Treasures, Player, and Boss:
+5. Randomly place the specified number of monsters (M) and treasures ($) within the rooms.
+6. Place the player (P) and boss (B) on the map, ensuring they are in different rooms.
+
+Generate the ASCII Map:
+7. Combine all the elements to create a coherent and visually clear ASCII map.
+
+Parameters:
+
+MAP_SIZE: The dimensions of the map (e.g., 20x20).
+ROOM_COUNT: The total number of rooms.
+MONSTER_COUNT: The number of monsters to place.
+TREASURE_COUNT: The number of treasures to place.
+Now, proceed to generate the ASCII map with the given parameters.
+
+Example 1:
+
+Parameters:
+MAP_SIZE: [24, 23]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 14
+TREASURE_COUNT: 3
+
+Generated Map:
+###################    
+#.....#...#.......#    
+#.R.../..E#.......#    
+#.....#...#.....R.#    
+########/##.......#    
+    #....E/.......#    
+#####.....#############
+#...#.....#       #...#
+#.../.....#       #.B.#
+#...#.....#       #...#
+#######/#####     #...#
+    #.......#     #.E.#
+    #.......#######.E.#
+    #.......#...../E..#
+    #......./E..R.#####
+    #.......#..E..#    
+######/######.....#    
+#...#...#   #.....#    
+#.../.E.######/######  
+#...#E..#....E..#...#  
+##/##.E.#....E../EP.#  
+#...#...#.......#E..#  
+#...#...#.......#####  
+#...#...#.......#      
+#################      
+
+
+
+
+Example 2:
+
+Parameters:
+MAP_SIZE: [25, 17]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 9
+TREASURE_COUNT: 2
+
+Generated Map:
+                 
+                 
+  #############  
+  #.......#...#  
+  #.......#...#  
+  #....P..#...#  
+  #....E../...#  
+  #....EE.#...#  
+  #R......#...#  
+  #.......#...#  
+###########...#  
+#.......# #...#  
+#.......####/####
+#......./.......#
+####/####.....EE#
+  #...# #.......#
+  #...# #.......#
+  #...# #.......#
+  ##/## #.......#
+  #...# #.......#
+  #EB.# #....R..#
+  #...# #.......#
+  #..E# #########
+  #.EE#          
+  #####          
+                 
+
+
+
+
+Example 3:
+
+Parameters:
+MAP_SIZE: [18, 22]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 8
+TREASURE_COUNT: 2
+
+Generated Map:
+  ###########         
+  #.........#         
+  #EE..B....#######   
+  #...E.....#.....#   
+  ########/##.P...#   
+        #.../...E.#   
+  #######...######### 
+  #...../...#   #...# 
+  #.....##/######...# 
+  #.....#..E....#...# 
+  #.....#.......#...# 
+  #.....#...EE..#.R.# 
+  #.....#...E.../...# 
+  #.....#.......#...# 
+  #.....####/######## 
+  #.R...#.....#       
+  #######.....#       
+        #.....#       
+        #######       
+
+
+
+
+Example 4:
+
+Parameters:
+MAP_SIZE: [24, 16]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 14
+TREASURE_COUNT: 2
+
+Generated Map:
+                
+                
+  ############# 
+  #.......#...# 
+  #......./EB.# 
+  #.......#..E# 
+  #...R...##### 
+  #....E..#     
+  #R......#     
+  #.......#     
+########/###### 
+#...#.........# 
+#.../.......EE# 
+#...#.........# 
+#####......EE.# 
+#.E./.........# 
+#..E######/#### 
+#..E#.........# 
+#...#.......E.# 
+#...#.......E.# 
+########/###/## 
+      #.E.#...# 
+      #.P.#...# 
+      #E..#...# 
+      ######### 
+
+
+
+
+Example 5:
+
+Parameters:
+MAP_SIZE: [29, 21]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 11
+TREASURE_COUNT: 3
+
+Generated Map:
+      #############  
+      #.....#..R..#  
+      #.....#...P.#  
+      #.....#..EE.#  
+      ####/#####/##  
+        #...#.....#  
+  #######.E.#.....#  
+  #.....#...#.....#  
+  #...../.E.#.....#  
+  #.....#E..#.....#  
+  #######..E#.....#  
+        #...#.....#  
+  ########/##.....#  
+  #...#.....#.....#  
+  #.../.....###/###  
+  #..R#...../.....#  
+  #...#######.....#  
+  #...#     #.....#  
+  #####     #.....#  
+            #.....#  
+#############.....#  
+#ER...#.....#.....#  
+#.E...#...../.....#  
+#.....#E....#.....#  
+#.E.../.....#######  
+#...E.#.....#.....#  
+#######...../.B...#  
+      #.....#.....#  
+      #############  
+                     
+
+
+
+
+Example 6:
+
+Parameters:
+MAP_SIZE: [15, 27]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 6
+TREASURE_COUNT: 2
+
+Generated Map:
+  #####   #####            
+  #...#   #...#            
+  #.P.#   #...#            
+  #..E#   #.E.#            
+  #..E#   #...###########  
+  #...#   #...#.........#  
+####/######...#..E...B..#  
+#..R......#...#.E.......#  
+#........./.R./..E......#  
+#.........#...#.........#  
+#.........#####.........#  
+#.........#   #.........#  
+#.........#   #.........#  
+#.........#   #.........#  
+###########   ###########  
+                           
+
+
+
+
+Example 7:
+
+Parameters:
+MAP_SIZE: [20, 19]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 11
+TREASURE_COUNT: 2
+
+Generated Map:
+#########          
+#.......#          
+#...R...#########  
+#.......#.......#  
+#.......#..P.E..#  
+#.......#.....E.#  
+#.......#...RE..#  
+#..E....#......E#  
+######/##/#######  
+    #.....#E....#  
+#####...../.....#  
+#...#.....#.....#  
+#...#.....###/###  
+#...#....E#.....#  
+#.../.....#.....#  
+#...#..EE.#.....#  
+#.E.#.....###/###  
+#...#..E..#.....#  
+###########..B..#  
+          #.....#  
+          #######  
+
+
+
+
+Example 8:
+
+Parameters:
+MAP_SIZE: [15, 17]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 5
+TREASURE_COUNT: 1
+
+Generated Map:
+                 
+                 
+  #########      
+  #.......#      
+  #.....P.#      
+  #.......#      
+  #E......#####  
+  #.......#...#  
+  #E....../...#  
+  #.......#..E#  
+###########.E.#  
+#.........#...#  
+#...B...E./...#  
+#.....R...#...#  
+###############  
+                 
+
+
+
+
+Example 9:
+
+Parameters:
+MAP_SIZE: [25, 30]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 9
+TREASURE_COUNT: 3
+
+Generated Map:
+  #######     #########       
+  #.....#     #.......#       
+  #.....#     #.......#       
+  #.....#     #.......#       
+  #.....#     #.......#####   
+  #.....#     #......E#...#   
+  ##/####     #.....E./...#   
+  #...#       #.......#...#   
+  #...#       #....E..#####   
+  #...#       #.......#       
+  #...#########/###########   
+  #...#.........#.........#   
+  #...#........./.........#   
+  #.../.........#...R.....#   
+  #R..#.........#######/###   
+  #...#.........#.........#   
+  #####......E..#.........#   
+      #......E..#R........#   
+    ######/######..B......#   
+    #...#....E# #.........#   
+    #.P./.....# #....E....#   
+    #...#.....# #....EE...#   
+    ########### ###########   
+                              
+                              
+                              
+
+
+
+
+Example 10:
+
+Parameters:
+MAP_SIZE: [29, 27]
+ROOM_COUNT: N/A
+ENEMY_COUNT: 33
+TREASURE_COUNT: 3
+
+Generated Map:
+                           
+                           
+      ###################  
+      #.......#.........#  
+      #...E.E.#.........#  
+      #.....E.#.......E.#  
+  #####.....E./.........#  
+  #..E#.......#......E..#  
+  #E../.......#........E#  
+  #.E.#.......#.....RE..#  
+  ##/##########..R......#  
+  #.......#   #.........#  
+  #..E.P..#######/#########
+  #.......#.........#.....#
+###########........./...E.#
+#.......# #.........#..E..#
+#.E.....# ####/######....E#
+#..E....#   #EE.#   #...E.#
+#E......#####E.E#   #.....#
+#E....../.../.E.#   #.....#
+#########...###/######/####
+        #...# #..EE.#.E.#  
+        ##### #.....#R..#  
+              #....E#...#  
+    ############/####..E#  
+    #.....#.......# #.EE#  
+    #.B.../.......# #####  
+    #.....#E......#        
+    ###############        
+                           
+
+
+
+Parameters:
+MAP_SIZE: [20, 20]
+ROOM_COUNT: 7
+ENEMY_COUNT: 2
+TREASURE_COUNT: 1
+
+Take a deep breath and let's work this out in a step-by-step way to be sure we have the right answer.

@@ -2,8 +2,8 @@
     "map_list": [
         {
             "before_params": {
-                "map_width": 27,
-                "map_height": 25,
+                "map_width": 20,
+                "map_height": 30,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 3,
@@ -11,26 +11,24 @@
                 "room_min_height": 3,
                 "room_max_height": 9,
                 "enemy_group_min": 3,
-                "enemy_group_max": 13,
+                "enemy_group_max": 12,
                 "group_size_min": 1,
-                "group_size_max": 5,
-                "enemy_ideal_min": 8,
-                "enemy_ideal_max": 30,
+                "group_size_max": 4,
+                "enemy_ideal_min": 6,
+                "enemy_ideal_max": 25,
                 "boss": 1,
                 "reward": 3,
-                "density": 0.037037037037037035,
-                "empty_ratio": 0.41333333333333333,
+                "density": 0.038580246913580245,
+                "empty_ratio": 0.4305555555555556,
                 "exploration_requirement": 420,
                 "difficulty_curve": 0.625,
                 "nonlinearity": 0.9270152505446624,
                 "reward_num": 3,
                 "enemy_num": 22,
                 "map_size": [
-                    25,
+                    24,
                     27
-                ],
-                "playablility": true,
-                "room_num": 10
+                ]
             },
             "after_params": {
                 "density": 0.025466893039049237,
