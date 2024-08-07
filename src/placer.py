@@ -37,12 +37,14 @@ class Map:
 
 
 def load_maps(
-    path: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "raw")
+    path: str = os.path.join(
+        os.path.dirname(os.path.dirname(__file__)), "data", "1. raw"
+    )
 ) -> list[Map]:
     """Load all maps from directory.
 
     Args:
-        path (str, optional): The path of directory which has map files. Defaults to "../data/raw".
+        path (str, optional): The path of directory which has map files. Defaults to "../data/1. raw".
 
     Returns:
         list[Map]: The list of created Map objects.
@@ -73,7 +75,7 @@ def load_maps(
 def save_maps(
     map_list: list[Map],
     path: str = os.path.join(
-        os.path.dirname(os.path.dirname(__file__)), "data", "placed"
+        os.path.dirname(os.path.dirname(__file__)), "data", "2. placed"
     ),
     batch_size: int = 100,
     prefix: str = "batch",
@@ -82,7 +84,7 @@ def save_maps(
 
     Args:
         map_list (list[Map]): Maps to be saved.
-        path (str, optional): The path of directory in which the maps will be saved. Defaults to "../data/placed".
+        path (str, optional): The path of directory in which the maps will be saved. Defaults to "../data/2. placed".
     """
     if not os.path.exists(path):
         os.makedirs(path)
@@ -100,7 +102,67 @@ def save_maps(
         count += 1
 
 
-def modify_map(map: Map, group_min_dist: int, flag_try_count: int, enemy_sparsity: int):
+def assign_parameters(
+    map: Map,
+    enemy_density=0.05,
+    cohesion=0.3,
+    reward_density=0.01,
+    range_multiplier=2,
+    boss=True,
+) -> None:
+    """Assign enemy, boss, and reward parameters for modifing map.
+
+    Args:
+        map (Map): A map to be modified.
+        enemy_density (float, optional): The proportion of empty space occupied by enemy. Defaults to 0.05.
+        cohesion (float, optional): How densely the enemies are clustered. (The number of total enemy) ** cohesion equals group size. Defaults to 0.3.
+        reward_density (float, optional): The proportion of empty space occupied by reward. Defaults to 0.01.
+        range_multiplier (int, optional): The difference between the minimum and maximum from base value. min value * (range_multiplier ** 2) equals max value. Defaults to 2.
+        boss (bool, optional): Whether the boss exists. Defaults to True.
+
+    Raises:
+        ValueError: A parameter is not vaild.
+            Vaild range
+            0 <= enemy_density <= 1
+            0 <= cohesion <= 1
+            0 <= reward_density <= 1
+            1 <= range_multiplier
+    """
+
+    if (
+        not (0 <= enemy_density <= 1)
+        or not (0 <= cohesion <= 1)
+        or not (0 <= reward_density <= 1)
+        or range_multiplier < 1
+    ):
+        raise ValueError("Invaild parameter setting.")
+
+    empty_tile_count = 0
+    for row in map.list_map:
+        for tile in row:
+            if tile == ".":
+                empty_tile_count += 1
+
+    base_enemy = empty_tile_count * enemy_density
+    base_group = base_enemy ** (1 - cohesion)
+    base_group_size = base_enemy**cohesion
+
+    map.params["enemy_group_min"] = round(base_group / range_multiplier)
+    map.params["enemy_group_max"] = round(base_group * range_multiplier)
+
+    map.params["group_size_min"] = round(base_group_size / range_multiplier)
+    map.params["group_size_max"] = round(base_group_size * range_multiplier)
+
+    map.params["enemy_ideal_min"] = round(base_enemy / range_multiplier)
+    map.params["enemy_ideal_max"] = round(base_enemy * range_multiplier)
+
+    map.params["boss"] = int(boss)
+    map.params["reward"] = round(empty_tile_count * reward_density)
+
+
+def modify_map(
+    map: Map, group_min_dist: int, flag_try_count: int, enemy_sparsity: int
+) -> None:
     """Modify map with its parameters.
 
     Args:
@@ -117,36 +179,24 @@ def modify_map(map: Map, group_min_dist: int, flag_try_count: int, enemy_sparsit
     _set_reward(map)
 
 
-def _set_player_and_boss(map: Map):
+def _set_player_and_boss(map: Map) -> None:
     for line in map.list_map:
         for i in range(len(line)):
             if line[i] == "<":
                 line[i] = "P"
-            if line[i] == ">" and int(map.params["boss"]):
+            if line[i] == ">" and map.params["boss"]:
                 line[i] = "B"
 
 
 def _calc_group_detail(map: Map) -> tuple[int]:
-    if "~" in map.params["enemy_group"]:
-        group_min, group_max = (
-            int(num) for num in map.params["enemy_group"].split("~")
-        )
-    else:
-        group_min = group_max = int(map.params["enemy_group"])
+    group_min = map.params["enemy_group_min"]
+    group_max = map.params["enemy_group_max"]
 
-    if "~" in map.params["enemy_group_size"]:
-        group_size_min, group_size_max = (
-            int(num) for num in map.params["enemy_group_size"].split("~")
-        )
-    else:
-        group_size_min = group_size_max = int(map.params["enemy_group_size"])
+    group_size_min = map.params["group_size_min"]
+    group_size_max = map.params["group_size_max"]
 
-    if "~" in map.params["enemy_ideal"]:
-        ideal_min, ideal_max = (
-            int(num) for num in map.params["enemy_ideal"].split("~")
-        )
-    else:
-        ideal_min = ideal_max = int(map.params["enemy_ideal"])
+    ideal_min = map.params["enemy_ideal_min"]
+    ideal_max = map.params["enemy_ideal_max"]
 
     try_max = 10000
     try_count = 0
@@ -170,7 +220,7 @@ def _calc_group_detail(map: Map) -> tuple[int]:
         try_count += 1
 
 
-def _set_group_flag(map: Map, group_count: int, min_dist: int, try_count: int):
+def _set_group_flag(map: Map, group_count: int, min_dist: int, try_count: int) -> None:
     while min_dist >= 0:
         if _try_set_group_flag(map, group_count, min_dist, try_count):
             return
@@ -233,7 +283,7 @@ def _try_set_group_flag(
     return False
 
 
-def _set_enemy(map: Map, group_size_list: list[int], sparsity: int):
+def _set_enemy(map: Map, group_size_list: list[int], sparsity: int) -> None:
     group_num = 0
     for i in range(len(map.list_map)):
         for j in range(len(map.list_map[i])):
@@ -265,14 +315,14 @@ def _set_enemy(map: Map, group_size_list: list[int], sparsity: int):
                 group_num += 1
 
 
-def _set_reward(map: Map):
+def _set_reward(map: Map) -> None:
     empty_list = list()
     for i in range(len(map.list_map)):
         for j in range(len(map.list_map[i])):
             if map.list_map[i][j] == ".":
                 empty_list.append((i, j))
 
-    reward_list = random.sample(empty_list, int(map.params["reward"]))
+    reward_list = random.sample(empty_list, map.params["reward"])
 
     for reward in reward_list:
         map.list_map[reward[0]][reward[1]] = "R"
@@ -281,5 +331,6 @@ def _set_reward(map: Map):
 if __name__ == "__main__":
     maps = load_maps()
     for map in maps:
+        assign_parameters(map)
         modify_map(map, 10, 50, 3)
     save_maps(maps)

@@ -104,28 +104,24 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
 
     # Make a result dict
     output_parameters = dict()
-    output_parameters["density"] = str(_density(reward_num + enemy_num, total_tile_num))
-    output_parameters["empty_ratio"] = str(_empty_ratio(empty_tile_num, total_tile_num))
-    output_parameters["exploration_requirement"] = str(
-        _exploration_requirement(distance_dict_entry, object_positions)
+    output_parameters["density"] = _density(reward_num + enemy_num, total_tile_num)
+    output_parameters["empty_ratio"] = _empty_ratio(empty_tile_num, total_tile_num)
+    output_parameters["exploration_requirement"] = _exploration_requirement(
+        distance_dict_entry, object_positions
     )
-    output_parameters["difficulty_curve"] = str(
-        _difficulty_curve(
-            distance_dict_entry, enemy_positions, difficulty_curve_interval
-        )
+    output_parameters["difficulty_curve"] = _difficulty_curve(
+        distance_dict_entry, enemy_positions, difficulty_curve_interval
     )
-    output_parameters["nonlinearity"] = str(
-        _nonlinearity(
-            distance_dict_entry,
-            distance_dict_exit,
-            object_positions,
-            total_object_num,
-            total_passible_tile_num,
-        )
+    output_parameters["nonlinearity"] = _nonlinearity(
+        distance_dict_entry,
+        distance_dict_exit,
+        object_positions,
+        total_object_num,
+        total_passible_tile_num,
     )
-    output_parameters["reward_num"] = str(reward_num)
-    output_parameters["enemy_num"] = str(enemy_num)
-    output_parameters["map_size"] = str(map_size)
+    output_parameters["reward_num"] = reward_num
+    output_parameters["enemy_num"] = enemy_num
+    output_parameters["map_size"] = map_size
 
     return output_parameters
 
@@ -146,7 +142,7 @@ def load_file(path: str) -> list:
     return data
 
 
-def load_folder(path: str = "..\\data\\placed", file_num: int = 100) -> list:
+def load_folder(path: str = "../data/2. placed", file_num: int = 100) -> list:
     """
     Load map data from data folder.
 
@@ -179,13 +175,13 @@ def save_file(data: list, path: str) -> None:
 
     # temporary script xxx
     with open(path, "w") as f:
-        json.dump(data, f)
+        json.dump(data, f, indent=4)
 
     return
 
 
 def save_folder(
-    data: list, path: str = "..\\data\\labelled", file_num: int = 100
+    data: list, path: str = "../data/3. labelled", file_num: int = 100
 ) -> None:
     """
     Save map data into data folder.
