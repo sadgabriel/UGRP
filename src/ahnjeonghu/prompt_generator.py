@@ -1,43 +1,17 @@
 import json
 from src.ahnjeonghu.config import prompt_path, json_base_prompt_path
 
-def load_prompts(file_path):
-    # JSON 파일에서 프롬프트 읽기
-    with open(file_path, 'r') as file:
-        return json.load(file)
+if __name__ == "__main__":
 
-def load_examples_from_json(json_file_path):
-    with open(json_file_path, 'r') as file:
-        examples_data = json.load(file)
+    with open(json_base_prompt_path, 'r') as file:
+        prompts_data = json.load(file)
 
-    example_prompts = ""
+    complete_prompt = prompts_data['start_prompt'] + load_examples_from_json('../../data/3. labelled/batch0.json') + prompts_data['end_prompt']
 
-    for i, example in enumerate(examples_data['map_list']):
-        params = example['params']
-        params_str = "\n".join([f"{key.upper()}: {value}" for key, value in params.items()])
+    with open(prompt_path, 'w', encoding='utf-8') as file:
+        file.write(complete_prompt)
 
-        example_prompt = f"""
-        
-Example {i + 1}:
-
-Parameters:
-{params_str}
-
-Generated Map:
-{example['map']}
-"""
-        example_prompts += example_prompt
-    return example_prompts
-
-with open(json_base_prompt_path, 'r') as file:
-    prompts_data = json.load(file)
-
-complete_prompt = prompts_data['start_prompt'] + load_examples_from_json('../../data/3. labelled/batch0.json') + prompts_data['end_prompt']
-
-with open(prompt_path, 'w', encoding='utf-8') as file:
-    file.write(complete_prompt)
-
-print(f'Complete prompt saved to {prompt_path}')
+    print(f'Complete prompt saved to {prompt_path}')
 
 
 """
