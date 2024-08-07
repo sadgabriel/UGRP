@@ -1,5 +1,5 @@
 import json
-from src.ahnjeonghu.config import prompt_path, json_base_prompt_path
+from src.config import prompt_path, json_base_prompt_path
 
 if __name__ == "__main__":
 
