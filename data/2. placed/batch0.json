@@ -2,8 +2,8 @@
     "map_list": [
         {
             "params": {
-                "map_width": 12,
-                "map_height": 16,
+                "map_width": 14,
+                "map_height": 11,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -11,166 +11,19 @@
                 "room_min_height": 2,
                 "room_max_height": 7,
                 "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "########### \n#E..#..T..# \n#.B./.....# \n#..E#.E...# \n#####...E.# \n    #.....# \n  ######/## \n  #E..#...# \n  #E../...# \n  #...#..E# \n  #.P.#...# \n  #...#...# \n  #...#...# \n  #...#...# \n  ######### \n            \n\n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 2,
+                "enemy_group_max": 3,
                 "group_size_min": 1,
                 "group_size_max": 2,
                 "enemy_ideal_min": 1,
-                "enemy_ideal_max": 2,
+                "enemy_ideal_max": 4,
                 "boss": 1,
                 "reward": 0
             },
-            "map": "#########\n#...#..E#\n#.../.B.#\n#...#..E#\n#.P.#####\n#...#    \n#####    \n         \n         \n\n"
+            "map": "#######       \n#.....#       \n#..E..#       \n#.....#       \n#.....#####   \n#...../...#   \n####/##.P.#   \n  #...#...#   \n  #.B.#####   \n  #...#       \n  #####       \n"
         },
         {
             "params": {
-                "map_width": 10,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "  #####   \n  #E..#   \n  #.E.#   \n  #.P.#   \n  #E..#   \n  #...#   \n####/#### \n#.......# \n#..B...E# \n#.......# \n#.......# \n#.......# \n######### \n          \n          \n          \n\n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "#####    \n#...#    \n#...#    \n#...#    \n#.P.#    \n#...#    \n##/####  \n#.....#  \n#.....#  \n#.B...#  \n#..E..#  \n#.....#  \n#.EE..#  \n#.....#  \n#######  \n\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "#######       \n#.....#       \n#.....####### \n#.....#.....# \n#...../...P.# \n#.....#.....# \n#.EB..####### \n#.....#       \n#######       \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 2,
-                "enemy_group_max": 6,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 10,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "    ###########\n    #.....#...#\n    #..P..#.EE#\n    #.....#.B.#\n  ######/##T..#\n  #......./...#\n  #.......#####\n  #.....EE#...#\n  #....E..#...#\n  #.......#...#\n  ###/#####...#\n  #.E...../...#\n  #.......#####\n  #E......#    \n  #########    \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "        #####\n        #.EE#\n  #######.P.#\n  #...../.E.#\n  #.....#####\n  #...E.#    \n  ##/########\n  #.....#...#\n  #.....#T.E#\n  #...../...#\n  #.....#.BE#\n  #.....#...#\n  #.....#####\n  #..E..#    \n  #######    \n             \n\n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "  ############# \n  #...#.......# \n  #...#..P..E.# \n  #.B.#.....EE# \n  #..T##/###### \n  #...#.....#   \n  ##/##.....#   \n  #.../.....#   \n  #...####/##   \n  #...# #.E.#   \n  #E..# #...#   \n  #.E.# #..E#   \n  ##### #####   \n\n"
-        },
-        {
-            "params": {
-                "map_width": 11,
+                "map_width": 12,
                 "map_height": 10,
                 "retry": 100,
                 "room_ideal": 100,
@@ -181,80 +34,17 @@
                 "enemy_group_min": 1,
                 "enemy_group_max": 3,
                 "group_size_min": 1,
-                "group_size_max": 3,
+                "group_size_max": 2,
                 "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
+                "enemy_ideal_max": 3,
                 "boss": 1,
                 "reward": 0
             },
-            "map": "#####      \n#...#      \n#.PE#######\n#...#.....#\n#...#.B...#\n#...#.E...#\n#..E/.....#\n#..E#.....#\n###########\n           \n\n"
+            "map": "  #####     \n  #...#     \n  #...##### \n  #.../...# \n  ##/##...# \n  #.EE#.P.# \n  #.B.#...# \n  #...#...# \n  ######### \n            \n"
         },
         {
             "params": {
-                "map_width": 12,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#####       \n#..E#       \n#.B.####### \n#...#.....# \n#..E#...P.# \n#.E.#.....# \n###/##/#### \n  #.......# \n  #.......# \n  #.......# \n  #.......# \n  #..T....# \n  #.......# \n  #.......# \n  ######### \n            \n\n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 12,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#######   ##### \n#T....#   #...# \n#...B.#####...# \n#...E./..E#...# \n#######..E##/## \n  #...#...#...# \n  #.P./.E./...# \n  #...#...#...# \n  #...#####...# \n  #...#   #...# \n  #####   ##### \n                \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "###############\n#.E.....#.....#\n#..E..../.E.B.#\n#.......#.....#\n#.......#######\n#....EE./.E...#\n#########.TP..#\n        #.....#\n        #######\n               \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
+                "map_width": 11,
                 "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
@@ -267,16 +57,16 @@
                 "group_size_min": 1,
                 "group_size_max": 3,
                 "enemy_ideal_min": 1,
-                "enemy_ideal_max": 6,
+                "enemy_ideal_max": 5,
                 "boss": 1,
                 "reward": 1
             },
-            "map": "    #########  \n    #.......#  \n#####.......#  \n#...#.......#  \n#.P./...E...#  \n#..E#.......#  \n#####.....B.#  \n    #...T...#  \n    #########  \n\n"
+            "map": "###########\n#...#.T...#\n#...#...E.#\n#...#.....#\n#...#..P..#\n#.B./.....#\n#...#.....#\n#...#.....#\n###########\n"
         },
         {
             "params": {
-                "map_width": 13,
-                "map_height": 16,
+                "map_width": 15,
+                "map_height": 15,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -292,75 +82,12 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "  ###########\n  #.....#...#\n  #.....#.B.#\n  #...../...#\n  #.....#...#\n  #.....#...#\n  #.....#####\n  #.....#    \n#######/###  \n#.....#..E#  \n#..PT.#..E#  \n#.....#...#  \n#..E../...#  \n#.....#...#  \n###########  \n             \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "        #######\n        #.TE..#\n#########..E..#\n#......./.....#\n#.......#######\n#...E.../...#  \n####/####.B.#  \n  #.....#...#  \n  #..P..#####  \n  #.....#      \n  #######      \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "               \n               \n  #############\n  #.....#.....#\n  #...../E.P..#\n  #.E...#.....#\n  #..B.E#######\n  #.....#      \n  #######      \n               \n\n"
+            "map": "      #####    \n      #...#    \n#######...#    \n#.E...#...#    \n#..E..#...#####\n#.E.../...#...#\n#.....#.../...#\n#.....#...#...#\n##/####/###...#\n#E..#...# #...#\n#...#.B.# #...#\n#.P.#..T# #...#\n#.E.##### #####\n#...#          \n#####          \n"
         },
         {
             "params": {
                 "map_width": 12,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "#########   \n#.......#   \n#.E.....#   \n#..B....#   \n#.......#   \n#.......#   \n######/##   \n    #...#   \n    #.P.#   \n    #...#   \n    #####   \n\n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 16,
+                "map_height": 10,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -376,11 +103,11 @@
                 "boss": 1,
                 "reward": 0
             },
-            "map": "          \n          \n#######   \n#.....#   \n#.P...#   \n#.E...#   \n####/##   \n  #...#   \n  #...#   \n  #...#   \n  ##/##   \n  #E..#   \n  #.B.#   \n  #E..#   \n  #####   \n          \n\n"
+            "map": "#####       \n#...#       \n#.B.#####   \n#...#...#   \n#.E./...#   \n#...#.PE#   \n#####.E.#   \n    #...#   \n    #####   \n            \n"
         },
         {
             "params": {
-                "map_width": 9,
+                "map_width": 11,
                 "map_height": 14,
                 "retry": 100,
                 "room_ideal": 100,
@@ -389,19 +116,19 @@
                 "room_min_height": 2,
                 "room_max_height": 7,
                 "enemy_group_min": 1,
-                "enemy_group_max": 2,
+                "enemy_group_max": 3,
                 "group_size_min": 1,
                 "group_size_max": 2,
                 "enemy_ideal_min": 1,
-                "enemy_ideal_max": 2,
+                "enemy_ideal_max": 4,
                 "boss": 1,
                 "reward": 0
             },
-            "map": "         \n         \n  #####  \n  #...#  \n  #.P.#  \n  #...#  \n  ##/####\n  #..E..#\n  #...B.#\n  #..E..#\n  #######\n         \n         \n         \n\n"
+            "map": "  #########\n  #...#...#\n  #.../EB.#\n  #...#...#\n  #...#####\n  #...#    \n  ##/####  \n  #.....#  \n  #.P...#  \n  #.....#  \n  #######  \n           \n           \n           \n"
         },
         {
             "params": {
-                "map_width": 14,
+                "map_width": 13,
                 "map_height": 11,
                 "retry": 100,
                 "room_ideal": 100,
@@ -418,12 +145,117 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "              \n              \n#########     \n#.......#     \n#.......##### \n#..B....#.EE# \n#......./.PT# \n#...E...#...# \n#.......##### \n#.......#     \n#########     \n\n"
+            "map": "#####   #####\n#...#   #...#\n#...#####E..#\n#...#...#.B.#\n#.../.../...#\n#.EE#...#...#\n#.P.#.E.#####\n#...#...#    \n#####..T#    \n    #.EE#    \n    #####    \n"
         },
         {
             "params": {
-                "map_width": 13,
+                "map_width": 15,
                 "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 2,
+                "enemy_group_max": 6,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 3,
+                "enemy_ideal_max": 10,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "      #########\n      #.E.#.E.#\n##### #...#...#\n#...# #...#.PE#\n#.B.####/##...#\n#...#.....#...#\n#E../...../...#\n#...#E....#...#\n#####/#########\n#.....#.E.#...#\n#.E.../.E./...#\n#EE...#...#...#\n#.T...#########\n#.....#        \n#######        \n"
+        },
+        {
+            "params": {
+                "map_width": 10,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "          \n          \n######### \n#.......# \n#....E..# \n#.....E.# \n#.......# \n#.......# \n#..P....# \n#.......# \n####/#### \n#.......# \n#.BE.T..# \n#..E....# \n######### \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 6,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 9,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  ############# \n  #....E..#...# \n  #....B..#...# \n  #......E#...# \n  #######/##/## \n        #.....# \n  #######.....# \n  #.....#.....# \n  #...../.....# \n  #.....#.....# \n  ########/#### \n    #.......#   \n    #....P..#   \n    #......T#   \n    #########   \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 6,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 10,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "          ##### \n          #...# \n  #####   #.P.# \n  #...#   #...# \n  #...######/## \n  #.T.#.......# \n  #.../.......# \n  #...#..EE...# \n####/##..E....# \n#.....#.......# \n#.....#.......# \n#.....#.......# \n#...B.######### \n#...E.#         \n#######         \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#####         \n#...#         \n#...######### \n#E..#...#...# \n#...#.../...# \n#...#...#...# \n##/###/###### \n#.......#     \n#..T..E.##### \n#....E../...# \n####/####.P.# \n  #EE...#...# \n  #E..B.##### \n  #.....#     \n  #######     \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -439,11 +271,32 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "             \n             \n  #########  \n  #.......#  \n  #.B.....#  \n  #.T.E...#  \n  ####/####  \n    #.....#  \n    #..E.E#  \n    #.....#  \n  ####/####  \n  #.......#  \n  #...P...#  \n  #.......#  \n  #########  \n\n"
+            "map": "#######         \n#.....#         \n#.....#######   \n#.....#.....#   \n#.....#..E..#   \n#..B..#..P..#   \n#...../.....#   \n#...T.#.....#   \n#############   \n"
         },
         {
             "params": {
-                "map_width": 16,
+                "map_width": 13,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 3,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "             \n             \n  ###########\n  #...#E....#\n  #.../...P.#\n  #EB.#....E#\n  #...#######\n  #...#      \n  #####      \n             \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
                 "map_height": 15,
                 "retry": 100,
                 "room_ideal": 100,
@@ -460,75 +313,33 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "#############   \n#...#...#...#   \n#.../...#...#   \n#...#...#...#   \n#####...#...#   \n    #...#...#   \n######/###/#### \n#...#...#.....# \n#.B./.../.....# \n#...#...#.....# \n#####...####/## \n    #.E.#.....# \n    #...#.E.P.# \n    #TEE#.....# \n    ########### \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#############  \n#..E..#..T..#  \n#...BE/.....#  \n#.....#.E.E.#  \n#....E####/##  \n#.....# #...#  \n#.....# #.P.#  \n#.....# #...#  \n####### #####  \n               \n\n"
+            "map": "  ###########  \n  #.....#.EE#  \n  #.....#.B.#  \n  #E....#.E.#  \n  #.T...##/####\n  #.....#.....#\n  #...../.....#\n  #.....#.....#\n#######/#######\n#.....#....E#  \n#.P.../.....#  \n#.....#.....#  \n#######..E..#  \n      #....E#  \n      #######  \n"
         },
         {
             "params": {
                 "map_width": 14,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #########   \n  #.......#   \n  #..E....#   \n  #..B....#   \n  #.......#   \n  #.......#   \n  ####/###### \n    #...#T..# \n#####.../...# \n#...#...#...# \n#.P./...##/## \n#...#...#...# \n#########.E.# \n        #...# \n        ##### \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
                 "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "              \n              \n############# \n#...#.......# \n#...#.......# \n#.E.#...T...# \n#.E./.......# \n#...#E......# \n#.B.#E.P....# \n#...#E......# \n############# \n              \n              \n              \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#######     \n#.....#     \n#EEP..##### \n#.E...#...# \n#.....#.B.# \n#.....#...# \n####/##/### \n  #.....#   \n  #.....#   \n  #.....#   \n  #.....#   \n  #...T.#   \n  #.....#   \n  #.....#   \n  #######   \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 10,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -544,74 +355,11 @@
                 "boss": 1,
                 "reward": 0
             },
-            "map": "  ######### \n  #...#...# \n  #EP.#.B.# \n  #E..#...# \n  ##/##/### \n  #.....#   \n  #.....#   \n  #.....#   \n  #######   \n            \n\n"
+            "map": "            \n            \n#####       \n#...#       \n#.P.#####   \n#...#...#   \n#.../...#   \n#...#...#   \n#####...#   \n    #...#   \n    #.B.#   \n    #.E.#   \n    #####   \n            \n"
         },
         {
             "params": {
-                "map_width": 13,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "###########  \n#...#..E..#  \n#.../.....#  \n#.B.#...P.#  \n#...#E....#  \n#...#.....#  \n#####.....#  \n    #.....#  \n    #######  \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#############  \n#...#E..E...#  \n#.B./.TE....#  \n#...#.......#  \n#####.......#  \n    #.......#  \n######/########\n#.E.E...#.....#\n#..E..../.P...#\n#.......#.....#\n###############\n               \n               \n               \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "    #########\n    #.......#\n#####.P.....#\n#.T./.......#\n#...#########\n#...#...#..E#\n#...#...#..E#\n#.../...#.B.#\n#...#.E./..E#\n#...#...#...#\n#####..E#####\n    #.E.#    \n    #####    \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
+                "map_width": 16,
                 "map_height": 12,
                 "retry": 100,
                 "room_ideal": 100,
@@ -624,184 +372,16 @@
                 "group_size_min": 1,
                 "group_size_max": 3,
                 "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "      #####  \n      #...#  \n#######.EE#  \n#.....#...#  \n#...../...#  \n#..P..#...#  \n#.....##/##  \n#.....#..E#  \n#######.B.#  \n      #E.E#  \n      #####  \n             \n\n"
-        },
-        {
-            "params": {
-                "map_width": 11,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "###########\n#.....#...#\n#...../.P.#\n#.....#...#\n####/######\n  #.EE..#  \n  #..B..#  \n  #.....#  \n  #######  \n           \n\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
                 "enemy_ideal_max": 6,
                 "boss": 1,
                 "reward": 1
             },
-            "map": "      ####### \n      #.....# \n  #####.....# \n  #..E#.....# \n  #E..#....E# \n  #EP./.....# \n  #...#...E.# \n  #...#.....# \n  ########/## \n      #.....# \n      #.B...# \n      #ET...# \n      ####### \n\n"
+            "map": "                \n                \n#############   \n#.....#.....#   \n#.EE..#...B.#   \n#..E..#.....#   \n#T..../.....#   \n#.....#.....#   \n#..P..#######   \n#.....#         \n#######         \n                \n"
         },
         {
             "params": {
-                "map_width": 10,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "######### \n#.......# \n#.E.....# \n#.....B.# \n#....E..# \n#.......# \n######/## \n  #...E.# \n  #..P..# \n  #.....# \n  ####### \n          \n          \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "             \n             \n##### #####  \n#...# #...#  \n#.B.# #E..#  \n#...# #E..#  \n#...###/###  \n#..E/...#    \n#####..E#    \n#...#...#    \n#.P./...#    \n#...#.E.#    \n#########    \n             \n             \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "  #########  \n  #.......#  \n  #E....E.#  \n  #.......#  \n####/###/##  \n#..E.E#...#  \n#.P...#...#  \n#.....#.B.#  \n#.....#E.E#  \n#.E...#...#  \n#.....#####  \n#T....#      \n#######      \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "#######     \n#.....#     \n#.....##### \n#.....#..E# \n#...../.PE# \n#...B.#...# \n#EE...##### \n#.....#     \n#######     \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
+                "map_width": 9,
                 "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#########      \n#.......#      \n#.......#######\n#.......#.E...#\n#..B....#.EE..#\n#......./..P..#\n#.......#.....#\n#......E#.....#\n#########.T...#\n        #.....#\n        #######\n\n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#####           \n#...#           \n#...#   #####   \n#.E.#   #...#   \n#...#   #...#   \n#...#   #...#   \n#.P.#####...#   \n#.../.../...#   \n#####...##/#### \n    #...#.E...# \n    #...#..B..# \n    #...#...T.# \n    ########### \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 10,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -817,11 +397,11 @@
                 "boss": 1,
                 "reward": 0
             },
-            "map": "             \n             \n  #########  \n  #...#...#  \n  #.B./.P.#  \n  #...#E.E#  \n  #...#####  \n  #...#      \n  #####      \n             \n\n"
+            "map": "  #####  \n  #...#  \n  #.B.#  \n  #...#  \n###/###  \n#...#    \n#...#    \n#E..#    \n#.P.#    \n#...#    \n#####    \n"
         },
         {
             "params": {
-                "map_width": 12,
+                "map_width": 14,
                 "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
@@ -838,11 +418,11 @@
                 "boss": 1,
                 "reward": 0
             },
-            "map": "  ######### \n  #.......# \n  #E...B..# \n  #.......# \n  ###/##### \n  #E......# \n  #...P...# \n  #.......# \n  ######### \n\n"
+            "map": "  #########   \n  #.E.#E..#   \n  #.B.#.P.#   \n  #...#...#   \n####/##/###   \n#..E....#     \n#.......#     \n#.......#     \n#########     \n"
         },
         {
             "params": {
-                "map_width": 15,
+                "map_width": 9,
                 "map_height": 11,
                 "retry": 100,
                 "room_ideal": 100,
@@ -851,57 +431,15 @@
                 "room_min_height": 2,
                 "room_max_height": 7,
                 "enemy_group_min": 1,
-                "enemy_group_max": 5,
+                "enemy_group_max": 3,
                 "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "      #########\n      #.E..E..#\n  #####....B..#\n  #.../..E....#\n  #...#########\n  #...#.......#\n  #.../.....P.#\n  #..T#.......#\n  #####......E#\n      #.......#\n      #########\n\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "      #####   \n      #...#   \n#######.B.#   \n#.....#...#   \n#.....##/#### \n#.....#.T...# \n#...../.....# \n#.....#.....# \n##/####.....# \n#E.EE.#.....# \n#.P...####### \n#.....#       \n#######       \n\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 12,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
+                "group_size_max": 2,
                 "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
+                "enemy_ideal_max": 3,
                 "boss": 1,
                 "reward": 0
             },
-            "map": "#####         \n#...#         \n#.P.######### \n#..E/.......# \n#####.E.E...# \n    #.......# \n  ######/#### \n  #......E#   \n  #....B..#   \n  #.......#   \n  #########   \n              \n\n"
+            "map": "#########\n#...#...#\n#.../EP.#\n#...#E..#\n##/######\n#.....#  \n#EB...#  \n#.....#  \n#######  \n         \n         \n"
         },
         {
             "params": {
@@ -914,57 +452,36 @@
                 "room_min_height": 2,
                 "room_max_height": 7,
                 "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 4,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "             \n             \n  #########  \n  #...#...#  \n  #.E./.B.#  \n  #..E#...#  \n  ##/##..E#  \n  #...#...#  \n  #.P.#...#  \n  #...#...#  \n  #########  \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
                 "enemy_group_max": 5,
                 "group_size_min": 1,
                 "group_size_max": 3,
                 "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
+                "enemy_ideal_max": 7,
                 "boss": 1,
                 "reward": 1
             },
-            "map": "#########    \n#.......#    \n#E..B...#####\n#.......#...#\n####/####...#\n#.......#E..#\n#E......#..E#\n#....TE./.P.#\n#......E#...#\n#E.E....#...#\n#############\n             \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "  #############\n  #E..#.E.....#\n  #..E#.......#\n  #E../......T#\n  #.P.#.......#\n  #...#.......#\n  #...##/######\n  #...#...#    \n  #####.B.#    \n      #...#    \n      #####    \n\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "  #########   \n  #.......#   \n  #......T#   \n  #....E..#   \n  #...E...#   \n  #...E...#   \n  ####/##/### \n  #.....#...# \n  #...PE#.B.# \n  #.....#...# \n  ########### \n              \n              \n              \n\n"
+            "map": "                \n                \n  #########     \n  #..EE...#     \n  #.....E.##### \n  #.......#...# \n  #......./...# \n  #.......#...# \n  ##/######T..# \n  #...#   #...# \n  #.P.# ###/### \n  #...# #...#   \n  #...# #.B.#   \n  #..E# #...#   \n  ##### #####   \n"
         },
         {
             "params": {
@@ -981,16 +498,16 @@
                 "group_size_min": 1,
                 "group_size_max": 3,
                 "enemy_ideal_min": 3,
-                "enemy_ideal_max": 10,
+                "enemy_ideal_max": 11,
                 "boss": 1,
                 "reward": 1
             },
-            "map": "#############   \n#.T.#.......#   \n#.../.......#   \n#...#.......#   \n#####.......#   \n#...#EEE....#   \n#.PE##/######   \n#..E/.......#   \n#####.E.....#   \n#.../.......#   \n#...######/##   \n#..E# #....E#   \n#...# #.BE..#   \n#...# #...E.#   \n##### #######   \n                \n\n"
+            "map": "    #########   \n    #.......#   \n#####...P...#   \n#...#.......#   \n#.B.##/######   \n#.../..E..#     \n#####.T...##### \n#.E./.E.../...# \n#...##/####.E.# \n#...#.....#...# \n#####.....#...# \n#...#.....#...# \n#.../.....#...# \n#...#.....#...# \n############### \n                \n"
         },
         {
             "params": {
-                "map_width": 13,
-                "map_height": 14,
+                "map_width": 12,
+                "map_height": 11,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1006,12 +523,117 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "  #########  \n  #..E....#  \n  #.P...E.#  \n  #..E....#  \n###/#######  \n#...#        \n#...#######  \n#...#.....#  \n#.../T.B.E#  \n#...#.....#  \n#...#######  \n#.E.#        \n#####        \n             \n\n"
+            "map": "########### \n#.....#E..# \n#.EBT.#.P.# \n#.....#...# \n####/###/## \n  #.......# \n  #.......# \n  #.......# \n  #.......# \n  #.......# \n  ######### \n"
         },
         {
             "params": {
-                "map_width": 15,
+                "map_width": 16,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 6,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 9,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#######         \n#.....#         \n#.....######### \n#.....#.......# \n#...T.#.......# \n#.....#..P....# \n#....E/.......# \n#...E.#.......# \n##/####.......# \n#...# #.......# \n#.B.# ######### \n#.E.#           \n#####           \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
                 "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#########     \n#.......#     \n#.P.....##### \n#.......#...# \n#####/###.B.# \n#.....E./...# \n#.......##### \n#...E.E.#     \n#########     \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #####   ##### \n  #...#   #.E.# \n  #.B.#####EP.# \n  #...#...#E..# \n  #...#...##/## \n  #...#...#.E.# \n  ##/##.E.#E.E# \n  #...#.../...# \n  #.../...#...# \n  #...#...#.T.# \n  #########...# \n          #...# \n          ##### \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 10,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 3,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#####     \n#E..#     \n#...##### \n#...#E..# \n#.../.B.# \n#...#...# \n###/##### \n  #...#   \n  #.P.#   \n  #...#   \n  #####   \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 2,
+                "enemy_group_max": 6,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 10,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "                \n                \n  ############# \n  #...#.......# \n  #.P./.......# \n  #...#.E.....# \n  #####.......# \n  #...#E......# \n  #.../.......# \n  #...#.......# \n###/####/###/## \n#...#T..E.#.E.# \n#...#....E#.BE# \n#...#.....#E..# \n############### \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 16,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1027,12 +649,12 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "###############\n#......E#.....#\n#......./..P..#\n#.......#....E#\n#E.B....#.....#\n#.......#...E.#\n#.......#.....#\n#....T..#.....#\n###############\n\n"
+            "map": "#####   ##### \n#...#   #...# \n#...#   #.B.# \n#...#   #...# \n#..E#####/### \n#...#...T.#   \n#.../E....#   \n#.E.#.....#   \n#####E....#   \n    #E....#   \n  ###/##/#### \n  #...#.....# \n  #..E#...P.# \n  #EE.#.....# \n  ########### \n              \n"
         },
         {
             "params": {
                 "map_width": 13,
-                "map_height": 15,
+                "map_height": 13,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1040,20 +662,41 @@
                 "room_min_height": 2,
                 "room_max_height": 7,
                 "enemy_group_min": 1,
-                "enemy_group_max": 6,
+                "enemy_group_max": 4,
                 "group_size_min": 1,
                 "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 10,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 6,
                 "boss": 1,
                 "reward": 1
             },
-            "map": "#####        \n#...#        \n#.B.#######  \n#...#E..E.#  \n##/##.....#  \n#..E#E....#  \n#..E##/######\n#E../.......#\n##/##.......#\n#...#.......#\n#.P.#...T...#\n#E..#E......#\n#...#.......#\n#...#.......#\n#############\n\n"
+            "map": "#####        \n#...#        \n#...#########\n#...#...#...#\n#...#.E./.B.#\n#...#...#.T.#\n#.../.E.#####\n#...#...#    \n##/##E..#    \n#EE.#...#    \n#.P.#####    \n#E..#        \n#####        \n"
         },
         {
             "params": {
-                "map_width": 14,
+                "map_width": 16,
                 "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "############### \n#.......#.E...# \n#.B...E.#...P.# \n#...T.E.#.E...# \n####/#####/#### \n#.......#...#   \n#.......#...#   \n#.......#...#   \n#......./...#   \n#.......#...#   \n#############   \n                \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 12,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1069,12 +712,12 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "  #########   \n  #.......#   \n  #.....E.#   \n  #.....E.#   \n###/##/###### \n#...#...#...# \n#...#.../.B.# \n#.P.#...#...# \n#...#...##### \n#E..#...#     \n#.E.#...#     \n#..T#...#     \n#########     \n\n"
+            "map": "      #########\n      #.......#\n#######...T...#\n#.....#.......#\n#...../.......#\n#.....#....E..#\n####/#####/####\n  #.....#...#  \n  #.EEB.#.PE#  \n  #....E#..E#  \n  ###########  \n               \n"
         },
         {
             "params": {
-                "map_width": 12,
-                "map_height": 13,
+                "map_width": 13,
+                "map_height": 14,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1090,12 +733,54 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "########### \n#.....#...# \n#.B...#...# \n#...E.#...# \n##/#####/## \n#...#....E# \n#.../.....# \n#...#...E.# \n#...##/#### \n#.T.#..E#   \n#...#.P.#   \n#...#..E#   \n#########   \n\n"
+            "map": "      #######\n      #E....#\n  #####.....#\n  #...#.....#\n  #.P.#E.B..#\n  #...#.....#\n####/##.....#\n#...../.....#\n#.....#######\n#..E../T..E.#\n#######..E..#\n      #.....#\n      #######\n             \n"
         },
         {
             "params": {
-                "map_width": 11,
-                "map_height": 16,
+                "map_width": 15,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "      #########\n      #.......#\n#######....E..#\n#...../....E..#\n#.....#########\n#.....# #.....#\n#####/###.....#\n#...#...#.P..E#\n#.B./.../.....#\n#...#..T#.....#\n###############\n               \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #############\n  #.......#...#\n  #....T../...#\n  #....P..#...#\n  #......E#.BE#\n  #.......#.E.#\n  #.......#####\n  #.......#    \n  #########    \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 10,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1111,11 +796,95 @@
                 "boss": 1,
                 "reward": 0
             },
-            "map": "           \n           \n  #####    \n  #..E#    \n  #...#####\n  #.../...#\n  ##/##.B.#\n  #...#...#\n  #...#####\n  #...#    \n  #.E.#####\n  #.../...#\n  #####EP.#\n      #...#\n      #####\n           \n\n"
+            "map": "#####           \n#...#           \n#..E#########   \n#...#.......#   \n#.../E...B..#   \n#...#.......#   \n#.P.#########   \n#...#           \n#####           \n                \n"
         },
         {
             "params": {
-                "map_width": 9,
+                "map_width": 11,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#########  \n#.....E.#  \n#...B...#  \n#.......#  \n#...T...#  \n#.......#  \n####/######\n  #....E..#\n  #..P....#\n  #.......#\n  #########\n           \n           \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #############\n  #T..#.......#\n  #.../...P...#\n  #...#.......#\n  #...#########\n  #...#...#E..#\n  #.../.../.B.#\n  #...#...#...#\n  #############\n               \n               \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "            \n            \n#########   \n#..E....#   \n#.......#   \n#.......#   \n#....B..#   \n#.......#   \n##/######   \n#.....#     \n#...P.#     \n#.....#     \n#######     \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #####      \n  #...#      \n  #...#######\n  #...#.....#\n  #.../.B...#\n  #.T.#.....#\n  #...#######\n  #.../.....#\n####/##.....#\n#.EE..#.....#\n#..PE.#######\n#.....#      \n#######      \n"
+        },
+        {
+            "params": {
+                "map_width": 10,
                 "map_height": 10,
                 "retry": 100,
                 "room_ideal": 100,
@@ -1132,11 +901,830 @@
                 "boss": 1,
                 "reward": 0
             },
-            "map": "#######  \n#..E..#  \n#.P...#  \n#..E..#  \n###/#####\n#.......#\n#..B.E..#\n#.......#\n#########\n         \n\n"
+            "map": "######### \n#.......# \n#..B....# \n#....E..# \n#####/### \n  #.E...# \n  #...P.# \n  #.....# \n  ####### \n          \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  ###########  \n  #.....#...#  \n  #.....#.B.#  \n  #.E...#...#  \n  #..E..##/##  \n  #E..../...#  \n  ####/##...#  \n  #.....#..E#  \n  #.....#...#  \n  #.....#E.E#  \n  ##/########  \n  #...#        \n  #.P.#        \n  #.T.#        \n  #####        \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#####         \n#...#         \n#.B.######### \n#...#.......# \n#...#...P...# \n#E..#.......# \n###/##/###### \n  #E.E..#     \n  #.....#     \n  #.E...#     \n  #######     \n              \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 10,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 3,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#########  \n#.......#  \n#..B..E.#  \n#.......#  \n######/##  \n    #...#  \n    #.P.#  \n    #...#  \n    #####  \n           \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "      #######\n      #....E#\n#######..EB.#\n#...../...T.#\n#.E...#######\n#.....#..E#  \n#...../.PE#  \n#.....#.E.#  \n#.....#####  \n#.....#      \n#######      \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 3,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "  #####  \n  #...#  \n  #.B.#  \n  #...#  \n  #...#  \n  #...#  \n  #...#  \n  #E..#  \n  ##/##  \n  #..E#  \n  #.P.#  \n  #...#  \n  #####  \n         \n"
         },
         {
             "params": {
                 "map_width": 10,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 4,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#######   \n#.....#   \n#..B..#   \n#.E...#   \n####/#### \n  #.....# \n  #.....# \n  #.....# \n  ##/#### \n  #...#   \n  #...#   \n  #.P.#   \n  #...#   \n  #...#   \n  #####   \n          \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#########   \n#...#EE.#   \n#TP.#.B.#   \n#...#...#   \n###/##/#### \n  #.......# \n  #.......# \n  #.......# \n  #E......# \n  #.......# \n  ######### \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #########  \n  #...#...#  \n  #.P.#...#  \n  #...#...#  \n  ##/###/##  \n  #E......#  \n  #.......#  \n  #.E.....#  \n######/####  \n#...#..T#    \n#.B.#...#    \n#...#EE.#    \n#.../...#    \n#E..#...#    \n#########    \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 3,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#####    \n#...#    \n#.E.#    \n#...#    \n#...#####\n#.../..E#\n##/##.P.#\n#...#..E#\n#.B.#####\n#...#    \n#####    \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#####    \n#...#    \n#...#####\n#...#...#\n#ET./.B.#\n#...#.E.#\n###/#####\n  #...#  \n  #...#  \n  #...#  \n####/####\n#..E....#\n#...P...#\n#...E.E.#\n#########\n         \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#####    \n#...#    \n#...#####\n#...#...#\n#.B.#...#\n#...#EP.#\n##/##...#\n#...#...#\n#E../...#\n#E..#...#\n#E..#####\n#...#    \n#####    \n         \n         \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "      #######\n      #.....#\n#######.....#\n#.....#..B..#\n#.P.../...E.#\n#.....#..E..#\n#######.....#\n      #...E.#\n      #######\n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#########\n#..E....#\n#E......#\n#E..T...#\n#..B....#\n#.......#\n####/####\n  #...#  \n  #...#  \n  #...#  \n####/####\n#E.E....#\n#..P....#\n#..E....#\n#########\n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#########   \n#.......#   \n#.......#   \n#.......#   \n##/######   \n#.......#   \n#......T#   \n#.......#   \n####/##/### \n#....E#EE.# \n#..B..#.P.# \n#.....#...# \n########### \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "###############\n#....E..#E....#\n#.......#.E...#\n#......T#.P...#\n#.......#.....#\n#.E..B..#.....#\n#..E..../.....#\n#.......#.....#\n###############\n               \n               \n               \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#######        \n#.....#        \n#.P...#########\n#.....#.......#\n#...T./.......#\n#.....#.......#\n########/######\n  #..E#...#    \n  #EB./...#    \n  #..E#...#    \n  #####...#    \n      #...#    \n      #####    \n"
+        },
+        {
+            "params": {
+                "map_width": 10,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "######### \n#.......# \n#....B..# \n#.......# \n######/## \n#.......# \n#..E....# \n#.......# \n######/## \n  #.....# \n  #..P..# \n  #..T..# \n  ####### \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#############\n#.......#.E.#\n#...P...#.B.#\n#.......#...#\n##/######...#\n#...#..E#...#\n#...#.../...#\n#.../.TE#...#\n#..E#...#####\n#...#...#    \n#########    \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#######    \n#.....#    \n#.....#    \n#.....#    \n#E....#    \n#E....#    \n#.....#####\n#...../...#\n####/##...#\n  #...#.P.#\n  #TB.#...#\n  #...#...#\n  #####...#\n      #...#\n      #####\n           \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "    #######     \n    #.....#     \n    #...B.#     \n    #....E#     \n    #####/##### \n    #.EE#.....# \n#####...#E....# \n#...#...#.....# \n#TP./.E./.E...# \n#.E.#...#.....# \n#####...#.....# \n    #...#.....# \n    ########### \n                \n                \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "               \n               \n#####   #####  \n#...#   #.E.#  \n#.B.#####...#  \n#.../...#...#  \n#####.E./E..#  \n    #...#...#  \n    #...#######\n    #.../.EE..#\n    #####.P...#\n        #...T.#\n        #######\n               \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 3,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "  #####    \n  #...#    \n  #.P.#    \n  #...#    \n####/####  \n#.......#  \n#..B....#  \n#.....EE#  \n#########  \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#######       \n#.....#       \n#.....#####   \n#...B.#...#   \n#.E...#...#   \n#.....#...#   \n#####/##/#### \n#...#.......# \n#.P./......E# \n#...#......E# \n#####..T....# \n    #.......# \n    ######### \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 4,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "###########     \n#.....#.E.#     \n#...../...#     \n#.....#...#     \n#.P...#...#     \n#.EE..#...#     \n#######.B.#     \n      #...#     \n      #####     \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #######    \n  #...E.#    \n  #.BE.E#####\n  #.....#...#\n#####/###...#\n#.......#.P.#\n#......T#...#\n#......./...#\n#......E#...#\n#.......#...#\n#############\n             \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#######      \n#.....#      \n#EBEE.# #####\n#.....# #...#\n####/####.P.#\n  #.....#.E.#\n  #....E/...#\n  #...E.#...#\n  #T....#...#\n  #.....#...#\n  ###########\n             \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "            \n            \n########### \n#.....#...# \n#.T...#.P.# \n#..B../...# \n#...E.#...# \n#.....#E..# \n#..E..#...# \n#....E#.E.# \n########### \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 10,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 4,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#########\n#.......#\n#.P..E..#\n#.......#\n######/##\n#...#...#\n#.B./...#\n#...#...#\n#########\n         \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#########\n#...#...#\n#.../.B.#\n#...#...#\n#...#E..#\n#..E#...#\n##/######\n#.......#\n#.P.....#\n#.......#\n#########\n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#######  \n#.....#  \n#...B.#  \n#.....#  \n####/##  \n  #...#  \n  #E..#  \n  #EE.#  \n####/##  \n#.....#  \n#.....#  \n#.E...#  \n#..P..#  \n#.....#  \n#######  \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#####        \n#...#        \n#...#########\n#...#......T#\n#.../.E.....#\n#.B.#.......#\n#...#.......#\n#...#.......#\n#####.......#\n    #.......#\n  ####/######\n  #.E...#    \n  #...P.#    \n  #E.E..#    \n  #######    \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 2,
+                "enemy_group_max": 6,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 10,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#############\n#.....#E....#\n#....E/E....#\n#.....#E....#\n#...E.#..P..#\n#E....#.....#\n#.....#######\n#...../.....#\n#######..E..#\n#...# #.....#\n#.B.####/####\n#.E./...T.#  \n#####.....#  \n    #..E.E#  \n    #######  \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 8,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#########   \n#.......#   \n#..P....#   \n#.......#   \n##/######## \n#..E#.E...# \n#...#.....# \n#...#.BE..# \n#T../.....# \n#...#.....# \n#...#.....# \n#...#.....# \n########### \n            \n            \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "           \n           \n  #########\n  #.......#\n  #...E...#\n  #.......#\n  #.......#\n  #.T...EE#\n  #.B.....#\n  #.......#\n####/######\n#..E..#    \n#..P..#    \n#.....#    \n#######    \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 10,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  ############# \n  #.......#...# \n  #.T....E#.B.# \n  #......E#...# \n  #.P.....##/## \n  #......./...# \n  #########...# \n          #...# \n          ##### \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #########\n  #.......#\n  #T......#\n  #.....P.#\n  #E......#\n  #.......#\n  ##/######\n  #...#    \n  #E..#####\n  #.E.#.EE#\n  #.../EB.#\n  #...#...#\n  #########\n           \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "        #######\n        #.....#\n  #######...B.#\n  #.E.../.....#\n  #.E...#######\n  #.....#      \n  #.....#####  \n  #.....#...#  \n  #...../...#  \n  #.....#...#  \n  ##/####...#  \n  #...# #E..#  \n  #.P.# #####  \n  #T..#        \n  #####        \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #######\n  #.....#\n  #.....#\n  #..P..#\n  #.....#\n  #..EE.#\n  #.T...#\n  #.E...#\n######/##\n#.......#\n#.......#\n#..B...E#\n#.......#\n#.......#\n#########\n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#########      \n#.......#      \n#.......#######\n#.......#.....#\n#.......#.....#\n#.....B.#.....#\n#......./...P.#\n#.....EE#T....#\n###############\n               \n               \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
                 "map_height": 12,
                 "retry": 100,
                 "room_ideal": 100,
@@ -1153,96 +1741,12 @@
                 "boss": 1,
                 "reward": 0
             },
-            "map": "#######   \n#E.E..#   \n#.....#   \n#.....#   \n##/##/### \n#...#...# \n#...#...# \n#...#.B.# \n#.P.#...# \n#...#...# \n######### \n          \n\n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 6,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 9,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#########       \n#...#...#       \n#.P./...# ##### \n#.EE#E..# #...# \n#######/###...# \n#.....#...#..E# \n#.....#...#...# \n#E....#...#...# \n#..E..#.../.B.# \n#E....#T..#...# \n#...../.E.##### \n#.....#...#     \n###########     \n                \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "#####          \n#E..#          \n#...#########  \n#...#.......#  \n#.B./..P....#  \n#...#....E..#  \n#..E#########  \n#...#          \n#####          \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "    #########  \n    #...E.E.#  \n#####.....E.#  \n#...#.......#  \n#...###/#####  \n#...#.......#  \n#.B./.......#  \n#...#.......#  \n#####/###/###  \n  #..T#.....#  \n  #EPE#..EE.#  \n  #..E#.....#  \n  ###########  \n               \n               \n               \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "      #######\n      #.....#\n  #####.B..E#\n  #...#.....#\n  #.../.....#\n  #E..#.....#\n  #EP.#######\n  #...#      \n  #####      \n\n"
+            "map": "##### ##### \n#...# #...# \n#...# #.B.# \n#.P.# #...# \n#...###/### \n#...#E..#   \n#.../...#   \n#...#..E#   \n#####..E#   \n    #...#   \n    #####   \n            \n"
         },
         {
             "params": {
                 "map_width": 9,
-                "map_height": 11,
+                "map_height": 13,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1254,561 +1758,15 @@
                 "group_size_min": 1,
                 "group_size_max": 3,
                 "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
+                "enemy_ideal_max": 6,
                 "boss": 1,
                 "reward": 1
             },
-            "map": "#########\n#...#...#\n#.../.B.#\n#...#...#\n##/######\n#E.E....#\n#.....T.#\n#.......#\n#.P.....#\n#.......#\n#########\n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#############\n#...#.......#\n#...#.......#\n#.../.......#\n#...#.......#\n#...#.....E.#\n#.P.#...B.E.#\n#...#..T....#\n#############\n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "###############\n#..EEE#.......#\n#...T./...B...#\n#.....#.......#\n#####/#########\n    #.....#    \n#####.....#    \n#...#.....#    \n#.../.....#    \n#...#.....#    \n#...#####/###  \n#...#   #...#  \n#####   #.P.#  \n        #...#  \n        #####  \n               \n\n"
+            "map": "#######  \n#E....#  \n#.....#  \n#.....#  \n##/##/###\n#...#.E.#\n#.P.#...#\n#...#.E.#\n#...#.B.#\n#...#...#\n#.E.#...#\n#..T#...#\n#########\n"
         },
         {
             "params": {
                 "map_width": 10,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "######### \n#.......# \n#....P..# \n#.......# \n#.....T.# \n#.......# \n####/#### \n#.....E.# \n#..BEE..# \n#.......# \n######### \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#########   \n#.....T.#   \n#.B.....#   \n#.E.....#   \n#..E....#   \n#.......#   \n####/####   \n#..E....#   \n#.......#   \n#...P...#   \n#.......#   \n#.......#   \n#########   \n\n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "  #####         \n  #...#         \n  #.P.######### \n  #...#.......# \n####/##.......# \n#...../.......# \n#...E.##/###/## \n#....E#...#...# \n#....E#.B.#...# \n#.....#...#...# \n#...T.######### \n#.....#         \n#######         \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "          #####\n          #...#\n###########...#\n#.T.#.....#.P.#\n#...#....E#...#\n#...#...../...#\n#.BE/..E..#.E.#\n#...#...E.#.E.#\n###############\n               \n               \n\n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#########\n#.......#\n#.....E.#\n#....T..#\n#.P..E..#\n#....E..#\n######/##\n#...#...#\n#.EE/...#\n#...#...#\n#...#####\n#.../...#\n#####.B.#\n    #...#\n    #####\n         \n\n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#####    \n#...#    \n#.B.#####\n#EE.#...#\n#...#...#\n#...#...#\n##/##...#\n#...#.E.#\n#.../.P.#\n#...#.E.#\n#E..#####\n#...#    \n#..T#    \n#.E.#    \n#####    \n         \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 3,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "  ######### \n  #.......# \n  #.....B.# \n  #.......# \n  ##/###### \n  #.....#   \n  #..P..#   \n  #.EE..#   \n  #######   \n            \n\n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "    ########### \n    #...#.....# \n    #.P.#..B..# \n    #...#....T# \n  ###/######/## \n  #..E#   #...# \n  #...#   #...# \n  #.E.#   #...# \n  #...#####...# \n  #E../...#...# \n  #####.../...# \n      #...#...# \n      ######### \n                \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#########   \n#.......#   \n#....E.T#   \n#....E..#   \n#...E...#   \n#.......#   \n#.......#   \n#.......#   \n##/###/#### \n#..E#.....# \n#.P.#.B...# \n#E..#...E.# \n########### \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "               \n               \n  #############\n  #.......#..E#\n  #......T#EB.#\n  #......./...#\n  #..P....#...#\n  #.......#...#\n  #E......#####\n  #.E.....#    \n  #########    \n               \n               \n\n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 6,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 9,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "############### \n#.......#.....# \n#.E.....#.....# \n#..P....#.....# \n#......./.....# \n#.......#.....# \n#########..E..# \n  #.T.../.....# \n  #.....##/#### \n  #.....#...#   \n  #######.B.#   \n        #...#   \n        #####   \n                \n\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "  #########   \n  #.......#   \n  #.......#   \n  #...E...#   \n  #....E..#   \n  #.......#   \n####/####/### \n#.......#...# \n#.......#..T# \n#.......#...# \n#E....B.#.P.# \n#.......#...# \n############# \n              \n\n"
-        },
-        {
-            "params": {
-                "map_width": 11,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 5,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#########  \n#.......#  \n#..B..T.#  \n#.E.....#  \n######/####\n  #.......#\n  #.......#\n  #E....P.#\n  #.E.....#\n  #.....E.#\n  #########\n           \n           \n           \n\n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 6,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 9,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#############   \n#.......#...#   \n#.....B./E..#   \n#...E...#...#   \n#.......#...#   \n#..E....#...#   \n#########/###   \n  #......E#     \n  #.......##### \n  #.E.T...#...# \n  #......./.PE# \n  #..E....#..E# \n  ############# \n                \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 3,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "  #####     \n  #...#     \n  #...##### \n  #E..#...# \n  #.B./.PE# \n  #...#...# \n  #...##### \n  #..E#     \n  #####     \n            \n            \n\n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#########\n#.......#\n#.E.....#\n#.......#\n#.......#\n#.B.....#\n#.......#\n#T....E.#\n####/####\n  #...#  \n  #.P.#  \n  #..E#  \n  #####  \n         \n         \n         \n\n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#######   \n#.EE..#   \n#.BE..#   \n#.....#   \n####/#### \n#.......# \n#T..P...# \n#.......# \n#.......# \n#.......# \n#.......# \n#.......# \n######### \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "########### \n#.E...#...# \n#...P./E..# \n#..E..#E..# \n#######...# \n      #...# \n      #..E# \n      #...# \n  ######/## \n  #..T....# \n  #.......# \n  #...E...# \n  #.....B.# \n  #.......# \n  ######### \n            \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 6,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 9,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "###########  \n#...#.....#  \n#.B.#..EE.#  \n#...#...P.#  \n##/##T....#  \n#...#.....#  \n#...#####/###\n#...#   #...#\n#...#####...#\n#...#...#...#\n#.../...#...#\n#...#...#...#\n#####.../...#\n    #...#...#\n    #########\n             \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 8,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "               \n               \n  #############\n  #.......#...#\n  #......./.P.#\n  #.......#...#\n####/##########\n#.....#        \n#.....#        \n#.....#        \n#.....#########\n#.....#..T.E..#\n#...../.EB....#\n#.....#..E....#\n###############\n               \n\n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 3,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "          \n          \n  ####### \n  #...E.# \n  #.....# \n  #....E# \n###/##/## \n#...#...# \n#.B.#.P.# \n#...#...# \n######### \n\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "    #####     \n    #...#     \n    #...##### \n    #.../...# \n######/##...# \n#...#...#...# \n#.BT#...#...# \n#...#...#...# \n#.../...##/## \n#...#...#E..# \n#########.P.# \n        #EE.# \n        ##### \n              \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "      #######  \n      #.T...#  \n#######...P.#  \n#....E#.....#  \n#....E##/####  \n#..E../.....#  \n#######.....#  \n  #...#.....#  \n  #.B./.....#  \n  #...#.....#  \n  #####.....#  \n      #.....#  \n      #######  \n               \n\n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 3,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "  ####### \n  #.....# \n  #..EP.# \n  #.....# \n  ####/## \n    #...# \n    #.B.# \n    #...# \n    #...# \n    #...# \n    ##### \n\n"
-        },
-        {
-            "params": {
-                "map_width": 11,
                 "map_height": 15,
                 "retry": 100,
                 "room_ideal": 100,
@@ -1825,96 +1783,12 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "           \n           \n#######    \n#.....#    \n#.....#####\n#...E.#E..#\n#.....#.P.#\n#T..../.E.#\n#.....#...#\n#.....#E..#\n####/##...#\n  #...#...#\n  #.B.#####\n  #..E#    \n  #####    \n\n"
+            "map": "######### \n#.......# \n#.......# \n#.......# \n#...B.EE# \n#.......# \n####/#### \n#.T.....# \n#.......# \n#.......# \n####/#### \n  #...#   \n  #.P.#   \n  #...#   \n  #####   \n"
         },
         {
             "params": {
-                "map_width": 9,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "         \n         \n#########\n#.......#\n#.......#\n#...B...#\n#.......#\n#.E.....#\n####/####\n  #..E#  \n  #.P.#  \n  #...#  \n  #####  \n         \n\n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 4,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 6,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "#########\n#.......#\n#.E...P.#\n#.......#\n####/####\n  #...#  \n  #..E#  \n  #...#  \n  #.T.#  \n  #...#  \n####/####\n#EE.....#\n#.B...E.#\n#.......#\n#########\n         \n\n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "  ####### \n  #.....# \n  #.....# \n  #.....# \n  #..P..# \n  #.....# \n######/## \n#....E..# \n#.....B.# \n#......E# \n######### \n          \n          \n          \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "###########  \n#...#.....#  \n#...#.....#  \n#.../.....#  \n#.E.#.....#  \n#EP.#.....#  \n#...#.....#  \n#T..#.....#  \n#####/#####  \n  #...#...#  \n  #.../.B.#  \n  #...#...#  \n  #########  \n             \n             \n\n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 11,
+                "map_width": 15,
+                "map_height": 12,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1928,14 +1802,14 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 1
             },
-            "map": "#########   \n#.......#   \n#...B...#   \n#E......#   \n#.......#   \n#.E.....#   \n######/#### \n    #EE...# \n    #.EP..# \n    #.....# \n    ####### \n\n"
+            "map": "               \n               \n  ###########  \n  #.....#...#  \n  #.....#...#  \n  #...E.#.E.#  \n  #...P.#.E.#  \n  #....E#.B.#  \n  #...../...#  \n  #T....#...#  \n  ###########  \n               \n"
         },
         {
             "params": {
-                "map_width": 16,
-                "map_height": 11,
+                "map_width": 11,
+                "map_height": 13,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -1951,74 +1825,11 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "                \n                \n############### \n#...#.....#...# \n#...#...../.EE# \n#.../.....#.P.# \n#.B.#.....#..E# \n#...#..T..#...# \n#...########### \n#...#           \n#####           \n\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 3,
-                "group_size_min": 1,
-                "group_size_max": 2,
-                "enemy_ideal_min": 1,
-                "enemy_ideal_max": 4,
-                "boss": 1,
-                "reward": 0
-            },
-            "map": "              \n              \n  #######     \n  #.....#     \n  #.....##### \n  #....E#...# \n  #...../.P.# \n  #.....#...# \n  #..B..##### \n  #.....#     \n  #######     \n\n"
+            "map": "      #####\n      #...#\n  #####...#\n  #...#...#\n  #...#...#\n  #E../EE.#\n  #T..#.P.#\n  #...#...#\n####/######\n#.E.....#  \n#E...B..#  \n#.......#  \n#########  \n"
         },
         {
             "params": {
                 "map_width": 16,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "                \n                \n  ############# \n  #...E.#.....# \n  #.TP..#.E...# \n  #.....#E....# \n  #.....#.B...# \n  #...../.....# \n  #.....#.....# \n  #.....#.....# \n  ############# \n                \n                \n\n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7,
-                "enemy_group_min": 1,
-                "enemy_group_max": 5,
-                "group_size_min": 1,
-                "group_size_max": 3,
-                "enemy_ideal_min": 2,
-                "enemy_ideal_max": 7,
-                "boss": 1,
-                "reward": 1
-            },
-            "map": "##### #####  \n#...# #...#  \n#...# #.P.#  \n#.E.# #E..#  \n###/####/##  \n  #.......#  \n  #...E...#  \n  #..E....#  \n  #.......#  \n  #....E..#  \n  ##/######  \n  #.......#  \n  #....B..#  \n  #....TEE#  \n  #########  \n             \n\n"
-        },
-        {
-            "params": {
-                "map_width": 15,
                 "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
@@ -2027,20 +1838,41 @@
                 "room_min_height": 2,
                 "room_max_height": 7,
                 "enemy_group_min": 1,
-                "enemy_group_max": 3,
+                "enemy_group_max": 4,
                 "group_size_min": 1,
-                "group_size_max": 2,
+                "group_size_max": 3,
                 "enemy_ideal_min": 1,
-                "enemy_ideal_max": 3,
+                "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 1
             },
-            "map": "  #####        \n  #...#        \n  #...#######  \n  #.B.#.....#  \n  #E../.P...#  \n  #...#.....#  \n  ###########  \n               \n               \n\n"
+            "map": "#####           \n#...#           \n#..E#########   \n#...#....E..#   \n#..E#...E...#   \n#..T#.P.....#   \n#.B./.......#   \n#...#....E..#   \n#############   \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 6,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "#############\n#.....#.....#\n#...ET#.....#\n#.....#...P.#\n#.B..E/.....#\n#.....#.....#\n#######.....#\n      #.....#\n      #######\n"
         },
         {
             "params": {
                 "map_width": 15,
-                "map_height": 14,
+                "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -2056,12 +1888,180 @@
                 "boss": 1,
                 "reward": 1
             },
-            "map": "#####          \n#...#          \n#.B.# #########\n#...# #......E#\n##/####.....EE#\n#.....#..T....#\n#...../.......#\n#.....#.......#\n#....E##/######\n#.....#..E#    \n#######.P.#    \n      #E..#    \n      #####    \n               \n\n"
+            "map": "###############\n#E....#.......#\n#...../E......#\n#.....#..T....#\n#..P..#.......#\n#E....#......E#\n#.....#..B....#\n#.....#.......#\n###############\n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 3,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "#####    \n#...#    \n#.B.#    \n#...#    \n###/###  \n  #...#  \n  #...#  \n  #...#  \n  #...#  \n  #.PE#  \n  #...#  \n  #..E#  \n  #####  \n         \n         \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 4,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 5,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "    #######\n    #E....#\n#####.....#\n#...#.....#\n#...#TP...#\n#.../.....#\n#...#....E#\n#.B.#..E.E#\n#..E#######\n#...#      \n#####      \n           \n"
         },
         {
             "params": {
                 "map_width": 10,
-                "map_height": 9,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 2,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 2,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "  #####   \n  #...#   \n  #.B.#   \n  #...#   \n  ##/##   \n  #...#   \n  #E..#   \n  #..E#   \n  #.P.#   \n  #...#   \n  #####   \n          \n          \n          \n"
+        },
+        {
+            "params": {
+                "map_width": 10,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 3,
+                "group_size_min": 1,
+                "group_size_max": 2,
+                "enemy_ideal_min": 1,
+                "enemy_ideal_max": 3,
+                "boss": 1,
+                "reward": 0
+            },
+            "map": "  ####### \n  #..E..# \n  #E..B.# \n  #.....# \n####/#### \n#.....#   \n#.PE..#   \n#.....#   \n#######   \n          \n          \n          \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 5,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 7,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "    ####### \n    #.....# \n#####...EE# \n#...#..E..# \n#.B./.....# \n#TE.#.....# \n######/#### \n  #.....#   \n  #.....#   \n  #.....#   \n#######/### \n#.....#...# \n#.P..E/...# \n#.....#...# \n########### \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 2,
+                "enemy_group_max": 7,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 3,
+                "enemy_ideal_max": 12,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #############\n  #E....#.....#\n  #E..B.#.....#\n  #..E..#.....#\n####/####....E#\n#.......#.....#\n#....E../.....#\n#..T....#.....#\n#########/#####\n  #.......#...#\n  #....E..#...#\n  #.......#E..#\n  #......./.P.#\n  #.......#...#\n  #############\n               \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 1,
+                "enemy_group_max": 6,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 2,
+                "enemy_ideal_max": 10,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "    ########### \n    #E..#.....# \n#####E.E#.B...# \n#...#...#.....# \n#.P.##/##/##### \n#...#.....#..E# \n#...#...../E..# \n#.../.....#..E# \n#T..#.....##### \n#...#.....#E..# \n#####...../.E.# \n    #.....#.E.# \n    ########### \n                \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7,
+                "enemy_group_min": 2,
+                "enemy_group_max": 7,
+                "group_size_min": 1,
+                "group_size_max": 3,
+                "enemy_ideal_min": 3,
+                "enemy_ideal_max": 11,
+                "boss": 1,
+                "reward": 1
+            },
+            "map": "  #########     \n  #...E...#     \n  #...B...#     \n  #.....E.#     \n  ######/###### \n  #...#.......# \n  #.../....E..# \n  #..E#..T.E..# \n#######.......# \n#.E.../.......# \n#..E..######### \n#E....#.......# \n#...../.P.....# \n#.....#.....E.# \n############### \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 12,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -2077,12 +2077,12 @@
                 "boss": 1,
                 "reward": 0
             },
-            "map": "######### \n#.......# \n#E......# \n#.......# \n##/###/## \n#...#...# \n#.PE#.B.# \n#E..#...# \n######### \n\n"
+            "map": "             \n             \n  ###########\n  #...#.....#\n  #.P.#...B.#\n  #...#....E#\n  #.E./.....#\n  #E..#.....#\n  ###########\n             \n             \n             \n"
         },
         {
             "params": {
-                "map_width": 13,
-                "map_height": 9,
+                "map_width": 14,
+                "map_height": 15,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -2090,15 +2090,15 @@
                 "room_min_height": 2,
                 "room_max_height": 7,
                 "enemy_group_min": 1,
-                "enemy_group_max": 5,
+                "enemy_group_max": 6,
                 "group_size_min": 1,
                 "group_size_max": 3,
                 "enemy_ideal_min": 2,
-                "enemy_ideal_max": 6,
+                "enemy_ideal_max": 9,
                 "boss": 1,
                 "reward": 1
             },
-            "map": "#############\n#.E.#.......#\n#.B.#.......#\n#E..#.....P.#\n##/##.......#\n#E..#.....T.#\n#..E/.......#\n#E..#.......#\n#############\n\n"
+            "map": "        ##### \n        #...# \n####### #...# \n#.....# #...# \n#..B..####/## \n#.....#.....# \n#...../E....# \n#E....#.....# \n#E.E..#.....# \n#.....#.....# \n########/#### \n    #T......# \n    #...P...# \n    #.......# \n    ######### \n"
         }
     ]
 }
