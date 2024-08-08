@@ -26,7 +26,7 @@ output_parameters_name = [
     "treasure_count",
     "enemy_count",
     "map_size",
-    "playablility",
+    "playability",
     "room_count",
 ]
 
