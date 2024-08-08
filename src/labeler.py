@@ -8,7 +8,7 @@ input_parameters_name = [
     "enemy_group",
     "enemy_group_size",
     "enemy_ideal",
-    "reward",
+    "treasure",
     "boss",
 ]
 
@@ -23,18 +23,18 @@ output_parameters_name = [
     "exploration_requirement",
     "difficulty_curve",
     "nonlinearity",
-    "reward_num",
-    "enemy_num",
+    "treasure_count",
+    "enemy_count",
     "map_size",
     "playablility",
-    "room_num",
+    "room_count",
 ]
 
 
 # tile icons
 icons = {
     "enemy": "E",
-    "reward": "R",
+    "treasure": "T",
     "entry": "P",
     "exit": ">",
     "boss": "B",
@@ -45,7 +45,7 @@ icons = {
 
 
 def label(
-    file_num: int = 100,
+    file_count: int = 100,
     difficulty_curve_interval: int = 5,
 ) -> None:
     """
@@ -57,7 +57,7 @@ def label(
 
     # Load data. input_data is a list of batch = { map_list: [] }
     # input_data = [batch0, batch1, ...]
-    input_data = load_folder(file_num=file_num)
+    input_data = load_folder(file_count=file_count)
 
     # estimate each level data
     output_data = input_data
@@ -69,7 +69,7 @@ def label(
             output_data[i]["map_list"][j]["params"].update(new_params)
 
     # Save data
-    save_folder(data=output_data, file_num=file_num)
+    save_folder(data=output_data, file_count=file_count)
 
     return
 
@@ -81,22 +81,22 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
     # str level to list level.
     list_level = str_level_to_list_level(level)
 
-    # num parameters
+    # count parameters
     (
-        reward_num,
-        enemy_num,
-        empty_tile_num,
+        treasure_count,
+        enemy_count,
+        empty_tile_count,
         map_size,
-        total_object_num,
-        total_passible_tile_num,
-        total_tile_num,
-    ) = _set_num_param(list_level)
+        total_object_count,
+        total_passible_tile_count,
+        total_tile_count,
+    ) = _set_count_param(list_level)
 
     # set object positions
     (
         object_positions,
         enemy_positions,
-        reward_positions,
+        treasure_positions,
         exit_position,
         entry_position,
     ) = _set_object_dict(list_level)
@@ -109,10 +109,10 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
     # Make a result dict
     output_parameters = dict()
     output_parameters[output_parameters_name[0]] = _density(
-        reward_num + enemy_num, total_tile_num
+        treasure_count + enemy_count, total_tile_count
     )
     output_parameters[output_parameters_name[1]] = _empty_ratio(
-        empty_tile_num, total_tile_num
+        empty_tile_count, total_tile_count
     )
     output_parameters[output_parameters_name[2]] = _exploration_requirement(
         distance_dict_entry, object_positions
@@ -124,11 +124,11 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
         distance_dict_entry,
         distance_dict_exit,
         object_positions,
-        total_object_num,
-        total_passible_tile_num,
+        total_object_count,
+        total_passible_tile_count,
     )
-    output_parameters[output_parameters_name[5]] = reward_num
-    output_parameters[output_parameters_name[6]] = enemy_num
+    output_parameters[output_parameters_name[5]] = treasure_count
+    output_parameters[output_parameters_name[6]] = enemy_count
     output_parameters[output_parameters_name[7]] = map_size
     output_parameters[output_parameters_name[8]] = _is_playable(list_level)
     output_parameters[output_parameters_name[9]] = _count_room(list_level)
@@ -152,13 +152,13 @@ def load_file(path: str) -> list:
     return data
 
 
-def load_folder(path: str = "../data/2. placed", file_num: int = 100) -> list:
+def load_folder(path: str = "../data/2. placed", file_count: int = 100) -> list:
     """
     Load map data from data folder.
 
     Args:
         path: relative path of data folder.
-        file_num: the number of data files in the placed folder.
+        file_count: the number of data files in the placed folder.
     Returns:
         a list of 100 lists of 100 map data.
     """
@@ -167,7 +167,7 @@ def load_folder(path: str = "../data/2. placed", file_num: int = 100) -> list:
     # dicrectory
     cur_dir = os.path.dirname(os.path.abspath(__file__))
 
-    for i in range(file_num):
+    for i in range(file_count):
         _path = os.path.join(cur_dir, path, "batch" + str(i) + ".json")
         data_list.append(load_file(_path))
 
@@ -191,7 +191,7 @@ def save_file(data: list, path: str) -> None:
 
 
 def save_folder(
-    data: list, path: str = "../data/3. labelled", file_num: int = 100
+    data: list, path: str = "../data/3. labelled", file_count: int = 100
 ) -> None:
     """
     Save map data into data folder.
@@ -199,33 +199,33 @@ def save_folder(
     Args:
         path: relative path of data folder.
         data: 100 map data for the folder.
-        file_num: the number of files in a labelled data folder
+        file_count: the number of files in a labelled data folder
     """
 
     # directory
     cur_dir = os.path.dirname(os.path.abspath(__file__))
-    for i in range(file_num):
+    for i in range(file_count):
         _path = os.path.join(cur_dir, path, "batch" + str(i) + ".json")
         save_file(data[i], _path)
 
     return
 
 
-def _set_num_param(list_level: list) -> tuple:
-    reward_num, enemy_num, empty_tile_num, map_size = _tile_count(list_level)
+def _set_count_param(list_level: list) -> tuple:
+    treasure_count, enemy_count, empty_tile_count, map_size = _tile_count(list_level)
 
-    total_object_num = reward_num + enemy_num + 2
-    total_passible_tile_num = total_object_num + empty_tile_num
-    total_tile_num = map_size[0] * map_size[1]
+    total_object_count = treasure_count + enemy_count + 2
+    total_passible_tile_count = total_object_count + empty_tile_count
+    total_tile_count = map_size[0] * map_size[1]
 
     return (
-        reward_num,
-        enemy_num,
-        empty_tile_num,
+        treasure_count,
+        enemy_count,
+        empty_tile_count,
         map_size,
-        total_object_num,
-        total_passible_tile_num,
-        total_tile_num,
+        total_object_count,
+        total_passible_tile_count,
+        total_tile_count,
     )
 
 
@@ -248,16 +248,16 @@ def _set_object_dict(list_level: list) -> tuple:
     else:
         raise
 
-    reward_positions = _find_objects_position(list_level, icons["reward"])
+    treasure_positions = _find_objects_position(list_level, icons["treasure"])
     enemy_positions = _find_objects_position(list_level, icons["enemy"])
     object_positions = (
-        [entry_position] + [exit_position] + reward_positions + enemy_positions
+        [entry_position] + [exit_position] + treasure_positions + enemy_positions
     )
 
     return (
         object_positions,
         enemy_positions,
-        reward_positions,
+        treasure_positions,
         exit_position,
         entry_position,
     )
@@ -270,14 +270,14 @@ def _set_distance_dict(list_level: list, entry_pos: tuple, exit_pos: tuple) -> t
     return entry_distance_dict, exit_distance_dict
 
 
-def _density(total_object_num: int, total_tile_num: int) -> float:
+def _density(total_object_count: int, total_tile_count: int) -> float:
     """Returns the ratio of object tiles to total tiles."""
-    return total_object_num / total_tile_num
+    return total_object_count / total_tile_count
 
 
-def _empty_ratio(empty_num: int, total_tile_num: int) -> float:
+def _empty_ratio(empty_count: int, total_tile_count: int) -> float:
     """Returns the ratio of empty tiles to total tiles."""
-    return empty_num / total_tile_num
+    return empty_count / total_tile_count
 
 
 def _exploration_requirement(distance_dict_entry: dict, object_positoins: list) -> int:
@@ -328,9 +328,9 @@ def _difficulty_curve(distance_dict: dict, enemy_positions: tuple, n: int) -> fl
         heights.append(temp_height)
 
     height_difference = heights[0] - heights[len(heights) - 1]
-    interval_num = longest_distance // n + 1
+    interval_count = longest_distance // n + 1
     return (
-        height_difference / interval_num
+        height_difference / interval_count
     )  # mean that variation of enemy number per interval n.
 
 
@@ -338,8 +338,8 @@ def _nonlinearity(
     entry_distance_dict: dict,
     exit_distance_dict: dict,
     object_positions: list,
-    total_object_num: int,
-    total_passible_tile_num: int,
+    total_object_count: int,
+    total_passible_tile_count: int,
 ) -> float:
     """Returns the nonlinearity."""
 
@@ -366,7 +366,7 @@ def _nonlinearity(
 
     result = entry_sum + exit_sum
 
-    return result / total_passible_tile_num / total_object_num
+    return result / total_passible_tile_count / total_object_count
 
 
 def _shortest_distances(list_level: list, pos: tuple) -> dict:
@@ -447,20 +447,20 @@ def str_level_to_list_level(level: str) -> list:
 
 
 def _tile_count(list_level: list) -> tuple:
-    reward_num = 0
-    enemy_num = 0
-    empty_tile_num = 0
+    treasure_count = 0
+    enemy_count = 0
+    empty_tile_count = 0
     map_size = len(list_level), len(list_level[0])
     for row in list_level:
         for tile in row:
-            if tile == icons["reward"]:
-                reward_num += 1
+            if tile == icons["treasure"]:
+                treasure_count += 1
             elif tile == icons["enemy"]:
-                enemy_num += 1
+                enemy_count += 1
             elif tile == icons["empty"]:
-                empty_tile_num += 1
+                empty_tile_count += 1
 
-    return reward_num, enemy_num, empty_tile_num, map_size
+    return treasure_count, enemy_count, empty_tile_count, map_size
 
 
 def _is_playable(list_level: list) -> bool:
@@ -501,7 +501,7 @@ def _count_room(list_level: list) -> int:
 
     # Initialization.
     tunnels = []
-    discontinuous_tunnels_num = 1
+    discontinuous_tunnels_count = 1
 
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
@@ -549,12 +549,12 @@ def _count_room(list_level: list) -> int:
             if (x + dx, y + dy) not in tunnels:
                 count += 1
         if count == 4:
-            discontinuous_tunnels_num += 1
+            discontinuous_tunnels_count += 1
 
-    return discontinuous_tunnels_num
+    return discontinuous_tunnels_count
 
 
 if __name__ == "__main__":
-    label(file_num=1)
+    label(file_count=1)
 
     pass
