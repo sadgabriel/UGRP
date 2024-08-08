@@ -28,18 +28,12 @@ def _load_examples_from_file(input_path: str, example_count: int) -> str:
 
     for i, example in enumerate(selected_examples):
         params = example["params"]
-        map_size = params.get("map_size", "N/A")
-        room_count = params.get("room_num", "N/A")
-        enemy_count = params.get("enemy_num", "N/A")
-        treasure_count = params.get(
-            "reward_num", "N/A"
-        )  # 'treasure_num' 대신 'reward_num' 사용
 
         selected_params = {
-            "MAP_SIZE": map_size,
-            "ROOM_COUNT": room_count,
-            "ENEMY_COUNT": enemy_count,
-            "TREASURE_COUNT": treasure_count,
+            "MAP_SIZE": params.get("map_size", "N/A"),
+            "ROOM_COUNT": params.get("room_count", "N/A"),
+            "ENEMY_COUNT": params.get("enemy_count", "N/A"),
+            "TREASURE_COUNT": params.get("treasure_count", "N/A"),
         }
         params_str = "\n".join(
             [f"{key.upper()}: {value}" for key, value in selected_params.items()]
