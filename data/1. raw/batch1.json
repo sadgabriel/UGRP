@@ -3,7 +3,7 @@
         {
             "params": {
                 "map_width": 10,
-                "map_height": 14,
+                "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -11,11 +11,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "          \n          \n######### \n#...#...# \n#.../.<.# \n#...#...# \n#...##### \n#...#...# \n#.../...# \n#...#.>.# \n#####...# \n    #...# \n    ##### \n          \n"
+            "map": "#######   \n#.....#   \n#...>.#   \n#.....#   \n####/#### \n  #.....# \n  #.<...# \n  #.....# \n  ####### \n"
         },
         {
             "params": {
-                "map_width": 15,
+                "map_width": 14,
                 "map_height": 13,
                 "retry": 100,
                 "room_ideal": 100,
@@ -24,37 +24,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "               \n               \n  #############\n  #.......#...#\n  #.......#...#\n  #......./...#\n  #.......#.>.#\n  #.......#...#\n  ######/##...#\n    #.....#...#\n    #...<.#####\n    #.....#    \n    #######    \n"
+            "map": "        ##### \n        #...# \n  ##### #...# \n  #...# #...# \n  #.<.###/### \n  #.../...#   \n#######...#   \n#.....#...#   \n#.>.../...#   \n#.....#...#   \n#######...#   \n      #...#   \n      #####   \n"
         },
         {
             "params": {
-                "map_width": 12,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#########   \n#.......#   \n#.<.....#   \n#.......#   \n####/####   \n#.......#   \n#.......#   \n#..>....#   \n#.......#   \n#.......#   \n#########   \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "               \n               \n  #############\n  #.....#.....#\n  #...>./.....#\n  #.....#.....#\n#########.....#\n#.......#.....#\n#......./.....#\n#.......#.....#\n#.......#######\n#.......#.....#\n#......./.<...#\n#.......#.....#\n###############\n               \n"
-        },
-        {
-            "params": {
-                "map_width": 11,
+                "map_width": 16,
                 "map_height": 13,
                 "retry": 100,
                 "room_ideal": 100,
@@ -63,12 +37,12 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#########  \n#.......#  \n#.....<.#  \n#.......#  \n#.......#  \n#.......#  \n#.......#  \n#.......#  \n######/##  \n#.......#  \n#....>..#  \n#.......#  \n#########  \n"
+            "map": "                \n                \n  ############# \n  #...#...#...# \n  #...#...#...# \n  #.../...#...# \n  #...#...#.<.# \n  #...#...#...# \n###/###.../...# \n#...# #...#...# \n#.>.# ######### \n#...#           \n#####           \n"
         },
         {
             "params": {
-                "map_width": 16,
-                "map_height": 11,
+                "map_width": 13,
+                "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -76,63 +50,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#######         \n#.....#         \n#...>.######### \n#...../.......# \n#######.......# \n#...# #.......# \n#.<.####/###### \n#.../.......#   \n#####.......#   \n    #.......#   \n    #########   \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#####     \n#...#     \n#...##### \n#...#...# \n#.<.#.>.# \n#...#...# \n###/#/### \n  #...#   \n  #...#   \n  #...#   \n  #####   \n          \n          \n          \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "    #########   \n    #.......#   \n#####.......#   \n#...#.......#   \n#.<./.>.....#   \n#...#.......#   \n#############   \n                \n                \n                \n"
+            "map": "#############\n#...#.......#\n#.<./.......#\n#...#.......#\n#######/#####\n  #.......#  \n  #...>...#  \n  #.......#  \n  #########  \n"
         },
         {
             "params": {
                 "map_width": 9,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "         \n         \n#####    \n#...#    \n#.>.#####\n#.../...#\n#####...#\n    #...#\n  ###/###\n  #...#  \n  #.<.#  \n  #...#  \n  #####  \n         \n         \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######        \n#.....#        \n#.....#######  \n#.....#.....#  \n#.....#..<..#  \n#.....#.....#  \n#.....##/####  \n#...../.....#  \n##/####.....#  \n#...# #.....#  \n#...# #.....#  \n#...# #.....#  \n#.>.# #.....#  \n#...# #.....#  \n##### #######  \n"
-        },
-        {
-            "params": {
-                "map_width": 11,
                 "map_height": 10,
                 "retry": 100,
                 "room_ideal": 100,
@@ -141,76 +63,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#########  \n#...#...#  \n#...#...#  \n#.../...#  \n#.<.#.>.#  \n#...#...#  \n#########  \n           \n           \n           \n"
-        },
-        {
-            "params": {
-                "map_width": 11,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#########  \n#.......#  \n#.....>.#  \n#.......#  \n######/##  \n    #...#  \n#####...#  \n#...#...#  \n#.<./...#  \n#...#...#  \n#####...#  \n    #...#  \n    #####  \n           \n           \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "###############\n#.......#.....#\n#.....>./.....#\n#.......#.<...#\n#.......#.....#\n#.......#.....#\n#.......#######\n#.......#      \n#########      \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "##### ######### \n#...# #.......# \n#...# #.....<.# \n#.>.# #.......# \n#...####/###### \n#...#.......#   \n#.../.......#   \n#...#.......#   \n#####.......#   \n    #.......#   \n    #########   \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "          \n          \n######### \n#...#...# \n#...#...# \n#.>.#...# \n#.../...# \n#...#.<.# \n#...#...# \n#...#...# \n######### \n          \n          \n"
+            "map": "#########\n#.......#\n#....>..#\n#.......#\n######/##\n#.......#\n#....<..#\n#.......#\n#########\n         \n"
         },
         {
             "params": {
                 "map_width": 12,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  ######### \n  #.......# \n  #..>....# \n  #.......# \n  ##/###### \n  #.......# \n  #.....<.# \n  #.......# \n  ######### \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
                 "map_height": 12,
                 "retry": 100,
                 "room_ideal": 100,
@@ -219,89 +76,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#####           \n#...#           \n#.<.########### \n#.../...#.....# \n#####...#.....# \n#...#...#.....# \n#.>./...##/#### \n#...#...#...#   \n#####.../...#   \n    #...#...#   \n    #########   \n                \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "####### #####  \n#.....# #...#  \n#.....# #.>.#  \n#.....# #...#  \n#.....# #...#  \n#.<...# #...#  \n#.....# #...#  \n#.....# #...#  \n#####/###/###  \n    #.....#    \n#####.....#    \n#...#.....#    \n#.../.....#    \n#...#.....#    \n###########    \n               \n"
+            "map": "  ######### \n  #.......# \n  #...>...# \n  #.......# \n  #.......# \n  #.......# \n#######/### \n#...#.....# \n#.<./.....# \n#...#.....# \n########### \n            \n"
         },
         {
             "params": {
                 "map_width": 13,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "        #####\n        #...#\n#########...#\n#.......#...#\n#.......#...#\n#.......#...#\n#......./.>.#\n#..<....#...#\n#.......#####\n#.......#    \n#########    \n             \n             \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "             \n             \n###########  \n#...#.....#  \n#...#.....#  \n#...#...<.#  \n#.>./.....#  \n#...#.....#  \n###########  \n             \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "          ##### \n          #...# \n  ####### #.>.# \n  #.....# #...# \n  #.....####/## \n  #.<...#.....# \n  #...../.....# \n  #.....#.....# \n  ############# \n                \n                \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "    #######  \n    #.....#  \n#####.....#  \n#...#.....#  \n#.<./.....#  \n#...#.....#  \n######/####  \n    #.....#  \n    #..>..#  \n    #.....#  \n    #######  \n             \n             \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 12,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "          \n          \n  ####### \n  #.....# \n  #...>.# \n  #.....# \n####/#### \n#.......# \n#....<..# \n#.......# \n######### \n          \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
                 "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
@@ -310,12 +89,12 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "  #######      \n  #.....#      \n  #.....#######\n  #...../.....#\n  ##/####..<..#\n  #...# #.....#\n  #.>.# #######\n  #...#        \n  #####        \n"
+            "map": "  ###########\n  #...#.....#\n  #...#.....#\n  #...#.....#\n  #.>./.....#\n  #...#..<..#\n  #####.....#\n      #.....#\n      #######\n"
         },
         {
             "params": {
                 "map_width": 13,
-                "map_height": 11,
+                "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -323,167 +102,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#########    \n#.......#    \n#....<..#####\n#.......#...#\n###/#####.>.#\n#......./...#\n#.......#####\n#.......#    \n#.......#    \n#.......#    \n#########    \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######      \n#.....#      \n#.....#      \n#.....#      \n#.....#######\n#..>..#.....#\n#...../..<..#\n#.....#.....#\n#############\n             \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "        #######\n        #.....#\n  #######.>...#\n  #.....#.....#\n  #...../.....#\n  #.....#.....#\n  #.....#######\n  #.....#...#  \n  #...../.<.#  \n  #.....#...#  \n  #######...#  \n        #...#  \n        #####  \n               \n"
-        },
-        {
-            "params": {
-                "map_width": 11,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######    \n#.....#    \n#...>.#    \n#.....#    \n#####/#####\n    #.....#\n#####.....#\n#.../.....#\n#...#######\n#.../.....#\n#####.<...#\n    #.....#\n    #######\n           \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "######### \n#...#...# \n#.<.#.>.# \n#...#...# \n##/##/### \n#.....#   \n#.....#   \n#.....#   \n#######   \n          \n          \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "        #####  \n        #...#  \n  #######.>.#  \n  #.....#...#  \n  #.....###/###\n  #.....# #...#\n  ####/####...#\n  #......./...#\n  #.......#####\n  #.......#...#\n  #......./.<.#\n  #.......#...#\n  #############\n               \n"
+            "map": "#############\n#.......#...#\n#......./.>.#\n#..<....#...#\n#.......#...#\n#.......#...#\n#############\n             \n             \n"
         },
         {
             "params": {
                 "map_width": 12,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#########   \n#.......#   \n#...<...#   \n#.......#   \n#.......#   \n#.......#   \n#.......#   \n#.......#   \n######/##   \n  #.....#   \n  #.....#   \n  #.....#   \n  #.>...#   \n  #.....#   \n  #######   \n"
-        },
-        {
-            "params": {
-                "map_width": 11,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#########  \n#...#...#  \n#.>.#.<.#  \n#...#...#  \n##/####/###\n#.....#...#\n#.....#...#\n#.....#...#\n#.....#...#\n#...../...#\n#.....#...#\n#.....#...#\n###########\n           \n           \n           \n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #######     \n  #.....#     \n  #.....##### \n  #..<..#...# \n  #...../.>.# \n  #.....#...# \n  #.....##### \n  #.....#     \n  #######     \n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#####    \n#...#    \n#.<.#    \n#...#    \n###/###  \n  #...#  \n  #...#  \n  #...#  \n  #...#  \n  #.>.#  \n  #...#  \n  #...#  \n  #####  \n         \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  ####### \n  #.....# \n  #.....# \n  #..<..# \n  #.....# \n  #.....# \n  ####/## \n    #...# \n    #...# \n    #...# \n######/## \n#.......# \n#.>.....# \n#.......# \n######### \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "###############\n#...#.....#...#\n#...#..<..#.>.#\n#...#.....#...#\n#...####/##/###\n#...#.......#  \n#.../.......#  \n#...#.......#  \n#############  \n"
-        },
-        {
-            "params": {
-                "map_width": 11,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######    \n#.....#    \n#.....#####\n#.....#...#\n#...../.<.#\n#.....#...#\n#.....#####\n#.....#    \n####/######\n  #.......#\n  #.....>.#\n  #.......#\n  #########\n           \n           \n"
-        },
-        {
-            "params": {
-                "map_width": 14,
                 "map_height": 13,
                 "retry": 100,
                 "room_ideal": 100,
@@ -492,24 +115,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "      #####   \n      #...#   \n##### #.<.#   \n#...# #...#   \n#...####/##   \n#.>.#.....#   \n#...#.....#   \n#.../.....#   \n#...#.....#   \n#...#.....#   \n###########   \n              \n              \n"
+            "map": "  #######   \n  #.....#   \n  #.....#   \n  #...<.#   \n  #.....#   \n  #.....#   \n######/#### \n#...#.....# \n#.>./.....# \n#...#.....# \n#####.....# \n    #.....# \n    ####### \n"
         },
         {
             "params": {
                 "map_width": 14,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "        ##### \n        #...# \n  #######.>.# \n  #.....#...# \n  #...<.##/## \n  #.....#...# \n  #...../...# \n  #.....#...# \n  ########### \n              \n              \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
                 "map_height": 15,
                 "retry": 100,
                 "room_ideal": 100,
@@ -518,7 +128,7 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "               \n               \n#############  \n#...#.......#  \n#...#.......#  \n#.../.......#  \n#...#.......#  \n#.<.#.......#  \n#...#.......#  \n#...#.......#  \n#######/#####  \n    #.....#    \n    #..>..#    \n    #.....#    \n    #######    \n"
+            "map": "  #########   \n  #.......#   \n  #....<..#   \n  #.......#   \n  ##/######   \n  #...#       \n  #...####### \n  #...#.....# \n  #.../.....# \n  #...#.....# \n###/#/####### \n#...#.....#   \n#.>.#.....#   \n#...#.....#   \n###########   \n"
         },
         {
             "params": {
@@ -531,50 +141,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "  #####         \n  #...#         \n  #...# ####### \n  #...# #.....# \n  #...# #...<.# \n  #...# #.....# \n  ##/####.....# \n  #...../.....# \n  #.....####### \n  #.....#.....# \n  #...../..>..# \n  #.....#.....# \n  ############# \n                \n                \n"
+            "map": "      #####     \n      #...#     \n##### #.<.##### \n#...# #...#...# \n#...####/##...# \n#...#...../...# \n#.>./.....##/## \n#...#.....#...# \n#...#.....#...# \n#...#.....#...# \n#####.....#...# \n    #.....#...# \n    ########### \n                \n                \n"
         },
         {
             "params": {
-                "map_width": 15,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #####        \n  #...#        \n  #...#        \n  #...#        \n  ##/########  \n  #.....#...#  \n  #...../.<.#  \n  #.....#...#  \n  #.....#####  \n  #.....#...#  \n  #...../...#  \n  #.....#...#  \n  #######.>.#  \n        #...#  \n        #####  \n               \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 12,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######   #####\n#.....#   #...#\n#.....#####...#\n#.....#.../...#\n#..<../...#####\n#.....#...#...#\n#.....#.../...#\n#.....#...#.>.#\n###########...#\n          #...#\n          #####\n               \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#############  \n#...#.......#  \n#.>.#..<....#  \n#...#.......#  \n###/######/####\n  #.....#.....#\n  #...../.....#\n  #.....#.....#\n  #.....#.....#\n  #.....#.....#\n  #######.....#\n        #.....#\n        #######\n               \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
+                "map_width": 13,
                 "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
@@ -583,20 +154,7 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "  #############\n  #.....#.....#\n  #...../.....#\n  #.....#.....#\n  #.....##/####\n  #...<.#...#  \n  #.....#.>.#  \n  #.....#...#  \n  ###########  \n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "########### \n#...#.....# \n#...#.....# \n#...#.....# \n#.<.#.>...# \n#...#.....# \n###/##/#### \n  #.....#   \n  #.....#   \n  #.....#   \n  #######   \n"
+            "map": "  ###########\n  #.....#...#\n  #...>.#...#\n  #.....#.<.#\n  #.....#...#\n  #...../...#\n  #.....#...#\n  #.....#...#\n  ###########\n"
         },
         {
             "params": {
@@ -609,12 +167,12 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "      #####\n      #...#\n#######...#\n#.....#...#\n#.>.../...#\n#.....#...#\n#######/###\n  #.....#  \n  #..<..#  \n  #.....#  \n  #######  \n           \n"
+            "map": "#####      \n#...#      \n#.>.#######\n#.../.....#\n#####.....#\n    #.....#\n#####.....#\n#...#.....#\n#.<./.....#\n#...#.....#\n###########\n           \n"
         },
         {
             "params": {
                 "map_width": 14,
-                "map_height": 9,
+                "map_height": 13,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -622,128 +180,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#########     \n#.......#     \n#.......##### \n#.......#...# \n#.....>./.<.# \n#.......#...# \n############# \n              \n              \n"
+            "map": "#####         \n#...#         \n#.<.#######   \n#.../.....#   \n#####.....#   \n#...#.....#   \n#...#.....#   \n#...#.....#   \n#.>./.....#   \n#...#.....#   \n#...#######   \n#...#         \n#####         \n"
         },
         {
             "params": {
-                "map_width": 13,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#############\n#.......#...#\n#......./.>.#\n#.......#...#\n######/######\n#...#.......#\n#.../.......#\n#...#.......#\n#...#########\n#...#        \n###/#######  \n  #.......#  \n  #.....<.#  \n  #.......#  \n  #########  \n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #########   \n  #...#...#   \n  #...#.>.#   \n  #...#...#   \n####/##/##### \n#.......#...# \n#.......#...# \n#......./.<.# \n#.......#...# \n#.......#...# \n#.......##### \n#.......#     \n#########     \n              \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "                \n                \n  ###########   \n  #.....#...#   \n  #.....#.>.#   \n  #.....#...#   \n  #.....##/#### \n  #.....#.....# \n  #...../.....# \n  #.....#.....# \n  ####/######## \n  #.......#     \n  #...<...#     \n  #.......#     \n  #########     \n                \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "        #######\n        #.....#\n#########.....#\n#.......#.....#\n#......./...>.#\n#....<..#.....#\n#.......#######\n#.......#      \n#.......#      \n#.......#      \n#########      \n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "    #####\n    #...#\n#####.>.#\n#.../...#\n#...#####\n#...#...#\n#.../...#\n#...#...#\n##/##.<.#\n#...#...#\n#...#####\n#...#    \n#...#    \n#...#    \n#####    \n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "            \n            \n  ######### \n  #.......# \n  #....<..# \n  #.......# \n####/###### \n#.......#   \n#..>....#   \n#.......#   \n#########   \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "      #####  \n      #...#  \n      #.>.#  \n      #...#  \n  ######/####\n  #...#.....#\n  #.<./.....#\n  #...#.....#\n  #####.....#\n  #...#.....#\n  #.../.....#\n  #...#.....#\n  #...#######\n  #...#      \n  #####      \n             \n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #####  \n  #...#  \n  #...#  \n  #...#  \n  #...#  \n  #...#  \n  #.<.#  \n  #...#  \n####/####\n#.......#\n#.>.....#\n#.......#\n#.......#\n#.......#\n#########\n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######       \n#.....#       \n#...>.####### \n#.....#.....# \n####/##..<..# \n  #...#.....# \n  #.../.....# \n  #...#.....# \n  #####.....# \n      #.....# \n      ####### \n"
-        },
-        {
-            "params": {
-                "map_width": 14,
+                "map_width": 10,
                 "map_height": 12,
                 "retry": 100,
                 "room_ideal": 100,
@@ -752,142 +193,12 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "############# \n#.......#...# \n#.....>.#...# \n#.......#...# \n######/###/## \n#...#.......# \n#.<./.......# \n#...#.......# \n#####.......# \n    #.......# \n    ######### \n              \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "###########    \n#.....#...#    \n#.....#.<.#    \n#.....#...#    \n#.....##/####  \n#...>.#.....#  \n#...../.....#  \n#.....#.....#  \n#######.....#  \n  #...#.....#  \n  #.../.....#  \n  #...#.....#  \n  #...#######  \n  #...#        \n  #####        \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#####           \n#...#           \n#...########### \n#.>.#...#.....# \n#.../.../..<..# \n#...#...#.....# \n#####...####### \n    #...#       \n    #####       \n                \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "          \n          \n######### \n#.......# \n#.....>.# \n#.......# \n#####/### \n#.......# \n#.......# \n#.<.....# \n#.......# \n#.......# \n######### \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#########    \n#.......#    \n#...<...#####\n#.......#...#\n######/##.>.#\n  #...../...#\n  #.....#####\n  #.....#    \n  #######    \n             \n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "            \n            \n  ######### \n  #.......# \n  #.......# \n  #.......# \n  #.......# \n  #.<.....# \n  #.......# \n  #.......# \n  ######/## \n  #.......# \n  #.>.....# \n  #.......# \n  ######### \n            \n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#########\n#...#...#\n#.../...#\n#.>.#...#\n#...#.<.#\n#...#...#\n#########\n         \n         \n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######     \n#.....#     \n#.....##### \n#...../...# \n####/##...# \n  #...#.>.# \n  #.<.#...# \n  #...#...# \n  ######### \n            \n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #######     \n  #.....#     \n  #.....##### \n  #.....#...# \n  #.<.../.>.# \n  #.....#...# \n  #######...# \n        #...# \n        ##### \n              \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######      \n#.....#      \n#...>.#######\n#...../.....#\n#######.....#\n  #...#.....#\n  #.../.....#\n  #...#.....#\n  ##/########\n  #.......#  \n  #..<....#  \n  #.......#  \n  #########  \n             \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "######### \n#.......# \n#.......# \n#.......# \n#....<..# \n#.......# \n#####/### \n#.......# \n#.......# \n#.......# \n#.......# \n#.....>.# \n#.......# \n#.......# \n######### \n"
+            "map": "######### \n#...#...# \n#.>.#.<.# \n#...#...# \n##/###/## \n#.......# \n#.......# \n#.......# \n#.......# \n#.......# \n######### \n          \n"
         },
         {
             "params": {
                 "map_width": 11,
-                "map_height": 10,
+                "map_height": 9,
                 "retry": 100,
                 "room_ideal": 100,
                 "room_min_width": 2,
@@ -895,7 +206,7 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#####      \n#...#      \n#.<.#####  \n#.../...#  \n#####...#  \n#.../...#  \n#.>.#####  \n#...#      \n#####      \n           \n"
+            "map": "      #####\n      #...#\n#######...#\n#.....#.<.#\n#.....#...#\n#...>./...#\n#.....#...#\n#.....#...#\n###########\n"
         },
         {
             "params": {
@@ -908,46 +219,7 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#####     \n#...#     \n#.>.#     \n#...#     \n##/###### \n#.......# \n#....<..# \n#.......# \n#.......# \n#.......# \n######### \n          \n          \n          \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######        \n#.....#        \n#.....#########\n#...../.......#\n##/####.......#\n#...# #.......#\n#...# #.......#\n#...# #.......#\n#...# #....>..#\n#...# #.......#\n#.<.# #########\n#...#          \n#####          \n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #####       \n  #...#       \n  #.>.#####   \n  #...#...#   \n  #.../.<.#   \n  #...#...#   \n  #...#####   \n  #...#       \n  #####       \n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "         \n         \n#########\n#.......#\n#.......#\n#.>.....#\n#.......#\n#.......#\n####/####\n  #...#  \n  #.<.#  \n  #...#  \n  #####  \n         \n"
+            "map": "######### \n#...#...# \n#.../...# \n#...#...# \n#####...# \n#...#...# \n#.<./...# \n#...#...# \n######/## \n#.......# \n#.>.....# \n#.......# \n######### \n          \n"
         },
         {
             "params": {
@@ -960,7 +232,20 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "  #########     \n  #...#...#     \n  #.<.#...##### \n  #...#...#...# \n  #...#.../...# \n  #...#...#...# \n####/##/###...# \n#.......# #.>.# \n#.......# #...# \n#.......# #...# \n#.......# ##### \n#.......#       \n#########       \n"
+            "map": "                \n                \n#######   ##### \n#.....#   #...# \n#.....#####.>.# \n#.<...#.../...# \n#...../...##### \n#.....#...#     \n#.....##/###### \n#.....#.......# \n#######.......# \n      #.......# \n      ######### \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "            \n            \n########### \n#.....#...# \n#...../.<.# \n#.....#...# \n#.....##### \n#.....#     \n#####/###   \n    #...#   \n    #.>.#   \n    #...#   \n    #####   \n            \n"
         },
         {
             "params": {
@@ -973,176 +258,7 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#####     #####\n#...#     #...#\n#.<.#######...#\n#.../.....#...#\n#####...../...#\n#.../.....#...#\n#.>.##/########\n#...#...#.....#\n#####.../.....#\n    #...#.....#\n    ###########\n               \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "      #######\n      #.....#\n  #####.....#\n  #.../.....#\n  #...#######\n  #...#...#  \n  #.../.<.#  \n  #...#...#  \n  #...#######\n  #.../.....#\n  #####..>..#\n      #.....#\n      #######\n             \n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#########     \n#.......#     \n#.......##### \n#.......#...# \n#.>.....#.<.# \n#.......#...# \n#####/###/### \n  #.......#   \n  #.......#   \n  #.......#   \n  #.......#   \n  #.......#   \n  #.......#   \n  #.......#   \n  #########   \n              \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#####     \n#...#     \n#.<.##### \n#...#...# \n#.../...# \n#...#...# \n#####...# \n#.../...# \n#.>.##### \n#...#     \n#####     \n          \n          \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#######         \n#.....#         \n#...>.#####     \n#...../...#     \n#######...##### \n#.....#...#...# \n#.<.../...#...# \n#.....#...#...# \n#########/##/## \n  #.....#.....# \n  #...../.....# \n  #.....#.....# \n  #.....#.....# \n  #.....#.....# \n  ############# \n                \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "                \n                \n#############   \n#.......#...#   \n#.......#...#   \n#.......#.>.#   \n#......./...#   \n#..<....#...#   \n#.......#####   \n#.......#       \n#########       \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "        #####  \n        #...#  \n#########.<.#  \n#.......#...#  \n#.......##/##  \n#..>....#...#  \n#......./...#  \n#.......#...#  \n#.......#####  \n#.......#      \n#########      \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "          \n          \n######### \n#...#...# \n#...#.<.# \n#.../...# \n#.>.#...# \n#...#...# \n#...##### \n#...#     \n#####     \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 16,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#############\n#...#...#...#\n#.../.../...#\n#...#...#...#\n#####/###.<.#\n#.....# #...#\n#.....# #####\n#.....#      \n#.....#      \n#.....#      \n#.....#######\n#...../.....#\n#######.>...#\n      #.....#\n      #######\n             \n"
-        },
-        {
-            "params": {
-                "map_width": 15,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #########    \n  #...#...#    \n  #.<.#...#####\n  #...#...#...#\n  ##/###/##...#\n  #.......#...#\n  #.......#...#\n  #.......#.>.#\n  #......./...#\n  #.......#...#\n  #############\n               \n               \n               \n"
-        },
-        {
-            "params": {
-                "map_width": 13,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "###########  \n#...#.....#  \n#.>./.....#  \n#...#.....#  \n########/##  \n#.....#...#  \n#.....#...#  \n#.....#...#  \n#...<.#...#  \n#...../...#  \n#.....#...#  \n#.....#...#  \n###########  \n             \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "                \n                \n###########     \n#...#.....#     \n#.<./.....#     \n#...#.....#     \n#####/###/##### \n  #...# #.....# \n  #.>.# #.....# \n  #...# #.....# \n  #...# #.....# \n  #...# #.....# \n  ##### #.....# \n        #.....# \n        ####### \n"
-        },
-        {
-            "params": {
-                "map_width": 11,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #######  \n  #.....#  \n  #..<..#  \n  #.....#  \n######/####\n#...#.....#\n#.>./.....#\n#...#.....#\n###########\n           \n"
-        },
-        {
-            "params": {
-                "map_width": 10,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  ####### \n  #.....# \n  #.....# \n  #.....# \n  #.....# \n  #.....# \n  #...>.# \n  #.....# \n  ##/#### \n  #...#   \n  #...#   \n  #...#   \n  #.<.#   \n  #...#   \n  #####   \n"
+            "map": "#############  \n#...#.......#  \n#.../.......#  \n#...#.......#  \n#.<.#.....>.#  \n#...#.......#  \n#...#.......#  \n#...#.......#  \n#############  \n               \n               \n               \n"
         },
         {
             "params": {
@@ -1155,115 +271,11 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "    #####\n    #...#\n#####...#\n#...#...#\n#.../.<.#\n#...#...#\n##/######\n#.....#  \n#..>..#  \n#.....#  \n#######  \n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 11,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "########### \n#...#.....# \n#.<./.....# \n#...#.....# \n######/#### \n#...#...#   \n#.>./...#   \n#...#...#   \n#########   \n            \n            \n"
-        },
-        {
-            "params": {
-                "map_width": 16,
-                "map_height": 15,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  ####### ##### \n  #.....# #...# \n  #.....# #...# \n  #...<.# #...# \n  #.....###/### \n  #.....#...#   \n  #.....#...#   \n  #.....#...#   \n  ####/##/#/### \n    #.....#...# \n    #.....#...# \n    #.....#.>.# \n    #######...# \n          #...# \n          ##### \n"
+            "map": "#########\n#...#...#\n#.>.#.<.#\n#...#...#\n##/###/##\n#.......#\n#.......#\n#.......#\n#.......#\n#.......#\n#########\n"
         },
         {
             "params": {
                 "map_width": 13,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#####   #####\n#...#   #...#\n#...#####...#\n#.../...#...#\n##/##.../...#\n#...#...#.<.#\n#.>.#####...#\n#...#   #...#\n#####   #####\n"
-        },
-        {
-            "params": {
-                "map_width": 9,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#########\n#.......#\n#.....<.#\n#.......#\n####/####\n  #...#  \n  #...#  \n  #...#  \n  ##/##  \n  #...#  \n  #.>.#  \n  #...#  \n  #####  \n         \n"
-        },
-        {
-            "params": {
-                "map_width": 14,
-                "map_height": 10,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #######     \n  #.....#     \n  #.....##### \n  #.....#...# \n  #...../.>.# \n  #.....#...# \n  #..<..##### \n  #.....#     \n  #######     \n              \n"
-        },
-        {
-            "params": {
-                "map_width": 11,
-                "map_height": 14,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "  #########\n  #.......#\n  #....>..#\n  #.......#\n  #.......#\n  #.......#\n  #.......#\n  #.......#\n  ##/######\n  #...#    \n  #.<.#    \n  #...#    \n  #####    \n           \n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 13,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "    ####### \n    #.....# \n#####.....# \n#...#.....# \n#.<.#..>..# \n#...#.....# \n##/##/##### \n#.....#     \n#.....#     \n#.....#     \n#.....#     \n#.....#     \n#######     \n"
-        },
-        {
-            "params": {
-                "map_width": 12,
-                "map_height": 9,
-                "retry": 100,
-                "room_ideal": 100,
-                "room_min_width": 2,
-                "room_max_width": 7,
-                "room_min_height": 2,
-                "room_max_height": 7
-            },
-            "map": "#####       \n#...#       \n#.>.####### \n#.../.....# \n#####.....# \n#.../.....# \n#.<.####### \n#...#       \n#####       \n"
-        },
-        {
-            "params": {
-                "map_width": 9,
                 "map_height": 12,
                 "retry": 100,
                 "room_ideal": 100,
@@ -1272,7 +284,163 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "#######  \n#.....#  \n#.....#  \n#..<..#  \n#.....#  \n#.....#  \n####/##  \n  #...#  \n  #.>.#  \n  #...#  \n  #####  \n         \n"
+            "map": "    #########\n    #...#...#\n#####...#...#\n#...#.../.>.#\n#.../...#...#\n#...#...#...#\n#####/#######\n  #...#.....#\n  #.../..<..#\n  #...#.....#\n  ###########\n             \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 10,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "###########   \n#...#.....#   \n#.../.....#   \n#.>.#.....#   \n#...####/##   \n#...# #...#   \n##### #.<.#   \n      #...#   \n      #####   \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "##### ######### \n#...# #.......# \n#...# #.......# \n#...# #.......# \n#.<.######/#### \n#.../.......#   \n#####.......#   \n#.../.......#   \n#...####/##/### \n#...#.....#...# \n#####.>...#...# \n    #.....#...# \n    ########### \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######  \n#.....#  \n#.....#  \n#.....#  \n#..>..#  \n#.....#  \n#.....#  \n#.....#  \n####/##  \n#.....#  \n#...<.#  \n#.....#  \n#######  \n         \n         \n         \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "    ####### \n    #.....# \n#####.<...# \n#.../.....# \n#...####### \n#...#...#   \n#...#...#   \n#...#...#   \n#.../.>.#   \n#...#...#   \n#########   \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "  #######  \n  #.....#  \n  #..<..#  \n  #.....#  \n####/####  \n#.......#  \n#.......#  \n#.>.....#  \n#.......#  \n#.......#  \n#.......#  \n#.......#  \n#########  \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########   \n#...#...#   \n#...#.>.#   \n#...#...#   \n###/#/##### \n  #...#...# \n  #...#...# \n  #.../...# \n  #...#.<.# \n  #...#...# \n####/###### \n#.....#...# \n#...../...# \n#.....#...# \n########### \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "  #####       \n  #...#       \n  #...####### \n  #...#.....# \n  #.<./..>..# \n  #...#.....# \n  #...####### \n  #...#       \n  #####       \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "              \n              \n###########   \n#...#.....#   \n#.<./.....#   \n#...#.....#   \n######/##/### \n  #.....#...# \n  #.....#...# \n  #.....#...# \n  #..>..#...# \n  #.....#...# \n  ########### \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####        \n#...#        \n#...#########\n#.<.#.......#\n#.../.......#\n#...#.......#\n#####.......#\n#...#.......#\n#.>./.......#\n#...#.......#\n#############\n             \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "###########\n#...#.....#\n#.../.<...#\n#...#.....#\n##/########\n#.......#  \n#....>..#  \n#.......#  \n#########  \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####        \n#...#        \n#.<.#########\n#...#.......#\n##/##.......#\n#...#.......#\n#...#.......#\n#...#....>..#\n#.../.......#\n#...#.......#\n#############\n             \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 10,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######    \n#.....#    \n#.....#####\n#.>...#...#\n#...../.<.#\n#.....#...#\n#.....#####\n#.....#    \n#######    \n           \n"
         },
         {
             "params": {
@@ -1285,7 +453,579 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "  ###########\n  #.....#...#\n  #...../.>.#\n  #.....#...#\n  #.....#####\n  #.....#    \n  #.....#    \n  #.....#    \n  ##/##/###  \n  #...#...#  \n  #...#...#  \n  #.<.#...#  \n  #...#...#  \n  #...#...#  \n  #########  \n             \n"
+            "map": "#####        \n#...#        \n#...#######  \n#...#.....#  \n#...#...>.#  \n#...#.....#  \n##/###/####  \n#...#...#    \n#.../...#####\n#...#...#...#\n#####.../...#\n#.../...#...#\n#.<.#########\n#...#        \n#####        \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########\n#.......#\n#..>....#\n#.......#\n######/##\n#...#...#\n#.../...#\n#...#...#\n#####/###\n  #...#  \n  #.<.#  \n  #...#  \n  #####  \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "            \n            \n  ######### \n  #...#...# \n  #.../...# \n  #.>.#...# \n  #...##/## \n  #...#...# \n  #...#.<.# \n  #...#...# \n  ######### \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "            \n            \n  #####     \n  #...#     \n  #.>.#     \n  #...#     \n  ##/####   \n  #.....#   \n  #.<...#   \n  #.....#   \n  #######   \n            \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######     \n#.....#     \n#.....#     \n#.....#     \n#.....##### \n#.....#...# \n#...../...# \n#.....#...# \n####/##...# \n  #...#...# \n  #.>.##/## \n  #...#...# \n  #####.<.# \n      #...# \n      ##### \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####         \n#...#         \n#.<.# #####   \n#...# #...#   \n##/## #.>.#   \n#...# #...#   \n#...####/##   \n#...#.....#   \n#.../.....#   \n#...#.....#   \n###########   \n              \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########  \n#.......#  \n#.......#  \n#.......#  \n#.....>.#  \n#.......#  \n####/####  \n  #...#    \n  #...#####\n  #...#...#\n  #...#...#\n  #...#...#\n  #.../.<.#\n  #...#...#\n  #########\n           \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#############\n#.....#.....#\n#.<...#.....#\n#...../.....#\n#.....#.....#\n#.....#.....#\n#######.....#\n#...../.....#\n#..>..#######\n#.....#      \n#######      \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "###########\n#...#.....#\n#...#.....#\n#...#..<..#\n##/##.....#\n#...#.....#\n#.../.....#\n#...#.....#\n#...#######\n#...#      \n#...#######\n#.../.....#\n#####.>...#\n    #.....#\n    #######\n           \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "    #####\n    #...#\n#####...#\n#...#...#\n#.<.#...#\n#...#.>.#\n#.../...#\n#...#...#\n#########\n         \n         \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#############\n#.......#...#\n#......./.<.#\n#.......#...#\n#.......#####\n#.......#...#\n#......./.>.#\n#.......#...#\n#############\n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "              \n              \n############# \n#.....#.....# \n#.....#.....# \n#.....#.....# \n#.....##/#### \n#...../.....# \n####/##.....# \n  #...#.....# \n  #.>.####/## \n  #...# #...# \n  ##### #.<.# \n        #...# \n        ##### \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 10,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "  #####      \n  #...#      \n  #.<.#      \n  #...#      \n  #...#######\n  #...#.....#\n  #.../..>..#\n  #...#.....#\n  ###########\n             \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#############  \n#.....#.....#  \n#...../.<...#  \n#.....#.....#  \n#.....#######  \n#.>...#        \n#.....#        \n#.....#        \n#######        \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####     #####\n#...#     #...#\n#...#######...#\n#.../.....#...#\n#####...../.<.#\n#...#.....#...#\n#.>./.....#####\n#...#.....#    \n#####.....#    \n    #.....#    \n    #######    \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "        ####### \n        #.....# \n  #######...<.# \n  #.....#.....# \n  #...../.....# \n  #.....#.....# \n  ####/##.....# \n    #...#.....# \n    #.>.####### \n    #...#       \n    #####       \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#############  \n#...#.......#  \n#.>.#.....<.#  \n#...#.......#  \n##/###/######  \n#...#.......#  \n#...#.......#  \n#...#.......#  \n#.../.......#  \n#...#.......#  \n#...#########  \n#...#          \n#####          \n               \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#############   \n#...#.......#   \n#...#.......#   \n#.<.#.......#   \n#...##/######   \n#.../...#       \n#####...#####   \n    #...#...#   \n#####.../...#   \n#...#...#...#   \n#.>./...##/#### \n#...#...#.....# \n#########.....# \n        #.....# \n        ####### \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########  \n#.......#  \n#.......#  \n#.......#  \n#.......#  \n#.......#  \n##/###/##  \n#...#...#  \n#.<.#...#  \n#...#...#  \n#...#.>.#  \n#...#...#  \n#########  \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "  #####  \n  #...#  \n  #.>.#  \n  #...#  \n####/####\n#.......#\n#.......#\n#.......#\n#..<....#\n#.......#\n#########\n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########  \n#...#...#  \n#.<.#.>.#  \n#.../...#  \n#...#...#  \n#...#...#  \n#####...#  \n    #...#  \n    #####  \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "        #######\n        #.....#\n  #######.....#\n  #.....#.....#\n  #...../.....#\n  #.....#.<...#\n  ####/##.....#\n    #...#.....#\n    #.>.#######\n    #...#      \n    #####      \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########   \n#.......#   \n#.......#   \n#.......#   \n#.......#   \n#.......#   \n#..>....#   \n#.......#   \n####/####   \n#.......#   \n#.<.....#   \n#.......#   \n#########   \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "###########   \n#...#.....#   \n#...#.....#   \n#...#.....#   \n#...#..<..#   \n#.../.....#   \n#.>.#.....#   \n#...#.....#   \n###########   \n              \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########\n#.......#\n#.......#\n#.......#\n#.....>.#\n#.......#\n#.......#\n#.......#\n####/####\n#.....#  \n#...<.#  \n#.....#  \n#######  \n         \n         \n         \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######      \n#.....#      \n#..>..#######\n#.....#.....#\n#...../.....#\n#.....#.....#\n#######.....#\n#.....#.....#\n#...<./.....#\n#.....#.....#\n#############\n             \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#############\n#.....#.....#\n#...>.#.....#\n#.....#.....#\n#...../.....#\n#.....#.<...#\n#######.....#\n      #.....#\n      #######\n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####       \n#...#       \n#...# ##### \n#.<.# #...# \n#...# #.>.# \n#...# #...# \n##/####/### \n#.......#   \n#.......#   \n#.......#   \n#.......#   \n#.......#   \n#.......#   \n#.......#   \n#########   \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "###########     \n#.....#...#     \n#.....#...##### \n#...<.#...#...# \n#.....#.>.#...# \n#.....#...#...# \n####/###/###/## \n  #...#...#...# \n  #.../...#...# \n  #...#.../...# \n  #...#...#...# \n  #...#...#...# \n  #...#####...# \n  #...#   #...# \n  #####   ##### \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "           \n           \n#########  \n#.......#  \n#..>....#  \n#.......#  \n#.......#  \n#.......#  \n###/#######\n#.....#...#\n#...../.<.#\n#.....#...#\n#.....#####\n#.....#    \n#######    \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "           \n           \n#######    \n#.....#    \n#..<..#    \n#.....#    \n#####/###  \n    #...#  \n    #...#  \n    #...#  \n#####...#  \n#...#...#  \n#.>./...#  \n#...#...#  \n#########  \n           \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####           \n#...#           \n#...#########   \n#...#.......#   \n#.>./.......#   \n#...#.......#   \n######/###/##   \n#.......#...#   \n#.......#.<.#   \n#.......#...#   \n#.......#...#   \n#.......#...#   \n#.......#...#   \n#.......#...#   \n#############   \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######  \n#.....#  \n#..<..#  \n#.....#  \n####/####\n  #.....#\n  #.....#\n  #.....#\n  #.....#\n  #.....#\n###/#####\n#...#    \n#.>.#    \n#...#    \n#####    \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####      \n#...#      \n#...#      \n#.>.#      \n#...#######\n#.../.....#\n#####.....#\n    #.....#\n    #.....#\n    #...<.#\n    #.....#\n    #.....#\n    #######\n           \n           \n           \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########\n#...#...#\n#.../.>.#\n#...#...#\n#...#####\n#...#...#\n#.../...#\n#...#...#\n#####...#\n#.../...#\n#.<.#####\n#...#    \n#####    \n         \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "            \n            \n  ######### \n  #.......# \n  #.......# \n  #.......# \n  #.......# \n  #.......# \n  #.......# \n  #.......# \n####/###/## \n#.....#...# \n#...>.#.<.# \n#.....#...# \n########### \n"
+        },
+        {
+            "params": {
+                "map_width": 10,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "######### \n#.......# \n#....>..# \n#.......# \n######/## \n#.......# \n#.......# \n#.......# \n#.......# \n#.<.....# \n#.......# \n#.......# \n######### \n          \n          \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "          #####\n          #...#\n###########.>.#\n#.....#.../...#\n#.<.../...#####\n#.....#...#    \n###########    \n               \n               \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "      #######\n      #.....#\n  #####.....#\n  #.../.....#\n  #...##/####\n  #...#...#  \n  #...#...#  \n  #...#...#  \n  #.<.#.>.#  \n  #...#...#  \n  #########  \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 10,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####        \n#...#        \n#.>.#########\n#...#.......#\n#.../.......#\n#...#.......#\n#####.<.....#\n    #.......#\n    #########\n             \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####           \n#...#           \n#...#   ####### \n#...#   #.....# \n#.>.#   #.....# \n#...#   #.....# \n#...#####...<.# \n#.../.../.....# \n#####...####### \n    #...#       \n    #####       \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "###########   \n#...#.....#   \n#.../.....#   \n#...#.....#   \n#...#.....#   \n#.<.#.....#   \n#...#.....#   \n#...#.....#   \n#########/### \n#.......#...# \n#...>.../...# \n#.......#...# \n############# \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######  \n#.....#  \n#.....#  \n#.<...#  \n#.....#  \n#.....#  \n####/##  \n  #...#  \n  #...#  \n  #...#  \n####/##  \n#.....#  \n#..>..#  \n#.....#  \n#######  \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "    #########   \n    #.......#   \n    #....>..#   \n    #.......#   \n##########/#### \n#...#   #.....# \n#...#####.....# \n#...#...#.....# \n#...#.../.....# \n#.<.#...#.....# \n#.../...#.....# \n#...#...#.....# \n############### \n                \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "            \n            \n########### \n#.....#...# \n#...../.<.# \n#.....#...# \n####/##...# \n  #...#...# \n  #.>.##### \n  #...#     \n  #...#     \n  #...#     \n  #####     \n"
         },
         {
             "params": {
@@ -1298,7 +1038,267 @@
                 "room_min_height": 2,
                 "room_max_height": 7
             },
-            "map": "  #############\n  #.......#...#\n  #......./...#\n  #.......#...#\n  #.......#.<.#\n  #.......#...#\n  #.......#####\n  #.......#    \n  ####/##/###  \n    #...#...#  \n    #...#.>.#  \n    #...#...#  \n    #########  \n               \n               \n               \n"
+            "map": "               \n               \n    ###########\n    #.....#...#\n#####...../.>.#\n#...#.....#...#\n#...#.....#####\n#.../.....#    \n#.<.#.....#    \n#...#.....#    \n#...#####/###  \n#...#   #...#  \n#####   #...#  \n        #...#  \n        #####  \n               \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "      #########\n      #.......#\n  #####.......#\n  #...#.......#\n  #.../.......#\n  #...#.......#\n  #...##/######\n  #...#...#    \n  #.>.#.<.#    \n  #...#...#    \n  #########    \n"
+        },
+        {
+            "params": {
+                "map_width": 11,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "  #######  \n  #.....#  \n  #.<...#  \n  #.....#  \n###/#####  \n#...#...#  \n#.../.>.#  \n#...#...#  \n##/######  \n#.....#    \n#.....#    \n#.....#    \n#.....#    \n#.....#    \n#######    \n"
+        },
+        {
+            "params": {
+                "map_width": 10,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "          \n          \n  #####   \n  #...#   \n  #.>.#   \n  #...#   \n  ##/##   \n  #...#   \n  #.<.#   \n  #...#   \n  #####   \n          \n          \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 9,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####           \n#...#           \n#...#########   \n#.<.#.......#   \n#.../..>....#   \n#...#.......#   \n#############   \n                \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####        \n#...#        \n#.>.#####    \n#.../...#    \n#####...#    \n#.../...#    \n#...#########\n#.../.......#\n#####..<....#\n    #.......#\n    #########\n             \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#########\n#...#...#\n#.../...#\n#...#...#\n#...#.>.#\n#...#...#\n##/######\n#.......#\n#....<..#\n#.......#\n#########\n         \n         \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "             \n             \n#############\n#...#.......#\n#.<./.......#\n#...#.......#\n#####.......#\n#...#.......#\n#.../.......#\n#...#.......#\n#####/##/####\n  #...#...#  \n  #...#.>.#  \n  #...#...#  \n  #########  \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 12,
+                "map_height": 10,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######     \n#.....#     \n#.....##### \n#...../...# \n####/##.<.# \n  #...#...# \n  #.>.#...# \n  #...#...# \n  ######### \n            \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "  #########     \n  #.......#     \n  #.......#     \n  #.>.....#     \n  #.......##### \n  #.......#...# \n  ######/##...# \n      #...#...# \n      #.../.<.# \n      #...#...# \n      ######### \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 15,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "    #########  \n    #.......#  \n    #.>.....#  \n    #.......#  \n########/####  \n#...#.......#  \n#.../.......#  \n#...#.......#  \n#...#########  \n#...#.......#  \n#.../.......#  \n#...#.......#  \n#####...<...#  \n    #.......#  \n    #########  \n               \n"
+        },
+        {
+            "params": {
+                "map_width": 9,
+                "map_height": 11,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "         \n         \n  #####  \n  #...#  \n  #.<.#  \n  #...#  \n###/###  \n#...#    \n#.>.#    \n#...#    \n#####    \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 14,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######       \n#.....#       \n#.....#####   \n#.....#...#   \n#..<..#...#   \n#.....#...#   \n####/##...#   \n  #.../...#   \n  #...###/### \n  #...# #...# \n  #...# #.>.# \n  #...# #...# \n  ##### ##### \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "              \n              \n############# \n#.......#...# \n#......./...# \n#..>....#...# \n#.......##/## \n#.......#...# \n#.......#.<.# \n#.......#...# \n############# \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 16,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "          ##### \n          #...# \n  #########...# \n  #.......#...# \n  #....<..##/## \n  #......./...# \n  #########...# \n  #.......#...# \n  #.......#...# \n  #.......#...# \n  #....>../...# \n  #.......#...# \n  #.......##### \n  #.......#     \n  #########     \n                \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 16,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####        \n#...#        \n#.>.#######  \n#...#.....#  \n#...#.....#  \n#...#.....#  \n#...#.<...#  \n#...#.....#  \n###/##/####  \n  #.....#    \n  #.....#    \n  #.....#    \n  #######    \n             \n             \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 10,
+                "map_height": 13,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#####     \n#...#     \n#...##### \n#...#...# \n#...#...# \n#.../...# \n#.<.#...# \n#...#...# \n#####/### \n#.....#   \n#...>.#   \n#.....#   \n#######   \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 12,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#############\n#.....#.....#\n#...../...>.#\n#.....#.....#\n#.....#######\n#.....#.....#\n#...../...<.#\n#.....#.....#\n#############\n             \n             \n             \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "              \n              \n#########     \n#...#...#     \n#.../.<.##### \n#...#...#...# \n#...#####.>.# \n#...#   #...# \n#...######/## \n#.../.......# \n#####.......# \n    #.......# \n    ######### \n              \n              \n"
+        },
+        {
+            "params": {
+                "map_width": 14,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "#######       \n#.....#       \n#.....# ##### \n#.....# #...# \n###/#####...# \n#......./...# \n#.......##### \n#.......#     \n#.......#     \n#.......#     \n##/####/##### \n#...# #.....# \n#.<.# #...>.# \n#...# #.....# \n##### ####### \n"
+        },
+        {
+            "params": {
+                "map_width": 13,
+                "map_height": 15,
+                "retry": 100,
+                "room_ideal": 100,
+                "room_min_width": 2,
+                "room_max_width": 7,
+                "room_min_height": 2,
+                "room_max_height": 7
+            },
+            "map": "  #######    \n  #.....#    \n  #.....#####\n  #.....#...#\n  #...>.#...#\n  #.....#...#\n######/##.<.#\n#......./...#\n#.......#####\n#.......#    \n#.......#    \n#.......#    \n#.......#    \n#.......#    \n#########    \n"
         }
     ]
 }
