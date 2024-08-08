@@ -22,11 +22,11 @@ output_parameters_name = [
     "empty_ratio",
     "exploration_requirement",
     "difficulty_curve",
-    "nonlinearity",
+    "playability",
     "treasure_count",
     "enemy_count",
     "map_size",
-    "playability",
+    "nonlinearity",
     "room_count",
 ]
 
@@ -80,6 +80,7 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
     """
     # str level to list level.
     list_level = str_level_to_list_level(level)
+    _standardize(list_level)
 
     # count parameters
     (
@@ -120,17 +121,20 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
     output_parameters[output_parameters_name[3]] = _difficulty_curve(
         distance_dict_entry, enemy_positions, difficulty_curve_interval
     )
-    output_parameters[output_parameters_name[4]] = _nonlinearity(
-        distance_dict_entry,
-        distance_dict_exit,
-        object_positions,
-        total_object_count,
-        total_passible_tile_count,
-    )
+    output_parameters[output_parameters_name[4]] = _is_playable(list_level)
     output_parameters[output_parameters_name[5]] = treasure_count
     output_parameters[output_parameters_name[6]] = enemy_count
     output_parameters[output_parameters_name[7]] = map_size
-    output_parameters[output_parameters_name[8]] = _is_playable(list_level)
+    if output_parameters[output_parameters_name[4]] == True:
+        output_parameters[output_parameters_name[8]] = _nonlinearity(
+            distance_dict_entry,
+            distance_dict_exit,
+            object_positions,
+            total_object_count,
+            total_passible_tile_count,
+        )
+    else:
+        output_parameters[output_parameters_name[8]] = None
     output_parameters[output_parameters_name[9]] = _count_room(list_level)
 
     return output_parameters
@@ -435,14 +439,9 @@ def str_level_to_list_level(level: str) -> list:
     result = []
     row = []
 
-    for char in level:
-        if char != "\n":
-            row.append(char)
-        else:
-            result.append(row)
-            row = []
-    result.pop()  # Because map data ends with two '\n's at the end.
-
+    result = [[char for char in row] for row in level.split("\n")]
+    if result[-1] == []:
+        result = result[:-1]
     return result
 
 
@@ -552,6 +551,39 @@ def _count_room(list_level: list) -> int:
             discontinuous_tunnels_count += 1
 
     return discontinuous_tunnels_count
+
+
+def _standardize(list_level: list) -> None:
+    """
+    Make list level standardized.
+    It means
+    ###
+    #.##
+    ###
+
+    -->>
+
+    ###x
+    #.##
+    ###x
+
+    Here, x means spacebar
+    """
+
+    # Find maximum length of rows.
+    row_max_len = 0
+    for row in list_level:
+        cur_row_len = len(row)
+        if cur_row_len > row_max_len:
+            row_max_len = cur_row_len
+
+    # Fill places not standardized into space bars.
+    for i in range(len(list_level)):
+        differnece = row_max_len - len(list_level[i])
+        for j in range(differnece):
+            list_level[i].append(" ")
+
+    return
 
 
 if __name__ == "__main__":

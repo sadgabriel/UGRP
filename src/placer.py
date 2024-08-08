@@ -24,8 +24,7 @@ class Map:
     def get_ascii_map(self) -> str:
         ascii_map = ""
         for row in self.list_map:
-            if row is not self.list_map[-1]:
-                ascii_map += "".join(row) + "\n"
+            ascii_map += "".join(row) + "\n"
 
         return ascii_map
 
@@ -34,6 +33,8 @@ class Map:
         ascii_map = map_dict["map"]
 
         self.list_map = [[tile for tile in line] for line in ascii_map.split("\n")]
+        if self.list_map[-1] == []:
+            self.list_map = self.list_map[:-1]
 
     def to_dict(self) -> dict[str, any]:
         return {"params": self.params, "map": self.get_ascii_map()}
