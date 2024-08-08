@@ -12,8 +12,7 @@ def preprocessed_data_generator(
     example_path: str,
     prompt_file_path: str,
 ) -> None:
-
-    file_count = 1
+    file_count = 0
     dataset = {"map_list": []}
 
     for i in range(data_count):
@@ -27,12 +26,16 @@ def preprocessed_data_generator(
 
         # 데이터가 100개일 때마다 새로운 파일로 저장
         if i % 100 == 0:
-            with open(f"{preprocessed_path}_{file_count}.json", "w") as outfile:
+            with open(f"{preprocessed_path}batch{file_count}.json", "w") as outfile:
                 json.dump(dataset, outfile)
             dataset = {"map_list": []}
+            print(f"successly saved {preprocessed_path}batch{file_count}.json")
             file_count += 1
 
     # 남아 있는 데이터가 있을 경우 마지막 파일로 저장
     if dataset["map_list"]:
-        with open(f"{preprocessed_path}_{file_count}.json", "w") as outfile:
+        with open(f"{preprocessed_path}batch{file_count}.json", "w") as outfile:
             json.dump(dataset, outfile)
+            print(
+                f"successly saved {preprocessed_path}batch{file_count}.json.... left data"
+            )
