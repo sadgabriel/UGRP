@@ -45,6 +45,8 @@ icons = {
 
 
 def label(
+    placed_file_path: str = "../data/2. placed",
+    labelled_file_path: str = "../data/3. labelled",
     file_count: int = 100,
     difficulty_curve_interval: int = 5,
 ) -> None:
@@ -57,7 +59,7 @@ def label(
 
     # Load data. input_data is a list of batch = { map_list: [] }
     # input_data = [batch0, batch1, ...]
-    input_data = load_folder(file_count=file_count)
+    input_data = load_folder(path=placed_file_path, file_count=file_count)
 
     # estimate each level data
     output_data = input_data
@@ -69,7 +71,7 @@ def label(
             output_data[i]["map_list"][j]["params"].update(new_params)
 
     # Save data
-    save_folder(data=output_data, file_count=file_count)
+    save_folder(data=output_data, path=labelled_file_path, file_count=file_count)
 
     return
 
