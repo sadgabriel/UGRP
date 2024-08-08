@@ -1,11 +1,13 @@
 import json
 import random
 import os
-from config import prompt_path, base_prompt_path, example_folder_path
 
 from config import (
-    example_count,
-    params,
+    EXAMPLE_COUNT,
+    PARAMS,
+    BASE_PROMPT_FILE_PATH,
+    EXAMPLE_PATH,
+    PROMPT_FILE_PATH,
 )
 
 
@@ -96,21 +98,29 @@ Parameters:
 """
 
 
-def prompt_generator(_example_count: int, _params: dict) -> None:
-    with open(base_prompt_path, "r") as file:
+def prompt_generator(
+    example_count: int,
+    params: dict,
+    base_prompt_file_path: str,
+    example_path: str,
+    prompt_file_path: str,
+) -> None:
+    with open(base_prompt_file_path, "r") as file:
         content = file.read()
 
     start_prompt, end_prompt = _split_prompts(content)
-    example = _load_examples_from_folder(example_folder_path, _example_count)
+    example = _load_examples_from_folder(example_path, example_count)
 
-    complete_prompt = start_prompt + example + _format_parameters(_params) + end_prompt
+    complete_prompt = start_prompt + example + _format_parameters(params) + end_prompt
 
-    with open(prompt_path, "w", encoding="utf-8") as file:
+    with open(prompt_file_path, "w", encoding="utf-8") as file:
         file.write(complete_prompt)
 
-    print(f"Complete prompt saved to {prompt_path}")
+    print(f"Complete prompt saved to {prompt_file_path}")
 
 
 if __name__ == "__main__":
 
-    prompt_generator(example_count, params)
+    prompt_generator(
+        EXAMPLE_COUNT, PARAMS, BASE_PROMPT_FILE_PATH, EXAMPLE_PATH, PROMPT_FILE_PATH
+    )
