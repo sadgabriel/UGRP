@@ -3,7 +3,7 @@ import random
 import json
 from collections import deque
 
-tile_character = {"flag": "F", "enemy": "E", "reward": "T", "boss": "B", "player": "P"}
+tile_character = {"flag": "F", "enemy": "E", "treasure": "T", "boss": "B", "player": "P"}
 
 
 class Map:
@@ -109,17 +109,17 @@ def assign_parameters(
     map: Map,
     enemy_density=0.05,
     cohesion=0.3,
-    reward_density=0.01,
+    treasure_density=0.01,
     range_multiplier=2,
     boss=True,
 ) -> None:
-    """Assign enemy, boss, and reward parameters for modifing map.
+    """Assign enemy, boss, and treasure parameters for modifing map.
 
     Args:
         map (Map): A map to be modified.
         enemy_density (float, optional): The proportion of empty space occupied by enemy. Defaults to 0.05.
         cohesion (float, optional): How densely the enemies are clustered. (The number of total enemy) ** cohesion equals group size. Defaults to 0.3.
-        reward_density (float, optional): The proportion of empty space occupied by reward. Defaults to 0.01.
+        treasure_density (float, optional): The proportion of empty space occupied by treasure. Defaults to 0.01.
         range_multiplier (int, optional): The difference between the minimum and maximum from base value. min value * (range_multiplier ** 2) equals max value. Defaults to 2.
         boss (bool, optional): Whether the boss exists. Defaults to True.
 
@@ -128,14 +128,14 @@ def assign_parameters(
             Vaild range
             0 <= enemy_density <= 1
             0 <= cohesion <= 1
-            0 <= reward_density <= 1
+            0 <= treasure_density <= 1
             1 <= range_multiplier
     """
 
     if (
         not (0 <= enemy_density <= 1)
         or not (0 <= cohesion <= 1)
-        or not (0 <= reward_density <= 1)
+        or not (0 <= treasure_density <= 1)
         or range_multiplier < 1
     ):
         raise ValueError("Invaild parameter setting.")
@@ -160,7 +160,7 @@ def assign_parameters(
     map.params["enemy_ideal_max"] = round(base_enemy * range_multiplier)
 
     map.params["boss"] = int(boss)
-    map.params["reward"] = round(empty_tile_count * reward_density)
+    map.params["treasure"] = round(empty_tile_count * treasure_density)
 
 
 def modify_map(
@@ -179,7 +179,7 @@ def modify_map(
     _set_player_and_boss(map)
     _set_group_flag(map, len(group_size_list), group_min_dist, flag_try_count)
     _set_enemy(map, group_size_list, enemy_sparsity)
-    _set_reward(map)
+    _set_treasure(map)
 
 
 def _set_player_and_boss(map: Map) -> None:
@@ -318,17 +318,17 @@ def _set_enemy(map: Map, group_size_list: list[int], sparsity: int) -> None:
                 group_num += 1
 
 
-def _set_reward(map: Map) -> None:
+def _set_treasure(map: Map) -> None:
     empty_list = list()
     for i in range(len(map.list_map)):
         for j in range(len(map.list_map[i])):
             if map.list_map[i][j] == ".":
                 empty_list.append((i, j))
 
-    reward_list = random.sample(empty_list, map.params["reward"])
+    treasure_list = random.sample(empty_list, map.params["treasure"])
 
-    for reward in reward_list:
-        map.list_map[reward[0]][reward[1]] = tile_character["reward"]
+    for treasure in treasure_list:
+        map.list_map[treasure[0]][treasure[1]] = tile_character["treasure"]
 
 
 if __name__ == "__main__":
