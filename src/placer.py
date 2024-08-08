@@ -3,7 +3,7 @@ import random
 import json
 from collections import deque
 
-tile_character = {"flag": "F", "enemy": "E", "reward": "R", "boss": "B", "player": "P"}
+tile_character = {"flag": "F", "enemy": "E", "reward": "T", "boss": "B", "player": "P"}
 
 
 class Map:
