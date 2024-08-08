@@ -24,7 +24,7 @@ class Map:
     def get_ascii_map(self) -> str:
         ascii_map = ""
         for row in self.list_map:
-            if row:
+            if row is not self.list_map[-1]:
                 ascii_map += "".join(row) + "\n"
 
         return ascii_map
