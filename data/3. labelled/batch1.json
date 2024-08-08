@@ -17,7 +17,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.01282051282051282,
+                "empty_ratio": 0.3333333333333333,
+                "exploration_requirement": 23,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.7410714285714286,
+                "reward_num": 1,
+                "enemy_num": 1,
+                "map_size": [
+                    13,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "            \n            \n########### \n#...#.....# \n#...#.....# \n#.P.#.....# \n#...#.....# \n#.../.....# \n#...#.BE..# \n#...#.R...# \n########### \n            \n            \n\n"
         },
@@ -38,7 +51,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03333333333333333,
+                "empty_ratio": 0.38095238095238093,
+                "exploration_requirement": 87,
+                "difficulty_curve": 0.25,
+                "nonlinearity": 1.1385767790262173,
+                "reward_num": 1,
+                "enemy_num": 6,
+                "map_size": [
+                    14,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "#####          \n#...#          \n#...###########\n#EE./...#.....#\n#####.../...P.#\n#.../...#.....#\n#..E##/##.....#\n#..E#..R#....E#\n#...#...#.....#\n#.E.#...#.....#\n#...#.B.#######\n#...#...#      \n#########      \n               \n\n"
         },
@@ -59,7 +85,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.020512820512820513,
+                "empty_ratio": 0.3435897435897436,
+                "exploration_requirement": 53,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.952054794520548,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    13,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#####          \n#...#          \n#.P.#     #####\n#...#     #...#\n###/#######...#\n  #...E...#...#\n  #......E/.B.#\n  #.......#...#\n  #......E#####\n  #R......#    \n  #.......#    \n  #.......#    \n  #########    \n\n"
         },
@@ -80,7 +119,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 8,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.0380952380952381,
+                "empty_ratio": 0.35714285714285715,
+                "exploration_requirement": 78,
+                "difficulty_curve": 0.75,
+                "nonlinearity": 0.9376470588235295,
+                "reward_num": 1,
+                "enemy_num": 7,
+                "map_size": [
+                    14,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "      #####    \n      #...#    \n#######...#####\n#.....#...#...#\n#.....#EE./.P.#\n#..B..#...#E..#\n#....E/..E#####\n#...R.#...#    \n#######/#######\n  #.....#.....#\n  #...../.E...#\n  #E....#.....#\n  #############\n               \n\n"
         },
@@ -101,7 +153,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.022222222222222223,
+                "empty_ratio": 0.35555555555555557,
+                "exploration_requirement": 65,
+                "difficulty_curve": -0.5,
+                "nonlinearity": 1.4523809523809523,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    15,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "  ######### \n  #....E..# \n  #....E.E# \n  #.......# \n  ##/###### \n  #.....#   \n  #.....#   \n  #.....#   \n####/##/### \n#.....#...# \n#.....#.B.# \n#.....#...# \n#.P...##### \n#...R.#     \n#######     \n\n"
         },
@@ -122,7 +187,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.006944444444444444,
+                "empty_ratio": 0.2986111111111111,
+                "exploration_requirement": 9,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 0.9492753623188407,
+                "reward_num": 0,
+                "enemy_num": 1,
+                "map_size": [
+                    9,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#####           \n#.E.#           \n#...#######     \n#...#.....#     \n#.P./.....#     \n#...#..B..#     \n#...#.....#     \n#...#.....#     \n###########     \n\n"
         },
@@ -143,7 +221,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.05128205128205128,
+                "empty_ratio": 0.5299145299145299,
+                "exploration_requirement": 43,
+                "difficulty_curve": 0.6666666666666666,
+                "nonlinearity": 0.9035714285714286,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    9,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#############\n#.......#ER.#\n#.......#.EE#\n#.......#...#\n#.....PE#.B.#\n#......./...#\n#.....E.#...#\n#.......#...#\n#############\n\n"
         },
@@ -164,7 +255,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.006993006993006993,
+                "empty_ratio": 0.23076923076923078,
+                "exploration_requirement": 9,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 0.8888888888888888,
+                "reward_num": 0,
+                "enemy_num": 1,
+                "map_size": [
+                    13,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "           \n           \n#########  \n#.......#  \n#....B..#  \n#.......#  \n######/##  \n  #.....#  \n  #.P.E.#  \n  #.....#  \n  #######  \n           \n           \n\n"
         },
@@ -185,7 +289,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.007407407407407408,
+                "empty_ratio": 0.22962962962962963,
+                "exploration_requirement": 13,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0,
+                "reward_num": 0,
+                "enemy_num": 1,
+                "map_size": [
+                    15,
+                    9
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "         \n         \n  #####  \n  #...#  \n  #.P.#  \n  #...#  \n  ##/####\n  #.....#\n  #..B..#\n  #.....#\n  #...E.#\n  #.....#\n  #######\n         \n         \n\n"
         },
@@ -206,7 +323,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 10,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.02564102564102564,
+                "empty_ratio": 0.4666666666666667,
+                "exploration_requirement": 57,
+                "difficulty_curve": 0.6,
+                "nonlinearity": 1.032069970845481,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    15,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 6
             },
             "map": "###########  \n#.....#...#  \n#.BE../..R#  \n#.....#...#  \n#######/#####\n#.......#...#\n#.......#...#\n#......./...#\n#.......#...#\n#.......#...#\n####/##/#####\n#..EE.#...#  \n#..P..#...#  \n#..E..#...#  \n###########  \n\n"
         },
@@ -227,7 +357,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03296703296703297,
+                "empty_ratio": 0.3021978021978022,
+                "exploration_requirement": 52,
+                "difficulty_curve": 1.0,
+                "nonlinearity": 1.0178571428571428,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    13,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "  #####       \n  #...#       \n  #...####### \n  #...#.....# \n####/##.....# \n#...../.....# \n#.....##/#### \n#.EE..#R....# \n##/####.B...# \n#...# #.E...# \n#EP.# ####### \n#.E.#         \n#####         \n\n"
         },
@@ -248,7 +391,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.023076923076923078,
+                "empty_ratio": 0.2153846153846154,
+                "exploration_requirement": 21,
+                "difficulty_curve": 1.0,
+                "nonlinearity": 1.0484848484848484,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    10,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "        #####\n        #...#\n#########.B.#\n#...#.E./...#\n#.P./.E.#####\n#...#...#    \n#.E.#####    \n#...#        \n#####        \n             \n\n"
         },
@@ -269,7 +425,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.018518518518518517,
+                "empty_ratio": 0.2962962962962963,
+                "exploration_requirement": 13,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    12,
+                    9
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#########\n#.......#\n#....P.E#\n#.......#\n#####/###\n  #.....#\n  #.B...#\n  #...E.#\n  #######\n         \n         \n         \n\n"
         },
@@ -290,7 +459,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.013888888888888888,
+                "empty_ratio": 0.3055555555555556,
+                "exploration_requirement": 25,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0677083333333333,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    16,
+                    9
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#########\n#...#...#\n#.../.B.#\n#...#...#\n#...#####\n#...#...#\n#E../...#\n#E..#...#\n###/#####\n  #...#  \n  #.P.#  \n  #...#  \n  #####  \n         \n         \n         \n\n"
         },
@@ -311,7 +493,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.011904761904761904,
+                "empty_ratio": 0.27976190476190477,
+                "exploration_requirement": 30,
+                "difficulty_curve": -0.3333333333333333,
+                "nonlinearity": 1.0833333333333333,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    14,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "  #######   \n  #.....#   \n  #..P..#   \n  #.....#   \n#####/###   \n#.......#   \n#.E.....#   \n#.......#   \n######/#### \n    #.....# \n    #...BE# \n    #.....# \n    ####### \n            \n\n"
         },
@@ -332,7 +527,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.016483516483516484,
+                "empty_ratio": 0.25274725274725274,
+                "exploration_requirement": 16,
+                "difficulty_curve": 1.0,
+                "nonlinearity": 1.0470588235294118,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    14,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "             \n             \n#############\n#...#...#EE.#\n#...#...#E..#\n#...#.../.P.#\n#.B./...#...#\n#...#...#...#\n#####...#####\n    #...#    \n    #####    \n             \n             \n             \n\n"
         },
@@ -353,7 +561,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.025,
+                "empty_ratio": 0.3375,
+                "exploration_requirement": 54,
+                "difficulty_curve": 0.6,
+                "nonlinearity": 0.9101123595505618,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    15,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "#############   \n#...#...E...#   \n#.../...R...#   \n#...#....E..#   \n#####.......#   \n    #.......#   \n  ######/####   \n  #.......#     \n  #.......##### \n  #......./E.E# \n  ###/#####EP.# \n  #.....# #...# \n  #.B...# ##### \n  #.....#       \n  #######       \n\n"
         },
@@ -374,7 +595,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.026041666666666668,
+                "empty_ratio": 0.25,
+                "exploration_requirement": 74,
+                "difficulty_curve": -0.25,
+                "nonlinearity": 1.0805194805194804,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    12,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "      #######   \n      #....E#   \n#######..BER#   \n#.....#.....#   \n#.P...###/###   \n#.....#.....#   \n#...../.E...#   \n#.....#E....#   \n#############   \n                \n                \n                \n\n"
         },
@@ -395,7 +629,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.019230769230769232,
+                "empty_ratio": 0.23717948717948717,
+                "exploration_requirement": 16,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 0.9714285714285713,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    12,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "      #####  \n      #...#  \n  #####...#  \n  #.E.#..E#  \n  #.P./.B.#  \n  #...#...#  \n  #...#...#  \n  #...#...#  \n  #...#####  \n  #.E.#      \n  #####      \n             \n\n"
         },
@@ -416,7 +663,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.014814814814814815,
+                "empty_ratio": 0.25925925925925924,
+                "exploration_requirement": 25,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.9102564102564102,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    15,
+                    9
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "  #######\n  #.....#\n  #.BE..#\n  #..E..#\n  ##/####\n  #...#  \n  #...#  \n  #...#  \n  ##/##  \n  #...#  \n  #.P.#  \n  #...#  \n  #...#  \n  #...#  \n  #####  \n\n"
         },
@@ -437,7 +697,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.04195804195804196,
+                "empty_ratio": 0.36363636363636365,
+                "exploration_requirement": 36,
+                "difficulty_curve": 1.25,
+                "nonlinearity": 0.7291666666666666,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    11,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#############\n#...#...#...#\n#.../..E#E..#\n#...#..E/.EE#\n#...#...#.P.#\n#...#...#...#\n#...##/######\n#...#...#    \n#####.BR#    \n    #...#    \n    #####    \n\n"
         },
@@ -458,7 +731,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.012121212121212121,
+                "empty_ratio": 0.2787878787878788,
+                "exploration_requirement": 20,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 0.91,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    11,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "               \n               \n  #############\n  #.....#.....#\n  #.B.../..P..#\n  #....E#.....#\n  #.....#######\n  #...E.#      \n  #.....#      \n  #.....#      \n  #######      \n\n"
         },
@@ -479,7 +765,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 8,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.019230769230769232,
+                "empty_ratio": 0.375,
+                "exploration_requirement": 81,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0515873015873016,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    16,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 6
             },
             "map": "#####        \n#...#        \n#...#   #####\n#...#   #.E.#\n#...#####E..#\n#..E#...#RB.#\n##/##.../...#\n#...#...#...#\n#.../...#####\n#...#.../...#\n###/#####...#\n  #.....#...#\n  #...P.#...#\n  #.....#...#\n  ###########\n             \n\n"
         },
@@ -500,7 +799,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.03418803418803419,
+                "empty_ratio": 0.38461538461538464,
+                "exploration_requirement": 35,
+                "difficulty_curve": 0.25,
+                "nonlinearity": 1.0065359477124183,
+                "reward_num": 0,
+                "enemy_num": 4,
+                "map_size": [
+                    9,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "  ###########\n  #E....#...#\n  #.E.../.E.#\n  #..E..#.P.#\n#####/###...#\n#.......#...#\n#.....B.#####\n#.......#    \n#########    \n\n"
         },
@@ -521,7 +833,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.02,
+                "empty_ratio": 0.36,
+                "exploration_requirement": 31,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.1186440677966103,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    15,
+                    10
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "          \n          \n#####     \n#..R#     \n#...##### \n#...#...# \n#.../.B.# \n#...#...# \n##/###### \n#.......# \n#.....E.# \n#.....E.# \n#....P..# \n#.......# \n######### \n\n"
         },
@@ -542,7 +867,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03125,
+                "empty_ratio": 0.3203125,
+                "exploration_requirement": 92,
+                "difficulty_curve": 0.4,
+                "nonlinearity": 1.0184782608695653,
+                "reward_num": 1,
+                "enemy_num": 7,
+                "map_size": [
+                    16,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 6
             },
             "map": "      ######### \n      #.E.#...# \n##### #...#.P.# \n#..E# #...#.E.# \n#.B.#####/##/## \n#E../...#.....# \n#####...#..E..# \n#...#.../.EE..# \n#.../...#.....# \n#...#...#..R..# \n#...#####.....# \n#...#   #.....# \n#####   ####### \n                \n                \n                \n\n"
         },
@@ -563,7 +901,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.013333333333333334,
+                "empty_ratio": 0.30666666666666664,
+                "exploration_requirement": 15,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 0.935,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    10,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "    #########  \n    #.......#  \n#####.......#  \n#...#.......#  \n#.P./.B.....#  \n#E..#.....E.#  \n#...#########  \n#...#          \n#####          \n               \n\n"
         },
@@ -584,7 +935,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.015384615384615385,
+                "empty_ratio": 0.4358974358974359,
+                "exploration_requirement": 80,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0066666666666666,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    13,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 6
             },
             "map": "###############\n#.......#.....#\n#......./.BE..#\n#.......#.E...#\n##/############\n#...#.....#...#\n#.../...../...#\n#R..#.....#...#\n#...####/######\n#...# #...#    \n#...# #.P.#    \n#...# #...#    \n##### #####    \n\n"
         },
@@ -605,7 +969,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.019230769230769232,
+                "empty_ratio": 0.2932692307692308,
+                "exploration_requirement": 43,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.236318407960199,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    16,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "  #########  \n  #...#...#  \n  #.B.#.P.#  \n  #...#...#  \n  ##/###/##  \n  #.......#  \n  #.......#  \n  #.......#  \n  #.......#  \n  #...RE.E#  \n  #.....E.#  \n  #.......#  \n  #########  \n             \n             \n             \n\n"
         },
@@ -626,7 +1003,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03636363636363636,
+                "empty_ratio": 0.38181818181818183,
+                "exploration_requirement": 70,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.0950704225352113,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    15,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "           \n           \n#######    \n#.....#    \n#...P.#####\n#.E...#.R.#\n#.....#...#\n#.E...#E..#\n#...../...#\n#.....#...#\n#######...#\n#...../...#\n#.B.EE#####\n#.....#    \n#######    \n\n"
         },
@@ -647,7 +1037,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.014285714285714285,
+                "empty_ratio": 0.29285714285714287,
+                "exploration_requirement": 36,
+                "difficulty_curve": -0.6666666666666666,
+                "nonlinearity": 1.038888888888889,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    14,
+                    10
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#####     \n#E..#     \n#EB.##### \n#.../...# \n#####...# \n#...#...# \n#.../...# \n#.P.#...# \n#...##### \n#...#     \n#...#     \n#...#     \n#####     \n          \n\n"
         },
@@ -668,7 +1071,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.014285714285714285,
+                "empty_ratio": 0.3,
+                "exploration_requirement": 20,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.8315217391304348,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    10,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "###########   \n#...#.....#   \n#..E#.....#   \n#.B.#..P..#   \n#.E./.....#   \n#...#.....#   \n#...#######   \n#...#         \n#####         \n              \n\n"
         },
@@ -689,7 +1105,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.023809523809523808,
+                "empty_ratio": 0.2222222222222222,
+                "exploration_requirement": 23,
+                "difficulty_curve": 0.6666666666666666,
+                "nonlinearity": 1.103030303030303,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    9,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "    #####     \n    #...#     \n#####E..##### \n#...#...#...# \n#.P./.../.BE# \n#.E.#...#...# \n############# \n              \n              \n\n"
         },
@@ -710,7 +1139,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.02976190476190476,
+                "empty_ratio": 0.25595238095238093,
+                "exploration_requirement": 38,
+                "difficulty_curve": 0.6666666666666666,
+                "nonlinearity": 1.0457142857142858,
+                "reward_num": 0,
+                "enemy_num": 5,
+                "map_size": [
+                    12,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#########     \n#.......#     \n#......E#     \n#....P..#     \n#.......#     \n#.E.....#     \n######/####   \n    #E..E.#   \n    #...BE#   \n    #.....#   \n    #######   \n              \n\n"
         },
@@ -731,7 +1173,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.02564102564102564,
+                "empty_ratio": 0.3076923076923077,
+                "exploration_requirement": 49,
+                "difficulty_curve": -0.3333333333333333,
+                "nonlinearity": 1.4197530864197532,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    13,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#####       \n#...#       \n#...#       \n#...#       \n#...#####   \n#...#...#   \n#.B./...#   \n#...#...#   \n#####/#/### \n#.....#...# \n#...P.#EE.# \n#.....#R.E# \n########### \n\n"
         },
@@ -752,7 +1207,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 2,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.018518518518518517,
+                "empty_ratio": 0.18518518518518517,
+                "exploration_requirement": 9,
+                "difficulty_curve": 1.0,
+                "nonlinearity": 1.0625,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    9,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#####       \n#...#       \n#.B.#####   \n#...#...#   \n#.../.P.#   \n#...#EE.#   \n#########   \n            \n            \n\n"
         },
@@ -773,7 +1241,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.06060606060606061,
+                "empty_ratio": 0.47878787878787876,
+                "exploration_requirement": 115,
+                "difficulty_curve": 0.6,
+                "nonlinearity": 1.0054945054945055,
+                "reward_num": 1,
+                "enemy_num": 9,
+                "map_size": [
+                    11,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "###############\n#.....#...E...#\n#...E./.E..P..#\n#....R#..E....#\n#.....#########\n#.....#.......#\n#...../E......#\n#...E.#....BE.#\n#######.......#\n      #E...E..#\n      #########\n\n"
         },
@@ -794,7 +1275,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.02197802197802198,
+                "empty_ratio": 0.37362637362637363,
+                "exploration_requirement": 55,
+                "difficulty_curve": -0.3333333333333333,
+                "nonlinearity": 1.0247747747747746,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    14,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "        #####\n        #.R.#\n#########.BE#\n#......./...#\n#..E....#####\n#..E....#...#\n#......./...#\n#.......#...#\n######/##...#\n    #...#...#\n    #.P.#...#\n    #...#...#\n    #########\n             \n\n"
         },
@@ -815,7 +1309,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.01875,
+                "empty_ratio": 0.175,
+                "exploration_requirement": 23,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 1.2484848484848485,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    16,
+                    10
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "  #####   \n  #...#   \n  #.B.#   \n  #...#   \n  ##/#### \n  #....E# \n  #.....# \n  #....E# \n  ##/#### \n  #...#   \n  #.PE#   \n  #...#   \n  #####   \n          \n          \n          \n\n"
         },
@@ -836,7 +1343,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.011904761904761904,
+                "empty_ratio": 0.24404761904761904,
+                "exploration_requirement": 16,
+                "difficulty_curve": 0.6666666666666666,
+                "nonlinearity": 1.0555555555555556,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    14,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "            \n            \n########### \n#.....#...# \n#.B.../...# \n#.....#...# \n#######...# \n  #..E#...# \n  #.P./...# \n  #..E#...# \n  ######### \n            \n            \n            \n\n"
         },
@@ -857,7 +1377,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.02857142857142857,
+                "empty_ratio": 0.4095238095238095,
+                "exploration_requirement": 50,
+                "difficulty_curve": 0.75,
+                "nonlinearity": 0.913563829787234,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    14,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#############  \n#...#.......#  \n#...#.......#  \n#.B.#.......#  \n#R..#.......#  \n#...#..E....#  \n##/##.E.....#  \n#.../.......#  \n#...####/####  \n#...# #...E.#  \n#...# #..EP.#  \n#...# #....E#  \n##### #######  \n               \n\n"
         },
@@ -878,7 +1411,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03636363636363636,
+                "empty_ratio": 0.4,
+                "exploration_requirement": 62,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.0236486486486487,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    11,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "###########    \n#.....#...#    \n#.....#R..#####\n#.....#...#...#\n#.E.E.##/##...#\n#.BE..#...#.P.#\n#...../.../..E#\n#.....#...#...#\n###########.E.#\n          #...#\n          #####\n\n"
         },
@@ -899,7 +1445,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.038461538461538464,
+                "empty_ratio": 0.2948717948717949,
+                "exploration_requirement": 72,
+                "difficulty_curve": 0.4,
+                "nonlinearity": 1.0324074074074074,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    13,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "##### ##### \n#...# #...# \n#.P.# #...# \n#E.E# #...# \n###/###..E# \n  #...#...# \n  #...#.B.# \n  #R..#.E.# \n  ##/##/### \n  #.....#   \n  #...E.#   \n  #.....#   \n  #######   \n\n"
         },
@@ -920,7 +1479,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.011904761904761904,
+                "empty_ratio": 0.2976190476190476,
+                "exploration_requirement": 29,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0833333333333333,
+                "reward_num": 1,
+                "enemy_num": 1,
+                "map_size": [
+                    14,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#####       \n#...#       \n#.P.####### \n#.../...R.# \n#####.E...# \n    #.....# \n  ###/##### \n  #...#...# \n  #...#.B.# \n  #...#...# \n  #.../...# \n  #...#...# \n  ######### \n            \n\n"
         },
@@ -941,7 +1513,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 2,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.008333333333333333,
+                "empty_ratio": 0.175,
+                "exploration_requirement": 8,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.0833333333333333,
+                "reward_num": 0,
+                "enemy_num": 1,
+                "map_size": [
+                    12,
+                    10
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "          \n          \n  #####   \n  #...#   \n  #.B.#   \n  #...#   \n  ##/#### \n  #.....# \n  #..P..# \n  #E....# \n  ####### \n          \n\n"
         },
@@ -962,7 +1547,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03205128205128205,
+                "empty_ratio": 0.3141025641025641,
+                "exploration_requirement": 36,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 0.9948979591836735,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    12,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "      #######\n      #.....#\n  #####EEB..#\n  #...#.....#\n  #...#.....#\n  #.../.....#\n  #RP.#.....#\n  #..E#...E.#\n  #...#######\n  #...#      \n  #####      \n             \n\n"
         },
@@ -983,7 +1581,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.023809523809523808,
+                "empty_ratio": 0.3273809523809524,
+                "exploration_requirement": 64,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0655737704918034,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    12,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "#######       \n#.....#       \n#..P..#####   \n#.....#...#   \n#.R.../...#   \n#.....#...#   \n#########/### \n#...#...#...# \n#.B./E../.E.# \n#...#...#E..# \n############# \n              \n\n"
         },
@@ -1004,7 +1615,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.016666666666666666,
+                "empty_ratio": 0.2916666666666667,
+                "exploration_requirement": 71,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0679824561403508,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    16,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "               \n               \n  #########    \n  #.......#    \n  #E....B.#    \n  #E......#    \n####/##########\n#.....#.......#\n#...R./.......#\n#.....#.......#\n#.E...####/####\n#.....# #...#  \n####### #.P.#  \n        #...#  \n        #####  \n               \n\n"
         },
@@ -1025,7 +1649,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.037037037037037035,
+                "empty_ratio": 0.3925925925925926,
+                "exploration_requirement": 42,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0547619047619048,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    9,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#############  \n#..R.E#..E..#  \n#.....#.....#  \n#...../.E...#  \n#.....#.B...#  \n#.P...#.....#  \n#..E..#######  \n#.....#        \n#######        \n\n"
         },
@@ -1046,7 +1683,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.035555555555555556,
+                "empty_ratio": 0.36444444444444446,
+                "exploration_requirement": 116,
+                "difficulty_curve": 0.4,
+                "nonlinearity": 1.1815217391304347,
+                "reward_num": 1,
+                "enemy_num": 7,
+                "map_size": [
+                    15,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#########      \n#.......#      \n#.P.....# #####\n#.E.....# #...#\n#.E.....# #E..#\n#.......# #.E.#\n######/####.E.#\n  #......./...#\n  #.....E.#####\n  #.......#    \n  #####/#####  \n    #.......#  \n    #....B..#  \n    #.R.E...#  \n    #########  \n\n"
         },
@@ -1067,7 +1717,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.01282051282051282,
+                "empty_ratio": 0.16666666666666666,
+                "exploration_requirement": 16,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.125,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    13,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "            \n            \n  #######   \n  #.....#   \n  #.B...#   \n  #E....#   \n  ###/###   \n  #.....#   \n  #.P...#   \n  #....E#   \n  #######   \n            \n            \n\n"
         },
@@ -1088,7 +1751,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.020833333333333332,
+                "empty_ratio": 0.35,
+                "exploration_requirement": 45,
+                "difficulty_curve": 0.4,
+                "nonlinearity": 0.8885400313971743,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    16,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "#####     #####\n#...#     #...#\n#...#######.E.#\n#...#.....#E..#\n#...#.R.../.P.#\n#...#.....#...#\n#...#E....#####\n#...#E....#    \n##/###/######  \n#.......#...#  \n#......./.B.#  \n#.......#...#  \n#############  \n               \n               \n               \n\n"
         },
@@ -1109,7 +1785,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.027972027972027972,
+                "empty_ratio": 0.34965034965034963,
+                "exploration_requirement": 41,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0744047619047619,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    11,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "        #####\n        #...#\n  #######.P.#\n  #.....#...#\n  #.....#E..#\n  #...../...#\n  #.....#...#\n  #.....#..R#\n  #..B..#####\n  #...EE#    \n  #######    \n\n"
         },
@@ -1130,7 +1819,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.03076923076923077,
+                "empty_ratio": 0.26153846153846155,
+                "exploration_requirement": 34,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 1.0999999999999999,
+                "reward_num": 0,
+                "enemy_num": 4,
+                "map_size": [
+                    13,
+                    10
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#######   \n#..E..#   \n#.P...#   \n#.....#   \n#..E..#   \n#.....#   \n####/#### \n  #.....# \n  #.B...# \n  #E..E.# \n  ####### \n          \n          \n\n"
         },
@@ -1151,7 +1853,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.02564102564102564,
+                "empty_ratio": 0.3435897435897436,
+                "exploration_requirement": 57,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.9864864864864865,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    15,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "  #########  \n  #.......#  \n  #..B.E.R#  \n  #....E..#  \n#######/###  \n#...#.....#  \n#.P./.....#  \n#...#.....#  \n#####.....#  \n#...#...E.#  \n#.../..E..#  \n#...#.....#  \n###########  \n             \n             \n\n"
         },
@@ -1172,7 +1887,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.027472527472527472,
+                "empty_ratio": 0.26373626373626374,
+                "exploration_requirement": 61,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0727272727272728,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    13,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#######       \n#.....#       \n#E.B..#####   \n#.....#...#   \n#.....#...#   \n#..E..#.P.#   \n####/##...#   \n  #..E#...#   \n  #.../...#   \n  #R..#.E.#   \n  #########   \n              \n              \n\n"
         },
@@ -1193,7 +1921,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 8,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.030303030303030304,
+                "empty_ratio": 0.4666666666666667,
+                "exploration_requirement": 47,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 1.0595238095238095,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    11,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "###############\n#.....#.......#\n#...P.#.......#\n#.....#.......#\n#...../....B..#\n#...E.#...E...#\n#.....#......R#\n#.E..E#.......#\n###############\n               \n               \n\n"
         },
@@ -1214,7 +1955,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03571428571428571,
+                "empty_ratio": 0.27380952380952384,
+                "exploration_requirement": 68,
+                "difficulty_curve": -0.3333333333333333,
+                "nonlinearity": 1.2268518518518519,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    14,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#####       \n#...#       \n#...#####   \n#...#...#   \n#.B./.EE#   \n#...#...#   \n#####/#/### \n  #...#...# \n  #E..#.P.# \n  #..E#...# \n  #.E.#...# \n  #R..#...# \n  ######### \n            \n\n"
         },
@@ -1235,7 +1989,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.02097902097902098,
+                "empty_ratio": 0.25874125874125875,
+                "exploration_requirement": 21,
+                "difficulty_curve": 0.6666666666666666,
+                "nonlinearity": 1.0333333333333334,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    13,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "           \n           \n  #####    \n  #...#    \n  #...#####\n  #.B.#...#\n  #E..#.PE#\n  #...#..E#\n  #.../...#\n  #...#...#\n  #####...#\n      #...#\n      #####\n\n"
         },
@@ -1256,7 +2023,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 8,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03333333333333333,
+                "empty_ratio": 0.34285714285714286,
+                "exploration_requirement": 84,
+                "difficulty_curve": 0.6,
+                "nonlinearity": 1.157750342935528,
+                "reward_num": 1,
+                "enemy_num": 6,
+                "map_size": [
+                    15,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "############# \n#...#.....R.# \n#.B./.......# \n#...#.......# \n######/###### \n#E......#     \n#..EE...#     \n#.......#     \n#######/###   \n#..EE.#...#   \n#.PE../...#   \n#.....#...#   \n#######...#   \n      #...#   \n      #####   \n\n"
         },
@@ -1277,7 +2057,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.011363636363636364,
+                "empty_ratio": 0.19886363636363635,
+                "exploration_requirement": 25,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.9551282051282052,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    16,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "           \n           \n    #####  \n    #...#  \n#####...#  \n#...#...#  \n#.P./...#  \n#...#...#  \n#####...#  \n    #E..#  \n  ###/###  \n  #.E.#    \n  #.B.#    \n  #...#    \n  #####    \n           \n\n"
         },
@@ -1298,7 +2091,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.011111111111111112,
+                "empty_ratio": 0.3,
+                "exploration_requirement": 16,
+                "difficulty_curve": -0.5,
+                "nonlinearity": 1.0775862068965518,
+                "reward_num": 1,
+                "enemy_num": 1,
+                "map_size": [
+                    12,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#########      \n#.E.....#      \n#.......#      \n#.......#      \n#.......#####  \n#.R.....#...#  \n#...P.../.B.#  \n#.......#...#  \n#############  \n               \n               \n               \n\n"
         },
@@ -1319,7 +2125,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.016666666666666666,
+                "empty_ratio": 0.28888888888888886,
+                "exploration_requirement": 26,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.087719298245614,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    12,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "               \n               \n  ###########  \n  #...#.E...#  \n  #.B.#.E.P.#  \n  #...#.....#  \n  #...####/####\n  #...#.......#\n  #.../.......#\n  #...#.R.....#\n  #############\n               \n\n"
         },
@@ -1340,7 +2159,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.05194805194805195,
+                "empty_ratio": 0.38961038961038963,
+                "exploration_requirement": 80,
+                "difficulty_curve": 0.25,
+                "nonlinearity": 1.0471428571428572,
+                "reward_num": 1,
+                "enemy_num": 7,
+                "map_size": [
+                    14,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#########  \n#.....E.#  \n#.B..E..#  \n#.......#  \n#..E..E.#  \n#..E....#  \n#.....R.#  \n#...E...#  \n######/##  \n#.......#  \n#...P...#  \n#..E....#  \n#########  \n           \n\n"
         },
@@ -1361,7 +2193,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.013986013986013986,
+                "empty_ratio": 0.18181818181818182,
+                "exploration_requirement": 22,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0166666666666666,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    13,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "           \n           \n  #######  \n  #.....#  \n  #...P.#  \n  #.....#  \n  ##/####  \n  #...#    \n  #.B.#    \n  #.E.#    \n  #E..#    \n  #...#    \n  #####    \n\n"
         },
@@ -1382,7 +2227,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.007692307692307693,
+                "empty_ratio": 0.25384615384615383,
+                "exploration_requirement": 16,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.8981481481481483,
+                "reward_num": 0,
+                "enemy_num": 1,
+                "map_size": [
+                    10,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "        #####\n        #...#\n#########...#\n#.......#...#\n#.P...../.B.#\n#.......#E..#\n#############\n             \n             \n             \n\n"
         },
@@ -1403,7 +2261,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.02976190476190476,
+                "empty_ratio": 0.36904761904761907,
+                "exploration_requirement": 58,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0082815734989647,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    12,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "############# \n#.....#.....# \n#..B..#...P.# \n#.....#.....# \n#.....#.....# \n#.....#.....# \n####/##.E...# \n  #.EE/R.E..# \n  #...####### \n  #...#       \n  #####       \n              \n\n"
         },
@@ -1424,7 +2295,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.048484848484848485,
+                "empty_ratio": 0.38181818181818183,
+                "exploration_requirement": 74,
+                "difficulty_curve": 0.75,
+                "nonlinearity": 1.0438356164383562,
+                "reward_num": 1,
+                "enemy_num": 7,
+                "map_size": [
+                    11,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#########      \n#...E...#      \n#...E.E.#####  \n#...P...#...#  \n#.......#.B.#  \n#.......#.E.#  \n#.....R.##/####\n#......./..E..#\n#########.....#\n        #..EE.#\n        #######\n\n"
         },
@@ -1445,7 +2329,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.038461538461538464,
+                "empty_ratio": 0.3769230769230769,
+                "exploration_requirement": 37,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 1.0255102040816326,
+                "reward_num": 1,
+                "enemy_num": 4,
+                "map_size": [
+                    10,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "        #####\n        #...#\n#########...#\n#.......#EE.#\n#R.P..../..E#\n#.......#...#\n#.E.....#.B.#\n#.......#...#\n#############\n             \n\n"
         },
@@ -1466,7 +2363,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.030303030303030304,
+                "empty_ratio": 0.26666666666666666,
+                "exploration_requirement": 57,
+                "difficulty_curve": 0.25,
+                "nonlinearity": 1.084033613445378,
+                "reward_num": 0,
+                "enemy_num": 5,
+                "map_size": [
+                    11,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#########      \n#...#.E.#      \n#.B./..E#      \n#...#...#      \n#...###/#######\n#...# #.......#\n#.EE# #..P....#\n#...# #E......#\n##### #########\n               \n               \n\n"
         },
@@ -1487,7 +2397,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.025,
+                "empty_ratio": 0.2833333333333333,
+                "exploration_requirement": 33,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.9794871794871796,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    10,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "  ######### \n  #.......# \n  #....EBE# \n  #.......# \n######/#### \n#...#...#   \n#.P./E..#   \n#...#...#   \n#########   \n            \n\n"
         },
@@ -1508,7 +2431,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.01818181818181818,
+                "empty_ratio": 0.3181818181818182,
+                "exploration_requirement": 23,
+                "difficulty_curve": 0.3333333333333333,
+                "nonlinearity": 0.9423076923076923,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    10,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#########  \n#...#...#  \n#.BE/...#  \n#...#...#  \n#####...#  \n#...#E..#  \n#.P./...#  \n#...#...#  \n#########  \n           \n\n"
         },
@@ -1529,7 +2465,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.009523809523809525,
+                "empty_ratio": 0.20952380952380953,
+                "exploration_requirement": 17,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.0572916666666667,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    14,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#####          \n#...#          \n#EP.#########  \n#E../.......#  \n#####.......#  \n    #.......#  \n  ###/#######  \n  #...#        \n  #...#####    \n  #.../...#    \n  #####.B.#    \n      #...#    \n      #####    \n               \n\n"
         },
@@ -1550,7 +2499,20 @@
                 "enemy_ideal_min": 3,
                 "enemy_ideal_max": 10,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.016666666666666666,
+                "empty_ratio": 0.4083333333333333,
+                "exploration_requirement": 56,
+                "difficulty_curve": 0.4,
+                "nonlinearity": 0.8990384615384616,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    15,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 6
             },
             "map": "  ############# \n  #..E....#...# \n  #.E...P.#...# \n  #.......#...# \n  ##/######...# \n  #.....# #...# \n  #.....###/### \n  #...../...#   \n####/####...#   \n#.......#...#   \n#..B....##/##   \n#.......#...#   \n#..E....#.R.#   \n#.......#...#   \n#############   \n\n"
         },
@@ -1571,7 +2533,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.016483516483516484,
+                "empty_ratio": 0.34615384615384615,
+                "exploration_requirement": 29,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.8058823529411765,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    14,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#######      \n#.....#      \n#.....#      \n#.....#      \n#####/#######\n#...#.......#\n#.B./.......#\n#...#..EE...#\n#####.......#\n#..R/.......#\n#.P.#########\n#...#        \n#####        \n             \n\n"
         },
@@ -1592,7 +2567,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.01948051948051948,
+                "empty_ratio": 0.4025974025974026,
+                "exploration_requirement": 42,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.8746268656716418,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    14,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#########  \n#.......#  \n#.B..R..#  \n#.......#  \n#.......#  \n#.......#  \n#.E.....#  \n#.E.....#  \n##/######  \n#...#...#  \n#.../.P.#  \n#...#...#  \n#########  \n           \n\n"
         },
@@ -1613,7 +2601,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.041666666666666664,
+                "empty_ratio": 0.328125,
+                "exploration_requirement": 88,
+                "difficulty_curve": 0.4,
+                "nonlinearity": 0.9863013698630138,
+                "reward_num": 1,
+                "enemy_num": 7,
+                "map_size": [
+                    16,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#########   \n#.E.....#   \n#.......#   \n#.......#   \n#....B.E#   \n#......R#   \n#......E#   \n#.......#   \n#######/### \n      #...# \n#######..E# \n#...../E.E# \n#..PE.##### \n#.....#     \n#######     \n            \n\n"
         },
@@ -1634,7 +2635,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.02564102564102564,
+                "empty_ratio": 0.29914529914529914,
+                "exploration_requirement": 20,
+                "difficulty_curve": 0.6666666666666666,
+                "nonlinearity": 1.095,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    9,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "             \n             \n#############\n#.....#...E.#\n#.B.../.P.E.#\n#.....#.....#\n#E....#######\n#.....#      \n#######      \n\n"
         },
@@ -1655,7 +2669,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.02097902097902098,
+                "empty_ratio": 0.26573426573426573,
+                "exploration_requirement": 25,
+                "difficulty_curve": 0.6666666666666666,
+                "nonlinearity": 1.069767441860465,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    13,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#######    \n#.....#    \n#....E#    \n#.....#    \n#..B..#    \n#.....#    \n#####/###  \n#..E#...#  \n#.P./..E#  \n#...#...#  \n#########  \n           \n           \n\n"
         },
@@ -1676,7 +2703,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.035897435897435895,
+                "empty_ratio": 0.28717948717948716,
+                "exploration_requirement": 97,
+                "difficulty_curve": 0.4,
+                "nonlinearity": 1.047863247863248,
+                "reward_num": 1,
+                "enemy_num": 6,
+                "map_size": [
+                    15,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#########    \n#....E..#    \n#.P....E#    \n#......E#    \n#######/###  \n      #...#  \n      #...#  \n      #...#  \n  ######/##  \n  #.......#  \n  #..B....#  \n  #...R.EE#  \n  #....E..#  \n  #.......#  \n  #########  \n\n"
         },
@@ -1697,7 +2737,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 2,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.0125,
+                "empty_ratio": 0.125,
+                "exploration_requirement": 12,
+                "difficulty_curve": 1.0,
+                "nonlinearity": 1.0729166666666667,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    10,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "                \n                \n  ###########   \n  #..E#...E.#   \n  #.B./..P..#   \n  #...#.....#   \n  ###########   \n                \n                \n                \n\n"
         },
@@ -1718,7 +2771,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03125,
+                "empty_ratio": 0.3072916666666667,
+                "exploration_requirement": 56,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.085820895522388,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    16,
+                    12
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "##### ##### \n#...# #...# \n#.PE# #EB.# \n#...# #...# \n##/####/### \n#..R....#   \n#.......#   \n#.....E.#   \n#.......#   \n#.......#   \n#E......#   \n#E......#   \n#########   \n            \n            \n            \n\n"
         },
@@ -1739,7 +2805,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.01775147928994083,
+                "empty_ratio": 0.41420118343195267,
+                "exploration_requirement": 25,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.0053333333333332,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    13,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "#######      \n#.....#      \n#.B...#######\n#...../.....#\n#######.....#\n#..E..#.....#\n#.....#.....#\n#...../..R..#\n#..EP.#.....#\n#.....#.....#\n#############\n             \n             \n\n"
         },
@@ -1760,7 +2839,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.02,
+                "empty_ratio": 0.3933333333333333,
+                "exploration_requirement": 21,
+                "difficulty_curve": 0.6666666666666666,
+                "nonlinearity": 0.86875,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    10,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "    #########  \n    #.......#  \n#####.......#  \n#...#R......#  \n#.B.#E..P...#  \n#...#E......#  \n#.../.......#  \n#...#.......#  \n#############  \n               \n\n"
         },
@@ -1781,7 +2873,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.047619047619047616,
+                "empty_ratio": 0.49206349206349204,
+                "exploration_requirement": 41,
+                "difficulty_curve": 1.0,
+                "nonlinearity": 1.0285714285714285,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    14,
+                    9
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#########\n#.......#\n#.....E.#\n#.......#\n#E......#\n#....P..#\n#.......#\n#.......#\n#####/###\n#...E...#\n#..E.B.R#\n#..E....#\n#########\n         \n\n"
         },
@@ -1802,7 +2907,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.03125,
+                "empty_ratio": 0.3125,
+                "exploration_requirement": 89,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.0155555555555555,
+                "reward_num": 1,
+                "enemy_num": 7,
+                "map_size": [
+                    16,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "#######         \n#.....#         \n#....E#####     \n#.....#...#     \n#...B./...##### \n#.....#...#...# \n#######.../.E.# \n      #...#E..# \n  #########...# \n  #...R.../..E# \n  #.......##### \n  #.PE.E..#     \n  #...E...#     \n  #.......#     \n  #########     \n                \n\n"
         },
@@ -1823,7 +2941,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.03,
+                "empty_ratio": 0.25,
+                "exploration_requirement": 20,
+                "difficulty_curve": -0.5,
+                "nonlinearity": 0.9933333333333334,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    10,
+                    10
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "  ####### \n  #.....# \n  #..P..# \n  #.E...# \n  ##/#### \n  #....E# \n  #.B...# \n  #.E...# \n  ####### \n          \n\n"
         },
@@ -1844,7 +2975,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 8,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.022222222222222223,
+                "empty_ratio": 0.39444444444444443,
+                "exploration_requirement": 57,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0692640692640694,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    12,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "###############\n#...#.....#...#\n#.B./...../.P.#\n#..R#.....#...#\n#########/#####\n#.......#...#  \n#......./..E#  \n#..E....#...#  \n#...E...#####  \n#.......#      \n#########      \n               \n\n"
         },
@@ -1865,7 +3009,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 5,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.023809523809523808,
+                "empty_ratio": 0.20476190476190476,
+                "exploration_requirement": 38,
+                "difficulty_curve": -1.5,
+                "nonlinearity": 1.2571428571428573,
+                "reward_num": 0,
+                "enemy_num": 5,
+                "map_size": [
+                    14,
+                    15
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "               \n               \n      #######  \n      #.....#  \n  #####.....#  \n  #...#.....#  \n  #.B.#.P...#  \n  #.../.....#  \n  #E..#....E#  \n  #E.E#....E#  \n  ###########  \n               \n               \n               \n\n"
         },
@@ -1886,7 +3043,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.014423076923076924,
+                "empty_ratio": 0.33653846153846156,
+                "exploration_requirement": 40,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.1866666666666668,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    16,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "  ##### #####\n  #...# #...#\n  #.P.# #.E.#\n  #..R# #...#\n#####/###..E#\n#...#...#...#\n#.../.../...#\n#...#...#...#\n#...##/######\n#...#.....#  \n#...#..B..#  \n#...#.....#  \n###########  \n             \n             \n             \n\n"
         },
@@ -1907,7 +3077,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 8,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.016666666666666666,
+                "empty_ratio": 0.32916666666666666,
+                "exploration_requirement": 53,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.7509803921568627,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    15,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 5
             },
             "map": "    ########### \n    #.....#...# \n    #.....#.R.# \n    #.....#...# \n    #.....#.B.# \n    #.....#...# \n########/##E..# \n#.....#.../E.E# \n#...../...##### \n#.....#...#...# \n#######.../.P.# \n      #...#...# \n      ######### \n                \n                \n\n"
         },
@@ -1928,7 +3111,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.04666666666666667,
+                "empty_ratio": 0.4066666666666667,
+                "exploration_requirement": 71,
+                "difficulty_curve": 0.75,
+                "nonlinearity": 1.0682539682539682,
+                "reward_num": 1,
+                "enemy_num": 6,
+                "map_size": [
+                    15,
+                    10
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "          \n          \n######### \n#.......# \n#.EB....# \n#.E.....# \n#.......# \n#......E# \n#.......# \n#...R...# \n######/## \n#E......# \n#..P...E# \n#.....E.# \n######### \n\n"
         },
@@ -1949,7 +3145,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 7,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.020833333333333332,
+                "empty_ratio": 0.4513888888888889,
+                "exploration_requirement": 32,
+                "difficulty_curve": 0.25,
+                "nonlinearity": 0.9971428571428571,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    9,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "############### \n#.......#.E...# \n#.P.E...#.....# \n#......./.....# \n#.......#..B..# \n#......R#.....# \n#########.....# \n        #.....# \n        ####### \n\n"
         },
@@ -1970,7 +3179,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.019230769230769232,
+                "empty_ratio": 0.1875,
+                "exploration_requirement": 47,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.0518518518518518,
+                "reward_num": 0,
+                "enemy_num": 4,
+                "map_size": [
+                    16,
+                    13
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "             \n             \n  #####      \n  #...#      \n  #.P.#####  \n  #.../...#  \n  #####..E#  \n      #.E.#  \n#######E..#  \n#.....#...#  \n#.E.B./...#  \n#.....#...#  \n###########  \n             \n             \n             \n\n"
         },
@@ -1991,7 +3213,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 3,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.030303030303030304,
+                "empty_ratio": 0.31313131313131315,
+                "exploration_requirement": 23,
+                "difficulty_curve": -0.5,
+                "nonlinearity": 1.0333333333333334,
+                "reward_num": 0,
+                "enemy_num": 3,
+                "map_size": [
+                    9,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#########  \n#.E.....#  \n#...P...#  \n#.......#  \n###/#####  \n#.....#    \n#...BE#    \n#...E.#    \n#######    \n\n"
         },
@@ -2012,7 +3247,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 9,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.013392857142857142,
+                "empty_ratio": 0.38839285714285715,
+                "exploration_requirement": 49,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.8521739130434783,
+                "reward_num": 1,
+                "enemy_num": 2,
+                "map_size": [
+                    16,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "##### ####### \n#...# #.....# \n#...# #...P.# \n#.B.# #.....# \n#...####/#### \n#...#.R.....# \n#.../.......# \n#EE.#.......# \n#####.......# \n    #.......# \n  ####/###### \n  #.......#   \n  #.......#   \n  #.......#   \n  #########   \n              \n\n"
         },
@@ -2033,7 +3281,20 @@
                 "enemy_ideal_min": 2,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.030612244897959183,
+                "empty_ratio": 0.29591836734693877,
+                "exploration_requirement": 66,
+                "difficulty_curve": 0.5,
+                "nonlinearity": 1.1079545454545454,
+                "reward_num": 1,
+                "enemy_num": 5,
+                "map_size": [
+                    14,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 4
             },
             "map": "  #####       \n  #...#       \n  #...# ##### \n  #...# #...# \n  #...# #...# \n  #.B.# #.EE# \n  #...# #..E# \n  #R..# #...# \n#####/####/## \n#...#.E.....# \n#.P./.......# \n#...#E......# \n############# \n              \n\n"
         },
@@ -2054,7 +3315,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 6,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.025974025974025976,
+                "empty_ratio": 0.33766233766233766,
+                "exploration_requirement": 39,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 1.002873563218391,
+                "reward_num": 1,
+                "enemy_num": 3,
+                "map_size": [
+                    14,
+                    11
+                ],
+                "playablility": true,
+                "room_num": 2
             },
             "map": "#########  \n#...E...#  \n#.E.....#  \n#EB.....#  \n#.......#  \n#.......#  \n#.......#  \n#.......#  \n####/####  \n  #.R.#    \n  #.P.#    \n  #...#    \n  #####    \n           \n\n"
         },
@@ -2075,7 +3349,20 @@
                 "enemy_ideal_min": 3,
                 "enemy_ideal_max": 12,
                 "boss": 1,
-                "reward": 1
+                "reward": 1,
+                "density": 0.05416666666666667,
+                "empty_ratio": 0.425,
+                "exploration_requirement": 141,
+                "difficulty_curve": 0.6,
+                "nonlinearity": 1.042165242165242,
+                "reward_num": 1,
+                "enemy_num": 12,
+                "map_size": [
+                    15,
+                    16
+                ],
+                "playablility": true,
+                "room_num": 7
             },
             "map": "############### \n#.......#..E..# \n#.....B.#.PE..# \n#...E...#...E.# \n######/###/#### \n#.E.#...#...#   \n#.E.#.../...#   \n#...#.E.#...#   \n#.../..E#.E.#   \n#...#...#...#   \n######/###/#### \n#....E..#R....# \n#.....E.#.....# \n#.....E.#.....# \n############### \n\n"
         },
@@ -2096,7 +3383,20 @@
                 "enemy_ideal_min": 1,
                 "enemy_ideal_max": 4,
                 "boss": 1,
-                "reward": 0
+                "reward": 0,
+                "density": 0.011904761904761904,
+                "empty_ratio": 0.24404761904761904,
+                "exploration_requirement": 26,
+                "difficulty_curve": 0.0,
+                "nonlinearity": 0.9888888888888889,
+                "reward_num": 0,
+                "enemy_num": 2,
+                "map_size": [
+                    12,
+                    14
+                ],
+                "playablility": true,
+                "room_num": 3
             },
             "map": "    #######   \n    #.....#   \n    #..B..#   \n    #.....#   \n    #####/### \n        #.E.# \n#########...# \n#......./.E.# \n#....P..##### \n#.......#     \n#########     \n              \n\n"
         }
