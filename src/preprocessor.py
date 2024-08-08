@@ -1,4 +1,5 @@
 from unstructured_data_generator import unstructured_data_generator
+from config import PROMPT_FILE_PATH
 
 
 def _find_final_map_keyword(text: str, keywords=["Final"]) -> list:
@@ -96,11 +97,11 @@ def _extract_ascii_art_map(text: str) -> str:
         return ""
 
 
-def preprocessor() -> str:
-    text = unstructured_data_generator()
-    return _extract_ascii_art_map(text)
+def preprocessor(prompt_file_path: str) -> str:
+    text = unstructured_data_generator(prompt_file_path)
+    map = _extract_ascii_art_map(text)
+    print(map)
+    return map
 
 
-if __name__ == "__main__":
-
-    preprocessor()
+preprocessor(PROMPT_FILE_PATH)

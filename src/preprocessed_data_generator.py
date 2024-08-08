@@ -22,7 +22,7 @@ def preprocessed_data_generator(
             example_count, param, base_prompt_file_path, example_path, prompt_file_path
         )
 
-        map = preprocessor()
+        map = preprocessor(prompt_file_path)
         dataset["map_list"].append({"params": param, "map": map})
 
         # 데이터가 100개일 때마다 새로운 파일로 저장
