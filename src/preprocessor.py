@@ -33,7 +33,7 @@ def _is_ascii_art_line(line: str) -> bool:
     bool: True if the line consists only of ASCII art characters, False otherwise
     """
     result = line.strip() != "" and all(
-        char in ["#", " ", ".", "/", "P", "B", "E", "R"] for char in line
+        char in ["#", " ", ".", "/", "P", "B", "E", "T"] for char in line
     )
     print(f"is_ascii_art_line - Line to check: '{line}' Result: {result}")
     return result

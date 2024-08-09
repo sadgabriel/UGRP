@@ -1,7 +1,7 @@
 def param_generator() -> dict:
     return {
-        "MAP_SIZE": [20, 20],
-        "ROOM_COUNT": 7,
-        "ENEMY_COUNT": 2,
-        "TREASURE_COUNT": 1,
+        "map_size": [20, 20],
+        "room_count": 7,
+        "enemy_count": 2,
+        "treasure_count": 1,
     }
