@@ -1,4 +1,3 @@
-from config import PROMPT_FILE_PATH
 import re
 
 
@@ -45,7 +44,7 @@ def is_chapter_format(line: str) -> bool:
     Returns:
     bool: True if the line matches the pattern, otherwise False.
     """
-    pattern = r"^#+ [A-Za-z]+$"
+    pattern = r"^#+ [A-Za-z]+.*$"
     result = bool(re.match(pattern, line))
 
     return result
@@ -147,4 +146,6 @@ def preprocessor(text: str) -> str:
     return askii_map
 
 
-preprocessor(PROMPT_FILE_PATH)
+test = "### Notes:"
+
+print(_is_ascii_art_line(test))

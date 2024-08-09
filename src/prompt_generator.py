@@ -2,19 +2,7 @@ import json
 import random
 import os
 
-from config import (
-    EXAMPLE_COUNT,
-    PARAMS,
-    BASE_PROMPT_FILE_PATH,
-    EXAMPLE_PATH,
-    PROMPT_FILE_PATH,
-)
-
-
-"""
-used prompt to creat autoCOT:
-Given the ENEMY_GROUP, ENEMY_GROUP_SIZE, ENEMY_IDEAL, REWARD,BOSS, DENSITY, EMPTY_RATIO, EXPLORATION_REQUIREMENT, DIFFICULTY_CURVE, NONLINEARITY, REWARD_NUM, ENEMY_NUM, MAP_SIZE, and several example of Parameters-Generated map pairs, please create a prompt to generate a map in ASCII. prompt structure should be {start_prompt, example_prompt, end_prompt}.
-"""
+from config import *
 
 
 def _load_examples_from_file(input_path: str, example_count: int) -> str:
@@ -92,29 +80,17 @@ Parameters:
 """
 
 
-def prompt_generator(
-    example_count: int,
-    params: dict,
-    base_prompt_file_path: str,
-    example_path: str,
-    prompt_file_path: str,
-) -> None:
+def prompt_generator(example_count: int, params: dict, prompt_style: str) -> str:
+
+    base_prompt_file_path = BASE_PROMPT_PATH + f"{prompt_style}.txt"
+    prompt_file_path = PROMPT_PATH + f"{prompt_style}.txt"
+
     with open(base_prompt_file_path, "r") as file:
         content = file.read()
 
     start_prompt, end_prompt = _split_prompts(content)
-    example = _load_examples_from_folder(example_path, example_count)
+    example = _load_examples_from_folder(LABELED_PATH, example_count)
 
     complete_prompt = start_prompt + example + _format_parameters(params) + end_prompt
 
-    with open(prompt_file_path, "w", encoding="utf-8") as file:
-        file.write(complete_prompt)
-
-    print(f"Complete prompt saved to {prompt_file_path}")
-
-
-if __name__ == "__main__":
-
-    prompt_generator(
-        EXAMPLE_COUNT, PARAMS, BASE_PROMPT_FILE_PATH, EXAMPLE_PATH, PROMPT_FILE_PATH
-    )
+    return complete_prompt
