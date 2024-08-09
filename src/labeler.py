@@ -236,8 +236,14 @@ def _set_count_param(list_level: list) -> tuple:
 
 
 def _set_object_dict(list_level: list) -> tuple:
-    entry_position = _find_objects_position(list_level, icons["entry"])[0]
+    # entry position
+    entry_position = _find_objects_position(list_level, icons["entry"])
+    if entry_position == []:
+        entry_position = None
+    else:
+        entry_position = entry_position[0]
 
+    # exit position
     exit_type = None
     for i in range(len(list_level)):
         row = list_level[i]
@@ -252,13 +258,18 @@ def _set_object_dict(list_level: list) -> tuple:
     elif exit_type == "exit":
         exit_position = _find_objects_position(list_level, icons["exit"])[0]
     else:
-        raise
+        exit_position = None
 
+    # treasure position
     treasure_positions = _find_objects_position(list_level, icons["treasure"])
     enemy_positions = _find_objects_position(list_level, icons["enemy"])
-    object_positions = (
-        [entry_position] + [exit_position] + treasure_positions + enemy_positions
-    )
+
+    # object position
+    object_positions = treasure_positions + enemy_positions
+    if entry_position != None:
+        object_positions += [entry_position]
+    if exit_position != None:
+        object_positions += [exit_position]
 
     return (
         object_positions,
@@ -270,8 +281,15 @@ def _set_object_dict(list_level: list) -> tuple:
 
 
 def _set_distance_dict(list_level: list, entry_pos: tuple, exit_pos: tuple) -> tuple:
-    entry_distance_dict = _shortest_distances(list_level, entry_pos)
-    exit_distance_dict = _shortest_distances(list_level, exit_pos)
+    if entry_pos != None:
+        entry_distance_dict = _shortest_distances(list_level, entry_pos)
+    else:
+        entry_distance_dict = dict()
+
+    if exit_pos != None:
+        exit_distance_dict = _shortest_distances(list_level, exit_pos)
+    else:
+        exit_distance_dict = dict()
 
     return entry_distance_dict, exit_distance_dict
 
@@ -465,11 +483,17 @@ def _tile_count(list_level: list) -> tuple:
 
 
 def _is_playable(list_level: list) -> bool:
-    entry_pos = _find_objects_position(list_level, icons["entry"])[0]
+    entry_pos = _find_objects_position(list_level, icons["entry"])
+    if entry_pos == []:
+        return False
 
     exit_pos = _find_objects_position(list_level, icons["boss"])
     if exit_pos == []:
-        exit_pos = _find_objects_position(list_level, icons["exit"])[0]
+        exit_pos = _find_objects_position(list_level, icons["exit"])
+        if exit_pos == []:
+            return False
+        else:
+            exit_pos = exit_pos[0]
     else:
         exit_pos = exit_pos[0]
 
@@ -585,6 +609,15 @@ def _standardize(list_level: list) -> None:
         for j in range(differnece):
             list_level[i].append(" ")
 
+    return
+
+
+def _validation(list_level: list) -> bool:
+    """
+    플레이어 없는 경우
+    출구 없는 경우
+
+    """
     return
 
 
