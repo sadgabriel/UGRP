@@ -129,7 +129,7 @@ function createMaps(mapSize, count){
 
 function saveMaps(maps, prefix = "batch", batchSize = 100){
   batches = divideArray(maps, batchSize);
-  let directoryName = path.join(path.dirname(__dirname), "data", "1. raw");
+  let directoryName = path.join(path.dirname(__dirname), "data", "1. raw"); // hardcoded path
 
   if (!fs.existsSync(directoryName)) {
     fs.mkdirSync(directoryName, { recursive: true });

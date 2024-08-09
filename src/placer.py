@@ -2,6 +2,7 @@ import os
 import random
 import json
 from collections import deque
+import config
 
 tile_character = {
     "flag": "F",
