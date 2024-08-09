@@ -27,7 +27,7 @@ def preprocessed_data_generator(
     """
 
     # Set up logging to record process in a log file
-    log_file_path = f"{PREPROCESSED_PATH}/log.log"
+    log_file_path = f"{PREPROCESSED_PATH}.log"
     logging.basicConfig(filename=log_file_path, level=logging.INFO)
 
     # Find the latest file with the highest file_count
