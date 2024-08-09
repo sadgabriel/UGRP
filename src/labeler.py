@@ -102,6 +102,7 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
         treasure_positions,
         exit_position,
         entry_position,
+        entry_uniqueness
     ) = _set_object_dict(list_level)
 
     # set distance dict
@@ -238,10 +239,17 @@ def _set_count_param(list_level: list) -> tuple:
 def _set_object_dict(list_level: list) -> tuple:
     # entry position
     entry_position = _find_objects_position(list_level, icons["entry"])
-    if entry_position == []:
+
+    temp_len = len(entry_position)
+    if temp_len == 0:
         entry_position = None
+        entry_uniqueness = False
+    elif temp_len > 1:
+        entry_position = entry_position[0]
+        entry_uniqueness = False
     else:
         entry_position = entry_position[0]
+        entry_uniqueness = True
 
     # exit position
     exit_type = None
@@ -277,6 +285,7 @@ def _set_object_dict(list_level: list) -> tuple:
         treasure_positions,
         exit_position,
         entry_position,
+        entry_uniqueness,
     )
 
 
@@ -371,8 +380,16 @@ def _nonlinearity(
     exit_sum = 0
     for obj_pos in object_positions:
         # calculate flood coverage
-        entry_obj_dist = entry_distance_dict[obj_pos]
-        exit_obj_dist = exit_distance_dict[obj_pos]
+        try:
+            entry_obj_dist = entry_distance_dict[obj_pos]
+        except KeyError:
+            print("Objects may be on inaccessible location with entry.", obj_pos)
+            entry_obj_dist = 0
+        try:
+            exit_obj_dist = exit_distance_dict[obj_pos]
+        except KeyError:
+            print("Objects may be on inaccessible location with exit.", obj_pos)
+            exit_obj_dist = 0
 
         entry_counter = 0
         exit_counter = 0
