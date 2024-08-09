@@ -486,6 +486,8 @@ def _is_playable(list_level: list) -> bool:
     entry_pos = _find_objects_position(list_level, icons["entry"])
     if entry_pos == []:
         return False
+    else:
+        entry_pos = entry_pos[0]
 
     exit_pos = _find_objects_position(list_level, icons["boss"])
     if exit_pos == []:
