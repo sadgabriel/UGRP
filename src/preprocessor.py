@@ -2,24 +2,19 @@ from unstructured_data_generator import unstructured_data_generator
 from config import PROMPT_FILE_PATH
 
 
-def _find_final_map_keyword(text: str, keywords=["Final"]) -> list:
+def has_two_or_more_hashes(line: str) -> bool:
     """
-    Finds the indices of lines containing keywords that indicate the final result.
+    Checks if the given line contains two or more '#' characters.
 
     Parameters:
-    text (str): Input text
-    keywords (list): List of keywords indicating the final result
+    line (str): Line to check
 
     Returns:
-    list: List of indices where keywords are found
+    bool: True if the line contains two or more '#' characters, False otherwise
     """
-    lines = text.split("\n")
-    keyword_indices = []
-    for i, line in enumerate(lines):
-        if any(keyword in line for keyword in keywords):
-            keyword_indices.append(i)
-    print(f"find_final_map_keyword - Keyword positions: {keyword_indices}")
-    return keyword_indices
+    count = line.count("#")
+    result = count >= 2
+    return result
 
 
 def _is_ascii_art_line(line: str) -> bool:
@@ -32,9 +27,8 @@ def _is_ascii_art_line(line: str) -> bool:
     Returns:
     bool: True if the line consists only of ASCII art characters, False otherwise
     """
-    result = line.strip() != "" and all(
-        char in ["#", " ", ".", "/", "P", "B", "E", "T"] for char in line
-    )
+    result = has_two_or_more_hashes(line)
+
     print(f"is_ascii_art_line - Line to check: '{line}' Result: {result}")
     return result
 
@@ -50,22 +44,13 @@ def _extract_ascii_art_map(text: str) -> str:
     str: Extracted ASCII art map
     """
     lines = text.split("\n")
-    keyword_indices = _find_final_map_keyword(text)
-
-    if not keyword_indices:
-        print(
-            "Cannot find the 'Final Map' keyword. Scanning the entire text from bottom."
-        )
+    print("Cannot find the 'Final Map' keyword. Scanning the entire text from bottom.")
 
     start_index = None
     end_index = None
 
-    # If keywords are found, start scanning from the keyword positions
-    if keyword_indices:
-        indices_to_check = keyword_indices
-    else:
-        # If no keywords are found, check all lines from the end to start
-        indices_to_check = reversed(range(len(lines)))
+    # Check all lines from the end to start
+    indices_to_check = reversed(range(len(lines)))
 
     # Scan from bottom to top
     for index in indices_to_check:
