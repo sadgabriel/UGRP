@@ -2,7 +2,6 @@ from collections import deque
 import json
 import os
 
-
 # input parameters name list
 input_parameters_name = [
     "enemy_group",
@@ -41,6 +40,7 @@ icons = {
     "empty": ".",
     "wall": "#",
     "outside": " ",
+    "door": "/",
 }
 
 
@@ -549,16 +549,6 @@ def _count_room(list_level: list) -> int:
 
     (B) The tunnel means that a passible tile surrounded by two opppsite walls.
 
-    It looks like this:
-     .      #
-    #.# or ...
-     .      #
-
-    Also, they are not tunnels:
-    ###     ###
-    #.. or  #.#
-    ###     ###
-
     (C) The process is simple.
     1. find all tunnels.
     2. count discontinuous tunnels.
@@ -608,33 +598,104 @@ def _count_room(list_level: list) -> int:
                     tunnels.append((x, y))
 
     # Count discontinuous tunnels.
+    origin = dict()
+    for cur in tunnels:
+        origin[cur] = cur
+
     for x, y in tunnels:
-        count = 0
+        not_adjacent_tunnel_count = 0
+
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            if (x + dx, y + dy) not in tunnels:
-                count += 1
-        if count == 4:
+            new_x = x + dx
+            new_y = y + dy
+
+            if (new_x, new_y) not in tunnels:
+                not_adjacent_tunnel_count += 1
+            elif origin[(new_x, new_y)] == (new_x, new_y):
+                # Set the origin of this continuous tunnel to the origin of current tunnel.
+                origin[(new_x, new_y)] = origin[(x, y)]
+
+        if not_adjacent_tunnel_count == 4:
             discontinuous_tunnels_count += 1
 
-    return discontinuous_tunnels_count
+    # Count the number of Count the number of different origins.
+    org_count = 1
+    org_exist = []
+    for org in origin.values():
+        if org not in org_exist:
+            org_exist.append(org)
+            org_count += 1
+
+    # Find a closed space
+    closed_space_count = 0
+    visited = list()
+    que = deque()
+    que.append((0, 0))
+
+    directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
+    icon_obstacle = [icon_wall, icons["door"], icons["outside"]]
+
+    for x in range(len(list_level)):
+        row = list_level[x]
+        for y in range(len(row)):
+
+            tile = list_level[x][y]
+            if (x, y) not in visited and tile not in icon_obstacle:
+                closed_space_count += 1
+                # Let's BFS
+                que.append((x, y))
+                while que:
+                    cur = que.popleft()
+                    for dx, dy in directions:
+                        next = (cur[0] + dx, cur[1] + dy)
+                        try:
+                            if (
+                                next not in visited
+                                and list_level[next[0]][next[1]] not in icon_obstacle
+                            ):
+                                visited.append(next)
+                                que.append(next)
+                        except IndexError:
+                            pass
+
+    return closed_space_count
 
 
 def _standardize(list_level: list) -> None:
     """
     Make list level standardized.
     It means
-    ###
-    #.##
-    ###
+    ''''
+    ###''
+    # ##'
+    ###''
+    ''''
 
     -->>
 
-    ###x
-    #.##
-    ###x
+    ''''
+    ###''
+    #.##'
+    ###''
+    ''''
+
+    -->>
+
+    '''''
+    ### '
+    #.##'
+    ### '
+    '''''
 
     Here, x means spacebar
     """
+
+    # Change space ' ' into dot '.'
+    for i in range(len(list_level)):
+        row = list_level[i]
+        for j in range(len(row)):
+            if row[j] == icons["outside"]:
+                list_level[i][j] = icons["empty"]
 
     # Find maximum length of rows.
     row_max_len = 0
