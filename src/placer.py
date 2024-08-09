@@ -48,9 +48,7 @@ class Map:
 
 
 def load_maps(
-    path: str = os.path.join(
-        os.path.dirname(os.path.dirname(__file__)), "data", "1. raw"
-    )
+    path: str = config.RAW_PATH
 ) -> list[Map]:
     """Load all maps from directory.
 
@@ -85,9 +83,7 @@ def load_maps(
 
 def save_maps(
     map_list: list[Map],
-    path: str = os.path.join(
-        os.path.dirname(os.path.dirname(__file__)), "data", "2. placed"
-    ),
+    path: str = config.PLACED_PATH,
     batch_size: int = 100,
     prefix: str = "batch",
 ) -> None:
