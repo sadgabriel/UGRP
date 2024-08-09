@@ -67,7 +67,7 @@ def label(
         map_list = input_data[i]["map_list"]
 
         for j in range(len(map_list)):
-            new_params = estimate(map_list[j]["map"])
+            new_params = estimate(map_list[j]["map"], difficulty_curve_interval)
             output_data[i]["map_list"][j]["params"].update(new_params)
 
     # Save data
@@ -95,14 +95,13 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
         total_tile_count,
     ) = _set_count_param(list_level)
 
-    # set object positions
+    # Find out the position information of all objects.
+    # Here, object means enemy + treasure + exit + entry
     (
         object_positions,
         enemy_positions,
-        treasure_positions,
         exit_position,
         entry_position,
-        entry_uniqueness
     ) = _set_object_dict(list_level)
 
     # set distance dict
@@ -237,9 +236,10 @@ def _set_count_param(list_level: list) -> tuple:
 
 
 def _set_object_dict(list_level: list) -> tuple:
-    # entry position
+    # Get entry position
     entry_position = _find_objects_position(list_level, icons["entry"])
 
+    # Check the existance of entry.
     temp_len = len(entry_position)
     if temp_len == 0:
         entry_position = None
@@ -252,21 +252,33 @@ def _set_object_dict(list_level: list) -> tuple:
         entry_uniqueness = True
 
     # exit position
-    exit_type = None
+    boss_existance = False
+    exit_existance = False
+    exit_uniqueness = False
+
+    # Check if there is a boss or an exit.
     for i in range(len(list_level)):
         row = list_level[i]
         if icons["boss"] in row:
-            exit_type = "boss"
-            break
+            boss_existance = True
         elif icons["exit"] in row:
-            exit_type = "exit"
+            exit_existance = True
             break
-    if exit_type == "boss":
-        exit_position = _find_objects_position(list_level, icons["boss"])[0]
-    elif exit_type == "exit":
-        exit_position = _find_objects_position(list_level, icons["exit"])[0]
+
+    # Assign list into exit_positions.
+    if boss_existance:
+        exit_position = _find_objects_position(list_level, icons["boss"])
+    elif exit_existance:
+        exit_position = _find_objects_position(list_level, icons["exit"])
     else:
         exit_position = None
+
+    if exit_position is not None:
+        # Check exit uniqueness.
+        if len(exit_position) == 1:
+            exit_uniqueness = True
+        # Assign non-list exit_position.
+        exit_position = exit_position[0]
 
     # treasure position
     treasure_positions = _find_objects_position(list_level, icons["treasure"])
@@ -279,13 +291,22 @@ def _set_object_dict(list_level: list) -> tuple:
     if exit_position != None:
         object_positions += [exit_position]
 
+    # Print existance & uniqueness
+    if entry_position is None:
+        print("Entry doesn't exist.")
+    if not entry_uniqueness:
+        print("Entry is not unique.")
+    if exit_position is None:
+        print("Exit doesn't exist")
+    if not exit_uniqueness:
+        print("Exit is not unique")
+
+    # Also can use treasure pos.
     return (
         object_positions,
         enemy_positions,
-        treasure_positions,
         exit_position,
         entry_position,
-        entry_uniqueness,
     )
 
 
@@ -321,10 +342,10 @@ def _exploration_requirement(distance_dict_entry: dict, object_positoins: list) 
         distance_dict_entry: dict of amount of movement btw entry and accessible tile.
         object_positoins: list of positions of all objects in the level.
 
-    Return:
+    Returns:
         the amount of movement required to meet all objects from the entrance
 
-    Raise:
+    Raises:
         KeyError: If there are objects on inaccessible location, it dismiss that and print message 'Object may be on inaccessible location.'
     """
 
@@ -628,15 +649,6 @@ def _standardize(list_level: list) -> None:
         for j in range(differnece):
             list_level[i].append(" ")
 
-    return
-
-
-def _validation(list_level: list) -> bool:
-    """
-    플레이어 없는 경우
-    출구 없는 경우
-
-    """
     return
 
 
