@@ -1,5 +1,5 @@
-from unstructured_data_generator import unstructured_data_generator
 from config import PROMPT_FILE_PATH
+import re
 
 
 def replace_invalid_characters(line: str) -> str:
@@ -34,6 +34,23 @@ def replace_invalid_characters(line: str) -> str:
     return processed_line
 
 
+def is_chapter_format(line: str) -> bool:
+    """
+    Checks if the given line follows the pattern of one or more '#' characters,
+    followed by a space, and then a word.
+
+    Parameters:
+    line (str): The line of text to check.
+
+    Returns:
+    bool: True if the line matches the pattern, otherwise False.
+    """
+    pattern = r"^#+ [A-Za-z]+$"
+    result = bool(re.match(pattern, line))
+
+    return result
+
+
 def has_two_or_more_hashes(line: str) -> bool:
     """
     Checks if the given line contains two or more '#' characters.
@@ -60,7 +77,7 @@ def _is_ascii_art_line(line: str) -> bool:
     Returns:
     bool: True if the line likely represents ASCII art, otherwise False.
     """
-    result = has_two_or_more_hashes(line)
+    result = has_two_or_more_hashes(line) and not is_chapter_format(line)
 
     print(f"is_ascii_art_line - Line to check: '{line}' Result: {result}")
     return result
@@ -77,7 +94,7 @@ def _extract_ascii_art_map(text: str) -> str:
     str: The extracted ASCII art map, or an empty string if no map is found.
     """
     lines = text.split("\n")
-    print("Cannot find the 'Final Map' keyword. Scanning the entire text from bottom.")
+    print("Scanning the entire text from bottom.")
 
     start_index = None
     end_index = None
@@ -115,7 +132,7 @@ def _extract_ascii_art_map(text: str) -> str:
         return ""
 
 
-def preprocessor(prompt_file_path: str) -> str:
+def preprocessor(text: str) -> str:
     """
     Preprocesses the text from the given prompt file path to extract the ASCII art map.
 
@@ -125,10 +142,9 @@ def preprocessor(prompt_file_path: str) -> str:
     Returns:
     str: The extracted ASCII art map.
     """
-    text = unstructured_data_generator(prompt_file_path)
-    map = _extract_ascii_art_map(text)
-    print(map)
-    return map
+    askii_map = _extract_ascii_art_map(text)
+    print(askii_map)
+    return askii_map
 
 
 preprocessor(PROMPT_FILE_PATH)
