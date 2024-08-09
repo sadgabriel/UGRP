@@ -1,38 +1,6 @@
 import re
 
 
-def replace_invalid_characters(line: str) -> str:
-    """
-    Replaces any character in the line that is not among the valid ASCII art characters ('#', ' ', '.', '/', 'P', 'B', 'E', 'T').
-    - 'D' is replaced with '/'.
-    - Lowercase 'p', 'b', 'e', 't' are converted to uppercase.
-    - Other alphabetic characters are replaced with 'T'.
-    - Other invalid characters are replaced with a space (' ').
-
-    Parameters:
-    line (str): The line of text to process.
-
-    Returns:
-    str: The processed line with characters replaced as specified.
-    """
-    valid_chars = {"#", " ", ".", "/", "P", "B", "E", "T"}
-    processed_line = ""
-
-    for char in line:
-        if char in valid_chars:
-            processed_line += char
-        elif char == "D":
-            processed_line += "/"
-        elif char in {"p", "b", "e", "t"}:
-            processed_line += char.upper()
-        elif char.isalpha():
-            processed_line += "T"
-        else:
-            processed_line += " "
-
-    return processed_line
-
-
 def is_chapter_format(line: str) -> bool:
     """
     Checks if the given line follows the pattern of one or more '#' characters,
@@ -109,7 +77,7 @@ def _extract_ascii_art_map(text: str) -> str:
         current_map = []
         for i in range(index, -1, -1):
             if _is_ascii_art_line(lines[i]):
-                current_map.insert(0, replace_invalid_characters(lines[i]))
+                current_map.insert(0, lines[i])
                 if end_index is None:
                     end_index = i
                 start_index = i
