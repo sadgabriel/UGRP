@@ -2,9 +2,14 @@ from collections import deque
 import json
 import os
 
+from config import PLACED_PATH, LABELLED_PATH
 
-# input parameters name list
-input_parameters_name = [
+# 기타 상수 정의
+DEFAULT_FILE_COUNT = 100
+DEFAULT_DIFFICULTY_CURVE_INTERVAL = 5
+
+# Input parameter names list
+input_parameter_names = [  # 변수명 복수형으로 수정
     "enemy_group",
     "enemy_group_size",
     "enemy_ideal",
@@ -12,12 +17,12 @@ input_parameters_name = [
     "boss",
 ]
 
-# output parameters name list
+# Output parameter names list
 """
-Caution: the names of the output parameter are currently hard-coded in labeler.py .
-If the output parameter needs to be modified in the current state, it needs to be changed one by one.
+Caution: The names of the output parameters are currently hard-coded in labeler.py.
+If the output parameters need to be modified in the current state, they must be changed one by one.
 """
-output_parameters_name = [
+output_parameter_names = [  # 변수명 복수형으로 수정
     "density",
     "empty_ratio",
     "exploration_requirement",
@@ -30,8 +35,7 @@ output_parameters_name = [
     "room_count",
 ]
 
-
-# tile icons
+# Tile icons
 icons = {
     "enemy": "E",
     "treasure": "T",
@@ -41,27 +45,30 @@ icons = {
     "empty": ".",
     "wall": "#",
     "outside": " ",
+    "door": "/",
 }
 
 
 def label(
-    placed_file_path: str = "../data/2. placed",
-    labelled_file_path: str = "../data/3. labelled",
-    file_count: int = 100,
-    difficulty_curve_interval: int = 5,
+    placed_path: str = PLACED_PATH,  # 상수로 정의된 기본 경로 사용. +명명 수정.
+    labelled_path: str = LABELLED_PATH,  # 상수로 정의된 기본 경로 사용
+    file_count: int = DEFAULT_FILE_COUNT,  # 상수로 정의된 기본 파일 수 사용
+    difficulty_curve_interval: int = DEFAULT_DIFFICULTY_CURVE_INTERVAL,  # 상수로 정의된 기본 간격 사용
 ) -> None:
     """
-    label level data.
-    Load.
-    Estimate each level.
-    Save.
+    Labels level data by estimating and updating parameters.
+
+    Args:
+        placed_path: Path to the input files.
+        labelled_path: Path to the output files.
+        file_count: Number of files to process.
+        difficulty_curve_interval: Interval for difficulty curve calculation.
     """
 
-    # Load data. input_data is a list of batch = { map_list: [] }
-    # input_data = [batch0, batch1, ...]
-    input_data = load_folder(path=placed_file_path, file_count=file_count)
+    # Load data. input_data is a list of batches = { "map_list": [] }
+    input_data = load_folder(path=placed_path, file_count=file_count)
 
-    # estimate each level data
+    # Estimate each level data
     output_data = input_data
     for i in range(len(input_data)):
         map_list = input_data[i]["map_list"]
@@ -71,110 +78,174 @@ def label(
             output_data[i]["map_list"][j]["params"].update(new_params)
 
     # Save data
-    save_folder(data=output_data, path=labelled_file_path, file_count=file_count)
-
-    return
+    save_folder(data=output_data, path=labelled_path, file_count=file_count)
 
 
-def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
+def estimate(
+    level: str, difficulty_curve_interval: int = DEFAULT_DIFFICULTY_CURVE_INTERVAL
+) -> dict[str, float]:
     """
-    Make scores(it means parameters) by estimating level.
+    Estimate level parameters and return them as a dictionary.
+
+    Args:
+        level: Level data in string format.
+        difficulty_curve_interval: Interval for difficulty curve calculation.
+
+    Returns:
+        Dictionary of estimated parameters.
     """
-    # str level to list level.
+    # Convert string level to list level and standardize it
+    list_level = _prepare_level(level)
+
+    # Count parameters
+    counts = _calculate_counts(list_level)
+
+    # Find positions of objects and calculate distances
+    positions = _find_positions(list_level)
+    distances = _calculate_distances(list_level, positions["entry"], positions["exit"])
+
+    # Calculate and store output parameters
+    output_parameters = _calculate_output_parameters(
+        counts, positions, distances, difficulty_curve_interval, list_level
+    )
+
+    return output_parameters
+
+
+def _prepare_level(level: str) -> list:
+    """Convert string level to list level and standardize it."""
     list_level = str_level_to_list_level(level)
     _standardize(list_level)
+    return list_level
 
-    # count parameters
+
+def _calculate_counts(list_level: list) -> dict:
+    """Calculate and return the count-related parameters."""
     (
         treasure_count,
         enemy_count,
         empty_tile_count,
         map_size,
         total_object_count,
-        total_passible_tile_count,
+        total_passable_tile_count,
         total_tile_count,
     ) = _set_count_param(list_level)
 
-    # Find out the position information of all objects.
-    # Here, object means enemy + treasure + exit + entry
-    (
-        object_positions,
-        enemy_positions,
-        exit_position,
-        entry_position,
-    ) = _set_object_dict(list_level)
+    return {
+        "treasure_count": treasure_count,
+        "enemy_count": enemy_count,
+        "empty_tile_count": empty_tile_count,
+        "map_size": map_size,
+        "total_object_count": total_object_count,
+        "total_passable_tile_count": total_passable_tile_count,
+        "total_tile_count": total_tile_count,
+    }
 
-    # set distance dict
+
+def _find_positions(list_level: list) -> dict:
+    """Find and return the positions of objects."""
+    object_positions, enemy_positions, exit_position, entry_position = _set_object_dict(
+        list_level
+    )
+
+    return {
+        "object_positions": object_positions,
+        "enemy_positions": enemy_positions,
+        "exit": exit_position,
+        "entry": entry_position,
+    }
+
+
+def _calculate_distances(list_level: list, entry_pos: tuple, exit_pos: tuple) -> dict:
+    """Calculate and return the distance dictionaries."""
     distance_dict_entry, distance_dict_exit = _set_distance_dict(
-        list_level, entry_position, exit_position
+        list_level, entry_pos, exit_pos
     )
 
-    # Make a result dict
-    output_parameters = dict()
-    output_parameters[output_parameters_name[0]] = _density(
-        treasure_count + enemy_count, total_tile_count
-    )
-    output_parameters[output_parameters_name[1]] = _empty_ratio(
-        empty_tile_count, total_tile_count
-    )
-    output_parameters[output_parameters_name[2]] = _exploration_requirement(
-        distance_dict_entry, object_positions
-    )
-    output_parameters[output_parameters_name[3]] = _difficulty_curve(
-        distance_dict_entry, enemy_positions, difficulty_curve_interval
-    )
-    output_parameters[output_parameters_name[4]] = _is_playable(list_level)
-    output_parameters[output_parameters_name[5]] = treasure_count
-    output_parameters[output_parameters_name[6]] = enemy_count
-    output_parameters[output_parameters_name[7]] = map_size
-    if output_parameters[output_parameters_name[4]] == True:
-        output_parameters[output_parameters_name[8]] = _nonlinearity(
-            distance_dict_entry,
-            distance_dict_exit,
-            object_positions,
-            total_object_count,
-            total_passible_tile_count,
+    return {
+        "entry": distance_dict_entry,
+        "exit": distance_dict_exit,
+    }
+
+
+def _calculate_output_parameters(
+    counts: dict,
+    positions: dict,
+    distances: dict,
+    difficulty_curve_interval: int,
+    list_level: list,
+) -> dict:
+    """Calculate and return the output parameters."""
+    output_parameters = {
+        output_parameter_names[0]: _density(
+            counts["treasure_count"] + counts["enemy_count"], counts["total_tile_count"]
+        ),
+        output_parameter_names[1]: _empty_ratio(
+            counts["empty_tile_count"], counts["total_tile_count"]
+        ),
+        output_parameter_names[2]: _exploration_requirement(
+            distances["entry"], positions["object_positions"]
+        ),
+        output_parameter_names[3]: _difficulty_curve(
+            distances["entry"], positions["enemy_positions"], difficulty_curve_interval
+        ),
+        output_parameter_names[4]: _is_playable(list_level),
+        output_parameter_names[5]: counts["treasure_count"],
+        output_parameter_names[6]: counts["enemy_count"],
+        output_parameter_names[7]: counts["map_size"],
+    }
+
+    # Calculate nonlinearity only if the level is playable
+    if output_parameters[output_parameter_names[4]]:
+        output_parameters[output_parameter_names[8]] = _nonlinearity(
+            distances["entry"],
+            distances["exit"],
+            positions["object_positions"],
+            counts["total_object_count"],
+            counts["total_passable_tile_count"],
         )
     else:
-        output_parameters[output_parameters_name[8]] = None
-    output_parameters[output_parameters_name[9]] = _count_room(list_level)
+        output_parameters[output_parameter_names[8]] = None
+
+    output_parameters[output_parameter_names[9]] = _count_rooms(list_level)
 
     return output_parameters
 
 
 def load_file(path: str) -> list:
     """
-    Load map data from json file.
+    Load map data from a JSON file.
 
     Args:
-        path: relative path of data file.
-    Returns:
-        a list of 100 map data.
-    """
+        path: Relative path of the data file.
 
+    Returns:
+        A list of 100 map data items.
+    """
     with open(path, "r") as f:
         data = json.load(f)
 
     return data
 
 
-def load_folder(path: str = "../data/2. placed", file_count: int = 100) -> list:
+def load_folder(path: str = PLACED_PATH, file_count: int = DEFAULT_FILE_COUNT) -> list:
     """
-    Load map data from data folder.
+    Load map data from a folder containing multiple files.
 
     Args:
-        path: relative path of data folder.
-        file_count: the number of data files in the placed folder.
-    Returns:
-        a list of 100 lists of 100 map data.
-    """
-    data_list = list()
+        path: Relative path of the data folder.
+        file_count: Number of data files in the placed folder.
 
-    # dicrectory
+    Returns:
+        A list of lists containing map data.
+    """
+    data_list = []
+
+    # Directory
     cur_dir = os.path.dirname(os.path.abspath(__file__))
 
     for i in range(file_count):
-        _path = os.path.join(cur_dir, path, "batch" + str(i) + ".json")
+        _path = os.path.join(cur_dir, path, f"batch{i}.json")  # f-string 사용으로 수정
         data_list.append(load_file(_path))
 
     return data_list
@@ -182,46 +253,41 @@ def load_folder(path: str = "../data/2. placed", file_count: int = 100) -> list:
 
 def save_file(data: list, path: str) -> None:
     """
-    Save map data into json file.
+    Save map data into a JSON file.
 
     Args:
-        path: relative path of data file.
-        data: 100 map data for a file.
+        path: Relative path of the data file.
+        data: Map data to save.
     """
-
-    # temporary script xxx
     with open(path, "w") as f:
         json.dump(data, f, indent=4)
 
-    return
-
 
 def save_folder(
-    data: list, path: str = "../data/3. labelled", file_count: int = 100
+    data: list, path: str = LABELLED_PATH, file_count: int = DEFAULT_FILE_COUNT
 ) -> None:
     """
-    Save map data into data folder.
+    Save map data into a folder containing multiple files.
 
     Args:
-        path: relative path of data folder.
-        data: 100 map data for the folder.
-        file_count: the number of files in a labelled data folder
+        path: Relative path of the data folder.
+        data: Map data to save.
+        file_count: Number of files in the labelled data folder.
     """
-
-    # directory
+    # Directory
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     for i in range(file_count):
-        _path = os.path.join(cur_dir, path, "batch" + str(i) + ".json")
+        _path = os.path.join(cur_dir, path, f"batch{i}.json")  # f-string 사용으로 수정
         save_file(data[i], _path)
-
-    return
 
 
 def _set_count_param(list_level: list) -> tuple:
     treasure_count, enemy_count, empty_tile_count, map_size = _tile_count(list_level)
 
     total_object_count = treasure_count + enemy_count + 2
-    total_passible_tile_count = total_object_count + empty_tile_count
+    total_passable_tile_count = (
+        total_object_count + empty_tile_count
+    )  # passible -> passable 수정
     total_tile_count = map_size[0] * map_size[1]
 
     return (
@@ -230,7 +296,7 @@ def _set_count_param(list_level: list) -> tuple:
         empty_tile_count,
         map_size,
         total_object_count,
-        total_passible_tile_count,
+        total_passable_tile_count,  # passible -> passable 수정
         total_tile_count,
     )
 
@@ -239,59 +305,54 @@ def _set_object_dict(list_level: list) -> tuple:
     # Get entry position
     entry_position = _find_objects_position(list_level, icons["entry"])
 
-    # Check the existance of entry.
-    temp_len = len(entry_position)
-    if temp_len == 0:
+    # Check the existence of entry.
+    entry_uniqueness = False  # 변수명 위치와 초기화 위치를 함께 수정
+    if not entry_position:
         entry_position = None
-        entry_uniqueness = False
-    elif temp_len > 1:
+    elif len(entry_position) > 1:
         entry_position = entry_position[0]
-        entry_uniqueness = False
     else:
         entry_position = entry_position[0]
         entry_uniqueness = True
 
-    # exit position
-    boss_existance = False
-    exit_existance = False
+    # Exit position
+    boss_exists = False  # boss_existance -> boss_exists 수정
+    exit_exists = False  # exit_existance -> exit_exists 수정
     exit_uniqueness = False
 
     # Check if there is a boss or an exit.
-    for i in range(len(list_level)):
-        row = list_level[i]
+    for row in list_level:
         if icons["boss"] in row:
-            boss_existance = True
+            boss_exists = True
         elif icons["exit"] in row:
-            exit_existance = True
+            exit_exists = True
             break
 
-    # Assign list into exit_positions.
-    if boss_existance:
+    # Assign list to exit_position.
+    if boss_exists:
         exit_position = _find_objects_position(list_level, icons["boss"])
-    elif exit_existance:
+    elif exit_exists:
         exit_position = _find_objects_position(list_level, icons["exit"])
     else:
         exit_position = None
 
-    if exit_position is not None:
-        # Check exit uniqueness.
+    if exit_position:
         if len(exit_position) == 1:
             exit_uniqueness = True
-        # Assign non-list exit_position.
         exit_position = exit_position[0]
 
-    # treasure position
+    # Treasure and enemy positions
     treasure_positions = _find_objects_position(list_level, icons["treasure"])
     enemy_positions = _find_objects_position(list_level, icons["enemy"])
 
-    # object position
+    # Object positions
     object_positions = treasure_positions + enemy_positions
-    if entry_position != None:
-        object_positions += [entry_position]
-    if exit_position != None:
-        object_positions += [exit_position]
+    if entry_position is not None:
+        object_positions.append(entry_position)
+    if exit_position is not None:
+        object_positions.append(exit_position)
 
-    # Print existance & uniqueness
+    # Print existence and uniqueness
     if entry_position is None:
         print("Entry doesn't exist.")
     if not entry_uniqueness:
@@ -301,7 +362,6 @@ def _set_object_dict(list_level: list) -> tuple:
     if not exit_uniqueness:
         print("Exit is not unique")
 
-    # Also can use treasure pos.
     return (
         object_positions,
         enemy_positions,
@@ -311,15 +371,10 @@ def _set_object_dict(list_level: list) -> tuple:
 
 
 def _set_distance_dict(list_level: list, entry_pos: tuple, exit_pos: tuple) -> tuple:
-    if entry_pos != None:
-        entry_distance_dict = _shortest_distances(list_level, entry_pos)
-    else:
-        entry_distance_dict = dict()
-
-    if exit_pos != None:
-        exit_distance_dict = _shortest_distances(list_level, exit_pos)
-    else:
-        exit_distance_dict = dict()
+    entry_distance_dict = (
+        _shortest_distances(list_level, entry_pos) if entry_pos else {}
+    )
+    exit_distance_dict = _shortest_distances(list_level, exit_pos) if exit_pos else {}
 
     return entry_distance_dict, exit_distance_dict
 
@@ -334,29 +389,28 @@ def _empty_ratio(empty_count: int, total_tile_count: int) -> float:
     return empty_count / total_tile_count
 
 
-def _exploration_requirement(distance_dict_entry: dict, object_positoins: list) -> int:
+def _exploration_requirement(distance_dict_entry: dict, object_positions: list) -> int:
     """
-    Return the amount of movement required to meet all objects from the entrance
+    Returns the amount of movement required to meet all objects from the entrance.
 
     Args:
-        distance_dict_entry: dict of amount of movement btw entry and accessible tile.
-        object_positoins: list of positions of all objects in the level.
+        distance_dict_entry: Dict of distances between entry and accessible tiles.
+        object_positions: List of positions of all objects in the level.
 
     Returns:
-        the amount of movement required to meet all objects from the entrance
+        The amount of movement required to meet all objects from the entrance.
 
     Raises:
-        KeyError: If there are objects on inaccessible location, it dismiss that and print message 'Object may be on inaccessible location.'
+        KeyError: If objects are in inaccessible locations, dismisses that and prints a warning.
     """
-
-    sum = 0
-    for obj_pos in object_positoins:
+    total_movement = 0  # 변수명 sum -> total_movement로 수정
+    for obj_pos in object_positions:
         try:
-            sum += distance_dict_entry[obj_pos]
+            total_movement += distance_dict_entry[obj_pos]
         except KeyError:
-            print("Object may be on inaccessible location.")
+            print("Object may be in an inaccessible location.")
 
-    return sum
+    return total_movement
 
 
 def _difficulty_curve(distance_dict: dict, enemy_positions: tuple, n: int) -> float:
@@ -364,11 +418,8 @@ def _difficulty_curve(distance_dict: dict, enemy_positions: tuple, n: int) -> fl
 
     heights = []
 
-    # find longest distance within accessible point.
-    longest_distance = 0
-    for dist in distance_dict.values():
-        if longest_distance < dist:
-            longest_distance = dist
+    # Find the longest distance within accessible points.
+    longest_distance = max(distance_dict.values(), default=0)  # 코드 간소화
 
     for i in range(longest_distance // n + 1):
         temp_height = 0
@@ -378,14 +429,14 @@ def _difficulty_curve(distance_dict: dict, enemy_positions: tuple, n: int) -> fl
                 if i * n < enemy_distance <= (i + 1) * n:
                     temp_height += 1
             except KeyError:
-                print("Enemy may be on inaccessible location.", enemy_pos)
+                print("Enemy may be in an inaccessible location.", enemy_pos)
         heights.append(temp_height)
 
-    height_difference = heights[0] - heights[len(heights) - 1]
+    height_difference = heights[0] - heights[-1]
     interval_count = longest_distance // n + 1
     return (
         height_difference / interval_count
-    )  # mean that variation of enemy number per interval n.
+    )  # Mean variation of enemy number per interval.
 
 
 def _nonlinearity(
@@ -393,112 +444,107 @@ def _nonlinearity(
     exit_distance_dict: dict,
     object_positions: list,
     total_object_count: int,
-    total_passible_tile_count: int,
+    total_passable_tile_count: int,  # passible -> passable 수정
 ) -> float:
     """Returns the nonlinearity."""
 
     entry_sum = 0
     exit_sum = 0
     for obj_pos in object_positions:
-        # calculate flood coverage
+        # Calculate flood coverage
         try:
             entry_obj_dist = entry_distance_dict[obj_pos]
         except KeyError:
-            print("Objects may be on inaccessible location with entry.", obj_pos)
+            print("Object may be in an inaccessible location from entry.", obj_pos)
             entry_obj_dist = 0
         try:
             exit_obj_dist = exit_distance_dict[obj_pos]
         except KeyError:
-            print("Objects may be on inaccessible location with exit.", obj_pos)
+            print("Object may be in an inaccessible location from exit.", obj_pos)
             exit_obj_dist = 0
 
-        entry_counter = 0
-        exit_counter = 0
-
-        for dist in entry_distance_dict.values():
-            if dist <= entry_obj_dist:
-                entry_counter += 1
-
-        for dist in exit_distance_dict.values():
-            if dist <= exit_obj_dist:
-                exit_counter += 1
+        entry_counter = sum(
+            1 for dist in entry_distance_dict.values() if dist <= entry_obj_dist
+        )
+        exit_counter = sum(
+            1 for dist in exit_distance_dict.values() if dist <= exit_obj_dist
+        )
 
         entry_sum += entry_counter
         exit_sum += exit_counter
 
     result = entry_sum + exit_sum
 
-    return result / total_passible_tile_count / total_object_count
+    return (
+        result / total_passable_tile_count / total_object_count
+    )  # passible -> passable 수정
 
 
 def _shortest_distances(list_level: list, pos: tuple) -> dict:
     """
-    Find shortest distances from pos to every tiles in the map.
+    Find the shortest distances from pos to every tile in the map.
 
-    Aruements
-        pos: (int, int)
+    Args:
+        pos: Starting position (x, y).
+
+    Returns:
+        dict: A dictionary of shortest distances to each tile.
+        Also logs inaccessible tiles for debugging.
     """
-
-    # flood fill algorithm by BFS
-    # data
-    que = deque()
-    result = {}  # dict of {key: position, value: distance from pos}.
-
-    # initial setting
-    que.append(pos)
-    visited = [pos]
-    result[pos] = 0
+    que = deque([pos])
+    result = {pos: 0}
 
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
 
-    while len(que) != 0:
-        current = que.popleft()
+    def is_in_bounds(x: int, y: int) -> bool:
+        """Check if the position is within the map boundaries."""
+        return 0 <= x < x_boundary and 0 <= y < y_boundary
 
-        # visit
-        x = current[0]
-        y = current[1]
+    def is_accessible(x: int, y: int) -> bool:
+        """Check if the tile at (x, y) is accessible."""
+        return list_level[x][y] != icons["wall"]
+
+    while que:
+        current = que.popleft()
+        x, y = current
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
         for dx, dy in directions:
-            new_x = x + dx
-            new_y = y + dy
-            if (new_x, new_y) not in visited:
-                if (
-                    new_x >= 0
-                    and new_x < x_boundary
-                    and new_y >= 0
-                    and new_y < y_boundary
-                ):
-                    temp = list_level[new_x][new_y]
-                    if temp != icons["wall"]:
+            new_x, new_y = x + dx, y + dy
+            if (new_x, new_y) not in result:
+                if is_in_bounds(new_x, new_y):
+                    if is_accessible(new_x, new_y):
                         que.append((new_x, new_y))
-                        visited.append((new_x, new_y))
                         result[(new_x, new_y)] = result[current] + 1
+                    else:
+                        print(
+                            f"Tile at ({new_x}, {new_y}) is inaccessible."
+                        )  # 비접근 타일 로그 추가
+                else:
+                    print(
+                        f"Tile at ({new_x}, {new_y}) is out of bounds."
+                    )  # 범위를 벗어난 타일 로그 추가
 
     return result
 
 
 def _find_objects_position(list_level: list, obj_icon: str) -> list:
-    result = []
-
-    for i in range(len(list_level)):
-        for j in range(len(list_level[0])):
-            if list_level[i][j] == obj_icon:
-                result.append((i, j))
-
-    return result
+    """Find all positions of a specific object icon in the level."""
+    return [
+        (i, j)
+        for i, row in enumerate(list_level)
+        for j, tile in enumerate(row)
+        if tile == obj_icon
+    ]
 
 
 def str_level_to_list_level(level: str) -> list:
     """
-    Make str level into 2D list level.
+    Convert a string level into a 2D list level.
     """
-    result = []
-    row = []
-
     result = [[char for char in row] for row in level.split("\n")]
-    if result[-1] == []:
+    if not result[-1]:
         result = result[:-1]
     return result
 
@@ -522,137 +568,82 @@ def _tile_count(list_level: list) -> tuple:
 
 def _is_playable(list_level: list) -> bool:
     entry_pos = _find_objects_position(list_level, icons["entry"])
-    if entry_pos == []:
+    if not entry_pos:
         return False
-    else:
-        entry_pos = entry_pos[0]
+    entry_pos = entry_pos[0]
 
     exit_pos = _find_objects_position(list_level, icons["boss"])
-    if exit_pos == []:
+    if not exit_pos:
         exit_pos = _find_objects_position(list_level, icons["exit"])
-        if exit_pos == []:
+        if not exit_pos:
             return False
-        else:
-            exit_pos = exit_pos[0]
+        exit_pos = exit_pos[0]
     else:
         exit_pos = exit_pos[0]
 
     entry_distance_dict = _shortest_distances(list_level, entry_pos)
 
-    # entry_distance_dict only has info of accessible tiles.
+    # Check if exit is accessible from entry
     return exit_pos in entry_distance_dict
 
 
-def _count_room(list_level: list) -> int:
+def _count_rooms(list_level: list) -> int:  # 함수명 _count_room에서 _count_rooms로 수정
     """
-    (A) The number of room is defined as the number of discontinuous tunnels plus one.
+    Count the number of rooms in the level. A room is defined as a continuous space surrounded by walls.
 
-    (B) The tunnel means that a passible tile surrounded by two opppsite walls.
+    Args:
+        list_level: 2D list representing the level.
 
-    It looks like this:
-     .      #
-    #.# or ...
-     .      #
-
-    Also, they are not tunnels:
-    ###     ###
-    #.. or  #.#
-    ###     ###
-
-    (C) The process is simple.
-    1. find all tunnels.
-    2. count discontinuous tunnels.
+    Returns:
+        Number of rooms.
     """
-
-    # Initialization.
-    tunnels = []
-    discontinuous_tunnels_count = 1
-
-    x_boundary = len(list_level)
-    y_boundary = len(list_level[0])
-
     icon_wall = icons["wall"]
 
-    directions = {"up_down": ((1, 0), (-1, 0)), "right_left": ((0, 1), (0, -1))}
+    closed_space_count = 0
+    visited = set()  # set으로 visited 변경
+    directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
+    icon_obstacles = [icon_wall, icons["door"], icons["outside"]]
 
-    # Find tunnels
     for x in range(len(list_level)):
         for y in range(len(list_level[x])):
-            is_surround_wall = {"up_down": False, "right_left": False}
-            for dir_name in directions:
-                wall_count = 0
-                for dx, dy in directions[dir_name]:
-                    new_x = x + dx
-                    new_y = y + dy
+            if (x, y) not in visited and list_level[x][y] not in icon_obstacles:
+                closed_space_count += 1
+                que = deque([(x, y)])
+                while que:
+                    cur_x, cur_y = que.popleft()
+                    for dx, dy in directions:
+                        next_pos = (cur_x + dx, cur_y + dy)
+                        if (
+                            0 <= next_pos[0] < len(list_level)
+                            and 0 <= next_pos[1] < len(list_level[0])
+                            and next_pos not in visited
+                            and list_level[next_pos[0]][next_pos[1]]
+                            not in icon_obstacles
+                        ):
+                            visited.add(next_pos)
+                            que.append(next_pos)
 
-                    if (
-                        new_x >= 0
-                        and new_x < x_boundary
-                        and new_y >= 0
-                        and new_y < y_boundary
-                        and list_level[new_x][new_y] == icon_wall
-                    ):
-                        wall_count += 1
-
-                is_surround_wall[dir_name] = wall_count == 2
-
-            # XOR test.
-            ud = is_surround_wall["up_down"]  # ud means up down.
-            rl = is_surround_wall["right_left"]  # rl means right left.
-            if (ud == True and rl == False) or (ud == False and rl == True):
-                # check passibility
-                if (
-                    list_level[x][y] != icon_wall
-                    and list_level[x][y] != icons["outside"]
-                ):
-                    tunnels.append((x, y))
-
-    # Count discontinuous tunnels.
-    for x, y in tunnels:
-        count = 0
-        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            if (x + dx, y + dy) not in tunnels:
-                count += 1
-        if count == 4:
-            discontinuous_tunnels_count += 1
-
-    return discontinuous_tunnels_count
+    return closed_space_count
 
 
 def _standardize(list_level: list) -> None:
     """
-    Make list level standardized.
-    It means
-    ###
-    #.##
-    ###
-
-    -->>
-
-    ###x
-    #.##
-    ###x
-
-    Here, x means spacebar
+    Standardize the level by ensuring consistent formatting of spaces and empty tiles.
     """
-
-    # Find maximum length of rows.
-    row_max_len = 0
-    for row in list_level:
-        cur_row_len = len(row)
-        if cur_row_len > row_max_len:
-            row_max_len = cur_row_len
-
-    # Fill places not standardized into space bars.
+    # Change outside spaces ' ' into empty tiles '.'
     for i in range(len(list_level)):
-        differnece = row_max_len - len(list_level[i])
-        for j in range(differnece):
-            list_level[i].append(" ")
+        row = list_level[i]
+        for j in range(len(row)):
+            if row[j] == icons["outside"]:
+                list_level[i][j] = icons["empty"]
 
-    return
+    # Find the maximum length of rows.
+    row_max_len = max(len(row) for row in list_level)  # 코드 간소화
+
+    # Fill shorter rows with spaces.
+    for row in list_level:
+        row.extend(" " for _ in range(row_max_len - len(row)))  # 코드 간소화
 
 
 if __name__ == "__main__":
     label(file_count=1)
-
-    pass
