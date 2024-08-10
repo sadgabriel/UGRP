@@ -66,19 +66,16 @@ def label(
     """
 
     # Load data. input_data is a list of batches = { "map_list": [] }
-    input_data = load_folder(path=placed_path, file_count=file_count)
+    data = load_folder(path=placed_path, file_count=file_count)
 
     # Estimate each level data
-    output_data = input_data
-    for i in range(len(input_data)):
-        map_list = input_data[i]["map_list"]
-
-        for j in range(len(map_list)):
-            new_params = estimate(map_list[j]["map"], difficulty_curve_interval)
-            output_data[i]["map_list"][j]["params"].update(new_params)
+    for i, data_i in enumerate(data):
+        for j, map_list_j in enumerate(data_i["map_list"]):
+            new_params = estimate(map_list_j["map"], difficulty_curve_interval)
+            data[i]["map_list"][j]["params"].update(new_params)
 
     # Save data
-    save_folder(data=output_data, path=labelled_path, file_count=file_count)
+    save_folder(data=data, path=labelled_path, file_count=file_count)
 
 
 def estimate(
@@ -285,9 +282,7 @@ def _set_count_param(list_level: list) -> tuple:
     treasure_count, enemy_count, empty_tile_count, map_size = _tile_count(list_level)
 
     total_object_count = treasure_count + enemy_count + 2
-    total_passable_tile_count = (
-        total_object_count + empty_tile_count
-    )  # passible -> passable 수정
+    total_passable_tile_count = total_object_count + empty_tile_count
     total_tile_count = map_size[0] * map_size[1]
 
     return (
@@ -296,7 +291,7 @@ def _set_count_param(list_level: list) -> tuple:
         empty_tile_count,
         map_size,
         total_object_count,
-        total_passable_tile_count,  # passible -> passable 수정
+        total_passable_tile_count,
         total_tile_count,
     )
 
@@ -444,7 +439,7 @@ def _nonlinearity(
     exit_distance_dict: dict,
     object_positions: list,
     total_object_count: int,
-    total_passable_tile_count: int,  # passible -> passable 수정
+    total_passable_tile_count: int,
 ) -> float:
     """Returns the nonlinearity."""
 
@@ -475,9 +470,17 @@ def _nonlinearity(
 
     result = entry_sum + exit_sum
 
-    return (
-        result / total_passable_tile_count / total_object_count
-    )  # passible -> passable 수정
+    return result / total_passable_tile_count / total_object_count
+
+
+def is_in_bounds(x: int, y: int, x_boundary: int, y_boundary: int) -> bool:
+    """Check if the position is within the map boundaries."""
+    return 0 <= x < x_boundary and 0 <= y < y_boundary
+
+
+def is_accessible(target_tile: str, icon_obstacles: list) -> bool:
+    """Check if the tile at (x, y) is accessible."""
+    return target_tile not in icon_obstacles
 
 
 def _shortest_distances(list_level: list, pos: tuple) -> dict:
@@ -496,25 +499,18 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
 
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
+    icon_wall = [icons["wall"]]
 
-    def is_in_bounds(x: int, y: int) -> bool:
-        """Check if the position is within the map boundaries."""
-        return 0 <= x < x_boundary and 0 <= y < y_boundary
-
-    def is_accessible(x: int, y: int) -> bool:
-        """Check if the tile at (x, y) is accessible."""
-        return list_level[x][y] != icons["wall"]
-
+    directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     while que:
         current = que.popleft()
         x, y = current
-        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
         for dx, dy in directions:
             new_x, new_y = x + dx, y + dy
             if (new_x, new_y) not in result:
-                if is_in_bounds(new_x, new_y):
-                    if is_accessible(new_x, new_y):
+                if is_in_bounds(new_x, new_y, x_boundary, y_boundary):
+                    if is_accessible(list_level[new_x][new_y], icon_wall):
                         que.append((new_x, new_y))
                         result[(new_x, new_y)] = result[current] + 1
                     else:
@@ -587,7 +583,7 @@ def _is_playable(list_level: list) -> bool:
     return exit_pos in entry_distance_dict
 
 
-def _count_rooms(list_level: list) -> int:  # 함수명 _count_room에서 _count_rooms로 수정
+def _count_rooms(list_level: list) -> int:
     """
     Count the number of rooms in the level. A room is defined as a continuous space surrounded by walls.
 
@@ -600,25 +596,30 @@ def _count_rooms(list_level: list) -> int:  # 함수명 _count_room에서 _count
     icon_wall = icons["wall"]
 
     closed_space_count = 0
-    visited = set()  # set으로 visited 변경
+    visited = set()
     directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
     icon_obstacles = [icon_wall, icons["door"], icons["outside"]]
 
+    x_boundary = len(list_level)
+    y_boundary = len(list_level[0])
+
     for x in range(len(list_level)):
         for y in range(len(list_level[x])):
-            if (x, y) not in visited and list_level[x][y] not in icon_obstacles:
+            if (x, y) not in visited and is_accessible(
+                list_level[x][y], icon_obstacles
+            ):
                 closed_space_count += 1
                 que = deque([(x, y)])
                 while que:
                     cur_x, cur_y = que.popleft()
                     for dx, dy in directions:
-                        next_pos = (cur_x + dx, cur_y + dy)
+                        new_x = cur_x + dx
+                        new_y = cur_y + dy
+                        next_pos = (new_x, new_y)
                         if (
-                            0 <= next_pos[0] < len(list_level)
-                            and 0 <= next_pos[1] < len(list_level[0])
-                            and next_pos not in visited
-                            and list_level[next_pos[0]][next_pos[1]]
-                            not in icon_obstacles
+                            next_pos not in visited
+                            and is_in_bounds(new_x, new_y, x_boundary, y_boundary)
+                            and is_accessible(list_level[new_x][new_y], icon_obstacles)
                         ):
                             visited.add(next_pos)
                             que.append(next_pos)
@@ -630,12 +631,14 @@ def _standardize(list_level: list) -> None:
     """
     Standardize the level by ensuring consistent formatting of spaces and empty tiles.
     """
+    icon_outside = icons["outside"]
+    icon_empty = icons["empty"]
+
     # Change outside spaces ' ' into empty tiles '.'
-    for i in range(len(list_level)):
-        row = list_level[i]
-        for j in range(len(row)):
-            if row[j] == icons["outside"]:
-                list_level[i][j] = icons["empty"]
+    for i, row in enumerate(list_level):
+        for j, tile in enumerate(row):
+            if tile == icon_outside:
+                list_level[i][j] = icon_empty
 
     # Find the maximum length of rows.
     row_max_len = max(len(row) for row in list_level)  # 코드 간소화
