@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const config = {
+const room_config = {
   "small": {
     "map_min": 9,
     "map_max": 16,
@@ -32,6 +32,12 @@ const tileMapping = {
 const fs = require('fs')
 const path = require('path')
 var roguelike = require(path.join(__dirname, "node-roguelike", "level", "roguelike"));
+
+const fs = require('fs');
+const yaml = require('js-yaml');
+
+const file = fs.readFileSync('./config.yaml', 'utf8');
+const config = yaml.load(file);
 
 /**
  * Generates a random integer between two values, inclusive.
@@ -167,7 +173,7 @@ function _createMap(width, height, roomMinWidth, roomMaxWidth, roomMinHeight, ro
  * @returns {Array<Object>} An array of map objects, where each object contains the parameters and string representation of the map.
  */
 function createMaps(mapSize, count){
-  let mapConfig = config[mapSize];
+  let mapConfig = room_config[mapSize];
   let maps = [];
 
   let error_count = 0;
@@ -207,7 +213,7 @@ function createMaps(mapSize, count){
  */
 function saveMaps(maps, prefix = "batch", batchSize = 100){
   batches = _divideArray(maps, batchSize);
-  let directoryName = path.join(path.dirname(__dirname), "data", "1. raw"); // hardcoded path
+  let directoryName = config["paths"]["raw"];
 
   if (!fs.existsSync(directoryName)) {
     fs.mkdirSync(directoryName, { recursive: true });
