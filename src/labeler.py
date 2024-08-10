@@ -554,77 +554,7 @@ def _count_room(list_level: list) -> int:
     2. count discontinuous tunnels.
     """
 
-    # Initialization.
-    tunnels = []
-    discontinuous_tunnels_count = 1
-
-    x_boundary = len(list_level)
-    y_boundary = len(list_level[0])
-
     icon_wall = icons["wall"]
-
-    directions = {"up_down": ((1, 0), (-1, 0)), "right_left": ((0, 1), (0, -1))}
-
-    # Find tunnels
-    for x in range(len(list_level)):
-        for y in range(len(list_level[x])):
-            is_surround_wall = {"up_down": False, "right_left": False}
-            for dir_name in directions:
-                wall_count = 0
-                for dx, dy in directions[dir_name]:
-                    new_x = x + dx
-                    new_y = y + dy
-
-                    if (
-                        new_x >= 0
-                        and new_x < x_boundary
-                        and new_y >= 0
-                        and new_y < y_boundary
-                        and list_level[new_x][new_y] == icon_wall
-                    ):
-                        wall_count += 1
-
-                is_surround_wall[dir_name] = wall_count == 2
-
-            # XOR test.
-            ud = is_surround_wall["up_down"]  # ud means up down.
-            rl = is_surround_wall["right_left"]  # rl means right left.
-            if (ud == True and rl == False) or (ud == False and rl == True):
-                # check passibility
-                if (
-                    list_level[x][y] != icon_wall
-                    and list_level[x][y] != icons["outside"]
-                ):
-                    tunnels.append((x, y))
-
-    # Count discontinuous tunnels.
-    origin = dict()
-    for cur in tunnels:
-        origin[cur] = cur
-
-    for x, y in tunnels:
-        not_adjacent_tunnel_count = 0
-
-        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            new_x = x + dx
-            new_y = y + dy
-
-            if (new_x, new_y) not in tunnels:
-                not_adjacent_tunnel_count += 1
-            elif origin[(new_x, new_y)] == (new_x, new_y):
-                # Set the origin of this continuous tunnel to the origin of current tunnel.
-                origin[(new_x, new_y)] = origin[(x, y)]
-
-        if not_adjacent_tunnel_count == 4:
-            discontinuous_tunnels_count += 1
-
-    # Count the number of Count the number of different origins.
-    org_count = 1
-    org_exist = []
-    for org in origin.values():
-        if org not in org_exist:
-            org_exist.append(org)
-            org_count += 1
 
     # Find a closed space
     closed_space_count = 0
