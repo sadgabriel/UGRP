@@ -54,14 +54,28 @@ def load_maps(
     """Load all maps from directory.
 
     Args:
-        path (str, optional): The path of directory which has map files. Defaults to "../data/1. raw".
+        path (str, optional): The path of directory which has map files.
 
     Returns:
         list[Map]: The list of created Map objects.
+    """
+    
+    dict_list = load_json_files(path)
+    map_list = [Map(content) for content in dict_list]
+
+    return map_list
+
+def load_json_files(path: str) -> list[dict]:
+    """Load all json data from directory.
+
+    Args:
+        path (str): The path of directory which has files.
+
+    Returns:
+        list[dict]: The list of contents
 
     Raises:
-        FileNotFoundError: Raised when the path is not vaild.
-    """
+        FileNotFoundError: Raised when the path is not vaild."""
     if not os.path.exists(path):
         raise FileNotFoundError(f"The specified directory does not exist: {path}")
 
@@ -72,14 +86,14 @@ def load_maps(
     ]
     path_list = [os.path.join(path, filename) for filename in filename_list]
 
-    map_list = list()
+    content_list = list()
     for file_path in path_list:
         with open(file_path, "r") as file:
-            map_batch = json.load(file)
-            for map_dict in map_batch["map_list"]:
-                map_list.append(Map(map_dict))
+            batch = json.load(file)
+            for content in batch["map_list"]:
+                content_list.append(content)
 
-    return map_list
+    return content_list
 
 
 def save_maps(
