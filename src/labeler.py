@@ -2,7 +2,7 @@ from collections import deque
 import json
 import os
 
-from config import *  # placed_path, labelled_path 받아옴
+from config import PLACED_PATH, LABELLED_PATH
 
 # 기타 상수 정의
 DEFAULT_FILE_COUNT = 100
@@ -81,7 +81,9 @@ def label(
     save_folder(data=output_data, path=labelled_path, file_count=file_count)
 
 
-def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
+def estimate(
+    level: str, difficulty_curve_interval: int = DEFAULT_DIFFICULTY_CURVE_INTERVAL
+) -> dict[str, float]:
     """
     Estimate level parameters and return them as a dictionary.
 
@@ -92,65 +94,120 @@ def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
     Returns:
         Dictionary of estimated parameters.
     """
-    # Convert string level to list level.
-    list_level = str_level_to_list_level(level)
-    _standardize(list_level)
+    # Convert string level to list level and standardize it
+    list_level = _prepare_level(level)
 
     # Count parameters
+    counts = _calculate_counts(list_level)
+
+    # Find positions of objects and calculate distances
+    positions = _find_positions(list_level)
+    distances = _calculate_distances(list_level, positions["entry"], positions["exit"])
+
+    # Calculate and store output parameters
+    output_parameters = _calculate_output_parameters(
+        counts, positions, distances, difficulty_curve_interval, list_level
+    )
+
+    return output_parameters
+
+
+def _prepare_level(level: str) -> list:
+    """Convert string level to list level and standardize it."""
+    list_level = str_level_to_list_level(level)
+    _standardize(list_level)
+    return list_level
+
+
+def _calculate_counts(list_level: list) -> dict:
+    """Calculate and return the count-related parameters."""
     (
         treasure_count,
         enemy_count,
         empty_tile_count,
         map_size,
         total_object_count,
-        total_passable_tile_count,  # passible -> passable 수정
+        total_passable_tile_count,
         total_tile_count,
     ) = _set_count_param(list_level)
 
-    # Find the position information of all objects.
-    (
-        object_positions,
-        enemy_positions,
-        exit_position,
-        entry_position,
-    ) = _set_object_dict(list_level)
+    return {
+        "treasure_count": treasure_count,
+        "enemy_count": enemy_count,
+        "empty_tile_count": empty_tile_count,
+        "map_size": map_size,
+        "total_object_count": total_object_count,
+        "total_passable_tile_count": total_passable_tile_count,
+        "total_tile_count": total_tile_count,
+    }
 
-    # Set distance dictionaries
+
+def _find_positions(list_level: list) -> dict:
+    """Find and return the positions of objects."""
+    object_positions, enemy_positions, exit_position, entry_position = _set_object_dict(
+        list_level
+    )
+
+    return {
+        "object_positions": object_positions,
+        "enemy_positions": enemy_positions,
+        "exit": exit_position,
+        "entry": entry_position,
+    }
+
+
+def _calculate_distances(list_level: list, entry_pos: tuple, exit_pos: tuple) -> dict:
+    """Calculate and return the distance dictionaries."""
     distance_dict_entry, distance_dict_exit = _set_distance_dict(
-        list_level, entry_position, exit_position
+        list_level, entry_pos, exit_pos
     )
 
-    # Create a result dictionary
-    output_parameters = dict()
-    output_parameters[output_parameter_names[0]] = _density(
-        treasure_count + enemy_count, total_tile_count
-    )
-    output_parameters[output_parameter_names[1]] = _empty_ratio(
-        empty_tile_count, total_tile_count
-    )
-    output_parameters[output_parameter_names[2]] = _exploration_requirement(
-        distance_dict_entry, object_positions
-    )
-    output_parameters[output_parameter_names[3]] = _difficulty_curve(
-        distance_dict_entry, enemy_positions, difficulty_curve_interval
-    )
-    output_parameters[output_parameter_names[4]] = _is_playable(list_level)
-    output_parameters[output_parameter_names[5]] = treasure_count
-    output_parameters[output_parameter_names[6]] = enemy_count
-    output_parameters[output_parameter_names[7]] = map_size
+    return {
+        "entry": distance_dict_entry,
+        "exit": distance_dict_exit,
+    }
+
+
+def _calculate_output_parameters(
+    counts: dict,
+    positions: dict,
+    distances: dict,
+    difficulty_curve_interval: int,
+    list_level: list,
+) -> dict:
+    """Calculate and return the output parameters."""
+    output_parameters = {
+        output_parameter_names[0]: _density(
+            counts["treasure_count"] + counts["enemy_count"], counts["total_tile_count"]
+        ),
+        output_parameter_names[1]: _empty_ratio(
+            counts["empty_tile_count"], counts["total_tile_count"]
+        ),
+        output_parameter_names[2]: _exploration_requirement(
+            distances["entry"], positions["object_positions"]
+        ),
+        output_parameter_names[3]: _difficulty_curve(
+            distances["entry"], positions["enemy_positions"], difficulty_curve_interval
+        ),
+        output_parameter_names[4]: _is_playable(list_level),
+        output_parameter_names[5]: counts["treasure_count"],
+        output_parameter_names[6]: counts["enemy_count"],
+        output_parameter_names[7]: counts["map_size"],
+    }
+
+    # Calculate nonlinearity only if the level is playable
     if output_parameters[output_parameter_names[4]]:
         output_parameters[output_parameter_names[8]] = _nonlinearity(
-            distance_dict_entry,
-            distance_dict_exit,
-            object_positions,
-            total_object_count,
-            total_passable_tile_count,  # passible -> passable 수정
+            distances["entry"],
+            distances["exit"],
+            positions["object_positions"],
+            counts["total_object_count"],
+            counts["total_passable_tile_count"],
         )
     else:
         output_parameters[output_parameter_names[8]] = None
-    output_parameters[output_parameter_names[9]] = _count_rooms(
-        list_level
-    )  # 함수명을 _count_room에서 _count_rooms로 수정
+
+    output_parameters[output_parameter_names[9]] = _count_rooms(list_level)
 
     return output_parameters
 
@@ -440,6 +497,14 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
 
+    def is_in_bounds(x: int, y: int) -> bool:
+        """Check if the position is within the map boundaries."""
+        return 0 <= x < x_boundary and 0 <= y < y_boundary
+
+    def is_accessible(x: int, y: int) -> bool:
+        """Check if the tile at (x, y) is accessible."""
+        return list_level[x][y] != icons["wall"]
+
     while que:
         current = que.popleft()
         x, y = current
@@ -448,8 +513,8 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
         for dx, dy in directions:
             new_x, new_y = x + dx, y + dy
             if (new_x, new_y) not in result:
-                if 0 <= new_x < x_boundary and 0 <= new_y < y_boundary:
-                    if list_level[new_x][new_y] != icons["wall"]:
+                if is_in_bounds(new_x, new_y):
+                    if is_accessible(new_x, new_y):
                         que.append((new_x, new_y))
                         result[(new_x, new_y)] = result[current] + 1
                     else:
