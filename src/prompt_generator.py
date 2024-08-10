@@ -1,8 +1,15 @@
 import json
 import random
 import os
+import textwrap
+import yaml
 
-from config import *
+with open("config.yaml", "r") as file:
+    config = yaml.safe_load(file)
+
+BASE_PROMPT_PATH = config["paths"]["base_prompt"]
+LABELLED_PATH = config["paths"]["labelled"]
+PROMPT_PATH = config["paths"]["prompt"]
 
 
 def _load_examples_from_file(input_path: str, example_count: int) -> str:
@@ -27,16 +34,17 @@ def _load_examples_from_file(input_path: str, example_count: int) -> str:
             [f"{key.upper()}: {value}" for key, value in selected_params.items()]
         )
 
-        example_prompt = f"""
-
-Example {i + 1}:
-
-Parameters:
-{params_str}
-
-Generated Map:
-{example['map']}
-"""
+        example_prompt = textwrap.dedent(
+            f"""
+            Example {i + 1}:
+        
+            Parameters:
+            {params_str}
+        
+            Generated Map:
+            {example['map']}
+        """
+        )
         example_prompts += example_prompt
     return example_prompts
 
@@ -64,7 +72,7 @@ def _load_examples_from_folder(folder_path: str, example_count: int) -> str:
     if not files:
         return "The folder is empty or only contains dummy.txt."
 
-    # 랜덤으로 파일 하나 선택
+    # random file select
     selected_file = random.choice(files)
     selected_file_path = os.path.join(folder_path, selected_file)
 
@@ -73,14 +81,16 @@ def _load_examples_from_folder(folder_path: str, example_count: int) -> str:
 
 def _format_parameters(params: dict) -> str:
     params_str = "\n".join([f"{key.upper()}: {value}" for key, value in params.items()])
-    return f"""
-Parameters:
-{params_str}
+    return textwrap.dedent(
+        f"""
+            Parameters:
+            {params_str}
+            
+            """
+    )
 
-"""
 
-
-def prompt_generator(example_count: int, params: dict, prompt_style: str) -> str:
+def prompt_generate(example_count: int, params: dict, prompt_style: str) -> str:
 
     base_prompt_file_path = BASE_PROMPT_PATH + f"{prompt_style}.txt"
     prompt_file_path = PROMPT_PATH + f"{prompt_style}.txt"

@@ -1,0 +1,10 @@
+paths:
+  raw: "../data/1. raw/"
+  placed: "../data/2. placed/"
+  labelled: "../data/3. labelled/"
+  prompt: "../data/4. prompt/"
+  preprocessed: "../data/5. preprocessed/"
+  compared: "../data/6. compared/"
+  base_prompt: "./base_prompt/"
+
+

@@ -1,4 +1,4 @@
-def param_generator() -> dict:
+def param_generate() -> dict:
     return {
         "map_size": [20, 20],
         "room_count": 7,
