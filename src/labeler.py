@@ -2,6 +2,12 @@ from collections import deque
 import json
 import os
 
+from config import *  # placed_path, labelled_path 받아옴
+
+# 기타 상수 정의
+DEFAULT_FILE_COUNT = 100
+DEFAULT_DIFFICULTY_CURVE_INTERVAL = 5
+
 # Input parameter names list
 input_parameter_names = [  # 변수명 복수형으로 수정
     "enemy_group",
@@ -44,23 +50,23 @@ icons = {
 
 
 def label(
-    placed_file_path: str = "../data/2. placed",
-    labelled_file_path: str = "../data/3. labelled",
-    file_count: int = 100,
-    difficulty_curve_interval: int = 5,
+    placed_path: str = PLACED_PATH,  # 상수로 정의된 기본 경로 사용. +명명 수정.
+    labelled_path: str = LABELLED_PATH,  # 상수로 정의된 기본 경로 사용
+    file_count: int = DEFAULT_FILE_COUNT,  # 상수로 정의된 기본 파일 수 사용
+    difficulty_curve_interval: int = DEFAULT_DIFFICULTY_CURVE_INTERVAL,  # 상수로 정의된 기본 간격 사용
 ) -> None:
     """
     Labels level data by estimating and updating parameters.
 
     Args:
-        placed_file_path: Path to the input files.
-        labelled_file_path: Path to the output files.
+        placed_path: Path to the input files.
+        labelled_path: Path to the output files.
         file_count: Number of files to process.
         difficulty_curve_interval: Interval for difficulty curve calculation.
     """
 
     # Load data. input_data is a list of batches = { "map_list": [] }
-    input_data = load_folder(path=placed_file_path, file_count=file_count)
+    input_data = load_folder(path=placed_path, file_count=file_count)
 
     # Estimate each level data
     output_data = input_data
@@ -72,7 +78,7 @@ def label(
             output_data[i]["map_list"][j]["params"].update(new_params)
 
     # Save data
-    save_folder(data=output_data, path=labelled_file_path, file_count=file_count)
+    save_folder(data=output_data, path=labelled_path, file_count=file_count)
 
 
 def estimate(level: str, difficulty_curve_interval: int = 5) -> dict:
@@ -165,7 +171,7 @@ def load_file(path: str) -> list:
     return data
 
 
-def load_folder(path: str = "../data/2. placed", file_count: int = 100) -> list:
+def load_folder(path: str = PLACED_PATH, file_count: int = DEFAULT_FILE_COUNT) -> list:
     """
     Load map data from a folder containing multiple files.
 
@@ -201,7 +207,7 @@ def save_file(data: list, path: str) -> None:
 
 
 def save_folder(
-    data: list, path: str = "../data/3. labelled", file_count: int = 100
+    data: list, path: str = LABELLED_PATH, file_count: int = DEFAULT_FILE_COUNT
 ) -> None:
     """
     Save map data into a folder containing multiple files.
@@ -423,6 +429,10 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
 
     Args:
         pos: Starting position (x, y).
+
+    Returns:
+        dict: A dictionary of shortest distances to each tile.
+        Also logs inaccessible tiles for debugging.
     """
     que = deque([pos])
     result = {pos: 0}
@@ -442,6 +452,14 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
                     if list_level[new_x][new_y] != icons["wall"]:
                         que.append((new_x, new_y))
                         result[(new_x, new_y)] = result[current] + 1
+                    else:
+                        print(
+                            f"Tile at ({new_x}, {new_y}) is inaccessible."
+                        )  # 비접근 타일 로그 추가
+                else:
+                    print(
+                        f"Tile at ({new_x}, {new_y}) is out of bounds."
+                    )  # 범위를 벗어난 타일 로그 추가
 
     return result
 

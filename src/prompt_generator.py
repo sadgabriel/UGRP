@@ -89,7 +89,7 @@ def prompt_generator(example_count: int, params: dict, prompt_style: str) -> str
         content = file.read()
 
     start_prompt, end_prompt = _split_prompts(content)
-    example = _load_examples_from_folder(LABELED_PATH, example_count)
+    example = _load_examples_from_folder(LABELLED_PATH, example_count)
 
     complete_prompt = start_prompt + example + _format_parameters(params) + end_prompt
 
