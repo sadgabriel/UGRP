@@ -99,7 +99,7 @@ def _extract_ascii_art_map(text: str) -> str:
         return ""
 
 
-def preprocessor(text: str) -> str:
+def preprocess(text: str) -> str:
     """
     Preprocesses the text from the given prompt file path to extract the ASCII art map.
 
