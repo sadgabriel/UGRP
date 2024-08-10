@@ -17,10 +17,7 @@ def preprocessed_data_generator(
     Parameters:
     data_count (int): The number of data points to generate.
     example_count (int): The number of examples to generate per data point.
-    preprocessed_path (str): The path where the preprocessed data will be saved.
-    base_prompt_file_path (str): The file path for the base prompt template.
-    example_path (str): The path where example data will be generated.
-    prompt_file_path (str): The file path where prompts will be generated.
+    prompt_style (str): The style of prompt.
 
     Returns:
     None

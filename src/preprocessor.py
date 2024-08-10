@@ -115,5 +115,4 @@ def preprocessor(text: str) -> str:
 
 
 test = "### Notes:"
-
 print(_is_ascii_art_line(test))
