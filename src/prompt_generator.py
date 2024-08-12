@@ -93,7 +93,6 @@ def _format_parameters(params: dict) -> str:
 def prompt_generate(example_count: int, params: dict, prompt_style: str) -> str:
 
     base_prompt_file_path = BASE_PROMPT_PATH + f"{prompt_style}.txt"
-    prompt_file_path = PROMPT_PATH + f"{prompt_style}.txt"
 
     with open(base_prompt_file_path, "r") as file:
         content = file.read()

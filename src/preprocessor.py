@@ -104,7 +104,7 @@ def preprocess(text: str) -> str:
     Preprocesses the text from the given prompt file path to extract the ASCII art map.
 
     Parameters:
-    prompt_file_path (str): The file path to the prompt text file.
+    text (str): The prompt text.
 
     Returns:
     str: The extracted ASCII art map.
