@@ -1,7 +1,13 @@
+import yaml
+
 from labeler import load_folder, save_folder
 import validater
 
-from config import PREPROCESSED_PATH, COMPARED_PATH
+import utility
+
+config = utility.load_config()
+PREPROCESSED_PATH = config["paths"]["preprocessed"]
+COMPARED_PATH = config["paths"]["compared"]
 
 DEFAULT_FILE_COUNT = 100
 

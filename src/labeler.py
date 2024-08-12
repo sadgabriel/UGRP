@@ -2,7 +2,12 @@ from collections import deque
 import json
 import os
 
-from config import PLACED_PATH, LABELLED_PATH
+from utility import load_config
+
+config = load_config
+
+PLACED_PATH = config["paths"]["placed"]
+LABELLED_PATH = config["paths"]["labelled"]
 
 # 기타 상수 정의
 DEFAULT_FILE_COUNT = 100
