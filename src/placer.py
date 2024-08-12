@@ -2,8 +2,10 @@ import os
 import random
 import json
 import config
+
 from collections import deque
 
+import utility
 
 tile_character = {
     "flag": "F",
@@ -48,9 +50,7 @@ class Map:
         return {"params": self.params, "map": self.get_ascii_map()}
 
 
-def load_maps(
-    path: str = config.RAW_PATH
-) -> list[Map]:
+def load_maps(path: str = config.RAW_PATH) -> list[Map]:
     """Load all maps from directory.
 
     Args:
@@ -59,41 +59,11 @@ def load_maps(
     Returns:
         list[Map]: The list of created Map objects.
     """
-    
-    dict_list = load_json_files(path)
+
+    dict_list = utility.load_json_files(path)
     map_list = [Map(content) for content in dict_list]
 
     return map_list
-
-def load_json_files(path: str) -> list[dict]:
-    """Load all json data from directory.
-
-    Args:
-        path (str): The path of directory which has files.
-
-    Returns:
-        list[dict]: The list of contents
-
-    Raises:
-        FileNotFoundError: Raised when the path is not vaild."""
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"The specified directory does not exist: {path}")
-
-    filename_list = [
-        filename
-        for filename in os.listdir(path)
-        if filename.endswith(".json") and os.path.isfile(os.path.join(path, filename))
-    ]
-    path_list = [os.path.join(path, filename) for filename in filename_list]
-
-    content_list = list()
-    for file_path in path_list:
-        with open(file_path, "r") as file:
-            batch = json.load(file)
-            for content in batch["map_list"]:
-                content_list.append(content)
-
-    return content_list
 
 
 def save_maps(
