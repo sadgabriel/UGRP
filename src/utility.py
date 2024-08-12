@@ -58,4 +58,4 @@ def load_config() -> dict:
     Returns:
         dict: A dictionary containing the configuration settings from 'config.yaml'.
     """
-    return load_yaml_file("config.yaml")
+    return load_yaml_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.yaml"))
