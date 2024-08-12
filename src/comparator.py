@@ -1,4 +1,5 @@
-from labeler import estimate, load_folder, save_folder  # 한 줄로 묶어 임포트 정리
+from labeler import load_folder, save_folder
+import validater
 
 from config import PREPROCESSED_PATH, COMPARED_PATH
 
@@ -28,10 +29,17 @@ def compare(
     # Update parameters and prepare compared data
     for i, data in enumerate(preprocessed_data):
         for map_item in data["map_list"]:
+            try:
+                examples = map_item["examples"]
+            except KeyError:
+                examples = None
+            map = map_item["map"]
             before_params = map_item["params"]
-            after_params = estimate(map_item["map"])
+            after_params = validater.validate(map)
             compared_data[i]["map_list"].append(
                 {
+                    "examples": examples,
+                    "map": map,
                     "before_params": before_params,
                     "after_params": after_params,
                 }

@@ -27,7 +27,6 @@ output_parameter_names = [  # 변수명 복수형으로 수정
     "empty_ratio",
     "exploration_requirement",
     "difficulty_curve",
-    "playability",
     "treasure_count",
     "enemy_count",
     "map_size",
@@ -91,8 +90,8 @@ def estimate(
     Returns:
         Dictionary of estimated parameters.
     """
-    # Convert string level to list level and standardize it
-    list_level = _prepare_level(level)
+    # Convert string level to list level it
+    list_level = str_level_to_list_level(level)
 
     # Count parameters
     counts = _calculate_counts(list_level)
@@ -107,13 +106,6 @@ def estimate(
     )
 
     return output_parameters
-
-
-def _prepare_level(level: str) -> list:
-    """Convert string level to list level and standardize it."""
-    list_level = str_level_to_list_level(level)
-    _standardize(list_level)
-    return list_level
 
 
 def _calculate_counts(list_level: list) -> dict:
@@ -186,25 +178,21 @@ def _calculate_output_parameters(
         output_parameter_names[3]: _difficulty_curve(
             distances["entry"], positions["enemy_positions"], difficulty_curve_interval
         ),
-        output_parameter_names[4]: _is_playable(list_level),
-        output_parameter_names[5]: counts["treasure_count"],
-        output_parameter_names[6]: counts["enemy_count"],
-        output_parameter_names[7]: counts["map_size"],
+        output_parameter_names[4]: counts["treasure_count"],
+        output_parameter_names[5]: counts["enemy_count"],
+        output_parameter_names[6]: counts["map_size"],
     }
 
     # Calculate nonlinearity only if the level is playable
-    if output_parameters[output_parameter_names[4]]:
-        output_parameters[output_parameter_names[8]] = _nonlinearity(
-            distances["entry"],
-            distances["exit"],
-            positions["object_positions"],
-            counts["total_object_count"],
-            counts["total_passable_tile_count"],
-        )
-    else:
-        output_parameters[output_parameter_names[8]] = None
+    output_parameters[output_parameter_names[7]] = _nonlinearity(
+        distances["entry"],
+        distances["exit"],
+        positions["object_positions"],
+        counts["total_object_count"],
+        counts["total_passable_tile_count"],
+    )
 
-    output_parameters[output_parameter_names[9]] = _count_rooms(list_level)
+    output_parameters[output_parameter_names[8]] = _count_rooms(list_level)
 
     return output_parameters
 
@@ -473,12 +461,12 @@ def _nonlinearity(
     return result / total_passable_tile_count / total_object_count
 
 
-def is_in_bounds(x: int, y: int, x_boundary: int, y_boundary: int) -> bool:
+def _is_in_bounds(x: int, y: int, x_boundary: int, y_boundary: int) -> bool:
     """Check if the position is within the map boundaries."""
     return 0 <= x < x_boundary and 0 <= y < y_boundary
 
 
-def is_accessible(target_tile: str, icon_obstacles: list) -> bool:
+def _is_accessible(target_tile: str, icon_obstacles: list) -> bool:
     """Check if the tile at (x, y) is accessible."""
     return target_tile not in icon_obstacles
 
@@ -509,18 +497,10 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
         for dx, dy in directions:
             new_x, new_y = x + dx, y + dy
             if (new_x, new_y) not in result:
-                if is_in_bounds(new_x, new_y, x_boundary, y_boundary):
-                    if is_accessible(list_level[new_x][new_y], icon_wall):
+                if _is_in_bounds(new_x, new_y, x_boundary, y_boundary):
+                    if _is_accessible(list_level[new_x][new_y], icon_wall):
                         que.append((new_x, new_y))
                         result[(new_x, new_y)] = result[current] + 1
-                    else:
-                        print(
-                            f"Tile at ({new_x}, {new_y}) is inaccessible."
-                        )  # 비접근 타일 로그 추가
-                else:
-                    print(
-                        f"Tile at ({new_x}, {new_y}) is out of bounds."
-                    )  # 범위를 벗어난 타일 로그 추가
 
     return result
 
@@ -562,27 +542,6 @@ def _tile_count(list_level: list) -> tuple:
     return treasure_count, enemy_count, empty_tile_count, map_size
 
 
-def _is_playable(list_level: list) -> bool:
-    entry_pos = _find_objects_position(list_level, icons["entry"])
-    if not entry_pos:
-        return False
-    entry_pos = entry_pos[0]
-
-    exit_pos = _find_objects_position(list_level, icons["boss"])
-    if not exit_pos:
-        exit_pos = _find_objects_position(list_level, icons["exit"])
-        if not exit_pos:
-            return False
-        exit_pos = exit_pos[0]
-    else:
-        exit_pos = exit_pos[0]
-
-    entry_distance_dict = _shortest_distances(list_level, entry_pos)
-
-    # Check if exit is accessible from entry
-    return exit_pos in entry_distance_dict
-
-
 def _count_rooms(list_level: list) -> int:
     """
     Count the number of rooms in the level. A room is defined as a continuous space surrounded by walls.
@@ -605,7 +564,7 @@ def _count_rooms(list_level: list) -> int:
 
     for x in range(len(list_level)):
         for y in range(len(list_level[x])):
-            if (x, y) not in visited and is_accessible(
+            if (x, y) not in visited and _is_accessible(
                 list_level[x][y], icon_obstacles
             ):
                 closed_space_count += 1
@@ -618,34 +577,13 @@ def _count_rooms(list_level: list) -> int:
                         next_pos = (new_x, new_y)
                         if (
                             next_pos not in visited
-                            and is_in_bounds(new_x, new_y, x_boundary, y_boundary)
-                            and is_accessible(list_level[new_x][new_y], icon_obstacles)
+                            and _is_in_bounds(new_x, new_y, x_boundary, y_boundary)
+                            and _is_accessible(list_level[new_x][new_y], icon_obstacles)
                         ):
                             visited.add(next_pos)
                             que.append(next_pos)
 
     return closed_space_count
-
-
-def _standardize(list_level: list) -> None:
-    """
-    Standardize the level by ensuring consistent formatting of spaces and empty tiles.
-    """
-    icon_outside = icons["outside"]
-    icon_empty = icons["empty"]
-
-    # Change outside spaces ' ' into empty tiles '.'
-    for i, row in enumerate(list_level):
-        for j, tile in enumerate(row):
-            if tile == icon_outside:
-                list_level[i][j] = icon_empty
-
-    # Find the maximum length of rows.
-    row_max_len = max(len(row) for row in list_level)  # 코드 간소화
-
-    # Fill shorter rows with spaces.
-    for row in list_level:
-        row.extend(" " for _ in range(row_max_len - len(row)))  # 코드 간소화
 
 
 if __name__ == "__main__":
