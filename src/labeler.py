@@ -4,7 +4,7 @@ import os
 
 from utility import load_config
 
-config = load_config
+config = load_config()
 
 PLACED_PATH = config["paths"]["placed"]
 LABELLED_PATH = config["paths"]["labelled"]
