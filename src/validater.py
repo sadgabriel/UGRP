@@ -7,6 +7,16 @@ def validate(
     level: str,
     difficulty_curve_interval: int = labeler.DEFAULT_DIFFICULTY_CURVE_INTERVAL,
 ) -> dict[str, float]:
+    """
+    Validate the given level by calculating "treasure_count", "enemy_count", "map_size", "room_count","playability", "other_ASCII_count", "empty_validation"
+
+    Args:
+        level (str): The level represented as a string.
+        difficulty_curve_interval (int, optional): Interval used for calculating the difficulty curve. Defaults to labeler.DEFAULT_DIFFICULTY_CURVE_INTERVAL.
+
+    Returns:
+        dict[str, float]: Dictionary of calculated parameters such as playability, exploration requirements, and other level metrics.
+    """
     # Convert string level to list level and standardize it
     list_level = _prepare_level(level)
 
@@ -108,6 +118,15 @@ def _standardize(list_level: list) -> list:
 
 
 def _is_playable(list_level: list) -> bool:
+    """
+    Determine whether the level is playable by checking if the entry and exit points are accessible.
+
+    Args:
+        list_level (list): The level represented as a list of lists.
+
+    Returns:
+        bool: True if the level is playable, False otherwise.
+    """
     entry_pos = labeler._find_objects_position(list_level, labeler.icons["entry"])
     if not entry_pos:
         return False
@@ -129,6 +148,15 @@ def _is_playable(list_level: list) -> bool:
 
 
 def _count_other_ASCII(list_level: list) -> int:
+    """
+    Count the number of unique ASCII characters in the level that are not defined as icons in the labeler.
+
+    Args:
+        list_level (list): The level represented as a list of lists.
+
+    Returns:
+        int: The number of unique non-icon ASCII characters present in the level.
+    """
     other_ASCII_count = 0
     appeared = set()
 
@@ -150,6 +178,14 @@ def _validate_empty(list_level: list) -> float:
     Calculate the correct percentage of tiles.
     Outside, only ASCII " " is considered as a right tile,
     Inside, only ASCII " " is considered as a wrong tile.
+
+        Calculate the percentage of correctly placed empty tiles in the level, differentiating between inside and outside areas.
+
+    Args:
+        list_level (list): The level represented as a list of lists.
+
+    Returns:
+        float: The percentage of correctly placed empty tiles.
     """
     icon_inner_empty = labeler.icons["empty"]
     icon_outer_empty = labeler.icons["outside"]
