@@ -9,12 +9,12 @@ config = load_config()
 PLACED_PATH = config["paths"]["placed"]
 LABELLED_PATH = config["paths"]["labelled"]
 
-# 기타 상수 정의
+# Define constants
 DEFAULT_FILE_COUNT = 100
 DEFAULT_DIFFICULTY_CURVE_INTERVAL = 5
 
 # Input parameter names list
-input_parameter_names = [  # 변수명 복수형으로 수정
+input_parameter_names = [
     "enemy_group",
     "enemy_group_size",
     "enemy_ideal",
@@ -27,7 +27,7 @@ input_parameter_names = [  # 변수명 복수형으로 수정
 Caution: The names of the output parameters are currently hard-coded in labeler.py.
 If the output parameters need to be modified in the current state, they must be changed one by one.
 """
-output_parameter_names = [  # 변수명 복수형으로 수정
+output_parameter_names = [
     "density",
     "empty_ratio",
     "exploration_requirement",
@@ -54,10 +54,10 @@ icons = {
 
 
 def label(
-    placed_path: str = PLACED_PATH,  # 상수로 정의된 기본 경로 사용. +명명 수정.
-    labelled_path: str = LABELLED_PATH,  # 상수로 정의된 기본 경로 사용
-    file_count: int = DEFAULT_FILE_COUNT,  # 상수로 정의된 기본 파일 수 사용
-    difficulty_curve_interval: int = DEFAULT_DIFFICULTY_CURVE_INTERVAL,  # 상수로 정의된 기본 간격 사용
+    placed_path: str = PLACED_PATH,
+    labelled_path: str = LABELLED_PATH,
+    file_count: int = DEFAULT_FILE_COUNT,
+    difficulty_curve_interval: int = DEFAULT_DIFFICULTY_CURVE_INTERVAL,
 ) -> None:
     """
     Labels level data by estimating and updating parameters.
@@ -267,7 +267,7 @@ def save_folder(
     # Directory
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     for i in range(file_count):
-        _path = os.path.join(cur_dir, path, f"batch{i}.json")  # f-string 사용으로 수정
+        _path = os.path.join(cur_dir, path, f"batch{i}.json")
         save_file(data[i], _path)
 
 
@@ -567,8 +567,8 @@ def _count_rooms(list_level: list) -> int:
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
 
-    for x in range(len(list_level)):
-        for y in range(len(list_level[x])):
+    for x in range(x_boundary):
+        for y in range(y_boundary):
             if (x, y) not in visited and _is_accessible(
                 list_level[x][y], icon_obstacles
             ):

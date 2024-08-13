@@ -1,6 +1,6 @@
 import labeler
 
-param_names = ("playability", "other_ASCII_count")
+param_names = ("playability", "other_ASCII_count", "empty_validation")
 
 
 def validate(
@@ -64,6 +64,9 @@ def _calculate_parameters(
 
     # Count other ASCII
     output_parameters[param_names[1]] = _count_other_ASCII(list_level)
+
+    # Empty validation
+    output_parameters[param_names[2]] = _validate_empty(list_level)
 
     # Calculate nonlinearity only if the level is playable
     if output_parameters["playability"]:
@@ -142,5 +145,87 @@ def _is_in_icons(tile: str) -> bool:
     return any(tile == icon for icon in labeler.icons.values())
 
 
-def _validate_empty():
-    pass
+def _validate_empty(list_level: list) -> float:
+    """After distinguishing between the outside and the inside,
+    Calculate the correct percentage of tiles.
+    Outside, only ASCII " " is considered as a right tile,
+    Inside, only ASCII " " is considered as a wrong tile.
+    """
+    icon_inner_empty = labeler.icons["empty"]
+    icon_outer_empty = labeler.icons["outside"]
+    icon_obstacles = set(labeler.icons["wall"])
+
+    x_boundary = len(list_level)
+    y_boundary = len(list_level[0])
+
+    def is_accessible_tile(x, y):
+        return labeler._is_accessible(list_level[x][y], icon_obstacles)
+
+    outer_set = set()
+    # Find outer
+    # (0, 0) ~ (n-1, 0), (0, m-1) ~ (n-1, m-1)
+    for x in range(x_boundary):
+        for y in (0, y_boundary - 1):
+            if (x, y) not in outer_set and is_accessible_tile(x, y):
+                _visit(
+                    list_level, x, y, x_boundary, y_boundary, icon_obstacles, outer_set
+                )
+
+    # (0, 1) ~ (0, m-2), (n-1, 1) ~ (n-1, m-2)
+    for x in (0, x_boundary - 1):
+        for y in range(1, y_boundary - 1):
+            if (x, y) not in outer_set and is_accessible_tile(x, y):
+                _visit(
+                    list_level, x, y, x_boundary, y_boundary, icon_obstacles, outer_set
+                )
+
+    # Count right and wrong outer tiles.
+    outer_right_count = sum(
+        1 for x, y in outer_set if list_level[x][y] == icon_outer_empty
+    )
+    outer_wrong_count = len(outer_set) - outer_right_count
+
+    # Identify wall and total sets
+    wall_set = {
+        (x, y)
+        for x in range(x_boundary)
+        for y in range(y_boundary)
+        if list_level[x][y] in icon_obstacles
+    }
+    total_set = {(x, y) for x in range(x_boundary) for y in range(y_boundary)}
+
+    # Determine inner set and count right and wrong inner tiles
+    inner_set = total_set - wall_set - outer_set
+    inner_wrong_count = sum(1 for x, y in inner_set if list_level[x][y] == " ")
+    inner_right_count = len(inner_set) - inner_wrong_count
+
+    # Return the percentage of correct tiles
+    total_right = inner_right_count + outer_right_count
+    total_tiles = total_right + outer_wrong_count + inner_wrong_count
+
+    return total_right / total_tiles if total_tiles > 0 else 0.0
+
+
+def _visit(
+    list_level: list,
+    x: int,
+    y: int,
+    x_boundary: int,
+    y_boundary: int,
+    icon_obstacles: set,
+    visited: set,
+) -> None:
+    directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
+    que = labeler.deque([(x, y)])
+    while que:
+        cur_x, cur_y = que.popleft()
+        for dx, dy in directions:
+            new_x = cur_x + dx
+            new_y = cur_y + dy
+            if (
+                (new_x, new_y) not in visited
+                and labeler._is_in_bounds(new_x, new_y, x_boundary, y_boundary)
+                and labeler._is_accessible(list_level[new_x][new_y], icon_obstacles)
+            ):
+                visited.add((new_x, new_y))
+                que.append((new_x, new_y))
