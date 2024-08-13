@@ -471,7 +471,7 @@ def _is_in_bounds(x: int, y: int, x_boundary: int, y_boundary: int) -> bool:
     return 0 <= x < x_boundary and 0 <= y < y_boundary
 
 
-def _is_accessible(target_tile: str, icon_obstacles: list) -> bool:
+def _is_accessible(target_tile: str, icon_obstacles: set) -> bool:
     """Check if the tile at (x, y) is accessible."""
     return target_tile not in icon_obstacles
 
@@ -492,7 +492,7 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
 
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
-    icon_wall = [icons["wall"]]
+    icon_obstacles = set(icons["wall"])
 
     directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     while que:
@@ -503,7 +503,7 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
             new_x, new_y = x + dx, y + dy
             if (new_x, new_y) not in result:
                 if _is_in_bounds(new_x, new_y, x_boundary, y_boundary):
-                    if _is_accessible(list_level[new_x][new_y], icon_wall):
+                    if _is_accessible(list_level[new_x][new_y], icon_obstacles):
                         que.append((new_x, new_y))
                         result[(new_x, new_y)] = result[current] + 1
 
@@ -562,7 +562,7 @@ def _count_rooms(list_level: list) -> int:
     closed_space_count = 0
     visited = set()
     directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
-    icon_obstacles = [icon_wall, icons["door"], icons["outside"]]
+    icon_obstacles = set(icon_wall, icons["door"], icons["outside"])
 
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
