@@ -1,11 +1,9 @@
-import json
 import logging
 import glob
-import os
-import yaml
 
-from prompt_generator import prompt_generate
-from param_generator import param_generate
+from prompt_generator import generate_prompt
+from param_generator import generate_param
+from sampler import *
 from preprocessor import preprocess
 from unstructured_data_generator import unstructured_data_generate
 
@@ -16,7 +14,7 @@ with open("config.yaml", "r") as file:
 PREPROCESSED_PATH = config["paths"]["preprocessed"]
 
 
-def preprocessed_data_generate(
+def generate_preprocessed_data(
     data_count: int, example_count: int, prompt_style: str
 ) -> None:
     """
@@ -58,16 +56,22 @@ def preprocessed_data_generate(
     for i in range(data_count):
 
         # Generate parameters for the prompt
-        param = param_generate()
+        param = generate_param()
+        # Load a specified number of random examples from the folder
+        examples = load_random_examples_from_folder(example_count)
+        example_prompt = generate_example_prompt(examples)
+        example_maps = generate_example_map_list(examples)
         # Generate the prompt based on the parameters
-        prompt = prompt_generate(example_count, param, prompt_style)
+        prompt = generate_prompt(example_prompt, param, prompt_style)
         # Generate unstructured data from the prompt
         text = unstructured_data_generate(prompt)
         # Preprocess the unstructured data into an ASCII map
         askii_map = preprocess(text)
 
         # Append the processed data and parameters to the dataset
-        dataset["map_list"].append({"params": param, "map": askii_map})
+        dataset["map_list"].append(
+            {"params": param, "map": askii_map, "example_maps": example_maps}
+        )
 
         # Log the text and its corresponding ASCII map
         logging.info(f"Data #{i}:")
