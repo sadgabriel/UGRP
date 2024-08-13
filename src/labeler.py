@@ -264,6 +264,9 @@ def save_folder(
         data: Map data to save.
         file_count: Number of files in the labelled data folder.
     """
+    if not os.path.exists(path):
+        os.makedirs(path)
+
     # Directory
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     for i in range(file_count):
@@ -562,7 +565,7 @@ def _count_rooms(list_level: list) -> int:
     closed_space_count = 0
     visited = set()
     directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
-    icon_obstacles = set(icon_wall, icons["door"], icons["outside"])
+    icon_obstacles = {icon_wall, icons["door"], icons["outside"]}
 
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
