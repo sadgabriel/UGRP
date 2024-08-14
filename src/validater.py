@@ -21,11 +21,11 @@ def validate(
     list_level = _prepare_level(level)
 
     # Count parameters
-    counts = labeler._calculate_counts(list_level)
+    counts = labeler._set_count_dict(list_level)
 
     # Find positions of objects and calculate distances
-    positions = labeler._find_positions(list_level)
-    distances = labeler._calculate_distances(
+    positions = labeler._set_object_dict(list_level)
+    distances = labeler._set_distance_dict(
         list_level, positions["entry"], positions["exit"]
     )
 
@@ -203,7 +203,7 @@ def _validate_empty(list_level: list) -> float:
     for x in range(x_boundary):
         for y in (0, y_boundary - 1):
             if (x, y) not in outer_set and is_accessible_tile(x, y):
-                _visit(
+                labeler._visit(
                     list_level, x, y, x_boundary, y_boundary, icon_obstacles, outer_set
                 )
 
@@ -211,7 +211,7 @@ def _validate_empty(list_level: list) -> float:
     for x in (0, x_boundary - 1):
         for y in range(1, y_boundary - 1):
             if (x, y) not in outer_set and is_accessible_tile(x, y):
-                _visit(
+                labeler._visit(
                     list_level, x, y, x_boundary, y_boundary, icon_obstacles, outer_set
                 )
 
@@ -242,26 +242,15 @@ def _validate_empty(list_level: list) -> float:
     return total_right / total_tiles if total_tiles > 0 else 0.0
 
 
-def _visit(
-    list_level: list,
-    x: int,
-    y: int,
-    x_boundary: int,
-    y_boundary: int,
-    icon_obstacles: set,
-    visited: set,
-) -> None:
-    directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
-    que = labeler.deque([(x, y)])
-    while que:
-        cur_x, cur_y = que.popleft()
-        for dx, dy in directions:
-            new_x = cur_x + dx
-            new_y = cur_y + dy
-            if (
-                (new_x, new_y) not in visited
-                and labeler._is_in_bounds(new_x, new_y, x_boundary, y_boundary)
-                and labeler._is_accessible(list_level[new_x][new_y], icon_obstacles)
-            ):
-                visited.add((new_x, new_y))
-                que.append((new_x, new_y))
+# For TEST
+def _make_list_level(x: int, y: int) -> list:
+    return str([["#" for _ in range(y)] for _ in range(x)])
+
+
+if __name__ == "__main__":
+    for x in range(10):
+        for y in range(10):
+            test_map = _make_list_level(x, y)
+
+            for tmp_interval in range(1, 10):
+                validate(test_map, tmp_interval)
