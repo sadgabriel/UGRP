@@ -54,6 +54,9 @@ icons = {
 }
 
 
+# ===================================
+# 1. Game Level Analysis and Labeling
+# ===================================
 def label(
     placed_path: str = PLACED_PATH,
     labelled_path: str = LABELLED_PATH,
@@ -147,6 +150,9 @@ def _calculate_output_parameters(
     }
 
 
+# ================
+# 2. File Handling
+# ================
 def load_file(path: str) -> list:
     """
     Load map data from a JSON file.
@@ -180,7 +186,7 @@ def load_folder(path: str = PLACED_PATH, file_count: int = DEFAULT_FILE_COUNT) -
     cur_dir = os.path.dirname(os.path.abspath(__file__))
 
     for i in range(file_count):
-        _path = os.path.join(cur_dir, path, f"batch{i}.json")  # f-string 사용으로 수정
+        _path = os.path.join(cur_dir, path, f"batch{i}.json")
         data_list.append(load_file(_path))
 
     return data_list
@@ -219,6 +225,12 @@ def save_folder(
         save_file(data[i], _path)
 
 
+# ==================================
+# 3. Data Processing and Calculation
+# ==================================
+# =============================
+# 3-1. Tile and Object Counting
+# =============================
 def _set_count_dict(list_level: list) -> dict:
     treasure_count, enemy_count, empty_tile_count, map_size = _tile_count(list_level)
 
@@ -237,6 +249,58 @@ def _set_count_dict(list_level: list) -> dict:
     }
 
 
+def _tile_count(list_level: list) -> tuple:
+    treasure_count = 0
+    enemy_count = 0
+    empty_tile_count = 0
+    map_size = len(list_level), len(list_level[0])
+    for row in list_level:
+        for tile in row:
+            if tile == icons["treasure"]:
+                treasure_count += 1
+            elif tile == icons["enemy"]:
+                enemy_count += 1
+            elif tile == icons["empty"]:
+                empty_tile_count += 1
+
+    return treasure_count, enemy_count, empty_tile_count, map_size
+
+
+def _count_rooms(list_level: list) -> int:
+    """
+    Count the number of rooms in the level. A room is defined as a continuous space surrounded by walls.
+
+    Args:
+        list_level: 2D list representing the level.
+
+    Returns:
+        Number of rooms.
+    """
+    icon_wall = icons["wall"]
+
+    closed_space_count = 0
+    visited = set()
+    icon_obstacles = {icon_wall, icons["door"], icons["outside"]}
+
+    x_boundary = len(list_level)
+    y_boundary = len(list_level[0])
+
+    for x in range(x_boundary):
+        for y in range(y_boundary):
+            if (x, y) not in visited and _is_accessible(
+                list_level[x][y], icon_obstacles
+            ):
+                closed_space_count += 1
+                _visit(
+                    list_level, x, y, x_boundary, y_boundary, icon_obstacles, visited
+                )
+
+    return closed_space_count
+
+
+# ====================================
+# 3-2. Object and Position Information
+# ====================================
 def _set_object_dict(list_level: list) -> dict:
     """Determines the position of objects in the given level."""
 
@@ -302,6 +366,51 @@ def _set_distance_dict(list_level: list, entry_pos: tuple, exit_pos: tuple) -> d
     }
 
 
+def _find_objects_position(list_level: list, obj_icon: str) -> list:
+    """Find all positions of a specific object icon in the level."""
+    return [
+        (i, j)
+        for i, row in enumerate(list_level)
+        for j, tile in enumerate(row)
+        if tile == obj_icon
+    ]
+
+
+def _shortest_distances(list_level: list, pos: tuple) -> dict:
+    """
+    Find the shortest distances from pos to every tile in the map.
+
+    Args:
+        pos: Starting position (x, y).
+
+    Returns:
+        dict: A dictionary of shortest distances to each tile.
+        Also logs inaccessible tiles for debugging.
+    """
+    que = deque([pos])
+    result = {pos: 0}
+
+    x_boundary = len(list_level)
+    y_boundary = len(list_level[0])
+    icon_obstacles = set(icons["wall"])
+
+    while que:
+        x, y = que.popleft()
+
+        for dx, dy in DIRECTIONS:
+            new_x, new_y = x + dx, y + dy
+            if (new_x, new_y) not in result:
+                if _is_in_bounds(new_x, new_y, x_boundary, y_boundary):
+                    if _is_accessible(list_level[new_x][new_y], icon_obstacles):
+                        que.append((new_x, new_y))
+                        result[(new_x, new_y)] = result[(x, y)] + 1
+
+    return result
+
+
+# =======================================
+# 3-3. Difficulty and Gameplay Evaluation
+# =======================================
 def _density(total_object_count: int, total_tile_count: int) -> float:
     """Returns the ratio of object tiles to total tiles."""
     return total_object_count / total_tile_count
@@ -403,58 +512,9 @@ def _nonlinearity(
     return result / total_passable_tile_count / total_object_count
 
 
-def _is_in_bounds(x: int, y: int, x_boundary: int, y_boundary: int) -> bool:
-    """Check if the position is within the map boundaries."""
-    return 0 <= x < x_boundary and 0 <= y < y_boundary
-
-
-def _is_accessible(target_tile: str, icon_obstacles: set) -> bool:
-    """Check if the tile at (x, y) is accessible."""
-    return target_tile not in icon_obstacles
-
-
-def _shortest_distances(list_level: list, pos: tuple) -> dict:
-    """
-    Find the shortest distances from pos to every tile in the map.
-
-    Args:
-        pos: Starting position (x, y).
-
-    Returns:
-        dict: A dictionary of shortest distances to each tile.
-        Also logs inaccessible tiles for debugging.
-    """
-    que = deque([pos])
-    result = {pos: 0}
-
-    x_boundary = len(list_level)
-    y_boundary = len(list_level[0])
-    icon_obstacles = set(icons["wall"])
-
-    while que:
-        x, y = que.popleft()
-
-        for dx, dy in DIRECTIONS:
-            new_x, new_y = x + dx, y + dy
-            if (new_x, new_y) not in result:
-                if _is_in_bounds(new_x, new_y, x_boundary, y_boundary):
-                    if _is_accessible(list_level[new_x][new_y], icon_obstacles):
-                        que.append((new_x, new_y))
-                        result[(new_x, new_y)] = result[(x, y)] + 1
-
-    return result
-
-
-def _find_objects_position(list_level: list, obj_icon: str) -> list:
-    """Find all positions of a specific object icon in the level."""
-    return [
-        (i, j)
-        for i, row in enumerate(list_level)
-        for j, tile in enumerate(row)
-        if tile == obj_icon
-    ]
-
-
+# ====================
+# 4. Utility Functions
+# ====================
 def str_level_to_list_level(level: str) -> list:
     """
     Convert a string level into a 2D list level.
@@ -463,55 +523,6 @@ def str_level_to_list_level(level: str) -> list:
     if not result[-1]:
         result = result[:-1]
     return result
-
-
-def _tile_count(list_level: list) -> tuple:
-    treasure_count = 0
-    enemy_count = 0
-    empty_tile_count = 0
-    map_size = len(list_level), len(list_level[0])
-    for row in list_level:
-        for tile in row:
-            if tile == icons["treasure"]:
-                treasure_count += 1
-            elif tile == icons["enemy"]:
-                enemy_count += 1
-            elif tile == icons["empty"]:
-                empty_tile_count += 1
-
-    return treasure_count, enemy_count, empty_tile_count, map_size
-
-
-def _count_rooms(list_level: list) -> int:
-    """
-    Count the number of rooms in the level. A room is defined as a continuous space surrounded by walls.
-
-    Args:
-        list_level: 2D list representing the level.
-
-    Returns:
-        Number of rooms.
-    """
-    icon_wall = icons["wall"]
-
-    closed_space_count = 0
-    visited = set()
-    icon_obstacles = {icon_wall, icons["door"], icons["outside"]}
-
-    x_boundary = len(list_level)
-    y_boundary = len(list_level[0])
-
-    for x in range(x_boundary):
-        for y in range(y_boundary):
-            if (x, y) not in visited and _is_accessible(
-                list_level[x][y], icon_obstacles
-            ):
-                closed_space_count += 1
-                _visit(
-                    list_level, x, y, x_boundary, y_boundary, icon_obstacles, visited
-                )
-
-    return closed_space_count
 
 
 def _visit(
@@ -544,6 +555,16 @@ def _visit(
             ):
                 visited.add((new_x, new_y))
                 que.append((new_x, new_y))
+
+
+def _is_in_bounds(x: int, y: int, x_boundary: int, y_boundary: int) -> bool:
+    """Check if the position is within the map boundaries."""
+    return 0 <= x < x_boundary and 0 <= y < y_boundary
+
+
+def _is_accessible(target_tile: str, icon_obstacles: set) -> bool:
+    """Check if the tile at (x, y) is accessible."""
+    return target_tile not in icon_obstacles
 
 
 if __name__ == "__main__":

@@ -3,6 +3,9 @@ import labeler
 param_names = ("playability", "other_ASCII_count", "empty_validation")
 
 
+# =====================
+# 1. Game level validation
+# =====================
 def validate(
     level: str,
     difficulty_curve_interval: int = labeler.DEFAULT_DIFFICULTY_CURVE_INTERVAL,
@@ -97,26 +100,42 @@ def _calculate_parameters(
     return output_parameters
 
 
-def _standardize(list_level: list) -> list:
-    """
-    Standardize the level by ensuring consistent formatting of spaces and empty tiles.
-    """
+# ===============================
+# 2. Data Processing and Calculation
+# ===============================
+# ===============================
+# 2-1. Object and Position Information
+# ===============================
+def _find_outer_tiles(
+    list_level: list, x_boundary: int, y_boundary: int, icon_obstacles: set
+) -> set:
+    outer_set = set()
 
-    # Find the maximum length of rows.
-    row_max_len = max(len(row) for row in list_level)
-    new_list_level = list()
+    # (0, 0) ~ (n-1, 0), (0, m-1) ~ (n-1, m-1)
+    for x in range(x_boundary):
+        for y in (0, y_boundary - 1):
+            if (x, y) not in outer_set and labeler._is_accessible(
+                list_level[x][y], icon_obstacles
+            ):
+                labeler._visit(
+                    list_level, x, y, x_boundary, y_boundary, icon_obstacles, outer_set
+                )
 
-    icon_outside = labeler.icons["outside"]
+    # (0, 1) ~ (0, m-2), (n-1, 1) ~ (n-1, m-2)
+    for x in (0, x_boundary - 1):
+        for y in range(1, y_boundary - 1):
+            if (x, y) not in outer_set and labeler._is_accessible(
+                list_level[x][y], icon_obstacles
+            ):
+                labeler._visit(
+                    list_level, x, y, x_boundary, y_boundary, icon_obstacles, outer_set
+                )
+    return outer_set
 
-    # Fill shorter rows with spaces.
-    for row in list_level:
-        for i in range(row_max_len - len(row)):
-            row.append(icon_outside)
-        new_list_level.append(row)
 
-    return new_list_level
-
-
+# ==========
+# 2-2. Evaluation
+# ==========
 def _is_playable(list_level: list) -> bool:
     """
     Determine whether the level is playable by checking if the entry and exit points are accessible.
@@ -169,17 +188,11 @@ def _count_other_ASCII(list_level: list) -> int:
     return other_ASCII_count
 
 
-def _is_in_icons(tile: str) -> bool:
-    return any(tile == icon for icon in labeler.icons.values())
-
-
 def _validate_empty(list_level: list) -> float:
-    """After distinguishing between the outside and the inside,
+    """
     Calculate the correct percentage of tiles.
     Outside, only ASCII " " is considered as a right tile,
     Inside, only ASCII " " is considered as a wrong tile.
-
-        Calculate the percentage of correctly placed empty tiles in the level, differentiating between inside and outside areas.
 
     Args:
         list_level (list): The level represented as a list of lists.
@@ -187,6 +200,7 @@ def _validate_empty(list_level: list) -> float:
     Returns:
         float: The percentage of correctly placed empty tiles.
     """
+    # Initialization
     icon_inner_empty = labeler.icons["empty"]
     icon_outer_empty = labeler.icons["outside"]
     icon_obstacles = set(labeler.icons["wall"])
@@ -194,35 +208,8 @@ def _validate_empty(list_level: list) -> float:
     x_boundary = len(list_level)
     y_boundary = len(list_level[0])
 
-    def is_accessible_tile(x, y):
-        return labeler._is_accessible(list_level[x][y], icon_obstacles)
-
-    outer_set = set()
-    # Find outer
-    # (0, 0) ~ (n-1, 0), (0, m-1) ~ (n-1, m-1)
-    for x in range(x_boundary):
-        for y in (0, y_boundary - 1):
-            if (x, y) not in outer_set and is_accessible_tile(x, y):
-                labeler._visit(
-                    list_level, x, y, x_boundary, y_boundary, icon_obstacles, outer_set
-                )
-
-    # (0, 1) ~ (0, m-2), (n-1, 1) ~ (n-1, m-2)
-    for x in (0, x_boundary - 1):
-        for y in range(1, y_boundary - 1):
-            if (x, y) not in outer_set and is_accessible_tile(x, y):
-                labeler._visit(
-                    list_level, x, y, x_boundary, y_boundary, icon_obstacles, outer_set
-                )
-
-    # Count right and wrong outer tiles.
-    outer_right_count = sum(
-        1 for x, y in outer_set if list_level[x][y] == icon_outer_empty
-    )
-    outer_wrong_count = len(outer_set) - outer_right_count
-
-    # Identify wall and total sets
-    wall_set = {
+    # Make wall and total sets
+    obstacles_set = {
         (x, y)
         for x in range(x_boundary)
         for y in range(y_boundary)
@@ -230,10 +217,19 @@ def _validate_empty(list_level: list) -> float:
     }
     total_set = {(x, y) for x in range(x_boundary) for y in range(y_boundary)}
 
-    # Determine inner set and count right and wrong inner tiles
-    inner_set = total_set - wall_set - outer_set
-    inner_wrong_count = sum(1 for x, y in inner_set if list_level[x][y] == " ")
+    # Find inner and outer set
+    outer_set = _find_outer_tiles(list_level, x_boundary, y_boundary, icon_obstacles)
+    inner_set = total_set - obstacles_set - outer_set
+
+    # Count right and wrong tiles
+    inner_wrong_count = sum(
+        1 for x, y in inner_set if list_level[x][y] == icon_inner_empty
+    )
     inner_right_count = len(inner_set) - inner_wrong_count
+    outer_right_count = sum(
+        1 for x, y in outer_set if list_level[x][y] == icon_outer_empty
+    )
+    outer_wrong_count = len(outer_set) - outer_right_count
 
     # Return the percentage of correct tiles
     total_right = inner_right_count + outer_right_count
@@ -242,7 +238,29 @@ def _validate_empty(list_level: list) -> float:
     return total_right / total_tiles if total_tiles > 0 else 0.0
 
 
+# =======
+# Utility
+# =======
+def _is_in_icons(tile: str) -> bool:
+    return any(tile == icon for icon in labeler.icons.values())
+
+
+def _standardize(list_level: list) -> list:
+    """
+    Standardize the level by ensuring consistent formatting of spaces and empty tiles.
+    """
+
+    # Find the maximum length of rows.
+    row_max_len = max(len(row) for row in list_level)
+
+    icon_outside = labeler.icons["outside"]
+
+    return [row + [icon_outside] * (row_max_len - len(row)) for row in list_level]
+
+
+# ========
 # For TEST
+# ========
 def _make_list_level(x: int, y: int) -> list:
     return str([["#" for _ in range(y)] for _ in range(x)])
 
