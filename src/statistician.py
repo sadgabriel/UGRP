@@ -1,6 +1,7 @@
 import random
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 import utility
 
@@ -402,3 +403,36 @@ def _check_fully_connected(edges: list[list[int]], clique: set[int]) -> bool:
                 return False
 
     return True
+
+
+def draw_graph(mean_dict: dict, std_dict: dict, title: str = ""):
+    fig, ax = plt.subplots()
+
+    x_pos = np.arange(len(mean_dict))
+    categorie_list = list()
+    mean_list = list()
+    std_dev_list = list()
+
+    for key, value in mean_dict.items():
+        categorie_list.append(key)
+        mean_list.append(value)
+        if key in std_dict:
+            std_dev_list.append(std_dict[key])
+        else:
+            std_dev_list.append(0)
+
+    ax.bar(
+        x_pos,
+        mean_list,
+        yerr=std_dev_list,
+        align="center",
+        alpha=0.7,
+        color="blue",
+        capsize=10,
+    )
+
+    ax.set_title(title)
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels(categorie_list)
+
+    plt.show()
