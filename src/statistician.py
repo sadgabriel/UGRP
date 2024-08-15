@@ -405,7 +405,18 @@ def _check_fully_connected(edges: list[list[int]], clique: set[int]) -> bool:
     return True
 
 
-def draw_graph(mean_dict: dict, std_dict: dict, title: str = ""):
+def draw_graph(mean_dict: dict, std_dict: dict, title: str = "") -> None:
+    """
+    Draws a bar graph using mean and standard deviation values from dictionaries.
+
+    Args:
+        mean_dict (dict): A dictionary with categories as keys and mean values as values.
+        std_dict (dict): A dictionary with categories as keys and standard deviation values as values.
+        title (str, optional): The title of the graph. Defaults to an empty string.
+
+    Returns:
+        None. Displays the graph.
+    """
     fig, ax = plt.subplots()
 
     x_pos = np.arange(len(mean_dict))
