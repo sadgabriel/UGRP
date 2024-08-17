@@ -192,6 +192,7 @@ function createMaps(mapSize, count){
       continue;
     }
 
+    map.size = mapSize
     maps.push(map);
   }
 

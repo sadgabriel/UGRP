@@ -189,6 +189,8 @@ def _calc_group_detail(map: Map) -> tuple[int]:
 
     ideal_min = map.params["enemy_ideal_min"]
     ideal_max = map.params["enemy_ideal_max"]
+    del map.params["enemy_ideal_min"]
+    del map.params["enemy_ideal_max"]
 
     try_max = 10000
     try_count = 0
@@ -204,9 +206,11 @@ def _calc_group_detail(map: Map) -> tuple[int]:
             or group_max * group_size_max < ideal_min
             or try_count >= try_max
         ):
+            map.params["enemy_count"] = sum(group_list)
             return group_list
 
         if ideal_min <= sum(group_list) <= ideal_max:
+            map.params["enemy_count"] = sum(group_list)
             return group_list
 
         try_count += 1
