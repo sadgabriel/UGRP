@@ -29,8 +29,8 @@ const tileMapping = {
   6: '>'
 };
 
-const fs = require('fs')
-const path = require('path')
+  const fs = require('fs')
+  const path = require('path')
 const yaml = require('js-yaml');
 
 var roguelike = require(path.join(__dirname, "node-roguelike", "level", "roguelike"));

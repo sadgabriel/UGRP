@@ -4,7 +4,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 
-def unstructured_data_generate(prompt: str) -> str:
+def unstructured_data_generate(system: str, param: str) -> str:
 
     load_dotenv()
     _api_key = os.getenv("OPENAI_API_KEY")
@@ -18,13 +18,14 @@ def unstructured_data_generate(prompt: str) -> str:
         messages=[
             {
                 "role": "system",
-                "content": "",
+                "content": f"{system}",
             },
             {
                 "role": "user",
-                "content": f"{prompt}",
+                "content": f"{param}",
             },
         ],
+        max_tokens=16384,
     )
 
     return completion.choices[0].message.content

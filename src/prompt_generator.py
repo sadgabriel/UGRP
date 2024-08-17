@@ -1,6 +1,7 @@
 import textwrap
 import yaml
 
+
 with open("config.yaml", "r") as file:
     config = yaml.safe_load(file)
 
@@ -9,7 +10,7 @@ PROMPT_PATH = config["paths"]["prompt"]
 
 
 def _split_prompts(content: str) -> tuple[str]:
-    start_prompt_key = "Start Prompt:"
+    start_prompt_key = "System Role:"
     end_prompt_key = "End Prompt:"
 
     start_prompt_start = content.find(start_prompt_key) + len(start_prompt_key)
@@ -23,13 +24,14 @@ def _split_prompts(content: str) -> tuple[str]:
 
 def _format_parameters(params: dict) -> str:
     params_str = "\n".join([f"{key.upper()}: {value}" for key, value in params.items()])
-    return textwrap.dedent(
-        f"""
-            Parameters:
-            {params_str}
-            
-            """
-    )
+    return f"""
+Generate a map with the following parameters.
+                
+**Parameters:**
+```
+{params_str}
+```
+"""
 
 
 def generate_prompt(example_prompt: str, params: dict, prompt_style: str) -> str:
@@ -41,8 +43,8 @@ def generate_prompt(example_prompt: str, params: dict, prompt_style: str) -> str
 
     start_prompt, end_prompt = _split_prompts(content)
 
-    complete_prompt = (
-        start_prompt + example_prompt + _format_parameters(params) + end_prompt
-    )
+    system = start_prompt + example_prompt
 
-    return complete_prompt
+    prompt = _format_parameters(params) + end_prompt
+
+    return system, prompt

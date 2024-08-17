@@ -26,7 +26,7 @@ def generate_param() -> dict:
     map_height = random.randint(map_size_min, map_size_max)
 
     room_count_max = math.floor((map_width - 1) / 2) * math.floor((map_height - 1) / 2)
-    room_count = random.randint(1, room_count_max)
+    room_count = random.randint(1, (map_width * map_height) / 25)
 
     empty_space_predict = round(
         map_width * map_height

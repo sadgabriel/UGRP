@@ -12,7 +12,7 @@ LABELLED_PATH = config["paths"]["labelled"]
 
 def load_random_examples_from_folder(
     example_count: int, folder_path: str = LABELLED_PATH
-) -> str:
+) -> list:
     files = [
         f
         for f in os.listdir(folder_path)
@@ -55,17 +55,17 @@ def generate_example_prompt(examples: list) -> str:
             [f"{key.upper()}: {value}" for key, value in selected_params.items()]
         )
 
-        example_prompt = textwrap.dedent(
-            f"""
-                Example {i + 1}:
-    
-                Parameters:
-                {params_str}
-    
-                Generated Map:
-                {example['map']}
-            """
-        )
+        example_prompt = f"""
+### Example {i + 1}:
+**Parameters:**
+```
+{params_str}
+```
+**Generated Map:**
+```
+{example['map']}
+```
+"""
         example_prompts += example_prompt
 
     return example_prompts
