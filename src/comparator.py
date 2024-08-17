@@ -36,7 +36,7 @@ def compare(
     for i, data in enumerate(preprocessed_data):
         for map_item in data["map_list"]:
             try:
-                examples = map_item["examples"]
+                examples = map_item["example_maps"]
             except KeyError:
                 examples = None
             map = map_item["map"]
@@ -44,7 +44,7 @@ def compare(
             after_params = validater.validate(map)
             compared_data[i]["map_list"].append(
                 {
-                    "examples": examples,
+                    "example_maps": examples,
                     "map": map,
                     "before_params": before_params,
                     "after_params": after_params,
