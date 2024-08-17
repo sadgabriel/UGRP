@@ -29,8 +29,8 @@ const tileMapping = {
   6: '>'
 };
 
-  const fs = require('fs')
-  const path = require('path')
+const fs = require('fs');
+const path = require('path');
 const yaml = require('js-yaml');
 
 var roguelike = require(path.join(__dirname, "node-roguelike", "level", "roguelike"));
@@ -192,7 +192,7 @@ function createMaps(mapSize, count){
       continue;
     }
 
-    map.size = mapSize
+    map.params.size = mapSize
     maps.push(map);
   }
 
