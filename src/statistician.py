@@ -189,7 +189,7 @@ def _calc_novelty_from_list(compared_list: list[dict], threshold: int) -> float:
                and 0.0 indicates none are novel.
     """
     novelty_list = [
-        _check_novelty(compared["examples"], compared["map"], threshold)
+        _check_novelty(compared["example_maps"], compared["map"], threshold)
         for compared in compared_list
     ]
 
