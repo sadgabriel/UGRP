@@ -77,7 +77,7 @@ def find_or_create_file(existing_files: list, path: str) -> tuple:
         return new_file, new_batch_number, dataset
     else:
         # If no existing files are found, create the first batch file
-        first_batch_number = 1
+        first_batch_number = 0
         new_file = f"{path}batch{first_batch_number}.json"
         dataset = {"map_list": []}  # Initialize empty dataset for the first file
         with open(new_file, "w") as outfile:
