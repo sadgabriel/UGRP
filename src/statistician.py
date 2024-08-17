@@ -289,7 +289,7 @@ def _calc_diversity_from_list(compared_list: list[dict], threshold: int) -> floa
     clique_list = list()
 
     while U:
-        vertex = random.choice(U)
+        vertex = random.choice(list(U))
         clique = _greedy_find_clique(edges, vertex)
 
         clique_list.append(clique)
