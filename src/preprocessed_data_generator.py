@@ -2,7 +2,6 @@ import logging
 import glob
 import os
 import json
-import yaml
 
 from prompt_generator import generate_prompt
 from param_generator import generate_param
@@ -13,12 +12,7 @@ from sampler import (
 )
 from preprocessor import preprocess
 from unstructured_data_generator import unstructured_data_generate
-
-
-def load_config(config_path: str) -> dict:
-    """Load configuration from a YAML file."""
-    with open(config_path, "r") as file:
-        return yaml.safe_load(file)
+from utility import load_config
 
 
 def setup_logging(log_path: str) -> None:
@@ -141,7 +135,7 @@ def generate_preprocessed_data(
     data_count: int, example_count: int, prompt_style: str
 ) -> None:
     """Main function to generate and preprocess data, saving it in batches."""
-    config = load_config("config.yaml")
+    config = load_config()
     preprocessed_path = config["paths"]["preprocessed"]
 
     create_preprocessed_directory(preprocessed_path)

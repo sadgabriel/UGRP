@@ -1,15 +1,13 @@
 import textwrap
-import yaml
+from utility import load_config
 
-
-with open("config.yaml", "r") as file:
-    config = yaml.safe_load(file)
+config = load_config()
 
 BASE_PROMPT_PATH = config["paths"]["base_prompt"]
 PROMPT_PATH = config["paths"]["prompt"]
 
 
-def _split_prompts(content: str) -> tuple[str]:
+def _split_prompts(content: str) -> tuple[str, str]:
     start_prompt_key = "System Role:"
     end_prompt_key = "End Prompt:"
 
@@ -34,7 +32,7 @@ Generate a map with the following parameters.
 """
 
 
-def generate_prompt(example_prompt: str, params: dict, prompt_style: str) -> str:
+def generate_prompt(example_prompt: str, params: dict, prompt_style: str) -> tuple:
 
     base_prompt_file_path = BASE_PROMPT_PATH + f"{prompt_style}.txt"
 
