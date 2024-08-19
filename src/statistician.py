@@ -102,7 +102,9 @@ def _calc_after_mean_std_from_list(
 
     for param_name in param_name_list:
         value_list = [
-            compared["after_params"][param_name] for compared in compared_list
+            compared["after_params"][param_name]
+            for compared in compared_list
+            if compared["after_params"][param_name] is not None
         ]
 
         mean_dict[param_name] = np.mean(value_list)
@@ -134,23 +136,24 @@ def _calc_abs_diff(
 
     for compared in compared_list:
         for param_name in param_name_list:
-            try:
-                diff_dict[param_name].append(
-                    [
-                        abs(
-                            float(compared["after_params"][param_name][i])
-                            - float(compared["before_params"][param_name][i])
-                        )
-                        for i in range(len(compared["after_params"][param_name]))
-                    ]
-                )
-            except:
-                diff_dict[param_name].append(
-                    abs(
-                        float(compared["after_params"][param_name])
-                        - float(compared["before_params"][param_name])
+            if compared["after_params"][param_name] is not None:
+                try:
+                    diff_dict[param_name].append(
+                        [
+                            abs(
+                                float(compared["after_params"][param_name][i])
+                                - float(compared["before_params"][param_name][i])
+                            )
+                            for i in range(len(compared["after_params"][param_name]))
+                        ]
                     )
-                )
+                except:
+                    diff_dict[param_name].append(
+                        abs(
+                            float(compared["after_params"][param_name])
+                            - float(compared["before_params"][param_name])
+                        )
+                    )
 
     return diff_dict
 
