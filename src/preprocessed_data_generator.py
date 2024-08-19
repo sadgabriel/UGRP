@@ -101,6 +101,7 @@ def generate_and_preprocess_data(
     dataset: dict,
 ) -> dict:
     """Generate and preprocess data, appending it to the dataset."""
+    processed_count = 0
     for i in range(data_count):
         # Generate parameters for the prompt
         parameters = generate_param()
@@ -119,21 +120,21 @@ def generate_and_preprocess_data(
         dataset["map_list"].append(
             {"params": parameters, "map": ascii_map, "example_maps": example_maps}
         )
-
+        processed_count += 1
         # Log the text and its corresponding ASCII map
         logging.info(f"Data #{i}:")
         logging.info(f"Text:\n{raw_text}")
         logging.info(f"ASCII Map:\n{ascii_map}")
 
         # Check if the dataset length exceeds 100 after adding the new data
-        if len(dataset["map_list"]) > 100:
+        if len(dataset["map_list"]) >= 100:
             # Save the current dataset to the current file
             save_dataset_to_file(dataset, current_file)
 
             # Start a new file for the next batch
-            return None
+            return processed_count, None
 
-    return dataset
+    return processed_count, dataset
 
 
 def generate_preprocessed_data(
@@ -152,7 +153,7 @@ def generate_preprocessed_data(
     )
 
     while data_count > 0:
-        dataset = generate_and_preprocess_data(
+        processed_count, dataset = generate_and_preprocess_data(
             data_count, example_count, prompt_style, current_file, dataset
         )
         if dataset is None:
@@ -162,7 +163,7 @@ def generate_preprocessed_data(
             dataset = {"map_list": []}  # Reset dataset for the next batch
 
         # Reduce data count by the number of processed items
-        data_count -= example_count
+        data_count -= processed_count
 
     # Save any remaining data to the final file
     if dataset and dataset["map_list"]:
