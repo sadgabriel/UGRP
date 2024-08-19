@@ -22,6 +22,9 @@ def validate(
     """
     # Convert string level to list level and standardize it
     list_level = _prepare_level(level)
+    if list_level is None:
+        output_parameters = _set_none_parameters()
+        return output_parameters
 
     # Count parameters
     counts = labeler._set_count_dict(list_level)
@@ -42,6 +45,8 @@ def validate(
 
 def _prepare_level(level: str) -> list:
     list_level = labeler.str_level_to_list_level(level)
+    if list_level is None:
+        return None
     list_level = _standardize(list_level)
     return list_level
 
@@ -256,6 +261,28 @@ def _standardize(list_level: list) -> list:
     icon_outside = labeler.icons["outside"]
 
     return [row + [icon_outside] * (row_max_len - len(row)) for row in list_level]
+
+
+def _set_none_parameters():
+    """Calculate and return the output parameters."""
+    output_parameters = {
+        labeler.output_parameter_names[0]: None,
+        labeler.output_parameter_names[1]: None,
+        labeler.output_parameter_names[2]: None,
+        labeler.output_parameter_names[3]: None,
+        labeler.output_parameter_names[4]: None,
+        labeler.output_parameter_names[5]: None,
+        labeler.output_parameter_names[6]: None,
+        labeler.output_parameter_names[7]: None,
+        labeler.output_parameter_names[8]: None,
+    }
+
+    # Playability
+    output_parameters[param_names[0]] = None
+    output_parameters[param_names[1]] = None
+    output_parameters[param_names[2]] = None
+
+    return output_parameters
 
 
 # ========

@@ -519,6 +519,8 @@ def str_level_to_list_level(level: str) -> list:
     """
     Convert a string level into a 2D list level.
     """
+    if not level:
+        return None
     result = [[char for char in row] for row in level.split("\n")]
     if not result[-1]:
         result = result[:-1]
