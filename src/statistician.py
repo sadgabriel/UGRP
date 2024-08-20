@@ -213,27 +213,13 @@ def _check_novelty(examples: list[str], target: str, threshold: int) -> bool:
               False if it is not.
     """
     for example in examples:
-        if _calc_levenshtein_distance(example, target) < threshold:
+        if not _check_enough_levenshtein_distance(example, target, threshold):
             return False
 
     return True
 
 
-def _calc_levenshtein_distance(A: str, B: str) -> int:
-    """
-    Calculate the Levenshtein distance between two strings A and B.
-
-    The Levenshtein distance is a measure of the difference between two strings,
-    defined as the minimum number of single-character edits (insertions, deletions,
-    or substitutions) required to change one string into the other.
-
-    Args:
-        A (str): The first string.
-        B (str): The second string.
-
-    Returns:
-        int: The Levenshtein distance between string A and string B.
-    """
+def _check_enough_levenshtein_distance(A: str, B: str, threshold: int) -> bool:
     len_A = len(A)
     len_B = len(B)
 
@@ -252,9 +238,13 @@ def _calc_levenshtein_distance(A: str, B: str) -> int:
             else:
                 cost = 1
 
-            dp[i][j] = min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost)
+            value = min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost)
+            dp[i][j] = value
 
-    return dp[len_A][len_B]
+            if value >= threshold:
+                return True
+
+    return False
 
 
 def calc_diversity(path: str = COMPARED_PATH, threshold: int = 5) -> float:
@@ -285,12 +275,14 @@ def _calc_diversity_from_list(compared_list: list[dict], threshold: int) -> floa
     """
     map_list = [compared["map"] for compared in compared_list]
 
+    print("Now Making Graph")
     edges = _make_graph_from_map_list(map_list, threshold)
 
     U = set(range(len(edges)))
 
     clique_list = list()
 
+    print("Now Finding Cliques")
     while U:
         vertex = random.choice(list(U))
         clique = _greedy_find_clique(edges, vertex)
@@ -298,6 +290,7 @@ def _calc_diversity_from_list(compared_list: list[dict], threshold: int) -> floa
         clique_list.append(clique)
         U.difference_update(clique)
 
+    print("Now Merging Cliques")
     merged_clique_list = _merge_cliques(edges, clique_list)
 
     max_clique_len = max(len(clique) for clique in merged_clique_list)
@@ -320,8 +313,9 @@ def _make_graph_from_map_list(map_list: list[str], threshold: int) -> list[list[
     edges = [list() for _ in range(n)]
 
     for i in range(n - 1):
+        print(f"- Now {i}")
         for j in range(i + 1, n):
-            if _calc_levenshtein_distance(map_list[i], map_list[j]) >= threshold:
+            if _check_enough_levenshtein_distance(map_list[i], map_list[j], threshold):
                 edges[i].append(j)
                 edges[j].append(i)
 
