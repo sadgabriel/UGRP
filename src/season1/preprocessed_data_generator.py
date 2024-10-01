@@ -29,18 +29,20 @@ def generate_preprocessed_data(
         return get_new_parameters_and_examples(example_count)
 
     # Use the general function with a new parameter generation function
-    dataset = generate_and_save_data(
-        data_count,
-        prompt_style,
-        current_file,
-        dataset,
-        wrapped_get_new_parameters,
-    )
+    while data_count > 0:
+        dataset = generate_and_save_data(
+            prompt_style,
+            current_file,
+            dataset,
+            wrapped_get_new_parameters,
+        )
 
-    if dataset is None:
-        batch_number += 1
-        current_file = f"{preprocessed_path}batch{batch_number}.json"
-        dataset = {"map_list": []}
+        if dataset is None:
+            batch_number += 1
+            current_file = f"{preprocessed_path}batch{batch_number}.json"
+            dataset = {"map_list": []}
+
+        data_count -= 1
 
     if dataset and dataset["map_list"]:
         save_dataset_to_file(dataset, current_file)

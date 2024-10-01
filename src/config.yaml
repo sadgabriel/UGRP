@@ -5,6 +5,8 @@ paths:
   prompt: "../../data/4. prompt/"
   preprocessed: "../../data/5. preprocessed/"
   compared: "../../data/6. compared/"
+  repeated: "../data/7. repeated/"
   base_prompt: "../base_prompt/"
+
 
 

@@ -4,7 +4,7 @@ import os
 import textwrap
 import yaml
 
-with open("config.yaml", "r") as file:
+with open("../config.yaml", "r") as file:
     config = yaml.safe_load(file)
 
 LABELLED_PATH = config["paths"]["labelled"]
@@ -39,23 +39,24 @@ def _load_random_examples_from_file(example_count: int, input_path: str) -> list
     return selected_examples
 
 
-def generate_example_prompt(examples: list) -> str:
-    example_prompts = ""
+def generate_example_prompt(examples: list, prompt_style: str) -> str:
+    if prompt_style == "AutoCOT1":
+        example_prompts = ""
 
-    for i, example in enumerate(examples):
-        params = example["params"]
+        for i, example in enumerate(examples):
+            params = example["params"]
 
-        selected_params = {
-            "MAP_SIZE": params.get("map_size", "N/A"),
-            "ROOM_COUNT": params.get("room_count", "N/A"),
-            "ENEMY_COUNT": params.get("enemy_count", "N/A"),
-            "TREASURE_COUNT": params.get("treasure_count", "N/A"),
-        }
-        params_str = "\n".join(
-            [f"{key.upper()}: {value}" for key, value in selected_params.items()]
-        )
+            selected_params = {
+                "MAP_SIZE": params.get("map_size", "N/A"),
+                "ROOM_COUNT": params.get("room_count", "N/A"),
+                "ENEMY_COUNT": params.get("enemy_count", "N/A"),
+                "TREASURE_COUNT": params.get("treasure_count", "N/A"),
+            }
+            params_str = "\n".join(
+                [f"{key.upper()}: {value}" for key, value in selected_params.items()]
+            )
 
-        example_prompt = f"""
+            example_prompt = f"""
 ### Example {i + 1}:
 **Parameters:**
 ```
@@ -66,8 +67,9 @@ def generate_example_prompt(examples: list) -> str:
 {example['map']}
 ```
 """
-        example_prompts += example_prompt
-
+            example_prompts += example_prompt
+    else:
+        example_prompt = ""
     return example_prompts
 
 

@@ -50,7 +50,7 @@ def generate_data_block(
 ) -> dict:
     """Generate and process a data block, then store it."""
     # Generate the example prompt from the original examples (not from the maps)
-    example_prompt = generate_example_prompt(examples)
+    example_prompt = generate_example_prompt(examples, prompt_style)
 
     # Generate the ASCII map from the prompt
     ascii_map = generate_prompt_and_ascii_map(parameters, example_prompt, prompt_style)
@@ -65,27 +65,19 @@ def generate_data_block(
 
 
 def generate_and_save_data(
-    data_count: int,
     prompt_style: str,
     current_file: str,
     dataset: dict,
     get_parameters_fn,
 ) -> dict:
-    """Main function to generate and save data blocks using a given parameters function."""
-    while data_count > 0:
-        # Use the provided function to get parameters and examples
-        parameters, examples = get_parameters_fn()
+    """Generate and save one data block using a given parameters function."""
 
-        # Generate and process the data block with examples
-        dataset = generate_data_block(
-            parameters, examples, prompt_style, dataset, current_file
-        )
+    # Use the provided function to get parameters and examples
+    parameters, examples = get_parameters_fn()
 
-        if dataset is None:
-            # If dataset reaches limit, return None to signal the need for a new file
-            return None
-
-        # Decrease the data count by 1 as one block is processed
-        data_count -= 1
+    # Generate and process the data block with examples
+    dataset = generate_data_block(
+        parameters, examples, prompt_style, dataset, current_file
+    )
 
     return dataset
