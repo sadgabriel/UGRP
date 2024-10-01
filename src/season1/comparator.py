@@ -1,5 +1,3 @@
-import yaml
-
 from labeler import load_folder, save_folder
 import validater
 

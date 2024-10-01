@@ -5,7 +5,7 @@ from utility import load_config
 
 
 # 파일 단위로 이상한 데이터를 제거합니다.
-# 실행 후 reorganized.py를 실행해 주세요.
+# 실행 후 reorganize.py를 실행해 주세요.
 
 
 def load_all_batches(preprocessed_path: str) -> list:  # TODO: move to utility
