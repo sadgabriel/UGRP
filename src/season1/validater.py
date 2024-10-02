@@ -31,13 +31,18 @@ def validate(
 
     # Find positions of objects and calculate distances
     positions = labeler._set_object_dict(list_level)
-    distances = labeler._set_distance_dict(
+    distances, accessible_tile_count = labeler._set_distance_dict(
         list_level, positions["entry"], positions["exit"]
     )
 
     # Calculate and store output parameters
     output_parameters = _calculate_parameters(
-        counts, positions, distances, difficulty_curve_interval, list_level
+        counts,
+        positions,
+        distances,
+        difficulty_curve_interval,
+        list_level,
+        accessible_tile_count,
     )
 
     return output_parameters
@@ -57,6 +62,7 @@ def _calculate_parameters(
     distances: dict,
     difficulty_curve_interval: int,
     list_level: list,
+    accessible_tile_count: int,
 ) -> dict:
     """Calculate and return the output parameters."""
     output_parameters = {
@@ -67,7 +73,10 @@ def _calculate_parameters(
             counts["empty_tile_count"], counts["total_tile_count"]
         ),
         labeler.output_parameter_names[2]: labeler._exploration_requirement(
-            distances["entry"], positions["object_positions"]
+            list_level,
+            distances["entry"],
+            positions["object_positions"],
+            accessible_tile_count,
         ),
         labeler.output_parameter_names[3]: labeler._difficulty_curve(
             distances["entry"], positions["enemy_positions"], difficulty_curve_interval

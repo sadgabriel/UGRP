@@ -107,11 +107,18 @@ def estimate(
 
     # Find positions of objects and calculate distances
     positions = _set_object_dict(list_level)
-    distances = _set_distance_dict(list_level, positions["entry"], positions["exit"])
+    distances, accessible_tile_count = _set_distance_dict(
+        list_level, positions["entry"], positions["exit"]
+    )
 
     # Calculate and store output parameters
     return _calculate_output_parameters(
-        counts, positions, distances, difficulty_curve_interval, list_level
+        counts,
+        positions,
+        distances,
+        difficulty_curve_interval,
+        list_level,
+        accessible_tile_count,
     )
 
 
@@ -121,6 +128,7 @@ def _calculate_output_parameters(
     distances: dict,
     difficulty_curve_interval: int,
     list_level: list,
+    accessible_tile_count: int,
 ) -> dict:
     """Calculate and return the output parameters."""
     return {
@@ -131,7 +139,10 @@ def _calculate_output_parameters(
             counts["empty_tile_count"], counts["total_tile_count"]
         ),
         output_parameter_names[2]: _exploration_requirement(
-            distances["entry"], positions["object_positions"]
+            list_level,
+            distances["entry"],
+            positions["object_positions"],
+            accessible_tile_count,
         ),
         output_parameter_names[3]: _difficulty_curve(
             distances["entry"], positions["enemy_positions"], difficulty_curve_interval
@@ -139,12 +150,11 @@ def _calculate_output_parameters(
         output_parameter_names[4]: counts["treasure_count"],
         output_parameter_names[5]: counts["enemy_count"],
         output_parameter_names[6]: counts["map_size"],
-        output_parameter_names[7]: _nonlinearity(
+        output_parameter_names[7]: _exploration_requirement(
+            list_level,
             distances["entry"],
-            distances["exit"],
-            positions["object_positions"],
-            counts["total_object_count"],
-            counts["total_passable_tile_count"],
+            [positions["entry"], positions["exit"]],
+            accessible_tile_count,
         ),
         output_parameter_names[8]: _count_rooms(list_level),
     }
@@ -354,16 +364,21 @@ def _get_exit_position(list_level: list) -> str:
     return exit_position[0]
 
 
-def _set_distance_dict(list_level: list, entry_pos: tuple, exit_pos: tuple) -> dict:
-    entry_distance_dict = (
-        _shortest_distances(list_level, entry_pos) if entry_pos else {}
+def _set_distance_dict(
+    list_level: list, entry_pos: tuple, exit_pos: tuple
+) -> tuple[dict, int]:
+    """Determines the area of the flood-fill algo required from start pos to all another accessible tile."""
+    entry_distance_dict, accessible_tile_count_from_entry = (
+        _flood_fill_area(list_level, entry_pos) if entry_pos else {}
     )
-    exit_distance_dict = _shortest_distances(list_level, exit_pos) if exit_pos else {}
+    exit_distance_dict, accessible_tile_count_from_exit = (
+        _flood_fill_area(list_level, exit_pos) if exit_pos else {}
+    )
 
     return {
         "entry": entry_distance_dict,
         "exit": exit_distance_dict,
-    }
+    }, accessible_tile_count_from_entry
 
 
 def _find_objects_position(list_level: list, obj_icon: str) -> list:
@@ -408,6 +423,34 @@ def _shortest_distances(list_level: list, pos: tuple) -> dict:
     return result
 
 
+def _flood_fill_area(list_level: list, pos: tuple) -> tuple[dict, int]:
+    """
+    Find the flood fill area from pos to every accessible tile in the map.
+    Also, return a count of accessible tile from starting pos(player).
+    """
+    que = deque([pos])
+    count = 0
+    result = {pos: count}
+
+    x_boundary = len(list_level)
+    y_boundary = len(list_level[0])
+    icon_obstacles = set(icons["wall"])
+
+    while que:
+        x, y = que.popleft()
+
+        for dx, dy in DIRECTIONS:
+            new_x, new_y = x + dx, y + dy
+            if (new_x, new_y) not in result:
+                if _is_in_bounds(new_x, new_y, x_boundary, y_boundary):
+                    if _is_accessible(list_level[new_x][new_y], icon_obstacles):
+                        que.append((new_x, new_y))
+                        count += 1
+                        result[(new_x, new_y)] = count
+
+    return result, count
+
+
 # =======================================
 # 3-3. Difficulty and Gameplay Evaluation
 # =======================================
@@ -421,13 +464,19 @@ def _empty_ratio(empty_count: int, total_tile_count: int) -> float:
     return empty_count / total_tile_count
 
 
-def _exploration_requirement(distance_dict_entry: dict, object_positions: list) -> int:
+def _exploration_requirement(
+    list_level: list[list],
+    distance_dict_entry: dict,
+    object_positions: list,
+    accessible_tile_count: int,
+) -> int:
     """
     Returns the amount of movement required to meet all objects from the entrance.
 
     Args:
         distance_dict_entry: Dict of distances between entry and accessible tiles.
         object_positions: List of positions of all objects in the level.
+        accessible_tile_count: the number of accessible tiles from entry.
 
     Returns:
         The amount of movement required to meet all objects from the entrance.
@@ -435,14 +484,28 @@ def _exploration_requirement(distance_dict_entry: dict, object_positions: list) 
     Raises:
         KeyError: If objects are in inaccessible locations, dismisses that and prints a warning.
     """
-    total_movement = 0
-    for obj_pos in object_positions:
-        try:
-            total_movement += distance_dict_entry[obj_pos]
-        except KeyError:
-            print("Object may be in an inaccessible location.")
 
-    return total_movement
+    # Find accessible obj list from entry
+    accessible_obj_list = []
+    for obj_pos in object_positions:
+        if obj_pos in distance_dict_entry:
+            accessible_obj_list.append(obj_pos)
+
+    # Make distance dict for every accissible objects.
+    accessible_obj_distance_dict_list = []
+    for obj_pos in accessible_obj_list:
+        accessible_obj_distance_dict, _ = _flood_fill_area(list_level, obj_pos)
+        accessible_obj_distance_dict_list.append(accessible_obj_distance_dict)
+
+    f_e = 0
+    n = len(accessible_obj_list)
+    for i in range(n):
+        E_i = 0
+        for obj_pos_j in accessible_obj_list:
+            E_i += accessible_obj_distance_dict_list[i][obj_pos_j]
+        f_e += E_i
+
+    return f_e / accessible_tile_count / (n - 1) / n
 
 
 def _difficulty_curve(
