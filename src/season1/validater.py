@@ -97,12 +97,13 @@ def _calculate_parameters(
 
     # Calculate nonlinearity only if the level is playable
     if output_parameters["playability"]:
-        output_parameters[labeler.output_parameter_names[7]] = labeler._nonlinearity(
-            distances["entry"],
-            distances["exit"],
-            positions["object_positions"],
-            counts["total_object_count"],
-            counts["total_passable_tile_count"],
+        output_parameters[labeler.output_parameter_names[7]] = (
+            labeler._exploration_requirement(
+                list_level,
+                distances["entry"],
+                [positions["entry"], positions["exit"]],
+                accessible_tile_count,
+            )
         )
     else:
         output_parameters[labeler.output_parameter_names[7]] = None
