@@ -31,12 +31,12 @@ If the output parameters need to be modified in the current state, they must be 
 output_parameter_names = [
     "density",
     "empty_ratio",
-    "exploration_requirement",
+    "exploration",
     "difficulty_curve",
     "treasure_count",
     "enemy_count",
     "map_size",
-    "nonlinearity",
+    "winding_path",
     "room_count",
 ]
 
@@ -534,45 +534,6 @@ def _difficulty_curve(
     return (
         height_difference / interval_count
     )  # Mean variation of enemy number per interval.
-
-
-def _nonlinearity(
-    entry_distance_dict: dict,
-    exit_distance_dict: dict,
-    object_positions: list,
-    total_object_count: int,
-    total_passable_tile_count: int,
-) -> float:
-    """Returns the nonlinearity."""
-
-    entry_sum = 0
-    exit_sum = 0
-    for obj_pos in object_positions:
-        # Calculate flood coverage
-        try:
-            entry_obj_dist = entry_distance_dict[obj_pos]
-        except KeyError:
-            print("Object may be in an inaccessible location from entry.", obj_pos)
-            entry_obj_dist = 0
-        try:
-            exit_obj_dist = exit_distance_dict[obj_pos]
-        except KeyError:
-            print("Object may be in an inaccessible location from exit.", obj_pos)
-            exit_obj_dist = 0
-
-        entry_counter = sum(
-            1 for dist in entry_distance_dict.values() if dist <= entry_obj_dist
-        )
-        exit_counter = sum(
-            1 for dist in exit_distance_dict.values() if dist <= exit_obj_dist
-        )
-
-        entry_sum += entry_counter
-        exit_sum += exit_counter
-
-    result = entry_sum + exit_sum
-
-    return result / total_passable_tile_count / total_object_count
 
 
 # ====================

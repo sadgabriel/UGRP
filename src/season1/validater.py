@@ -295,6 +295,91 @@ def _set_none_parameters():
     return output_parameters
 
 
+# ============
+# 5. Interface
+# ============
+def get_label(level: str) -> dict:
+    list_level = _prepare_level(level)
+    return {
+        labeler.output_parameter_names[2]: _get_exploration(list_level),
+        labeler.output_parameter_names[4]: _get_treasure_count(list_level),
+        labeler.output_parameter_names[5]: _get_enemy_count(list_level),
+        labeler.output_parameter_names[6]: _get_map_size(list_level),
+        labeler.output_parameter_names[7]: _get_winding_path(list_level),
+        labeler.output_parameter_names[8]: _get_room_count(list_level),
+    }
+
+
+def get_enemy_count(level: str) -> int:
+    return _get_enemy_count(_prepare_level(level))
+
+
+def _get_enemy_count(list_level: list[list[str]]) -> int:
+    return _get_object_count(list_level, "enemy")
+
+
+def get_treasure_count(level: str) -> int:
+    return _get_treasure_count(_prepare_level(level))
+
+
+def _get_treasure_count(list_level: list[list[str]]) -> int:
+    return _get_object_count(list_level, "treasure")
+
+
+def get_room_count(level: str) -> int:
+    return _get_room_count(_prepare_level(level))
+
+
+def _get_room_count(list_level: list[list[str]]) -> int:
+    return labeler._count_rooms(list_level)
+
+
+def _get_object_count(list_level: list[list[str]], object_name: str) -> int:
+    return sum(tile == labeler.icons[object_name] for row in list_level for tile in row)
+
+
+def get_map_size(level: str) -> tuple[int, int]:
+    return _get_map_size(_prepare_level(level))
+
+
+def _get_map_size(list_level: list[list[str]]) -> tuple[int, int]:
+    return (len(list_level), len(list_level[0]))
+
+
+def get_exploration(level: str) -> float:
+    return _get_exploration(_prepare_level(level))
+
+
+def _get_exploration(list_level: list[list[str]]) -> float:
+    positions = labeler._set_object_dict(list_level)
+    distances, accessible_tile_count = labeler._set_distance_dict(
+        list_level, positions["entry"], positions["exit"]
+    )
+    return labeler._exploration_requirement(
+        list_level,
+        distances["entry"],
+        positions["object_positions"],
+        accessible_tile_count,
+    )
+
+
+def get_winding_path(level: str) -> float:
+    return _get_winding_path(_prepare_level(level))
+
+
+def _get_winding_path(list_level: list[list[str]]) -> float:
+    positions = labeler._set_object_dict(list_level)
+    distances, accessible_tile_count = labeler._set_distance_dict(
+        list_level, positions["entry"], positions["exit"]
+    )
+    return labeler._exploration_requirement(
+        list_level,
+        distances["entry"],
+        [positions["entry"], positions["exit"]],
+        accessible_tile_count,
+    )
+
+
 # ========
 # For TEST
 # ========
@@ -303,9 +388,4 @@ def _make_list_level(x: int, y: int) -> list:
 
 
 if __name__ == "__main__":
-    for x in range(10):
-        for y in range(10):
-            test_map = _make_list_level(x, y)
-
-            for tmp_interval in range(1, 10):
-                validate(test_map, tmp_interval)
+    pass
