@@ -1,4 +1,5 @@
 import random as rd
+from season1.labeler import save_file
 
 target_range = {
     "enemy_count": (10, 36),
@@ -10,11 +11,21 @@ target_range = {
 }
 
 
-def json_process(data):
-    return
+def output_target_param(
+    map_list: list, path: str, file_count: int = 10, param_count: int = 100
+) -> None:
+    for i in range(file_count):
+        save_file({"param_list": _generate_target_params_for(param_count)}, path)
 
 
-def generate_target_param() -> dict:
+def _generate_target_params_for(repeatition: int = 100) -> list:
+    result_list = []
+    for i in range(repeatition):
+        result_list.append(_generate_target_param())
+    return result_list
+
+
+def _generate_target_param() -> dict:
     return {
         "enemy_count": rd.randint(
             target_range["enemy_count"][0], target_range["enemy_count"][1]

@@ -202,7 +202,7 @@ def load_folder(path: str = PLACED_PATH, file_count: int = DEFAULT_FILE_COUNT) -
     return data_list
 
 
-def save_file(data: list, path: str) -> None:
+def save_file(data: dict, path: str) -> None:
     """
     Save map data into a JSON file.
 
