@@ -380,6 +380,19 @@ def _get_winding_path(list_level: list[list[str]]) -> float:
     )
 
 
+def _label_7dim(map_list: list) -> dict:
+    def recursive_update(map_list, depth=0):
+        if depth == 7:
+            return {"map": map_list["map"], "params": get_label(map_list["map"])}
+        return [recursive_update(sub_list, depth + 1) for sub_list in map_list]
+
+    return {"map_list": recursive_update(map_list)}
+
+
+def output_label(map_list: list, path: str) -> None:
+    labeler.save_file(_label_7dim(map_list), path)
+
+
 # ========
 # For TEST
 # ========
