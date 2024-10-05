@@ -1,10 +1,9 @@
 import textwrap
-from utility import load_config
+from .utility import load_config
 
 config = load_config()
 
 BASE_PROMPT_PATH = config["paths"]["base_prompt"]
-PROMPT_PATH = config["paths"]["prompt"]
 
 
 def _split_prompts(content: str) -> tuple[str, str]:

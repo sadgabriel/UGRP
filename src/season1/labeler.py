@@ -2,7 +2,7 @@ from collections import deque
 import json
 import os
 
-from utility import load_config
+from .utility import load_config
 
 config = load_config()
 

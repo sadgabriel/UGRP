@@ -55,14 +55,29 @@ def load_yaml_file(path: str) -> dict:
 
 def load_config() -> dict:
     """
-    Loads and returns the content of the 'config.yaml' file.
+    Loads and returns the content of the 'config.yaml' file, converting relative paths
+    to absolute paths based on the project's root directory. Ensures that each path ends with a '/'.
 
     Returns:
-        dict: A dictionary containing the configuration settings from 'config.yaml'.
+        dict: A dictionary containing the configuration settings from 'config.yaml' with absolute paths.
     """
-    return load_yaml_file(
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "../config.yaml")
-    )
+    # 현재 파일을 기준으로 프로젝트 루트 경로를 계산
+    project_root = os.path.dirname(os.path.abspath(__file__))
+
+    config_path = os.path.join(project_root, "../config.yaml")
+    config = load_yaml_file(config_path)
+
+    # 모든 경로를 절대 경로로 변환하고 마지막 '/' 유지
+    for key, relative_path in config["paths"].items():
+        absolute_path = os.path.abspath(os.path.join(project_root, relative_path))
+
+        # 경로가 디렉토리면 마지막 '/'를 추가
+        if not absolute_path.endswith(os.sep):
+            absolute_path += os.sep
+
+        config["paths"][key] = absolute_path
+
+    return config
 
 
 def setup_logging(log_path: str) -> None:
@@ -136,6 +151,39 @@ def create_new_dataset(path: str, batch_number: int) -> tuple:
     return new_file, batch_number, dataset
 
 
+def save_dataset_to_file(dataset: dict, file_path: str) -> None:
+    """Save the dataset to the specified JSON file."""
+    with open(file_path, "w") as outfile:
+        json.dump(dataset, outfile)
+    print(f"Successfully saved {file_path}")
+
+
+def get_largest_batch_file(path: str, file_pattern: str = "batch*.json") -> tuple:
+    """
+    Find the batch file with the largest number in its name.
+
+    Args:
+        path (str): Directory path to search for files.
+        file_pattern (str): The pattern to search for files. Defaults to 'batch*.json'.
+
+    Returns:
+        tuple: (largest_batch_file, batch_number), or (None, None) if no files found.
+    """
+    # Find all batch files in the directory
+    existing_files = find_existing_files(path, file_pattern)
+
+    if not existing_files:
+        return None, None
+
+    # Find the batch file with the largest number
+    max_batch_file = max(
+        existing_files, key=lambda x: int(x.split("batch")[-1].split(".json")[0])
+    )
+    batch_number = int(max_batch_file.split("batch")[-1].split(".json")[0])
+
+    return max_batch_file, batch_number
+
+
 def find_or_create_dataset(
     path: str,
     file_pattern: str = "batch*.json",
@@ -143,7 +191,7 @@ def find_or_create_dataset(
     create_new: bool = False,
 ) -> tuple:
     """
-    Find an appropriate dataset file based on file size and dataset length.
+    Find the dataset with the largest batch number and check if it can accept more entries.
     If no file matches the criteria or if create_new is True, a new file is created.
 
     Args:
@@ -155,32 +203,43 @@ def find_or_create_dataset(
     Returns:
         tuple: (current_file, batch_number, dataset)
     """
-    # Search for existing files in the specified path with the given pattern
-    existing_files = find_existing_files(path, file_pattern)
+    # Use the new helper function to find the largest batch file
+    max_batch_file, batch_number = get_largest_batch_file(path, file_pattern)
 
-    if existing_files and not create_new:
-        # Sort files by size, from smallest to largest
-        files_sorted_by_size = sort_files_by_size(existing_files)
+    if max_batch_file and not create_new:
+        # Load the dataset from the largest batch file
+        dataset = read_json_file(max_batch_file)
 
-        # Find an available dataset with less than max_entries
-        file_path, batch_number, dataset = find_available_dataset(files_sorted_by_size)
-        if file_path and len(dataset.get("map_list", [])) < max_entries:
-            return file_path, batch_number, dataset
+        # Check if the dataset can accept more entries
+        if len(dataset.get("map_list", [])) < max_entries:
+            return max_batch_file, batch_number, dataset
 
     # If no valid file found or create_new is True, create a new one
-    if existing_files:
-        max_batch_number = max(
-            int(x.split("batch")[-1].split(".json")[0]) for x in existing_files
-        )
-        new_batch_number = max_batch_number + 1
-    else:
-        new_batch_number = 0
-
+    new_batch_number = batch_number + 1 if max_batch_file else 0
     return create_new_dataset(path, new_batch_number)
 
 
-def save_dataset_to_file(dataset: dict, file_path: str) -> None:
-    """Save the dataset to the specified JSON file."""
-    with open(file_path, "w") as outfile:
-        json.dump(dataset, outfile)
-    print(f"Successfully saved {file_path}")
+def get_last_element_of_largest_batch_file(directory_path: str) -> dict:
+    """
+    Returns the last element of the 'map_list' from the batch file with the largest number in its name.
+
+    Args:
+        directory (str): The path to the directory containing batch files.
+
+    Returns:
+        dict: The last element of the 'map_list' in the largest batch file.
+    """
+    # Use the new helper function to find the largest batch file
+    max_batch_file, _ = get_largest_batch_file(directory_path)
+
+    if not max_batch_file:
+        raise FileNotFoundError(f"No batch files found in the directory: {directory_path}")
+
+    # Load the content of the selected batch file
+    dataset = read_json_file(max_batch_file)
+
+    # Retrieve the last element of the 'map_list'
+    if "map_list" not in dataset or not dataset["map_list"]:
+        raise ValueError(f"No 'map_list' found or it's empty in {max_batch_file}.")
+
+    return dataset["map_list"][-1]

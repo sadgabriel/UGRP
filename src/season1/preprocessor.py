@@ -12,7 +12,7 @@ def is_chapter_format(line: str) -> bool:
     Returns:
     bool: True if the line matches the pattern, otherwise False.
     """
-    pattern = r"^#+ [A-Za-z]+.*$"
+    pattern = r"^#+ [A-Za-z]+[^\#/\.]*$"
     result = bool(re.match(pattern, line))
 
     return result
@@ -112,7 +112,3 @@ def preprocess(text: str) -> str:
     askii_map = _extract_ascii_art_map(text)
     print(askii_map)
     return askii_map
-
-
-test = "### Notes:"
-print(_is_ascii_art_line(test))

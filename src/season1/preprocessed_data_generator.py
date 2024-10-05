@@ -1,15 +1,7 @@
-from param_generator import generate_param
-from sampler import load_random_examples_from_folder
-from llm_utils import generate_and_save_data
-from utility import *
-
-
-# 최초 출력 파트에서 사용될 파라미터 생성 함수
-def get_new_parameters_and_examples(example_count: int) -> tuple:
-    """Generate new parameters and example maps."""
-    parameters = generate_param()
-    examples = load_random_examples_from_folder(example_count)  # examples 로드
-    return parameters, examples
+from .param_generator import generate_param
+from .sampler import load_random_examples_from_folder
+from .llm_utils import generate_and_save_data, generate_data_block
+from .utility import *
 
 
 def generate_preprocessed_data(
@@ -17,33 +9,35 @@ def generate_preprocessed_data(
 ) -> None:
     """Generate the initial output and save it."""
     config = load_config()
-    preprocessed_path = os.path.abspath(config["paths"]["preprocessed"])
+    preprocessed_path = config["paths"]["preprocessed"]
 
     create_directory(preprocessed_path)
     setup_logging(f"{preprocessed_path}.log")
 
     current_file, batch_number, dataset = find_or_create_dataset(path=preprocessed_path)
 
-    # get_new_parameters_and_examples 래핑
-    def wrapped_get_new_parameters():
-        return get_new_parameters_and_examples(example_count)
-
     # Use the general function with a new parameter generation function
     while data_count > 0:
-        dataset = generate_and_save_data(
-            prompt_style,
-            current_file,
-            dataset,
-            wrapped_get_new_parameters,
-        )
+        # Step 1: Generate parameters and examples
+        parameters = generate_param()
+        examples = load_random_examples_from_folder(example_count)
 
-        if dataset is None:
+        # Step 2: Generate the data block
+        data_block = generate_data_block(parameters, examples, prompt_style)
+
+        # Step 3: Pass the data block to generate_and_save_data
+        dataset = generate_and_save_data(data_block, current_file, dataset)
+
+        # Step 4: Check if a new file is needed based on dataset size
+        if len(dataset["map_list"]) == 0:
+            # Create a new batch file and reset the dataset
             batch_number += 1
             current_file = f"{preprocessed_path}batch{batch_number}.json"
             dataset = {"map_list": []}
 
         data_count -= 1
 
+    # Save any remaining data that wasn't saved due to not reaching the limit
     if dataset and dataset["map_list"]:
         save_dataset_to_file(dataset, current_file)
         print(f"Successfully saved {current_file} with remaining data")

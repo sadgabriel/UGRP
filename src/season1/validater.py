@@ -1,4 +1,4 @@
-import labeler
+from . import labeler
 
 param_names = ("playability", "other_ASCII_count", "empty_validation")
 

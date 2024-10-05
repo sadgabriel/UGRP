@@ -1,12 +1,11 @@
 import random
 import json
 import os
-import textwrap
-import yaml
 
-with open("../config.yaml", "r") as file:
-    config = yaml.safe_load(file)
+from .utility import load_config
 
+
+config = load_config()
 LABELLED_PATH = config["paths"]["labelled"]
 
 

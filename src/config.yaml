@@ -2,12 +2,11 @@ paths:
   raw: "../data/1. raw/"
   placed: "../../data/2. placed/"
   labelled: "../../data/3. labelled/"
-  prompt: "../../data/4. prompt/"
-  preprocessed: "../../data/5. preprocessed/"
+  preprocessed: "../../data/4. preprocessed/"
+  repeated: "../../data/5. repeated/"
   compared: "../../data/6. compared/"
-  repeated: "../data/7. repeated/"
   base_prompt: "../base_prompt/"
-  node: "../src/node-roguelike/"
+  node: "../node-roguelike/"
 
 
 

@@ -1,10 +1,9 @@
 import glob
 import json
 import os
-from typing import Tuple, List, Any
+from typing import Any
 
-from utility import load_config
-
+from season1.utility import load_config
 
     # 이 스크립트는 다음 두 가지 주요 기능을 수행합니다:
     # 1. 메인 디렉토리와 서브디렉토리 내의 batch*.json 파일들을 재정리합니다.
@@ -14,7 +13,6 @@ from utility import load_config
     #    - 서브디렉토리의 파일들은 삭제되지 않습니다.
     #    - 최종적으로, 어느 경로에서 파일들이 처리되었는지를 출력합니다.
     
-
 
 def load_data_from_directory(directory_path: str) -> tuple[list[Any], list[str]]:
     """Load all data from all batch files in the specified directory into a single list."""
@@ -29,14 +27,14 @@ def load_data_from_directory(directory_path: str) -> tuple[list[Any], list[str]]
     return all_data, file_paths
 
 
-def save_data_in_batches(all_data: list, preprocessed_path: str) -> None:
+def save_data_in_batches(all_data: list, directory_path: str) -> None:
     """Save all data into batch files with exactly 100 items each."""
     batch_number = 0
     total_data_count = len(all_data)
 
     for i in range(0, total_data_count, 100):
         batch_data = all_data[i : i + 100]
-        batch_file = f"{preprocessed_path}batch{batch_number}.json"
+        batch_file = f"{directory_path}batch{batch_number}.json"
         dataset = {"map_list": batch_data}
 
         with open(batch_file, "w") as outfile:
@@ -46,13 +44,11 @@ def save_data_in_batches(all_data: list, preprocessed_path: str) -> None:
         batch_number += 1
 
 
-def reorganize_batches():
+def reorganize_batches(directory_path: str) -> None:
     """Main function to reorganize existing batch files from preprocessed and its subdirectories into proper sizes."""
-    config = load_config()
-    preprocessed_path = config["paths"]["preprocessed"]
 
     # Load all data from the main preprocessed directory
-    main_dir_data, main_dir_files = load_data_from_directory(preprocessed_path)
+    main_dir_data, main_dir_files = load_data_from_directory(directory_path)
 
     if main_dir_files:
         # If there are files in the main directory, process only those files
@@ -62,7 +58,7 @@ def reorganize_batches():
     else:
         # If no files in the main directory, load from subdirectories
         all_data = []
-        subdirs = [d for d in glob.glob(f"{preprocessed_path}*/") if os.path.isdir(d)]
+        subdirs = [d for d in glob.glob(f"{directory_path}*/") if os.path.isdir(d)]
         file_paths_to_delete = []
 
         for subdir in subdirs:
@@ -78,7 +74,7 @@ def reorganize_batches():
             os.remove(file_path)
 
     # Save the data into new batch files with 100 items each in the main preprocessed directory
-    save_data_in_batches(all_data, preprocessed_path)
+    save_data_in_batches(all_data, directory_path)
 
     # Output detailed information about the processing
     print(f"Data processing completed.")
@@ -86,4 +82,6 @@ def reorganize_batches():
 
 
 # Run the reorganization
-reorganize_batches()
+config = load_config()
+path = config["paths"]["preprocessed"]
+reorganize_batches(path)
