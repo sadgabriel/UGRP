@@ -2,10 +2,10 @@ import random as rd
 from season1.labeler import save_file
 
 target_range = {
-    "enemy_count": (10, 36),
+    "enemy_count": (10, 26),
     "treasure_count": (1, 4),
-    "room_count": (4, 16),
-    "map_size": (16, 30),
+    "room_count": (5, 13),
+    "map_size": (16, 26),
     "exploration": (0.4, 0.7),
     "winding_path": (0.3, 0.9),
 }
