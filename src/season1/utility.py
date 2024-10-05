@@ -2,6 +2,7 @@ import os
 import json
 import logging
 import glob
+import shutil
 
 import yaml
 
@@ -89,6 +90,15 @@ def create_directory(path: str) -> None:
     """Create the data directory if it does not exist."""
     if not os.path.exists(path):
         os.makedirs(path)
+
+
+def empty_directory(dir_path):
+    for item_name in os.listdir(dir_path):
+        item_path = os.path.join(dir_path, item_name)
+        if os.path.isfile(item_path) or os.path.islink(item_path):
+            os.remove(item_path)
+        elif os.path.isdir(item_path):
+            shutil.rmtree(item_path)
 
 
 def find_existing_files(directory: str, file_pattern: str = "*.json") -> list:

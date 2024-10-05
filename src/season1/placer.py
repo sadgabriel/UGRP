@@ -1,11 +1,17 @@
 import os
+import sys
 import random
 import json
-import config
 
 from collections import deque
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
+
 import utility
+
+config = utility.load_config()
 
 tile_character = {
     "flag": "F",
@@ -24,7 +30,7 @@ class Map:
         params (dict[str, str]): Parameters which describe map's features.
     """
 
-    def __init__(self, dict_map: dict) -> None:
+    def __init__(self, dict_map: dict = None) -> None:
         self.list_map = list()
         self.params = dict()
 
@@ -50,7 +56,7 @@ class Map:
         return {"params": self.params, "map": self.get_ascii_map()}
 
 
-def load_maps(path: str = config.RAW_PATH) -> list[Map]:
+def load_maps(path: str = config["paths"]["raw"]) -> list[Map]:
     """Load all maps from directory.
 
     Args:
@@ -68,7 +74,7 @@ def load_maps(path: str = config.RAW_PATH) -> list[Map]:
 
 def save_maps(
     map_list: list[Map],
-    path: str = config.PLACED_PATH,
+    path: str = config["paths"]["placed"],
     batch_size: int = 100,
     prefix: str = "batch",
 ) -> None:
@@ -286,6 +292,9 @@ def _set_enemy(map: Map, group_size_list: list[int], sparsity: int) -> None:
             if map.list_map[i][j] == tile_character["flag"]:
                 map.list_map[i][j] = "."
                 empty_list = list()
+
+                empty_list.append((i, j))
+
                 queue = deque()
                 queue.append((i, j))
 

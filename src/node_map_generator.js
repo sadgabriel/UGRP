@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const file = fs.readFileSync('./config.yaml', 'utf8');
+const file = fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8');
 const config = yaml.load(file);
 
 var roguelike = require(path.join(config["paths"]["node"], "level", "roguelike"));
@@ -89,14 +89,14 @@ function checkMapSize(map, mapSize){
 }
 
 function createMap(mapSize, roomCountIdeal){
-    let roomSizeMin = 2;
+    let roomSizeMin = 3;
     let roomSizeMax = mapSize - 4;
 
     let running = true;
     while (running){
         roomSizeMax--;
 
-        if (roomSizeMax == 2){
+        if (roomSizeMax == 3){
             break;
         }
 
@@ -150,7 +150,7 @@ if (process.argv.length >= 5){
     process.exit();
 }
 
-let directoryName = config["paths"]["raw"];
+let directoryName = path.join(__dirname, config["paths"]["raw"]);
 
 if (!fs.existsSync(directoryName)) {
     fs.mkdirSync(directoryName, { recursive: true });
@@ -158,12 +158,14 @@ if (!fs.existsSync(directoryName)) {
 
 emptyDirectory(directoryName);
 
-let map_list = [];
+let mapList = [];
 for (let i = 0; i < mapCount; ++i){
-    map_list.push(createMap(mapSize, roomCountIdeal));
+    mapList.push({"params": {}, "map": createMap(mapSize, roomCountIdeal)});
 }
 
-const jsonData = JSON.stringify(map_list, null, 2);
+data = {"map_list": mapList};
+
+const jsonData = JSON.stringify(data, null, 2);
 
 fs.writeFile(path.join(directoryName, 'rawMaps.json'), jsonData, (err) => {
   if (err) {
