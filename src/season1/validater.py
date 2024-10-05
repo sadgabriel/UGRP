@@ -96,7 +96,7 @@ def _calculate_parameters(
     output_parameters[param_names[2]] = _validate_empty(list_level)
 
     # Calculate nonlinearity only if the level is playable
-    if output_parameters["playability"]:
+    if output_parameters[param_names[0]]:
         output_parameters[labeler.output_parameter_names[7]] = (
             labeler._exploration_requirement(
                 list_level,
@@ -300,14 +300,24 @@ def _set_none_parameters():
 # ============
 def get_label(level: str) -> dict:
     list_level = _prepare_level(level)
-    return {
-        labeler.output_parameter_names[2]: _get_exploration(list_level),
-        labeler.output_parameter_names[4]: _get_treasure_count(list_level),
-        labeler.output_parameter_names[5]: _get_enemy_count(list_level),
-        labeler.output_parameter_names[6]: _get_map_size(list_level),
-        labeler.output_parameter_names[7]: _get_winding_path(list_level),
-        labeler.output_parameter_names[8]: _get_room_count(list_level),
-    }
+    if "P" in level:
+        return {
+            labeler.output_parameter_names[2]: _get_exploration(list_level),
+            labeler.output_parameter_names[4]: _get_treasure_count(list_level),
+            labeler.output_parameter_names[5]: _get_enemy_count(list_level),
+            labeler.output_parameter_names[6]: _get_map_size(list_level),
+            labeler.output_parameter_names[7]: _get_winding_path(list_level),
+            labeler.output_parameter_names[8]: _get_room_count(list_level),
+        }
+    else:
+        return {
+            labeler.output_parameter_names[2]: 0,
+            labeler.output_parameter_names[4]: _get_treasure_count(list_level),
+            labeler.output_parameter_names[5]: _get_enemy_count(list_level),
+            labeler.output_parameter_names[6]: _get_map_size(list_level),
+            labeler.output_parameter_names[7]: 0,
+            labeler.output_parameter_names[8]: _get_room_count(list_level),
+        }
 
 
 def get_enemy_count(level: str) -> int:
@@ -401,4 +411,6 @@ def _make_list_level(x: int, y: int) -> list:
 
 
 if __name__ == "__main__":
+    level = ""
+    print(get_label(level))
     pass

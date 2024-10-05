@@ -505,6 +505,9 @@ def _exploration_requirement(
             E_i += accessible_obj_distance_dict_list[i][obj_pos_j]
         f_e += E_i
 
+    if n == 1:
+        return 0
+
     return f_e / accessible_tile_count / (n - 1) / n
 
 
