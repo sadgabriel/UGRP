@@ -10,7 +10,7 @@ def get_data_from_map(map: str) -> dict:
     return data
 
 
-def repeat_process(data_count: int, prompt_style: str) -> None:
+def repeat_process(prompt_style: str) -> None:
     """Repeat the process of generating and saving data using existing goal and map data."""
     config = load_config()
     preprocessed_path = config["paths"]["preprocessed"]
@@ -22,13 +22,12 @@ def repeat_process(data_count: int, prompt_style: str) -> None:
     current_file, batch_number, dataset = find_or_create_dataset(path=repeated_path)
 
     data_block = None
+    map_list = load_list_from_files(preprocessed_path, "map_list")
     # Use the general function with a new parameter generation function
-    while data_count > 0:
+    for pre_data in map_list:
 
-        first_step_data = get_last_element_of_largest_batch_file(preprocessed_path)
-
-        parameters = first_step_data["params"]
-        examples = [get_data_from_map(first_step_data["map"])]
+        parameters = pre_data["params"]
+        examples = [get_data_from_map(pre_data["map"])]
 
         # Step 3: Pass the data block to generate_and_save_data
         dataset = generate_and_save_data(data_block, current_file, dataset)
@@ -40,7 +39,6 @@ def repeat_process(data_count: int, prompt_style: str) -> None:
             current_file = f"{preprocessed_path}batch{batch_number}.json"
             dataset = {"map_list": []}
 
-        data_count -= 1
         for iteration in range(2):
             data_block = generate_data_block(parameters, examples, prompt_style)
             examples = [get_data_from_map(data_block["map"])]
@@ -55,12 +53,10 @@ def repeat_process(data_count: int, prompt_style: str) -> None:
             current_file = f"{repeated_path}batch{batch_number}.json"
             dataset = {"map_list": []}
 
-        data_count -= 1
-
     if dataset and dataset["map_list"]:
         save_dataset_to_file(dataset, current_file)
         print(f"Successfully saved {current_file} with remaining data")
 
 
 # Example usage (should be removed in production code)
-repeat_process(1, "AutoCOT1")
+repeat_process("AutoCOT1")
