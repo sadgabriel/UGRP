@@ -1,11 +1,12 @@
 import random
+import os
 
 import season1.utility as util
 
 config = util.load_config()
 
 def get_demos_from_map_dataset(param_names) -> list[dict]:
-    dataset = util.read_json_file(config["paths"]["labelled"])
+    dataset = util.read_json_file(os.path.join(config["paths"]["labelled"], "DemoMapDataset.json"))
 
     target_list = []
     map_size_range = range(3) if "map_size" in param_names else range(1, 2)

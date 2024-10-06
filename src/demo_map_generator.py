@@ -124,16 +124,12 @@ def generate_node_maps(
         ]
     )
 
-    raw_path = os.path.normpath(
-        os.path.join(os.path.dirname(__file__), config["paths"]["raw"])
-    )
+    raw_path = config["paths"]["raw"]
     return util.load_json_files(raw_path)
 
 
 if __name__ == "__main__":
-    dir_path = os.path.normpath(
-        os.path.join(os.path.dirname(__file__), config["paths"]["labelled"])
-    )
+    dir_path = config["paths"]["labelled"]
     file_path = os.path.join(dir_path, "DemoMapDataset.json")
 
     util.create_directory(dir_path)

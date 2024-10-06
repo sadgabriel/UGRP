@@ -1,5 +1,5 @@
 paths:
-  raw: "../data/1. raw/"
+  raw: "../../data/1. raw/"
   placed: "../../data/2. placed/"
   labelled: "../../data/3. labelled/"
   preprocessed: "../../data/4. preprocessed/"
