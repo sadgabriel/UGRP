@@ -17,7 +17,7 @@ const yaml = require('js-yaml');
 const file = fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8');
 const config = yaml.load(file);
 
-var roguelike = require(path.join(config["paths"]["node"], "level", "roguelike"));
+var roguelike = require(path.join("..", "src", "node-roguelike", "level", "roguelike"));
 
 function convertToString(level){
     let world = level.world;
