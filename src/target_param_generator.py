@@ -1,4 +1,6 @@
+import os
 import random as rd
+
 from season1.labeler import save_file
 
 target_range = {
@@ -37,8 +39,13 @@ def output_target_param(
         output_target_param([], "/path/to/save/files", 5, 50)
         This will generate 5 files, each containing 50 parameters, and save them in the specified path.
     """
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    cur_dir = os.path.dirname(os.path.abspath(__file__))
     for i in range(file_count):
-        save_file({"param_list": _generate_target_params_for(param_count)}, path)
+        _path = os.path.join(cur_dir, path, f"batch{i}.json")
+        save_file({"param_list": _generate_target_params_for(param_count)}, _path)
 
 
 def _generate_target_params_for(repeatition: int = 100) -> list:
@@ -72,4 +79,5 @@ def _generate_target_param() -> dict:
 
 
 if __name__ == "__main__":
+    output_target_param("../data/test/")
     pass

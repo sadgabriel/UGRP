@@ -1,3 +1,5 @@
+import os
+
 from . import labeler
 
 param_names = ("playability", "other_ASCII_count", "empty_validation")
@@ -400,7 +402,12 @@ def _label_7dim(map_list: list) -> dict:
 
 
 def output_label(map_list: list, path: str) -> None:
-    labeler.save_file(_label_7dim(map_list), path)
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    cur_dir = os.path.dirname(os.path.abspath(__file__))
+    _path = os.path.join(cur_dir, path, f"batch.json")
+    labeler.save_file(_label_7dim(map_list), _path)
 
 
 # ========
