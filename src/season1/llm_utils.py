@@ -24,9 +24,11 @@ def generate_prompt_and_ascii_map(
     return ascii_map
 
 
-def generate_data_block(parameters, examples: dict, prompt_style: str) -> tuple:
+def generate_data_block(
+    parameters, examples: dict, prompt_style: str, param_names: list
+) -> tuple:
     """Generate and return a single data block with parameters, ASCII map, and examples."""
-    example_prompt = generate_example_prompt(examples, prompt_style)
+    example_prompt = generate_example_prompt(examples, param_names)
     ascii_map = generate_prompt_and_ascii_map(parameters, example_prompt, prompt_style)
 
     data_block = {

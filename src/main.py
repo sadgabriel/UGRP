@@ -16,4 +16,4 @@ for goal_params in param_list:
     generate_preprocessed_data(data_count, prompt_style, goal_params, param_names)
 
 # step 2
-repeat_process(prompt_style)
+# repeat_process(prompt_style)

@@ -22,7 +22,7 @@ def generate_preprocessed_data(
     examples = get_demos_from_map_dataset(param_names)
 
     # Step 2: Generate the data block
-    data_block = generate_data_block(goal_params, examples, prompt_style)
+    data_block = generate_data_block(goal_params, examples, prompt_style, param_names)
 
     # Step 3: Pass the data block to generate_and_save_data
     dataset = generate_and_save_data(data_block, current_file, dataset)
