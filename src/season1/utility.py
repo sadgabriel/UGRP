@@ -7,10 +7,11 @@ import shutil
 import yaml
 
 
-def load_json_files(path: str) -> list[dict]:
+def load_json_files(path: str, type: str = "map_list") -> list[dict]:
     """Load all json data from directory.
 
     Args:
+        type:
         path (str): The path of directory which has files.
 
     Returns:
@@ -32,7 +33,7 @@ def load_json_files(path: str) -> list[dict]:
     for file_path in path_list:
         with open(file_path, "r") as file:
             batch = json.load(file)
-            for content in batch["map_list"]:
+            for content in batch[type]:
                 content_list.append(content)
 
     return content_list
@@ -229,27 +230,23 @@ def find_or_create_dataset(
     return create_new_dataset(path, new_batch_number)
 
 
-def get_last_element_of_largest_batch_file(directory_path: str) -> dict:
+def load_list_from_files(directory_path: str, type: str) -> list:
     """
-    Returns the last element of the 'map_list' from the batch file with the largest number in its name.
+    Load all 'map_list' elements from JSON files in the specified directory.
 
     Args:
-        directory (str): The path to the directory containing batch files.
+        directory_path (str): The path to the directory containing JSON files.
 
     Returns:
-        dict: The last element of the 'map_list' in the largest batch file.
+        list: A list containing all 'map_list' elements from all files.
     """
-    # Use the new helper function to find the largest batch file
-    max_batch_file, _ = get_largest_batch_file(directory_path)
+    # Load all JSON files in the directory
+    json_files = load_json_files(directory_path, type)
 
-    if not max_batch_file:
-        raise FileNotFoundError(f"No batch files found in the directory: {directory_path}")
+    # Create a combined list for all map_list elements
+    combined_list = []
 
-    # Load the content of the selected batch file
-    dataset = read_json_file(max_batch_file)
+    for content in json_files:
+        combined_list.append(content)  # Add each map_list item to the combined list
 
-    # Retrieve the last element of the 'map_list'
-    if "map_list" not in dataset or not dataset["map_list"]:
-        raise ValueError(f"No 'map_list' found or it's empty in {max_batch_file}.")
-
-    return dataset["map_list"][-1]
+    return combined_list
