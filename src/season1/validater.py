@@ -355,7 +355,29 @@ def get_map_size(level: str) -> tuple[int, int]:
 
 
 def _get_map_size(list_level: list[list[str]]) -> tuple[int, int]:
-    return (len(list_level), len(list_level[0]))
+    icon_wall = labeler.icons["wall"]
+    x = len(list_level)
+    y = len(list_level[0])
+
+    x_min = x - 1
+    x_max = 0
+    y_min = y - 1
+    y_max = 0
+
+    for i in range(x):
+        row = list_level[i]
+        for j in range(y):
+            if row[j] == icon_wall:
+                if i < x_min:
+                    x_min = i
+                if i > x_max:
+                    x_max = i
+                if j < y_min:
+                    y_min = j
+                if j > y_max:
+                    y_max = j
+
+    return (x_max - x_min + 1, y_max - y_min + 1)
 
 
 def get_exploration(level: str) -> float:
@@ -418,6 +440,6 @@ def _make_list_level(x: int, y: int) -> list:
 
 
 if __name__ == "__main__":
-    level = ""
-    print(get_label(level))
+    level = "###########   \n#...#.....#   \n#..E/.....#   \n#T..#.....#   \n##/##....E#   \n#...#.....#   \n#.P.##/####   \n#...#...#     \n#...#.B.#     \n#...#...#     \n#########     \n"
+    print(get_map_size(level))
     pass
