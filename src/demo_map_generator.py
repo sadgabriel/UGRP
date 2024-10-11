@@ -15,7 +15,7 @@ def create_map_dataset() -> list:
         [[[[] for _ in range(3)] for _ in range(3)] for _ in range(3)] for _ in range(3)
     ]
 
-    for map_idx, map_size in enumerate((16, 20, 26)):
+    for map_idx, map_size in enumerate((17, 21, 27)):
         for room_idx, room_count in enumerate((5, 8, 13)):
             for enemy_idx, enemy_count in enumerate((10, 16, 26)):
                 for treasure_idx, treasure_count in enumerate((1, 2, 4)):

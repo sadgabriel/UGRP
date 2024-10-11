@@ -1,0 +1,25 @@
+Task:
+Your task is to understand how the {ParameterName} parameter affects the layout of an ASCII dungeon map and describe how to modify the map to change the value of this parameter.
+
+{MapDescription}
+
+{Parameters}
+
+Instruction:
+Based on the example maps provided, describe how you would modify the map to:
+
+    Increase {ParameterName}:
+        Goal: Explain what increasing the {ParameterName} will achieve.
+        Actions:
+            List specific actions to increase the parameter.
+            Mention any considerations or constraints.
+        Expected Result:
+            Describe how the map will change after increasing the parameter.
+
+    Decrease {ParameterName}:
+        Goal: Explain what decreasing the {ParameterName} will achieve.
+        Actions:
+            List specific actions to decrease the parameter.
+            Mention any considerations or constraints.
+        Expected Result:
+            Describe how the map will change after decreasing the parameter.

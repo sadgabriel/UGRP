@@ -1,0 +1,11 @@
+Parameter: winding_path
+
+Description:
+    The winding_path parameter represents how much distance the player must travel, relative to the map size, to reach the boss. This parameter is based on the distance between the player's starting position and the boss, and how indirect or winding the path is. A higher winding_path value indicates a more complex and winding path, while a lower value indicates a more direct route.
+
+Effect:
+    The greater the distance between the player and the boss, or the more complex the path, the higher the winding_path value.
+    A smaller value indicates a shorter or more direct path to the boss.
+
+Range:
+    The winding_path value ranges from 0 to 1.

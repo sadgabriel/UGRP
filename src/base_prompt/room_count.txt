@@ -1,0 +1,11 @@
+Parameter: room_count
+
+Description:
+    The room_count parameter specifies the total number of rooms that must be generated within the dungeon. Each room is a distinct enclosed area, and the total number of rooms is determined by the value of room_count. The size, shape, and arrangement of the rooms can vary, but the map will always contain exactly the number of rooms defined by this parameter.
+
+Range:
+    The value of room_count can range from 5 to 13.
+
+Constraints:
+    The dungeon must contain exactly room_count number of rooms.
+    Rooms can vary in size and shape, but all must be fully enclosed by walls (#) and connected through doors (/).

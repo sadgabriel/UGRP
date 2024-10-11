@@ -7,9 +7,9 @@ target_range = {
     "enemy_count": (10, 26),
     "treasure_count": (1, 4),
     "room_count": (5, 13),
-    "map_size": (16, 26),
-    "exploration": (0.4, 0.7),
-    "winding_path": (0.3, 0.9),
+    "map_size": (17, 27),
+    "exploration": (0.48, 0.55),
+    "winding_path": (0.45, 0.93),
 }
 
 

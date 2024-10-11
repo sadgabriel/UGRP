@@ -1,0 +1,13 @@
+Parameters:
+An ASCII dungeon map is generated based on several parameters that define its structure and contents.
+
+The types of parameters are listed below:
+
+{ParameterDescription}
+
+Each parameter directly influences specific aspects of the map, such as its size, the number of rooms, and the placement of enemies and treasures. Different parameter values lead to different map layouts and characteristics, making each map unique.
+
+For example, here are some maps with specific parameter values that demonstrate how different values affect the layout:
+
+{examples}
+

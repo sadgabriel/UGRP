@@ -1,0 +1,17 @@
+ASCII dungeon map:
+An ASCII dungeon map is a two-dimensional grid made of text characters, where each symbol represents different terrain or objects.
+
+Symbols:
+- '#': Wall
+- '.': Empty space inside the dungeon
+- ' ': Empty space outside the dungeon
+- '/': Door (connecting rooms)
+- 'E': Enemy
+- 'T': Treasure
+- 'P': Player
+- 'B': Boss
+
+Rules:
+- The dungeon is composed of rooms surrounded by uneven, organic walls (#). Empty spaces inside the dungeon are represented by . and outside by ' '.
+- All rooms must be connected by doors (/), ensuring the entire map forms a connected structure.
+- Enemies (E), treasures (T), the player (P), and the boss (B) must be placed within rooms. The player and boss must be placed in separate rooms, while enemies and treasures can be placed freely in different rooms.

@@ -41,8 +41,8 @@ function createNodeMap(mapSize, roomSizeMin, roomSizeMax, roomCountIdeal){
         let error_count = 0;
         try {
             let level = roguelike({
-                width: mapSize + 1,
-                height: mapSize + 1,
+                width: mapSize,
+                height: mapSize,
                 retry: 100,
                 special: false,
                 room: {
@@ -68,7 +68,7 @@ function createNodeMap(mapSize, roomSizeMin, roomSizeMax, roomCountIdeal){
 function checkMapSize(map, mapSize){
     map = map.replace(/\n/g, "");
 
-    if (map.length != (mapSize + 1) * (mapSize + 1)) {
+    if (map.length != (mapSize) * (mapSize)) {
         console.log("Invalid map or mapSize.");
         return false;
     }
@@ -80,9 +80,9 @@ function checkMapSize(map, mapSize){
 
     for (let i = 0; i < mapSize; ++i){
         if (map[i] == "#") topOK = true;
-        if (map[(mapSize + 1) * (mapSize - 1) + i] == "#") bottomOK = true;
-        if (map[(mapSize + 1) * i] == "#") leftOK = true;
-        if (map[(mapSize + 1) * i + (mapSize - 1)] == "#") rightOK = true;
+        if (map[(mapSize) * (mapSize - 1) + i] == "#") bottomOK = true;
+        if (map[(mapSize) * i] == "#") leftOK = true;
+        if (map[(mapSize) * i + (mapSize - 1)] == "#") rightOK = true;
     }
 
     return topOK && bottomOK && leftOK && rightOK;
@@ -150,7 +150,7 @@ if (process.argv.length >= 5){
     process.exit();
 }
 
-let directoryName = path.join(__dirname, config["paths"]["raw"]);
+let directoryName = path.join(__dirname, '..', 'data', '1. raw');
 
 if (!fs.existsSync(directoryName)) {
     fs.mkdirSync(directoryName, { recursive: true });

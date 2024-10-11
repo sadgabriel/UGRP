@@ -1,0 +1,11 @@
+Parameter 5: exploration
+
+Description:
+    The exploration parameter represents how much the player needs to explore to find enemies and treasures in the dungeon. The farther away the enemies and treasures are from the player's starting position, the higher the exploration value.
+
+Effect:
+    A higher exploration value means the player must travel further to find enemies and treasures, resulting in more exploration of the map.
+    A lower value indicates that enemies and treasures are placed closer to the player, requiring less exploration.
+
+Range:
+    The value of exploration ranges from 0 to 1, but in practice, it typically falls between 0.4 and 0.6.

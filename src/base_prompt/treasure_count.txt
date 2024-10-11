@@ -1,0 +1,11 @@
+Parameter: treasure_count
+
+Description:
+    The treasure_count parameter specifies the total number of treasures (T) to be placed within the dungeon. Treasures are valuable objects scattered throughout the dungeon, typically placed in rooms. The exact positioning of treasures is determined during map generation, but the total number of treasures will always match the value of treasure_count.
+
+Range:
+    The value of map_size can range from 1 to 4.
+
+Constraints:
+    The map must contain exactly treasure_count treasures.
+    Treasures are typically placed in rooms and should be easily accessible within the dungeon.

@@ -1,4 +1,5 @@
 import random
+import os
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -444,3 +445,57 @@ def draw_graph(mean_dict: dict, std_dict: dict, title: str = "") -> None:
     ax.set_xticklabels(categorie_list)
 
     plt.show()
+
+
+if __name__ == "__main__":
+    dataset = utility.read_json_file(
+        os.path.join(config["paths"]["labelled"], "DemoMapDataset.json")
+    )
+
+    for map_size_idx in range(3):
+        for room_count_idx in range(3):
+            for enemy_count_idx in range(3):
+                for treasure_count_idx in range(3):
+                    explorations = []
+                    winding_paths = []
+
+                    for i in range(3):
+                        for j in range(3):
+                            for k in range(3):
+                                explorations.append(
+                                    dataset[map_size_idx][room_count_idx][
+                                        enemy_count_idx
+                                    ][treasure_count_idx][i][j][k]["params"][
+                                        "exploration"
+                                    ]
+                                )
+                                winding_paths.append(
+                                    dataset[map_size_idx][room_count_idx][
+                                        enemy_count_idx
+                                    ][treasure_count_idx][i][j][k]["params"][
+                                        "winding_path"
+                                    ]
+                                )
+
+                    print(
+                        map_size_idx,
+                        room_count_idx,
+                        enemy_count_idx,
+                        treasure_count_idx,
+                    )
+                    print(
+                        "exploration: ",
+                        round(np.min(explorations), 2),
+                        ", ",
+                        round(np.average(explorations), 2),
+                        ", ",
+                        round(np.max(explorations), 2),
+                    )
+                    print(
+                        "winding_path: ",
+                        round(np.min(winding_paths), 2),
+                        ", ",
+                        round(np.average(winding_paths), 2),
+                        ", ",
+                        round(np.max(winding_paths), 2),
+                    )
