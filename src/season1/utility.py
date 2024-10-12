@@ -120,6 +120,12 @@ def find_existing_files(directory: str, file_pattern: str = "*.json") -> list:
     return glob.glob(os.path.join(directory, file_pattern))
 
 
+def read_text_file(file_path: str) -> str:
+    """Read text from a file."""
+    with open(file_path, "r") as file:
+        return file.read()
+
+
 def read_json_file(file_path: str) -> dict:
     """Read JSON data from a file."""
     with open(file_path, "r") as infile:

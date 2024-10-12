@@ -1,4 +1,5 @@
-Parameter 5: exploration
+
+Parameter: exploration
 
 Description:
     The exploration parameter represents how much the player needs to explore to find enemies and treasures in the dungeon. The farther away the enemies and treasures are from the player's starting position, the higher the exploration value.

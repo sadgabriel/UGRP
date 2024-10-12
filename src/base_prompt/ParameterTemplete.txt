@@ -9,5 +9,4 @@ Each parameter directly influences specific aspects of the map, such as its size
 
 For example, here are some maps with specific parameter values that demonstrate how different values affect the layout:
 
-{examples}
-
+{Examples}
