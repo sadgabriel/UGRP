@@ -1,23 +1,24 @@
-Your task is to modify an ASCII dungeon map to adjust one of its parameters. You will be provided with the current parameter value and the target parameter value, along with a map example. Your goal is to transform the map to meet the target parameter value.
+Task:
+Your task is to modify an ASCII dungeon map to adjust several of its parameters. You will be provided with the current and target values for one or more parameters, along with a original map. Your goal is to transform the map to meet the target values for all provided parameters.
 
 {MapDescription}
 
 {Parameters}
 
-Based on the provided map and parameter values, here is how you can modify the map to adjust the {ParameterName} value. Clearly identify which parts of the map need to be modified and specify how each change will impact the {ParameterName} value. Be specific about the changes you will make.
+Modification Guide:
+Here is how you can modify the map to adjust the parameters. Clearly identify which parts of the map need to be modified and specify how each change will impact the parameters. Be specific about the changes you will make.
 
 {PreparationOutput}
 
 Instruction:
-Based on the provided map and parameter values, explain the step-by-step process of how you would modify the map to adjust the {ParameterName} value from X to Y. For each step, clearly identify which parts of the map need to be modified and specify how each change will impact the {ParameterName} value. After describing the intermediate steps, provide the final modified map.
+Based on the provided modification guide and parameter values, explain the step-by-step process of how you would adjust the map to meet the target values for the following parameters:
 
-Current {ParameterName} value: {CurrentValue}
-Target {ParameterName} value: {TargetValue}
+{ParametersToModify}
 
-Step-by-step process:
-1. Describe the first modification.
-2. Explain the second modification.
-3. Continue describing any further necessary modifications.
+For each parameter:
+    Describe the modifications needed to adjust the map according to the parameters listed.
+    Explain how each modification impacts the map's structure or gameplay.
+    Continue describing modifications for any remaining parameters.
 
 Final output:
 After explaining the steps, output the final modified map. Ensure that the final output contains only the modified map without additional explanations or comments.
