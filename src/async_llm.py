@@ -11,26 +11,26 @@ API_KEY = os.getenv("OPENAI_API_KEY")
 headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
 
 
-async def generate_preparation_outputs(system_prompt, preparation_prompts):
+async def generate_unstructured_datas(system_prompt, user_prompts):
     tasks = []
 
-    for prompt in preparation_prompts:
-        tasks.append(unstructured_data_generate(system_prompt, prompt))
+    for prompt in user_prompts:
+        tasks.append(generate_unstructured_data(system_prompt, prompt))
 
-    preparation_outputs = await asyncio.gather(*tasks)
-    return preparation_outputs
+    output = await asyncio.gather(*tasks)
+    return output
 
 
-async def unstructured_data_generate(system: str, param: str) -> str:
+async def generate_unstructured_data(system_prompt: str, user_prompt: str) -> str:
     if not API_KEY:
         raise ValueError("OpenAI API key is not set in environment variables.")
 
     async with aiohttp.ClientSession(headers=headers) as session:
         payload = {
-            "model": "gpt-4o-mini",
+            "model": "gpt-4o",
             "messages": [
-                {"role": "system", "content": system},
-                {"role": "user", "content": param},
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
             ],
             "max_tokens": 16384,
         }
