@@ -11,11 +11,10 @@ API_KEY = os.getenv("OPENAI_API_KEY")
 headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
 
 
-async def generate_unstructured_datas(system_prompt, user_prompts):
+async def generate_unstructured_datas(system_prompts, user_prompts):
     tasks = []
-
-    for prompt in user_prompts:
-        tasks.append(generate_unstructured_data(system_prompt, prompt))
+    for i in range(len(user_prompts)):
+        tasks.append(generate_unstructured_data(system_prompts[i], user_prompts[i]))
 
     output = await asyncio.gather(*tasks)
     return output
@@ -27,7 +26,7 @@ async def generate_unstructured_data(system_prompt: str, user_prompt: str) -> st
 
     async with aiohttp.ClientSession(headers=headers) as session:
         payload = {
-            "model": "gpt-4o",
+            "model": "gpt-4o-mini",
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
