@@ -313,11 +313,11 @@ def get_label(level: str) -> dict:
         }
     else:
         return {
-            labeler.output_parameter_names[2]: 0,
+            labeler.output_parameter_names[2]: "NaN",
             labeler.output_parameter_names[4]: _get_treasure_count(list_level),
             labeler.output_parameter_names[5]: _get_enemy_count(list_level),
             labeler.output_parameter_names[6]: _get_map_size(list_level),
-            labeler.output_parameter_names[7]: 0,
+            labeler.output_parameter_names[7]: "NaN",
             labeler.output_parameter_names[8]: _get_room_count(list_level),
         }
 
