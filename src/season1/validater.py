@@ -1,4 +1,5 @@
 import os
+import math
 
 from . import labeler
 
@@ -354,7 +355,7 @@ def get_map_size(level: str) -> tuple[int, int]:
     return _get_map_size(_prepare_level(level))
 
 
-def _get_map_size(list_level: list[list[str]]) -> tuple[int, int]:
+def _get_map_size(list_level: list[list[str]]) -> int:
     icon_wall = labeler.icons["wall"]
     x = len(list_level)
     y = len(list_level[0])
@@ -377,7 +378,7 @@ def _get_map_size(list_level: list[list[str]]) -> tuple[int, int]:
                 if j > y_max:
                     y_max = j
 
-    return (x_max - x_min + 1, y_max - y_min + 1)
+    return math.sqrt((x_max - x_min + 1) * (y_max - y_min + 1))
 
 
 def get_exploration(level: str) -> float:

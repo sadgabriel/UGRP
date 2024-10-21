@@ -4,7 +4,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-import utility
+from . import utility
 
 config = utility.load_config()
 COMPARED_PATH = config["paths"]["compared"]
@@ -193,14 +193,14 @@ def _calc_novelty_from_list(compared_list: list[dict], threshold: int) -> float:
                and 0.0 indicates none are novel.
     """
     novelty_list = [
-        _check_novelty(compared["example_maps"], compared["map"], threshold)
+        check_novelty(compared["example_maps"], compared["map"], threshold)
         for compared in compared_list
     ]
 
     return np.mean(novelty_list)
 
 
-def _check_novelty(examples: list[str], target: str, threshold: int) -> bool:
+def check_novelty(examples: list[str], target: str, threshold: int) -> bool:
     """
     Check if the target string is sufficiently novel compared to a list of example strings.
 

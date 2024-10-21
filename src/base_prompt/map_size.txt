@@ -2,11 +2,12 @@
 Parameter: map_size
 
 Description:
-    The map_size parameter defines the length of one side of the square canvas where the dungeon is generated. While the dungeon itself is not necessarily square-shaped, it must fit within the boundaries of this canvas. The map_size controls the dimensions of the canvas, and both the horizontal and vertical limits of the dungeon must stay within the canvas defined by map_size.
+    The map_size parameter defines both the width and height of the entire dungeon. The dungeon is composed of rooms, and its overall width and height must be exactly equal to the map_size. In other words, the dungeon’s horizontal and vertical dimensions are fixed to the map_size.
 
 Range:
     The value of map_size can range from 17 to 27.
 
 Constraints:
-    The dungeon must fit within the square canvas with both width and height constrained by map_size.
-    The horizontal distance from the leftmost wall to the rightmost wall, and the vertical distance from the bottommost wall to the topmost wall, must not exceed map_size.
+    The dungeon’s width (distance from the leftmost to the rightmost point) and height (distance from the topmost to the bottommost point) must both be exactly equal to the map_size.
+    While the layout and shape of the dungeon are flexible, its overall size must always be exactly map_size x map_size. All rooms and corridors must fit precisely within this fixed size.
+    For example, if map_size is 20, the dungeon's width and height must each be exactly 20, and the dungeon cannot be either larger or smaller than this.
