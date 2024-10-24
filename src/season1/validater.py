@@ -303,7 +303,7 @@ def _set_none_parameters():
 # ============
 def get_label(level: str) -> dict:
     list_level = _prepare_level(level)
-    if "P" in level:
+    if "P" in level and "B" in level:
         return {
             labeler.output_parameter_names[2]: _get_exploration(list_level),
             labeler.output_parameter_names[4]: _get_treasure_count(list_level),
