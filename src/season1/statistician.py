@@ -195,6 +195,7 @@ def _calc_novelty_from_list(compared_list: list[dict], threshold: int) -> float:
     novelty_list = [
         check_novelty(compared["example_maps"], compared["map"], threshold)
         for compared in compared_list
+        if "example_maps" in compared and "map" in compared
     ]
 
     return np.mean(novelty_list)
@@ -221,6 +222,9 @@ def check_novelty(examples: list[str], target: str, threshold: int) -> bool:
 
 
 def _check_enough_levenshtein_distance(A: str, B: str, threshold: int) -> bool:
+    if not A or not B:
+        return max(len(A), len(B)) >= threshold
+
     len_A = len(A)
     len_B = len(B)
 
