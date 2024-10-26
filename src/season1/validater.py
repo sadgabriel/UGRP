@@ -323,6 +323,11 @@ def get_label(level: str) -> dict:
         }
 
 
+def get_playable(level: str) -> bool:
+    list_level = _prepare_level(level)
+    return _is_playable(level)
+
+
 def get_enemy_count(level: str) -> int:
     return _get_enemy_count(_prepare_level(level))
 
@@ -344,11 +349,19 @@ def get_room_count(level: str) -> int:
 
 
 def _get_room_count(list_level: list[list[str]]) -> int:
-    return labeler._count_rooms(list_level)
+    try:
+        return labeler._count_rooms(list_level)
+    except:
+        return 0
 
 
 def _get_object_count(list_level: list[list[str]], object_name: str) -> int:
-    return sum(tile == labeler.icons[object_name] for row in list_level for tile in row)
+    try:
+        return sum(
+            tile == labeler.icons[object_name] for row in list_level for tile in row
+        )
+    except:
+        return 0
 
 
 def get_map_size(level: str) -> tuple[int, int]:
@@ -357,8 +370,12 @@ def get_map_size(level: str) -> tuple[int, int]:
 
 def _get_map_size(list_level: list[list[str]]) -> int:
     icon_wall = labeler.icons["wall"]
-    x = len(list_level)
-    y = len(list_level[0])
+
+    try:
+        x = len(list_level)
+        y = len(list_level[0])
+    except:
+        return 0
 
     x_min = x - 1
     x_max = 0
